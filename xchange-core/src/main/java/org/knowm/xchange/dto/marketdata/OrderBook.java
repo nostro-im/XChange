@@ -3,11 +3,13 @@ package org.knowm.xchange.dto.marketdata;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
 import org.knowm.xchange.dto.trade.LimitOrder;
@@ -16,6 +18,7 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 public class OrderBook implements Serializable {
 
   private int counter;
+  private Calendar arrivalTimestamp;
   
   /** the asks */
   private final List<LimitOrder> asks;
@@ -118,6 +121,18 @@ public class OrderBook implements Serializable {
   /** Sets the internal Nostro counter.*/
   public void setCounter(int counter) {
 	this.counter = counter;
+  }
+  
+  /** The time this OrderBook has arrived to Nostro system */
+  public Calendar getArrivalTimeStamp() {
+
+    return arrivalTimestamp;
+  }
+
+  /** Sets the arrival time for this OrderBook. */
+  public void setArrivalTimeStamp(Calendar cal) {
+
+    this.arrivalTimestamp = cal;
   }
 
   public List<LimitOrder> getAsks() {
