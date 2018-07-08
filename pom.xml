@@ -420,7 +420,7 @@
 
 	<build>
 
-		<plugins>
+		<pluginManagement><plugins>
 			<!-- Ensure compilation is done under Java 8 in all environments -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -519,7 +519,7 @@
 				</executions>
 			</plugin>
 
-		</plugins>
+		</plugins></pluginManagement>
 	</build>
 
 </project>
