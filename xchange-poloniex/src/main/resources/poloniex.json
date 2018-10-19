@@ -718,7 +718,7 @@
     },
     "USDT": {
       "scale": 8,
-      "withdrawal_fee": 25.00000000
+      "withdrawal_fee": 10.00000000
     },
     "VIA": {
       "scale": 8,
