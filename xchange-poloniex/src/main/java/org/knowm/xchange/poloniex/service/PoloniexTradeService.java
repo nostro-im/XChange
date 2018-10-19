@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -27,6 +28,7 @@ import org.knowm.xchange.poloniex.PoloniexErrorAdapter;
 import org.knowm.xchange.poloniex.PoloniexUtils;
 import org.knowm.xchange.poloniex.dto.PoloniexException;
 import org.knowm.xchange.poloniex.dto.trade.PoloniexLimitOrder;
+import org.knowm.xchange.poloniex.dto.trade.PoloniexMoveResponse;
 import org.knowm.xchange.poloniex.dto.trade.PoloniexOpenOrder;
 import org.knowm.xchange.poloniex.dto.trade.PoloniexTradeResponse;
 import org.knowm.xchange.poloniex.dto.trade.PoloniexUserTrade;
@@ -115,7 +117,16 @@ public class PoloniexTradeService extends PoloniexTradeServiceRaw implements Tra
       throw PoloniexErrorAdapter.adapt(e);
     }
   }
-
+  
+  @Override
+  public String changeOrder(LimitOrder limitOrder) throws IOException {
+	  PoloniexMoveResponse response = move(limitOrder.getId(), limitOrder.getOriginalAmount(), limitOrder.getLimitPrice());
+	  if (response.success() == false) {
+		  return null; // Atomic operation failed
+	  }
+      return response.getOrderNumber().toString();
+  }
+  
   @Override
   public boolean cancelOrder(String orderId) throws IOException {
 
