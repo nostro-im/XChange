@@ -14,11 +14,15 @@ import org.knowm.xchange.gdax.dto.marketdata.GDAXProductBook;
 import org.knowm.xchange.gdax.dto.marketdata.GDAXProductStats;
 import org.knowm.xchange.gdax.dto.marketdata.GDAXProductTicker;
 import org.knowm.xchange.gdax.dto.marketdata.GDAXTrade;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** Created by Yingzhe on 4/6/2015. */
 @Slf4j
 public class GDAXMarketDataServiceRaw extends GDAXBaseService {
 
+  private final Logger log = LoggerFactory.getLogger(GDAXMarketDataServiceRaw.class);
+	
   public GDAXMarketDataServiceRaw(Exchange exchange) {
 
     super(exchange);

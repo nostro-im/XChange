@@ -13,10 +13,14 @@ import org.knowm.xchange.gdax.dto.GDAXTrades;
 import org.knowm.xchange.gdax.dto.marketdata.GDAXProductStats;
 import org.knowm.xchange.gdax.dto.marketdata.GDAXProductTicker;
 import org.knowm.xchange.service.marketdata.MarketDataService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Deprecated // Please use module xchange-coinbasepro
 @Slf4j
 public class GDAXMarketDataService extends GDAXMarketDataServiceRaw implements MarketDataService {
+
+  private final Logger log = LoggerFactory.getLogger(GDAXMarketDataServiceRaw.class);
 
   public GDAXMarketDataService(Exchange exchange) {
 
