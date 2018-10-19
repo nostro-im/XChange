@@ -13,10 +13,14 @@ import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.exceptions.RateLimitExceededException;
 import org.knowm.xchange.service.marketdata.MarketDataService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Slf4j
 public class CoinbaseProMarketDataService extends CoinbaseProMarketDataServiceRaw
     implements MarketDataService {
+
+  private final Logger log = LoggerFactory.getLogger(CoinbaseProMarketDataService.class);
 
   public CoinbaseProMarketDataService(Exchange exchange) {
 
