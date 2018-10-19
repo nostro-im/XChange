@@ -124,6 +124,24 @@ public interface TradeService extends BaseService {
   }
 
   /**
+   * Place a limit order
+   *
+   * @param replaceOrderId - the order ID to be replaced
+   * @param newLimitOrder - the new {@link LimitOrder}
+   * @return the new order ID
+   * @throws ExchangeException - Indication that the exchange reported some kind of error with the
+   *     request or response
+   * @throws NotAvailableFromExchangeException - Indication that the exchange does not support the
+   *     requested function or data
+   * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the
+   *     requested function or data, but it has not yet been implemented
+   * @throws IOException - Indication that a networking error occurred while fetching JSON data
+   */
+  default String replaceLimitOrder(String replaceOrderId, LimitOrder newLimitOrder) throws IOException {
+    throw new NotYetImplementedForExchangeException();
+  }
+  
+  /**
    * cancels order with matching orderId (conveniance method, typical just delegate to
    * cancelOrder(CancelOrderByIdParams))
    *
