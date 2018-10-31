@@ -504,6 +504,18 @@
 			"price_scale": 8,
 			"trading_fee": 0.001
 		},
+		"DCR/BNB": {
+			"min_amount": 0.001,
+			"max_amount": 10000000,
+			"price_scale": 3,
+			"trading_fee": 0.001
+		},
+		"DCR/BTC": {
+			"min_amount": 0.001,
+			"max_amount": 10000000,
+			"price_scale": 6,
+			"trading_fee": 0.001
+		},
 		"DENT/BTC": {
 			"min_amount": 1,
 			"max_amount": 90000000,
@@ -1722,6 +1734,18 @@
 			"price_scale": 8,
 			"trading_fee": 0.001
 		},
+		"RVN/BNB": {
+			"min_amount": 1,
+			"max_amount": 90000000,
+			"price_scale": 6,
+			"trading_fee": 0.001
+		},
+		"RVN/BTC": {
+			"min_amount": 1,
+			"max_amount": 90000000,
+			"price_scale": 8,
+			"trading_fee": 0.001
+		},
 		"SALT/BTC": {
 			"min_amount": 0.01,
 			"max_amount": 90000000,
@@ -2515,6 +2539,9 @@
 		"DATA": {
 			"scale": 8
 		},
+		"DCR": {
+			"scale": 8
+		},
 		"DENT": {
 			"scale": 8
 		},
@@ -2829,6 +2856,9 @@
 			"scale": 8,
 			"withdrawal_fee": 1.0
 		},
+		"RVN": {
+			"scale": 8
+		},
 		"SALT": {
 			"scale": 8,
 			"withdrawal_fee": 1.2
@@ -2993,9 +3023,9 @@
 			"withdrawal_fee": 4.3
 		}
 	},
-	"private_rate_limits": [
+	"public_rate_limits": [
 		{
-			"calls": 4,
+			"calls": 2,
 			"time_span": 1,
 			"time_unit": "SECONDS"
 		}
