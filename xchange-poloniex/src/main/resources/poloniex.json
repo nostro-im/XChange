@@ -45,7 +45,32 @@
 			"price_scale": 8,
 			"trading_fee": 0.0025
 		},
+		"BCH/USDC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
 		"BCH/USDT": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
+		"BCHABC/BTC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
+		"BCHABC/USDC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
+		"BCHSV/BTC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
+		"BCHSV/USDC": {
 			"min_amount": 0.00010000,
 			"price_scale": 8,
 			"trading_fee": 0.0025
@@ -165,6 +190,11 @@
 			"price_scale": 8,
 			"trading_fee": 0.0025
 		},
+		"DOGE/USDC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
 		"DOGE/USDT": {
 			"min_amount": 0.00010000,
 			"price_scale": 8,
@@ -236,6 +266,16 @@
 			"trading_fee": 0.0025
 		},
 		"FLO/BTC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
+		"FOAM/BTC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
+		"FOAM/USDC": {
 			"min_amount": 0.00010000,
 			"price_scale": 8,
 			"trading_fee": 0.0025
@@ -341,6 +381,11 @@
 			"trading_fee": 0.0025
 		},
 		"LTC/BTC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
+		"LTC/USDC": {
 			"min_amount": 0.00010000,
 			"price_scale": 8,
 			"trading_fee": 0.0025
@@ -540,6 +585,11 @@
 			"price_scale": 8,
 			"trading_fee": 0.0025
 		},
+		"STR/USDC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
 		"STR/USDT": {
 			"min_amount": 0.00010000,
 			"price_scale": 8,
@@ -595,6 +645,11 @@
 			"price_scale": 8,
 			"trading_fee": 0.0025
 		},
+		"XMR/USDC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
 		"XMR/USDT": {
 			"min_amount": 0.00010000,
 			"price_scale": 8,
@@ -606,6 +661,11 @@
 			"trading_fee": 0.0025
 		},
 		"XRP/BTC": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
+		"XRP/USDC": {
 			"min_amount": 0.00010000,
 			"price_scale": 8,
 			"trading_fee": 0.0025
@@ -626,6 +686,11 @@
 			"trading_fee": 0.0025
 		},
 		"ZEC/ETH": {
+			"min_amount": 0.00010000,
+			"price_scale": 8,
+			"trading_fee": 0.0025
+		},
+		"ZEC/USDC": {
 			"min_amount": 0.00010000,
 			"price_scale": 8,
 			"trading_fee": 0.0025
@@ -744,6 +809,14 @@
 		"BCH": {
 			"scale": 8,
 			"withdrawal_fee": 0.00010000
+		},
+		"BCHABC": {
+			"scale": 8,
+			"withdrawal_fee": 5.00000000
+		},
+		"BCHSV": {
+			"scale": 8,
+			"withdrawal_fee": 5.00000000
 		},
 		"BCN": {
 			"scale": 8,
@@ -1042,6 +1115,10 @@
 			"withdrawal_fee": 0.01000000
 		},
 		"FLT": {
+			"scale": 8,
+			"withdrawal_fee": 5.00000000
+		},
+		"FOAM": {
 			"scale": 8,
 			"withdrawal_fee": 5.00000000
 		},
