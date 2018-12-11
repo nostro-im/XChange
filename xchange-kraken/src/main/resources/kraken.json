@@ -37,6 +37,18 @@
 			"price_scale": 1,
 			"trading_fee": 0.0026
 		},
+		"BSV/BTC": {
+			"price_scale": 5,
+			"trading_fee": 0.0026
+		},
+		"BSV/EUR": {
+			"price_scale": 1,
+			"trading_fee": 0.0026
+		},
+		"BSV/USD": {
+			"price_scale": 1,
+			"trading_fee": 0.0026
+		},
 		"BTC/CAD": {
 			"min_amount": 0.002,
 			"price_scale": 1,
@@ -345,6 +357,9 @@
 		"BCH": {
 			"scale": 10,
 			"withdrawal_fee": 0.00100
+		},
+		"BSV": {
+			"scale": 10
 		},
 		"BTC": {
 			"scale": 10,
