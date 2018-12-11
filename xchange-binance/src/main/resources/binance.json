@@ -240,6 +240,30 @@
 			"price_scale": 5,
 			"trading_fee": 0.001
 		},
+		"BCHABC/BTC": {
+			"min_amount": 0.001,
+			"max_amount": 10000000,
+			"price_scale": 0,
+			"trading_fee": 0.001
+		},
+		"BCHABC/USDT": {
+			"min_amount": 0.00001,
+			"max_amount": 10000000,
+			"price_scale": 0,
+			"trading_fee": 0.001
+		},
+		"BCHSV/BTC": {
+			"min_amount": 0.001,
+			"max_amount": 10000000,
+			"price_scale": 0,
+			"trading_fee": 0.001
+		},
+		"BCHSV/USDT": {
+			"min_amount": 0.00001,
+			"max_amount": 10000000,
+			"price_scale": 0,
+			"trading_fee": 0.001
+		},
 		"BCN/BNB": {
 			"min_amount": 1,
 			"max_amount": 90000000,
@@ -306,6 +330,12 @@
 			"price_scale": 6,
 			"trading_fee": 0.001
 		},
+		"BNB/PAX": {
+			"min_amount": 0.01,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"trading_fee": 0.001
+		},
 		"BNB/USDT": {
 			"min_amount": 0.01,
 			"max_amount": 10000000,
@@ -352,6 +382,12 @@
 			"min_amount": 1,
 			"max_amount": 90000000,
 			"price_scale": 7,
+			"trading_fee": 0.001
+		},
+		"BTC/PAX": {
+			"min_amount": 0.000001,
+			"max_amount": 10000000,
+			"price_scale": 0,
 			"trading_fee": 0.001
 		},
 		"BTC/USDT": {
@@ -654,6 +690,18 @@
 			"price_scale": 6,
 			"trading_fee": 0.001
 		},
+		"EOS/PAX": {
+			"min_amount": 0.01,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"trading_fee": 0.001
+		},
+		"EOS/TUSD": {
+			"min_amount": 0.01,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"trading_fee": 0.001
+		},
 		"EOS/USDT": {
 			"min_amount": 0.01,
 			"max_amount": 10000000,
@@ -688,6 +736,12 @@
 			"min_amount": 0.001,
 			"max_amount": 100000,
 			"price_scale": 6,
+			"trading_fee": 0.001
+		},
+		"ETH/PAX": {
+			"min_amount": 0.00001,
+			"max_amount": 10000000,
+			"price_scale": 0,
 			"trading_fee": 0.001
 		},
 		"ETH/USDT": {
@@ -1153,6 +1207,18 @@
 			"trading_fee": 0.001
 		},
 		"MFT/ETH": {
+			"min_amount": 1,
+			"max_amount": 90000000,
+			"price_scale": 8,
+			"trading_fee": 0.001
+		},
+		"MITH/BNB": {
+			"min_amount": 0.1,
+			"max_amount": 90000000,
+			"price_scale": 5,
+			"trading_fee": 0.001
+		},
+		"MITH/BTC": {
 			"min_amount": 1,
 			"max_amount": 90000000,
 			"price_scale": 8,
@@ -1668,6 +1734,18 @@
 			"price_scale": 6,
 			"trading_fee": 0.001
 		},
+		"REN/BNB": {
+			"min_amount": 0.1,
+			"max_amount": 90000000,
+			"price_scale": 5,
+			"trading_fee": 0.001
+		},
+		"REN/BTC": {
+			"min_amount": 1,
+			"max_amount": 90000000,
+			"price_scale": 8,
+			"trading_fee": 0.001
+		},
 		"REP/BNB": {
 			"min_amount": 0.001,
 			"max_amount": 10000000,
@@ -2028,6 +2106,18 @@
 			"price_scale": 4,
 			"trading_fee": 0.001
 		},
+		"USDC/BNB": {
+			"min_amount": 0.1,
+			"max_amount": 90000000,
+			"price_scale": 5,
+			"trading_fee": 0.001
+		},
+		"USDC/BTC": {
+			"min_amount": 1,
+			"max_amount": 90000000,
+			"price_scale": 8,
+			"trading_fee": 0.001
+		},
 		"VEN/BNB": {
 			"min_amount": 0.01,
 			"max_amount": 10000000,
@@ -2250,6 +2340,18 @@
 			"price_scale": 8,
 			"trading_fee": 0.001
 		},
+		"XLM/PAX": {
+			"min_amount": 0.1,
+			"max_amount": 90000000,
+			"price_scale": 5,
+			"trading_fee": 0.001
+		},
+		"XLM/TUSD": {
+			"min_amount": 0.1,
+			"max_amount": 90000000,
+			"price_scale": 5,
+			"trading_fee": 0.001
+		},
 		"XLM/USDT": {
 			"min_amount": 0.01,
 			"max_amount": 90000000,
@@ -2284,6 +2386,18 @@
 			"min_amount": 1,
 			"max_amount": 90000000,
 			"price_scale": 8,
+			"trading_fee": 0.001
+		},
+		"XRP/PAX": {
+			"min_amount": 0.1,
+			"max_amount": 90000000,
+			"price_scale": 5,
+			"trading_fee": 0.001
+		},
+		"XRP/TUSD": {
+			"min_amount": 0.1,
+			"max_amount": 90000000,
+			"price_scale": 5,
 			"trading_fee": 0.001
 		},
 		"XRP/USDT": {
@@ -2458,6 +2572,12 @@
 		"BCH": {
 			"scale": 8,
 			"withdrawal_fee": 0.001
+		},
+		"BCHABC": {
+			"scale": 8
+		},
+		"BCHSV": {
+			"scale": 8
 		},
 		"BCN": {
 			"scale": 8
@@ -2728,6 +2848,9 @@
 		"MFT": {
 			"scale": 8
 		},
+		"MITH": {
+			"scale": 8
+		},
 		"MOD": {
 			"scale": 8,
 			"withdrawal_fee": 2.0
@@ -2841,6 +2964,9 @@
 			"scale": 8,
 			"withdrawal_fee": 2.0
 		},
+		"REN": {
+			"scale": 8
+		},
 		"REP": {
 			"scale": 8
 		},
@@ -2930,6 +3056,9 @@
 			"withdrawal_fee": 72.0
 		},
 		"TUSD": {
+			"scale": 8
+		},
+		"USDC": {
 			"scale": 8
 		},
 		"USDT": {
