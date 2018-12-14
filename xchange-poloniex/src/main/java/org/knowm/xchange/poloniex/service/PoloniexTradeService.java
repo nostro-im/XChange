@@ -120,6 +120,9 @@ public class PoloniexTradeService extends PoloniexTradeServiceRaw implements Tra
   @Override
   public String replaceLimitOrder(String replaceOrderId, LimitOrder newLimitOrder) throws IOException {
 	  PoloniexMoveResponse response = move(replaceOrderId, newLimitOrder.getOriginalAmount(), newLimitOrder.getLimitPrice());
+	  if (response.success() == false) {
+		  return null; // Atomic operation failed
+	  }
       return response.getOrderNumber().toString();
   }
   
