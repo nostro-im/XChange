@@ -3,6 +3,7 @@ package org.knowm.xchange.service.trade;
 import java.io.IOException;
 import java.util.Collection;
 import org.knowm.xchange.dto.Order;
+import org.knowm.xchange.dto.Order.OrderType;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
@@ -124,9 +125,12 @@ public interface TradeService extends BaseService {
   }
 
   /**
-   * Place a limit order
+   * Replaces an existing {@link LimitOrder} in a single atomic transaction.
+   * <br>This usually involves canceling the existing order and placing a new one, of the same
+   * {@link OrderType} but with an updated amount and/or price.
    *
-   * @param replaceOrderId - the order ID to be replaced
+   * @param replaceOrderId - the order ID to be replaced. When null is returned it means the atomic
+   * transaction has failed
    * @param newLimitOrder - the new {@link LimitOrder}
    * @return the new order ID
    * @throws ExchangeException - Indication that the exchange reported some kind of error with the
