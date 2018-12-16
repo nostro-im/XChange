@@ -225,6 +225,16 @@
       "price_scale": 8,
       "trading_fee": 0.002
     },
+    "BSV/BTC": {
+      "min_amount": 0.1000,
+      "price_scale": 6,
+      "trading_fee": 0.002
+    },
+    "BSV/USDT": {
+      "min_amount": 0.10,
+      "price_scale": 4,
+      "trading_fee": 0.002
+    },
     "BT1/BTC": { 
       "min_amount": 0.1000, 
       "price_scale": 6,
@@ -233,6 +243,11 @@
     "BT2/BTC": { 
       "min_amount": 0.1000, 
       "price_scale": 6,
+      "trading_fee": 0.002
+    },
+    "BTC/HUSD": {
+      "min_amount": 0.1000,
+      "price_scale": 2,
       "trading_fee": 0.002
     },
     "BTC/USDT": { 
@@ -436,7 +451,7 @@
       "trading_fee": 0.002
     },
     "DGB/BTC": { 
-      "min_amount": 1.00, 
+      "min_amount": 0.10,
       "price_scale": 10,
       "trading_fee": 0.002
     },
@@ -565,6 +580,11 @@
       "price_scale": 6,
       "trading_fee": 0.002
     },
+    "EOS/HUSD": {
+      "min_amount": 0.1000,
+      "price_scale": 4,
+      "trading_fee": 0.002
+    },
     "EOS/USDT": { 
       "min_amount": 0.0100, 
       "price_scale": 4,
@@ -588,6 +608,11 @@
     "ETH/BTC": { 
       "min_amount": 0.0010, 
       "price_scale": 6,
+      "trading_fee": 0.002
+    },
+    "ETH/HUSD": {
+      "min_amount": 0.1000,
+      "price_scale": 2,
       "trading_fee": 0.002
     },
     "ETH/USDT": { 
@@ -710,14 +735,19 @@
       "price_scale": 8,
       "trading_fee": 0.002
     },
-    "GXS/BTC": { 
+    "GXC/BTC": {
       "min_amount": 0.10, 
       "price_scale": 8,
       "trading_fee": 0.002
     },
-    "GXS/ETH": { 
+    "GXC/ETH": {
       "min_amount": 0.1000, 
       "price_scale": 6,
+      "trading_fee": 0.002
+    },
+    "GXC/USDT": {
+      "min_amount": 0.1000,
+      "price_scale": 4,
       "trading_fee": 0.002
     },
     "HB10/USDT": { 
@@ -748,6 +778,11 @@
     "HIT/ETH": { 
       "min_amount": 0.10, 
       "price_scale": 8,
+      "trading_fee": 0.002
+    },
+    "HIT/USDT": {
+      "min_amount": 0.1000,
+      "price_scale": 6,
       "trading_fee": 0.002
     },
     "HOT/BTC": { 
@@ -783,6 +818,11 @@
     "HT/ETH": { 
       "min_amount": 0.10, 
       "price_scale": 8,
+      "trading_fee": 0.002
+    },
+    "HT/HUSD": {
+      "min_amount": 0.10,
+      "price_scale": 4,
       "trading_fee": 0.002
     },
     "HT/USDT": { 
@@ -1110,6 +1150,26 @@
       "price_scale": 8,
       "trading_fee": 0.002
     },
+    "MXC/BTC": {
+      "min_amount": 0.10,
+      "price_scale": 8,
+      "trading_fee": 0.002
+    },
+    "NANO/BTC": {
+      "min_amount": 0.10,
+      "price_scale": 6,
+      "trading_fee": 0.002
+    },
+    "NANO/ETH": {
+      "min_amount": 0.1000,
+      "price_scale": 6,
+      "trading_fee": 0.002
+    },
+    "NANO/USDT": {
+      "min_amount": 0.1000,
+      "price_scale": 4,
+      "trading_fee": 0.002
+    },
     "NAS/BTC": { 
       "min_amount": 0.0100, 
       "price_scale": 8,
@@ -1153,6 +1213,16 @@
     "NEO/USDT": { 
       "min_amount": 0.0010, 
       "price_scale": 2,
+      "trading_fee": 0.002
+    },
+    "NULS/BTC": {
+      "min_amount": 0.10,
+      "price_scale": 8,
+      "trading_fee": 0.002
+    },
+    "NULS/ETH": {
+      "min_amount": 0.1000,
+      "price_scale": 6,
       "trading_fee": 0.002
     },
     "OCN/BTC": { 
@@ -1332,7 +1402,7 @@
     },
     "QTUM/USDT": { 
       "min_amount": 0.0100, 
-      "price_scale": 2,
+      "price_scale": 4,
       "trading_fee": 0.002
     },
     "QUN/BTC": { 
@@ -1343,6 +1413,11 @@
     "QUN/ETH": { 
       "min_amount": 1.00, 
       "price_scale": 8,
+      "trading_fee": 0.002
+    },
+    "RBTC/BTC": {
+      "min_amount": 0.1000,
+      "price_scale": 6,
       "trading_fee": 0.002
     },
     "RCCC/BTC": { 
@@ -1502,7 +1577,7 @@
     },
     "SOC/USDT": { 
       "min_amount": 0.10, 
-      "price_scale": 4,
+      "price_scale": 6,
       "trading_fee": 0.002
     },
     "SRN/BTC": { 
@@ -1670,6 +1745,11 @@
       "price_scale": 8,
       "trading_fee": 0.002
     },
+    "USDT/HUSD": {
+      "min_amount": 0.1000,
+      "price_scale": 4,
+      "trading_fee": 0.002
+    },
     "UTK/BTC": { 
       "min_amount": 0.10, 
       "price_scale": 8,
@@ -1688,6 +1768,21 @@
     "UUU/ETH": { 
       "min_amount": 0.10, 
       "price_scale": 10,
+      "trading_fee": 0.002
+    },
+    "VEN/BTC": {
+      "min_amount": 0.10,
+      "price_scale": 8,
+      "trading_fee": 0.002
+    },
+    "VEN/ETH": {
+      "min_amount": 0.10,
+      "price_scale": 8,
+      "trading_fee": 0.002
+    },
+    "VEN/USDT": {
+      "min_amount": 0.1000,
+      "price_scale": 4,
       "trading_fee": 0.002
     },
     "VET/BTC": { 
@@ -1805,6 +1900,11 @@
       "price_scale": 6,
       "trading_fee": 0.002
     },
+    "XMR/USDT": {
+      "min_amount": 0.1000,
+      "price_scale": 2,
+      "trading_fee": 0.002
+    },
     "XMX/BTC": { 
       "min_amount": 0.10, 
       "price_scale": 10,
@@ -1825,9 +1925,24 @@
       "price_scale": 6,
       "trading_fee": 0.002
     },
+    "XRP/HUSD": {
+      "min_amount": 0.10,
+      "price_scale": 4,
+      "trading_fee": 0.002
+    },
     "XRP/USDT": { 
       "min_amount": 1.00, 
       "price_scale": 4,
+      "trading_fee": 0.002
+    },
+    "XTZ/BTC": {
+      "min_amount": 0.10,
+      "price_scale": 8,
+      "trading_fee": 0.002
+    },
+    "XTZ/ETH": {
+      "min_amount": 0.1000,
+      "price_scale": 6,
       "trading_fee": 0.002
     },
     "XVG/BTC": { 
@@ -1878,6 +1993,16 @@
     "ZEC/USDT": { 
       "min_amount": 0.0010, 
       "price_scale": 2,
+      "trading_fee": 0.002
+    },
+    "ZEN/BTC": {
+      "min_amount": 0.10,
+      "price_scale": 8,
+      "trading_fee": 0.002
+    },
+    "ZEN/ETH": {
+      "min_amount": 0.1000,
+      "price_scale": 6,
       "trading_fee": 0.002
     },
     "ZIL/BTC": { 
