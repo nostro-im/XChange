@@ -2,12 +2,12 @@ package org.knowm.xchange.service.trade.params;
 
 import org.knowm.xchange.currency.CurrencyPair;
 
-public class DefaultCancelOrderByPairAndIfParams implements CancelOrderByIdParams, CancelOrderByCurrencyPair {
+public class DefaultCancelOrderByCurrencyPairAndIdParams implements CancelOrderByIdParams, CancelOrderByCurrencyPair {
 
 	private CurrencyPair currencyPair;
 	private String orderId;
 	
-	public DefaultCancelOrderByPairAndIfParams(CurrencyPair currencyPair, String orderId) {
+	public DefaultCancelOrderByCurrencyPairAndIdParams(CurrencyPair currencyPair, String orderId) {
 		this.currencyPair = currencyPair;
 		this.orderId = orderId;
 	}
