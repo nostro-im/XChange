@@ -2865,7 +2865,7 @@
 		},
 		"LSK": {
 			"scale": 8,
-			"withdrawal_fee": 0.1
+			"withdrawal_fee": 0.2
 		},
 		"LTC": {
 			"scale": 8,
