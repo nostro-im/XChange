@@ -113,7 +113,7 @@ public class HitbtcMarketDataServiceRaw extends HitbtcBaseService {
       CurrencyPair currencyPair, int limit, String period, String sort) throws IOException {
 
     return hitbtc.getHitbtcOHLC(
-        HitbtcAdapters.adaptCurrencyPair(currencyPair), limit, period, sort);
+        HitbtcAdapters.adaptCurrencyPairOut(currencyPair), limit, period, sort);
   }
 
   public List<HitbtcCandle> getHitbtcCandles(
@@ -121,7 +121,7 @@ public class HitbtcMarketDataServiceRaw extends HitbtcBaseService {
       throws IOException {
 
     return hitbtc.getHitbtcOHLC(
-        HitbtcAdapters.adaptCurrencyPair(currencyPair), limit, period, from, till, sort);
+        HitbtcAdapters.adaptCurrencyPairOut(currencyPair), limit, period, from, till, sort);
   }
 
   public List<HitbtcCandle> getHitbtcCandles(
@@ -129,6 +129,6 @@ public class HitbtcMarketDataServiceRaw extends HitbtcBaseService {
       throws IOException {
 
     return hitbtc.getHitbtcOHLC(
-        HitbtcAdapters.adaptCurrencyPair(currencyPair), limit, period, offset, sort);
+        HitbtcAdapters.adaptCurrencyPairOut(currencyPair), limit, period, offset, sort);
   }
 }
