@@ -36,6 +36,10 @@
       "price_scale": 8,
       "min_amount": 20.00000000
     },
+    "BTC/USD": {
+      "price_scale": 3,
+      "min_amount": 0.00055000
+    },
     "BTC/USDT": {
       "price_scale": 8,
       "min_amount": 0.00055000
@@ -541,6 +545,10 @@
     "TRX": {
       "scale": 8,
       "withdrawal_fee": 0.003
+    },
+    "USD": {
+      "scale": 2,
+      "withdrawal_fee": 50
     },
     "USDT": {
       "scale": 8,
