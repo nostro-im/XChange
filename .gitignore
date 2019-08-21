@@ -7,10 +7,7 @@
 .idea/
 
 # Eclipse
-.settings/
-.metadata/
-.classpath
-.project
+*.project
 
 #NetBeans
 nb-configuration.xml
