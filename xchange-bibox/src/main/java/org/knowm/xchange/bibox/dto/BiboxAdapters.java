@@ -217,8 +217,8 @@ public class BiboxAdapters {
 
   private static UserTrade adaptPendingOrderHistory(BiboxOrder order) {
     return new UserTrade.Builder()
-        .orderId(Long.toString(order.getId()))
-        .id(Long.toString(order.getId()))
+        .orderId(order.getId())
+        .id(order.getId())
         .currencyPair(new CurrencyPair(order.getCoinSymbol(), order.getCurrencySymbol()))
         .price(order.getPrice())
         // At Bibox, deal_amount represents the the cumulative amount. Use it as a trade
