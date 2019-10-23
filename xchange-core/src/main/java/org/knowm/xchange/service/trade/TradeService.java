@@ -172,7 +172,7 @@ public interface TradeService extends BaseService {
   }
 
   /**
-   * cancels order with matching orderId (conveniance method, typical just delegate to
+   * cancels order with matching orderId (convenience method, typical just delegate to
    * cancelOrder(CancelOrderByIdParams))
    *
    * @param orderId
