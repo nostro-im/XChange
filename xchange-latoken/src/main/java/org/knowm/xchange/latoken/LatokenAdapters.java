@@ -2,6 +2,7 @@ package org.knowm.xchange.latoken;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -211,7 +212,15 @@ public class LatokenAdapters {
         latokenUserTrade.getFee(),
         pair.counter); // Fee is always in counter currency
   }
-
+  
+  /**
+   * @param time Time is in seconds
+   * @return Date date object of 'time' 
+   */
+  public static Date adaptTimestampInSeconds(long time) {
+	return new Date(time * 1000);
+  }
+  
   // --------------- Convert to Latoken convention --------------------------
 
   public static String toSymbol(CurrencyPair pair) {

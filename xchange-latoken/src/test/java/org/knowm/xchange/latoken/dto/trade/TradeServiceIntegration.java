@@ -1,6 +1,9 @@
 package org.knowm.xchange.latoken.dto.trade;
 
+import static org.junit.Assert.assertTrue;
+
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.junit.Assume;
@@ -24,6 +27,7 @@ public class TradeServiceIntegration {
 
   static Exchange exchange;
   static LatokenTradeService tradeService;
+  static Calendar startOfTheYear;
 
   @BeforeClass
   public static void beforeClass() {
@@ -31,6 +35,8 @@ public class TradeServiceIntegration {
         ExchangeFactory.INSTANCE.createExchange(
             LatokenExchange.class.getName(), "api-v1-XXX", "api-v1-secret-YYY");
     tradeService = (LatokenTradeService) exchange.getTradeService();
+    startOfTheYear = Calendar.getInstance();
+    startOfTheYear.set(2019, 0, 0, 0, 0);
   }
 
   @Before
@@ -45,7 +51,7 @@ public class TradeServiceIntegration {
         (DefaultOpenOrdersParamCurrencyPair) tradeService.createOpenOrdersParams();
     params.setCurrencyPair(CurrencyPair.ETH_BTC);
     List<LimitOrder> orders = tradeService.getOpenOrders(params).getOpenOrders();
-    orders.forEach(order -> System.out.println(order));
+    verifyOrders(orders);
   }
 
   @Test
@@ -74,15 +80,46 @@ public class TradeServiceIntegration {
     // Check open orders
     DefaultOpenOrdersParamCurrencyPair params =
         (DefaultOpenOrdersParamCurrencyPair) tradeService.createOpenOrdersParams();
-    params.setCurrencyPair(CurrencyPair.ETH_BTC);
+    params.setCurrencyPair(pair);
     List<LimitOrder> openOrders = tradeService.getOpenOrders(params).getOpenOrders();
-    System.out.println(openOrders);
+    verifyOrders(openOrders);
 
+    sleepToPreventRequestLimit();
+    
     // Cancel
     tradeService.cancelLatokenOrder(newOrderId);
 
+    sleepToPreventRequestLimit();
+    
     // Check open orders
-    openOrders = tradeService.getOpenOrders().getOpenOrders();
-    System.out.println(openOrders);
+    openOrders = tradeService.getOpenOrders(params).getOpenOrders();
+    verifyOrders(openOrders);
+    
+    sleepToPreventRequestLimit();
+    
+    // Check trade history
+    LatokenUserTrades userTrades = tradeService.getLatokenUserTrades(pair, null);
+    verifyTrades(userTrades);
+  }
+
+private void sleepToPreventRequestLimit() throws InterruptedException {
+	// Wait a bit 
+    Thread.sleep(3000);
+}
+
+  private void verifyOrders(List<LimitOrder> openOrders) {
+	System.out.println("Open Orders:\n" + openOrders);
+    openOrders.forEach(order -> {
+    	System.out.println("Verifying: " + order);
+    	assertTrue(order.getTimestamp().after(startOfTheYear.getTime()));
+    });
+  }
+  
+  private void verifyTrades(LatokenUserTrades userTrades) {
+	System.out.println("User trades" + userTrades);
+	userTrades.getTrades().forEach(userTrade -> {
+		System.out.println("Verifying: " + userTrade);
+    	assertTrue(userTrade.getTime().after(startOfTheYear.getTime()));
+    });
   }
 }
