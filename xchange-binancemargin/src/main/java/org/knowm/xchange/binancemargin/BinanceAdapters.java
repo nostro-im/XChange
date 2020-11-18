@@ -1,14 +1,15 @@
-package org.knowm.xchange.binance;
+package org.knowm.xchange.binancemargin;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.*;
 import java.util.stream.Collectors;
-import org.knowm.xchange.binance.dto.account.AssetDetail;
-import org.knowm.xchange.binance.dto.marketdata.BinancePriceQuantity;
-import org.knowm.xchange.binance.dto.trade.BinanceOrder;
-import org.knowm.xchange.binance.dto.trade.OrderSide;
-import org.knowm.xchange.binance.dto.trade.OrderStatus;
+
+import org.knowm.xchange.binancemargin.dto.account.AssetDetail;
+import org.knowm.xchange.binancemargin.dto.marketdata.BinancePriceQuantity;
+import org.knowm.xchange.binancemargin.dto.trade.BinanceOrder;
+import org.knowm.xchange.binancemargin.dto.trade.OrderSide;
+import org.knowm.xchange.binancemargin.dto.trade.OrderStatus;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -123,10 +124,10 @@ public class BinanceAdapters {
     OrderType type = convert(order.side);
     CurrencyPair currencyPair = adaptSymbol(order.symbol);
     Order.Builder builder;
-    if (order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.MARKET)) {
+    if (order.type.equals(org.knowm.xchange.binancemargin.dto.trade.OrderType.MARKET)) {
       builder = new MarketOrder.Builder(type, currencyPair);
-    } else if (order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.LIMIT)
-        || order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.LIMIT_MAKER)) {
+    } else if (order.type.equals(org.knowm.xchange.binancemargin.dto.trade.OrderType.LIMIT)
+        || order.type.equals(org.knowm.xchange.binancemargin.dto.trade.OrderType.LIMIT_MAKER)) {
       builder = new LimitOrder.Builder(type, currencyPair).limitPrice(order.price);
     } else {
       builder = new StopOrder.Builder(type, currencyPair).stopPrice(order.stopPrice);
@@ -141,9 +142,6 @@ public class BinanceAdapters {
       builder.averagePrice(
           order.cummulativeQuoteQty.divide(order.executedQty, MathContext.DECIMAL32));
     }
-//    if (order.clientOrderId != null) {
-//      builder.flag(BinanceOrderFlags.withClientId(order.clientOrderId));
-//    }
     return builder.build();
   }
 

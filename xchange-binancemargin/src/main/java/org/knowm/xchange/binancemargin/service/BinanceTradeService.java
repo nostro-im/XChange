@@ -1,4 +1,4 @@
-package org.knowm.xchange.binance.service;
+package org.knowm.xchange.binancemargin.service;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -10,14 +10,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.Value;
 import org.knowm.xchange.Exchange;
-import org.knowm.xchange.binance.BinanceAdapters;
-import org.knowm.xchange.binance.BinanceErrorAdapter;
-import org.knowm.xchange.binance.dto.BinanceException;
-import org.knowm.xchange.binance.dto.trade.BinanceNewOrder;
-import org.knowm.xchange.binance.dto.trade.BinanceOrder;
-import org.knowm.xchange.binance.dto.trade.BinanceTrade;
-import org.knowm.xchange.binance.dto.trade.OrderType;
-import org.knowm.xchange.binance.dto.trade.TimeInForce;
+import org.knowm.xchange.binancemargin.BinanceAdapters;
+import org.knowm.xchange.binancemargin.BinanceErrorAdapter;
+import org.knowm.xchange.binancemargin.dto.BinanceException;
+import org.knowm.xchange.binancemargin.dto.trade.BinanceNewOrder;
+import org.knowm.xchange.binancemargin.dto.trade.BinanceOrder;
+import org.knowm.xchange.binancemargin.dto.trade.BinanceTrade;
+import org.knowm.xchange.binancemargin.dto.trade.OrderType;
+import org.knowm.xchange.binancemargin.dto.trade.TimeInForce;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
@@ -110,7 +110,7 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
   public String placeLimitOrder(LimitOrder lo) throws IOException {
     TimeInForce tif = TimeInForce.GTC;
     OrderType type;
-    if (lo.hasFlag(org.knowm.xchange.binance.dto.trade.BinanceOrderFlags.LIMIT_MAKER)) {
+    if (lo.hasFlag(org.knowm.xchange.binancemargin.dto.trade.BinanceOrderFlags.LIMIT_MAKER)) {
       type = OrderType.LIMIT_MAKER;
       tif = null;
     } else {
@@ -215,18 +215,18 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
   }
 
   @Override
+  public boolean cancelOrder(String orderId) {
+
+    throw new ExchangeException("You need to provide the currency pair to cancel an order.");
+  }
+
+  @Override
   public String changeOrder(LimitOrder limitOrder) throws IOException {
 	DefaultCancelOrderByCurrencyPairAndIdParams params = new DefaultCancelOrderByCurrencyPairAndIdParams(limitOrder.getCurrencyPair(), limitOrder.getId());
     cancelOrder(params);
     return placeLimitOrder(limitOrder);
   }
   
-  @Override
-  public boolean cancelOrder(String orderId) {
-
-    throw new ExchangeException("You need to provide the currency pair to cancel an order.");
-  }
-
   @Override
   public boolean cancelOrder(CancelOrderParams params) throws IOException {
     try {

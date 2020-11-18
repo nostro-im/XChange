@@ -85,7 +85,7 @@
         <module>xchange-bankera</module>
         <module>xchange-bibox</module>
         <module>xchange-binance</module>
-        <module>xchange-binance-margin</module>
+        <module>xchange-binancemargin</module>
         <module>xchange-bitbay</module>
         <module>xchange-bitcoinaverage</module>
         <module>xchange-bitcoincharts</module>
