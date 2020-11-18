@@ -10,7 +10,6 @@ import org.knowm.xchange.binance_margin.dto.marketdata.BinancePriceQuantity;
 import org.knowm.xchange.binance_margin.dto.trade.BinanceOrder;
 import org.knowm.xchange.binance_margin.dto.trade.OrderSide;
 import org.knowm.xchange.binance_margin.dto.trade.OrderStatus;
-import org.knowm.xchange.binance_margin.service.BinanceTradeService.BinanceOrderFlags;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
