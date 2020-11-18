@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.binance_margin.BinanceAuthenticated;
-import org.knowm.xchange.binance_margin.BinanceExchange;
+import org.knowm.xchange.binance_margin.BinanceMarginExchange;
 import org.knowm.xchange.binance_margin.dto.meta.exchangeinfo.BinanceExchangeInfo;
 import org.knowm.xchange.service.BaseExchangeService;
 import org.knowm.xchange.service.BaseService;
@@ -37,7 +37,7 @@ public class BinanceBaseService extends BaseExchangeService implements BaseServi
 
   public long getTimestamp() throws IOException {
 
-    long deltaServerTime = ((BinanceExchange) exchange).deltaServerTime();
+    long deltaServerTime = ((BinanceMarginExchange) exchange).deltaServerTime();
     Date systemTime = new Date(System.currentTimeMillis());
     Date serverTime = new Date(systemTime.getTime() + deltaServerTime);
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
@@ -54,7 +54,7 @@ public class BinanceBaseService extends BaseExchangeService implements BaseServi
    * for this request was 1000ms ahead" exception and refresh the deltaServerTime.
    */
   public void refreshTimestamp() {
-    ((BinanceExchange) exchange).clearDeltaServerTime();
+    ((BinanceMarginExchange) exchange).clearDeltaServerTime();
   }
 
   public BinanceExchangeInfo getExchangeInfo() throws IOException {

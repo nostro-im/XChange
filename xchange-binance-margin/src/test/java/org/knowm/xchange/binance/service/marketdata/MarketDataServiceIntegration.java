@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeFactory;
-import org.knowm.xchange.binance_margin.BinanceExchange;
+import org.knowm.xchange.binance_margin.BinanceMarginExchange;
 import org.knowm.xchange.binance_margin.dto.marketdata.BinanceTicker24h;
 import org.knowm.xchange.binance_margin.service.BinanceMarketDataService;
 import org.knowm.xchange.currency.Currency;
@@ -26,7 +26,7 @@ public class MarketDataServiceIntegration {
 
   @BeforeClass
   public static void beforeClass() {
-    exchange = ExchangeFactory.INSTANCE.createExchange(BinanceExchange.class.getName());
+    exchange = ExchangeFactory.INSTANCE.createExchange(BinanceMarginExchange.class.getName());
     marketService = exchange.getMarketDataService();
   }
 
