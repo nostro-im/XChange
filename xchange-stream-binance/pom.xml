@@ -25,7 +25,7 @@
         </dependency>
         <dependency>
             <groupId>org.knowm.xchange</groupId>
-            <artifactId>xchange-binance</artifactId>
+            <artifactId>xchange-binance-margin</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>

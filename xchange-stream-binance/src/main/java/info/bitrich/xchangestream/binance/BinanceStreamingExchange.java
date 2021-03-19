@@ -13,14 +13,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.knowm.xchange.binance.BinanceAuthenticated;
-import org.knowm.xchange.binance.BinanceExchange;
+import org.knowm.xchange.binance.BinanceMarginExchange;
 import org.knowm.xchange.binance.service.BinanceMarketDataService;
 import org.knowm.xchange.client.ExchangeRestProxyBuilder;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BinanceStreamingExchange extends BinanceExchange implements StreamingExchange {
+public class BinanceStreamingExchange extends BinanceMarginExchange implements StreamingExchange {
 
   private static final Logger LOG = LoggerFactory.getLogger(BinanceStreamingExchange.class);
   private static final String API_BASE_URI = "wss://stream.binance.com:9443/";
