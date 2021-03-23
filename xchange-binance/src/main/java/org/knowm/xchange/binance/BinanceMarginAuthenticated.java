@@ -1,8 +1,8 @@
 package org.knowm.xchange.binance;
 
 import org.knowm.xchange.binance.dto.BinanceException;
-import org.knowm.xchange.binance.dto.trade.*;
 import org.knowm.xchange.binance.dto.account.BinanceMarginAccountInformation;
+import org.knowm.xchange.binance.dto.trade.*;
 import si.mazi.rescu.ParamsDigest;
 import si.mazi.rescu.SynchronizedValueFactory;
 
