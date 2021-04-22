@@ -27,6 +27,8 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
   protected static final String USE_HIGHER_UPDATE_FREQUENCY =
       "Binance_Orderbook_Use_Higher_Frequency";
 
+  public static final String USER_STREAMING_API_BASE_URI = "BINANCE_USER_STREAMING_API_BASE_URI";
+
   private BinanceStreamingService streamingService;
   private BinanceUserDataStreamingService userDataStreamingService;
 
@@ -38,6 +40,7 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
   private Runnable onApiCall;
   private String orderBookUpdateFrequencyParameter = "";
 
+  private String userApiBaseUri = "wss://stream.binance.com:9443/ws/";
   @Override
   protected void initServices() {
     super.initServices();
@@ -48,6 +51,11 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
                 exchangeSpecification.getExchangeSpecificParametersItem(
                     USE_HIGHER_UPDATE_FREQUENCY),
             Boolean.FALSE);
+
+    String userApiBaseUri = (String)exchangeSpecification.getExchangeSpecificParametersItem(USER_STREAMING_API_BASE_URI);
+    if (userApiBaseUri != null) {
+      this.userApiBaseUri = userApiBaseUri;
+    }
 
     if (userHigherFrequency) {
       orderBookUpdateFrequencyParameter = "@100ms";
@@ -117,7 +125,7 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
   }
 
   private Completable createAndConnectUserDataService(String listenKey) {
-    userDataStreamingService = BinanceUserDataStreamingService.create(listenKey);
+    userDataStreamingService = BinanceUserDataStreamingService.create(userApiBaseUri, listenKey);
     return userDataStreamingService
         .connect()
         .doOnComplete(
