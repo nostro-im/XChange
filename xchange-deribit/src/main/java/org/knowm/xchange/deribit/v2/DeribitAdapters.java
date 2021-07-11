@@ -3,7 +3,12 @@ package org.knowm.xchange.deribit.v2;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import org.knowm.xchange.currency.Currency;
@@ -15,6 +20,7 @@ import org.knowm.xchange.deribit.v2.dto.marketdata.DeribitOrderBook;
 import org.knowm.xchange.deribit.v2.dto.marketdata.DeribitTicker;
 import org.knowm.xchange.deribit.v2.dto.marketdata.DeribitTrade;
 import org.knowm.xchange.deribit.v2.dto.marketdata.DeribitTrades;
+import org.knowm.xchange.derivative.OptionContract;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.account.Balance;
 import org.knowm.xchange.dto.marketdata.OrderBook;
@@ -26,6 +32,9 @@ import org.knowm.xchange.exceptions.CurrencyPairNotValidException;
 import org.knowm.xchange.exceptions.ExchangeException;
 
 public class DeribitAdapters {
+
+  private static final ThreadLocal<DateFormat> DATE_PARSER =
+          ThreadLocal.withInitial(() -> new SimpleDateFormat("ddMMMyy"));
 
   public static CurrencyPair adaptCurrencyPair(String instrumentName) {
     String[] temp = instrumentName.split("-", 2);
@@ -134,5 +143,38 @@ public class DeribitAdapters {
   public static Balance adapt(AccountSummary as) {
     return new Balance(
         Currency.getInstance(as.getCurrency()), as.getBalance(), as.getAvailableFunds());
+  }
+
+  public static OptionContract adaptInstrumentName(String instrumentName) {
+    // example: BTC-25SEP21-32000-P
+    String[] instrumentArgs = instrumentName.split("-");
+    if (instrumentArgs.length != 4) {
+      throw new IllegalArgumentException("Could not parse option contract from '" + instrumentName + "'");
+    }
+    Currency baseCurrency = Currency.getInstance(instrumentArgs[0]);
+
+    try {
+      Date expireDate = DATE_PARSER.get().parse(instrumentArgs[1]);
+      return new OptionContract(baseCurrency,
+              baseCurrency,
+              expireDate,
+              new BigDecimal(instrumentArgs[2]),
+              instrumentArgs[3]);
+    } catch (ParseException e) {
+      throw new IllegalArgumentException(
+              "Could not parse expire date from '"
+                      + instrumentName
+                      + "'. It has to be a 'ddMMMyy' date format");
+    }
+
+  }
+
+  public static String adaptInstrumentName(OptionContract optionContract) {
+    // example: BTC-25SEP21-32000-P
+    return String.join("-",
+            optionContract.getBaseCurrency().getSymbol(),
+            DATE_PARSER.get().format(optionContract.getExpireDate()).toUpperCase(),
+            optionContract.getStrike().toString(),
+            optionContract.getOptionType());
   }
 }
