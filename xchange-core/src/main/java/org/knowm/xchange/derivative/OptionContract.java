@@ -133,7 +133,7 @@ public class OptionContract extends Instrument
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), baseCurrency, quoteCurrency, expireDate, strike, optionType);
+        return Objects.hash(baseCurrency, quoteCurrency, expireDate, strike, optionType);
     }
 
     @JsonValue
