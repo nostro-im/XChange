@@ -126,7 +126,6 @@ public class OptionContract extends Instrument
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
         OptionContract that = (OptionContract) object;
         return baseCurrency.equals(that.baseCurrency) && quoteCurrency.equals(that.quoteCurrency) && expireDate.equals(that.expireDate) && strike.equals(that.strike) && optionType.equals(that.optionType);
     }
