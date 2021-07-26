@@ -173,7 +173,8 @@ public class DeribitAdapters {
     // example: BTC-25SEP21-32000-P
     return String.join("-",
             optionContract.getBaseCurrency().getSymbol(),
-            DATE_PARSER.get().format(optionContract.getExpireDate()).toUpperCase(),
+            DATE_PARSER.get().format(optionContract.getExpireDate())
+                    .toUpperCase().replaceFirst("^0*", ""),
             optionContract.getStrike().toString(),
             optionContract.getOptionType());
   }
