@@ -20,20 +20,20 @@ import org.knowm.xchange.service.trade.params.CancelOrderByIdParams;
 import org.knowm.xchange.service.trade.params.CancelOrderParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.orders.DefaultOpenOrdersParamCurrencyPair;
+import org.knowm.xchange.service.trade.params.orders.OpenOrdersParamCurrencyPair;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 import org.knowm.xchange.service.trade.params.orders.OrderQueryParams;
 
 public class CoinbaseProTradeService extends CoinbaseProTradeServiceRaw implements TradeService {
 
   public CoinbaseProTradeService(
-          CoinbaseProExchange exchange,
-          ResilienceRegistries resilienceRegistries) {
+      CoinbaseProExchange exchange, ResilienceRegistries resilienceRegistries) {
     super(exchange, resilienceRegistries);
   }
 
   @Override
   public OpenOrders getOpenOrders() throws IOException {
-    return getOpenOrders(createOpenOrdersParams());
+    return CoinbaseProAdapters.adaptOpenOrders(getCoinbaseProOpenOrders());
   }
 
   @Override
@@ -43,28 +43,29 @@ public class CoinbaseProTradeService extends CoinbaseProTradeServiceRaw implemen
 
   @Override
   public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
+    if (params instanceof OpenOrdersParamCurrencyPair) {
+      OpenOrdersParamCurrencyPair pairParams = (OpenOrdersParamCurrencyPair) params;
+      String productId = CoinbaseProAdapters.adaptProductID(pairParams.getCurrencyPair());
+      return CoinbaseProAdapters.adaptOpenOrders(getCoinbaseProOpenOrders(productId));
+    }
     return CoinbaseProAdapters.adaptOpenOrders(getCoinbaseProOpenOrders());
   }
 
   @Override
   public String placeMarketOrder(MarketOrder marketOrder) throws IOException {
-    return placeCoinbaseProOrder(
-            CoinbaseProAdapters.adaptCoinbaseProPlaceMarketOrder(marketOrder))
-            .getId();
+    return placeCoinbaseProOrder(CoinbaseProAdapters.adaptCoinbaseProPlaceMarketOrder(marketOrder))
+        .getId();
   }
 
   @Override
   public String placeLimitOrder(LimitOrder limitOrder) throws IOException, FundsExceededException {
-    return placeCoinbaseProOrder(
-            CoinbaseProAdapters.adaptCoinbaseProPlaceLimitOrder(limitOrder))
-            .getId();
+    return placeCoinbaseProOrder(CoinbaseProAdapters.adaptCoinbaseProPlaceLimitOrder(limitOrder))
+        .getId();
   }
 
   @Override
   public String placeStopOrder(StopOrder stopOrder) throws IOException, FundsExceededException {
-    return placeCoinbaseProOrder(
-            CoinbaseProAdapters.adaptCoinbaseProStopOrder(stopOrder))
-            .getId();
+    return placeCoinbaseProOrder(CoinbaseProAdapters.adaptCoinbaseProStopOrder(stopOrder)).getId();
   }
 
   @Override

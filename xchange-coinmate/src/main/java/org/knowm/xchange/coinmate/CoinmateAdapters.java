@@ -27,6 +27,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.knowm.xchange.coinmate.dto.account.CoinmateBalance;
 import org.knowm.xchange.coinmate.dto.account.CoinmateBalanceData;
 import org.knowm.xchange.coinmate.dto.marketdata.*;
@@ -41,10 +42,7 @@ import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
 import org.knowm.xchange.dto.marketdata.Trades;
-import org.knowm.xchange.dto.trade.LimitOrder;
-import org.knowm.xchange.dto.trade.MarketOrder;
-import org.knowm.xchange.dto.trade.UserTrade;
-import org.knowm.xchange.dto.trade.UserTrades;
+import org.knowm.xchange.dto.trade.*;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsSorted;
 
 /** @author Martin Stachon */
@@ -59,13 +57,16 @@ public class CoinmateAdapters {
    */
   public static Ticker adaptTicker(CoinmateTicker coinmateTicker, CurrencyPair currencyPair) {
 
-    BigDecimal last = coinmateTicker.getData().getLast();
-    BigDecimal bid = coinmateTicker.getData().getBid();
-    BigDecimal ask = coinmateTicker.getData().getAsk();
-    BigDecimal high = coinmateTicker.getData().getHigh();
-    BigDecimal low = coinmateTicker.getData().getLow();
-    BigDecimal volume = coinmateTicker.getData().getAmount();
-    Date timestamp = new Date(coinmateTicker.getData().getTimestamp() * 1000L);
+    CoinmateTickerData data = coinmateTicker.getData();
+    BigDecimal last = data.getLast();
+    BigDecimal bid = data.getBid();
+    BigDecimal ask = data.getAsk();
+    BigDecimal high = data.getHigh();
+    BigDecimal low = data.getLow();
+    BigDecimal volume = data.getAmount();
+    BigDecimal open = data.getOpen();
+    BigDecimal change = data.getChange();
+    Date timestamp = new Date(data.getTimestamp() * 1000L);
 
     return new Ticker.Builder()
         .currencyPair(currencyPair)
@@ -76,6 +77,8 @@ public class CoinmateAdapters {
         .low(low)
         .volume(volume)
         .timestamp(timestamp)
+        .open(open)
+        .percentageChange(change)
         .build();
   }
 
@@ -117,11 +120,24 @@ public class CoinmateAdapters {
   public static Trade adaptTrade(CoinmateTransactionsEntry coinmateEntry) {
     return new Trade.Builder()
         .originalAmount(coinmateEntry.getAmount())
-        .currencyPair(CoinmateUtils.getPair(coinmateEntry.getCurrencyPair()))
+        .instrument(CoinmateUtils.getPair(coinmateEntry.getCurrencyPair()))
         .price(coinmateEntry.getPrice())
         .timestamp(new Date(coinmateEntry.getTimestamp()))
+        .type(typeToOrderTypeOrNull(coinmateEntry.getType()))
         .id(coinmateEntry.getTransactionId())
         .build();
+  }
+
+  public static Order.OrderType typeToOrderTypeOrNull(String type) {
+    switch (type) {
+      case "BUY":
+      case "QUICK_BUY":
+        return Order.OrderType.BID;
+      case "SELL":
+      case "QUICK_SELL":
+        return Order.OrderType.ASK;
+    }
+    return null;
   }
 
   public static Wallet adaptWallet(CoinmateBalance coinmateBalance) {
@@ -147,25 +163,10 @@ public class CoinmateAdapters {
     List<UserTrade> trades = new ArrayList<>(coinmateTradeHistory.getData().size());
 
     for (CoinmateTransactionHistoryEntry entry : coinmateTradeHistory.getData()) {
-      Order.OrderType orderType;
-      String transactionType = entry.getTransactionType();
-      switch (transactionType) {
-        case "BUY":
-        case "QUICK_BUY":
-          orderType = Order.OrderType.BID;
-          break;
-        case "SELL":
-        case "QUICK_SELL":
-          orderType = Order.OrderType.ASK;
-          break;
-        default:
-          // here we ignore the other types, such as withdrawal, voucher etc.
-          continue;
-      }
 
       UserTrade trade =
           new UserTrade.Builder()
-              .type(orderType)
+              .type(typeToOrderTypeOrNull(entry.getTransactionType()))
               .originalAmount(entry.getAmount())
               .currencyPair(
                   CoinmateUtils.getPair(entry.getAmountCurrency() + "_" + entry.getPriceCurrency()))
@@ -186,25 +187,10 @@ public class CoinmateAdapters {
     List<UserTrade> trades = new ArrayList<>(coinmateTradeHistory.getData().size());
 
     for (CoinmateTradeHistoryEntry entry : coinmateTradeHistory.getData()) {
-      Order.OrderType orderType;
-      String transactionType = entry.getType();
-      switch (transactionType) {
-        case "BUY":
-        case "QUICK_BUY":
-          orderType = Order.OrderType.BID;
-          break;
-        case "SELL":
-        case "QUICK_SELL":
-          orderType = Order.OrderType.ASK;
-          break;
-        default:
-          // here we ignore the other types, such as withdrawal, voucher etc.
-          continue;
-      }
 
       UserTrade trade =
           new UserTrade.Builder()
-              .type(orderType)
+              .type(typeToOrderTypeOrNull(entry.getType()))
               .originalAmount(entry.getAmount())
               .currencyPair(CoinmateUtils.getPair(entry.getCurrencyPair()))
               .price(entry.getPrice())
@@ -325,6 +311,27 @@ public class CoinmateAdapters {
     return ordersList;
   }
 
+  public static List<Order> adaptStopOrders(CoinmateOpenOrders coinmateOpenOrders)
+      throws CoinmateException {
+
+    return coinmateOpenOrders.getData().stream()
+        .filter(entry -> "LIMIT_STOP".equals(entry.getOrderTradeType()))
+        .map(
+            entry ->
+                new StopOrder(
+                    "SELL".equals(entry.getType()) ? Order.OrderType.ASK : Order.OrderType.BID,
+                    entry.getAmount(),
+                    CoinmateUtils.getPair(entry.getCurrencyPair()),
+                    Long.toString(entry.getId()),
+                    new Date(entry.getTimestamp()),
+                    entry.getStopPrice(),
+                    entry.getPrice(),
+                    null,
+                    null,
+                    null))
+        .collect(Collectors.toList());
+  }
+
   public static String adaptSortOrder(TradeHistoryParamsSorted.Order order) {
     switch (order) {
       case asc:
@@ -380,5 +387,17 @@ public class CoinmateAdapters {
     ordersList.add(order);
 
     return ordersList;
+  }
+
+  public static Ticker adaptTradeStatistics(CoinmateTradeStatistics tradeStatistics, CurrencyPair currencyPair) {
+    return new Ticker.Builder()
+            .currencyPair(currencyPair)
+            .last(tradeStatistics.getLastRealizedTrade())
+            .high(tradeStatistics.getHigh24hours())
+            .low(tradeStatistics.getLow24hours())
+            .volume(tradeStatistics.getVolume24Hours())
+            .open(tradeStatistics.getTodaysOpen())
+            .percentageChange(tradeStatistics.getDailyChange())
+            .build();
   }
 }
