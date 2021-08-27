@@ -119,7 +119,7 @@ public class CoinbaseProStreamingExchange extends CoinbaseProExchange implements
   }
 
   @Override
-  public Observable<Object> connectionIdle() {
+  public Flowable<Object> connectionIdle() {
     return streamingService.subscribeIdle();
   }
 

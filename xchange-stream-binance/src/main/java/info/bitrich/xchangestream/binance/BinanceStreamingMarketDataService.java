@@ -150,7 +150,7 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
   private Flowable<OrderBookUpdate> initOrderBookUpdateIfAbsent(CurrencyPair currencyPair) {
     orderBookRawUpdatesSubscriptions.computeIfAbsent(
         currencyPair, s -> triggerFlowableBody(rawOrderBookUpdates(currencyPair)));
-    return createOrderBookUpdatesObservable(currencyPair);
+    return createOrderBookUpdatesFlowable(currencyPair);
   }
 
   @Override
@@ -209,7 +209,7 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
   }
 
   /**
-   * Live Unsubscription that should be called in the Observable.doOnDispose(). This is required to
+   * Live Unsubscription that should be called in the Flowable.doOnCancel(). This is required to
    * stop receiving data from the stream. This method also clear the subscription from the
    * appropriate map.
    */
