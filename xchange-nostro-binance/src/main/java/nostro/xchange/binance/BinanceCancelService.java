@@ -3,11 +3,14 @@ package nostro.xchange.binance;
 import nostro.xchange.persistence.OrderEntity;
 import nostro.xchange.persistence.TransactionFactory;
 import nostro.xchange.utils.NostroUtils;
+import org.knowm.xchange.binance.dto.trade.BinanceOrder;
 import org.knowm.xchange.binance.service.BinanceTradeService;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Optional;
 
 public class BinanceCancelService {
     private static final Logger LOG = LoggerFactory.getLogger(BinanceCancelService.class);
@@ -27,6 +30,7 @@ public class BinanceCancelService {
         try {
             return cancelTx(id);
         } catch (Throwable th) {
+            trySyncOrder(id);
             if (shouldRetry(th)) {
                 LOG.error("Error while cancelling order, submit cancel task", th);
                 submitCancelTask(id);
@@ -82,5 +86,25 @@ public class BinanceCancelService {
             tx.getOrderTaskRepository().update(id, TYPE_CANCEL, true, DOCUMENT_EMPTY);
             return true;
         });
+    }
+
+    private void trySyncOrder(String orderId) {
+        try {
+            txFactory.execute(tx -> {
+                Optional<OrderEntity> o = tx.getOrderRepository().lockById(orderId);
+                if (o.isPresent()) {
+                    BinanceOrder binanceOrder = tradeService.orderStatus(new CurrencyPair(o.get().getInstrument()), null, orderId);
+                    if (NostroBinanceUtils.updateRequired(o.get(), binanceOrder)) {
+                        OrderEntity e2 = NostroBinanceUtils.toEntity(binanceOrder);
+                        LOG.info("Updating order(id={})", orderId);
+                        tx.getOrderRepository().updateById(orderId, e2.getDocument(), e2.isTerminal(), e2.getUpdated());
+                    }
+                } else {
+                    LOG.warn("Unable to sync order(id={}), not found", orderId);
+                }
+            });
+        } catch (Throwable th) {
+            LOG.error("Error while syncing order(id=" + orderId + ")", th);
+        }
     }
 }
