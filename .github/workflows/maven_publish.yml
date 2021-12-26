@@ -1,0 +1,19 @@
+name: Publish to GitHub Packages
+on:
+  workflow_dispatch
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - name: Publish package
+      run: mvn --batch-mode deploy -Dmaven.test.skip=true -Dmaven.source.skip=true -Dmaven.javadoc.skip=true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
