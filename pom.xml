@@ -68,6 +68,14 @@
     <url>https://github.com/knowm/XChange/issues</url>
   </issueManagement>
 
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/nostro-im/XChange</url>
+    </repository>
+  </distributionManagement>
+
   <scm>
     <connection>scm:git:git@github.com:knowm/XChange.git</connection>
     <developerConnection>scm:git:git@github.com:knowm/XChange.git</developerConnection>
