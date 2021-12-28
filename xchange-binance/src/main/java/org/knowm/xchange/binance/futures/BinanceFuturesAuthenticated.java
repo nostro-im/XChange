@@ -93,10 +93,10 @@ public interface BinanceFuturesAuthenticated extends BinanceAuthenticated {
      * created time + 7 days < current time
      *
      * @param symbol required
-     * @param limit optional, default 500; max 1000.
+     * @param orderId optional, If is set, it will get orders >= that orderId. Otherwise most recent orders are returned.
      * @param startTime optional
      * @param endTime optional
-     * @param fromId optional, If is set, it will get orders >= that orderId. Otherwise most recent orders are returned.
+     * @param limit optional, default 500; max 1000.
      * @param recvWindow optional
      * @param timestamp required
      *
@@ -106,10 +106,10 @@ public interface BinanceFuturesAuthenticated extends BinanceAuthenticated {
      */
     List<BinanceFuturesOrder> futuresAllOrders(
             @QueryParam("symbol") String symbol,
-            @QueryParam("limit") Integer limit,
+            @QueryParam("orderId") Long orderId,
             @QueryParam("startTime") Long startTime,
             @QueryParam("endTime") Long endTime,
-            @QueryParam("fromId") Long fromId,
+            @QueryParam("limit") Integer limit,
             @QueryParam("recvWindow") Long recvWindow,
             @QueryParam("timestamp") SynchronizedValueFactory<Long> timestamp,
             @HeaderParam(X_MBX_APIKEY) String apiKey,
