@@ -3,21 +3,17 @@ package org.knowm.xchange.binance.futures;
 import org.knowm.xchange.binance.BinanceAuthenticated;
 import org.knowm.xchange.binance.dto.BinanceException;
 import org.knowm.xchange.binance.dto.account.BinanceMarginPositionSide;
-import org.knowm.xchange.binance.dto.account.BinanceMarginPositionType;
 import org.knowm.xchange.binance.dto.account.BinanceMarginType;
 import org.knowm.xchange.binance.dto.marketdata.BinanceAggTrades;
 import org.knowm.xchange.binance.dto.marketdata.BinanceOrderbook;
 import org.knowm.xchange.binance.dto.marketdata.BinanceTicker24h;
 import org.knowm.xchange.binance.dto.trade.*;
-import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesInitialLeverage;
-import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAccountInformation;
-import org.knowm.xchange.binance.futures.dto.account.BinanceUserCommissionRate;
+import org.knowm.xchange.binance.futures.dto.account.*;
 import org.knowm.xchange.binance.futures.dto.meta.BinanceFuturesExchangeInfo;
 import org.knowm.xchange.binance.futures.dto.trade.*;
 import si.mazi.rescu.ParamsDigest;
 import si.mazi.rescu.SynchronizedValueFactory;
 
-import javax.annotation.Nullable;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
@@ -97,10 +93,10 @@ public interface BinanceFuturesAuthenticated extends BinanceAuthenticated {
      * created time + 7 days < current time
      *
      * @param symbol required
-     * @param limit optional, default 500; max 1000.
+     * @param orderId optional, If is set, it will get orders >= that orderId. Otherwise most recent orders are returned.
      * @param startTime optional
      * @param endTime optional
-     * @param fromId optional, If is set, it will get orders >= that orderId. Otherwise most recent orders are returned.
+     * @param limit optional, default 500; max 1000.
      * @param recvWindow optional
      * @param timestamp required
      *
@@ -110,10 +106,10 @@ public interface BinanceFuturesAuthenticated extends BinanceAuthenticated {
      */
     List<BinanceFuturesOrder> futuresAllOrders(
             @QueryParam("symbol") String symbol,
-            @QueryParam("limit") Integer limit,
+            @QueryParam("orderId") Long orderId,
             @QueryParam("startTime") Long startTime,
             @QueryParam("endTime") Long endTime,
-            @QueryParam("fromId") Long fromId,
+            @QueryParam("limit") Integer limit,
             @QueryParam("recvWindow") Long recvWindow,
             @QueryParam("timestamp") SynchronizedValueFactory<Long> timestamp,
             @HeaderParam(X_MBX_APIKEY) String apiKey,
@@ -441,4 +437,69 @@ public interface BinanceFuturesAuthenticated extends BinanceAuthenticated {
             @QueryParam(SIGNATURE) ParamsDigest signature)
             throws IOException, BinanceException;
 
+    /**
+     * Get Income History
+     *
+     * If neither startTime nor endTime is sent, the recent 7-day data will be returned.
+     * If incomeType is not sent, all kinds of flow will be returned
+     * "trandId" is unique in the same incomeType for a user
+     *
+     * @param symbol optional
+     * @param incomeType optional
+     * @param startTime optional
+     * @param endTime optional
+     * @param limit optional, default 100; max 1000.
+     * @return
+     * @throws IOException
+     * @throws BinanceException
+     */
+    @GET
+    @Path("/fapi/v1/income")
+    List<BinanceFuturesIncomeHistoryRecord> getIncomeHistory(
+            @QueryParam("symbol") String symbol,
+            @QueryParam("incomeType") String incomeType,
+            @QueryParam("startTime") Long startTime,
+            @QueryParam("endTime") Long endTime,
+            @QueryParam("limit") Integer limit,
+            @QueryParam("recvWindow") Long recvWindow,
+            @QueryParam("timestamp") SynchronizedValueFactory<Long> timestamp,
+            @HeaderParam(X_MBX_APIKEY) String apiKey,
+            @QueryParam(SIGNATURE) ParamsDigest signature)
+            throws IOException, BinanceException;
+
+    /**
+     * Get leverage brackets
+     *
+     * @param symbol optional
+     *
+     * @throws IOException
+     * @throws BinanceException
+     */
+    @GET
+    @Path("/fapi/v1/leverageBracket")
+    List<BinanceFuturesLeverageBrackets> getLeverageBrackets(
+            @QueryParam("symbol") String symbol,
+            @QueryParam("recvWindow") Long recvWindow,
+            @QueryParam("timestamp") SynchronizedValueFactory<Long> timestamp,
+            @HeaderParam(X_MBX_APIKEY) String apiKey,
+            @QueryParam(SIGNATURE) ParamsDigest signature)
+            throws IOException, BinanceException;
+
+    /**
+     * Get current position information.
+     *
+     * @param symbol optional
+     *
+     * @throws IOException
+     * @throws BinanceException
+     */
+    @GET
+    @Path("/fapi/v1/positionRisk")
+    List<BinanceFuturesPositionInformation> getPositionInformation(
+            @QueryParam("symbol") String symbol,
+            @QueryParam("recvWindow") Long recvWindow,
+            @QueryParam("timestamp") SynchronizedValueFactory<Long> timestamp,
+            @HeaderParam(X_MBX_APIKEY) String apiKey,
+            @QueryParam(SIGNATURE) ParamsDigest signature)
+            throws IOException, BinanceException;
 }

@@ -1,42 +1,35 @@
 package org.knowm.xchange.binance;
 
-import org.knowm.xchange.BaseExchange;
 import org.knowm.xchange.ExchangeSpecification;
-import org.knowm.xchange.binance.*;
-import org.knowm.xchange.binance.dto.account.AssetDetail;
-import org.knowm.xchange.binance.dto.meta.exchangeinfo.BinanceExchangeInfo;
 import org.knowm.xchange.binance.dto.meta.exchangeinfo.Filter;
-import org.knowm.xchange.binance.dto.meta.exchangeinfo.Symbol;
 import org.knowm.xchange.binance.futures.BinanceFuturesAuthenticated;
 import org.knowm.xchange.binance.futures.dto.meta.BinanceFuturesExchangeInfo;
 import org.knowm.xchange.binance.futures.dto.meta.FuturesSymbol;
 import org.knowm.xchange.binance.futures.service.BinanceFuturesAccountService;
 import org.knowm.xchange.binance.futures.service.BinanceFuturesMarketDataService;
 import org.knowm.xchange.binance.futures.service.BinanceFuturesTradeService;
-import org.knowm.xchange.binance.service.BinanceAccountService;
-import org.knowm.xchange.binance.service.BinanceMarginAccountService;
-import org.knowm.xchange.binance.service.BinanceMarketDataService;
-import org.knowm.xchange.binance.service.BinanceTradeService;
 import org.knowm.xchange.client.ExchangeRestProxyBuilder;
-import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.dto.meta.CurrencyMetaData;
-import org.knowm.xchange.dto.meta.CurrencyPairMetaData;
 import org.knowm.xchange.dto.meta.DerivativeMetaData;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.utils.AuthUtils;
 import si.mazi.rescu.SynchronizedValueFactory;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.Map;
+
+import static org.knowm.xchange.binance.BinanceExchange.Parameters.PARAM_USE_SANDBOX;
+import static org.knowm.xchange.binance.BinanceExchange.Parameters.PARAM_SANDBOX_SSL_URI;
 
 public class BinanceFuturesExchange extends BinanceExchange {
 
   @Override
   protected void initServices() {
+
+    concludeHostParams(exchangeSpecification);
 
     this.binance = ExchangeRestProxyBuilder.forInterface(
                     BinanceFuturesAuthenticated.class, getExchangeSpecification())
@@ -65,6 +58,10 @@ public class BinanceFuturesExchange extends BinanceExchange {
     spec.setPort(80);
     spec.setExchangeName("Binance Futures");
     spec.setExchangeDescription("Binance Futures Exchange.");
+
+    spec.setExchangeSpecificParametersItem(PARAM_USE_SANDBOX, false);
+    spec.setExchangeSpecificParametersItem(PARAM_SANDBOX_SSL_URI, "https://testnet.binancefuture.com/");
+
     AuthUtils.setApiAndSecretKey(spec, "binance");
     return spec;
   }
@@ -149,4 +146,5 @@ public class BinanceFuturesExchange extends BinanceExchange {
       throw new ExchangeException("Failed to initialize: " + e.getMessage(), e);
     }
   }
+
 }

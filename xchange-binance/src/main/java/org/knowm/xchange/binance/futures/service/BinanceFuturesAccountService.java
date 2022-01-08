@@ -1,11 +1,13 @@
 package org.knowm.xchange.binance.futures.service;
 
-import org.knowm.xchange.binance.*;
+import org.knowm.xchange.binance.BinanceAdapters;
+import org.knowm.xchange.binance.BinanceAuthenticated;
+import org.knowm.xchange.binance.BinanceErrorAdapter;
+import org.knowm.xchange.binance.BinanceExchange;
 import org.knowm.xchange.binance.dto.BinanceException;
 import org.knowm.xchange.binance.futures.BinanceFuturesAdapter;
 import org.knowm.xchange.binance.futures.BinanceFuturesAuthenticated;
-import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAccountInformation;
-import org.knowm.xchange.binance.futures.dto.account.BinanceUserCommissionRate;
+import org.knowm.xchange.binance.futures.dto.account.*;
 import org.knowm.xchange.binance.service.BinanceAccountService;
 import org.knowm.xchange.binance.service.account.params.BinanceAccountMarginParams;
 import org.knowm.xchange.binance.service.account.params.BinanceAccountPositionMarginParams;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.knowm.xchange.binance.BinanceResilience.REQUEST_WEIGHT_RATE_LIMITER;
 
@@ -148,6 +151,61 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
                             signatureCreator))
                     .withRetry(retry("setMargin"))
                     .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER))
+                    .call();
+        } catch (BinanceException e) {
+            throw BinanceErrorAdapter.adapt(e);
+        }
+    }
+
+    public List<BinanceFuturesIncomeHistoryRecord> getIncomeHistory(CurrencyPair currencyPair, BinanceFuturesIncomeHistoryRecord.Type incomeType, Long startTime, Long endTime, Integer limit) throws IOException {
+        try {
+            return decorateApiCall(
+                    () -> binanceFutures.getIncomeHistory(
+                            Optional.ofNullable(currencyPair).map(BinanceAdapters::toSymbol).orElse(null),
+                            Optional.ofNullable(incomeType).map(Enum::toString).orElse(null),
+                            startTime,
+                            endTime,
+                            limit,
+                            getRecvWindow(),
+                            getTimestampFactory(),
+                            apiKey,
+                            signatureCreator))
+                    .withRetry(retry("getIncomeHistory"))
+                    .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER), 30)
+                    .call();
+        } catch (BinanceException e) {
+            throw BinanceErrorAdapter.adapt(e);
+        }
+    }
+
+    public List<BinanceFuturesLeverageBrackets> getLeverageBrackets(CurrencyPair currencyPair) throws IOException {
+        try {
+            return decorateApiCall(
+                    () -> binanceFutures.getLeverageBrackets(
+                            Optional.ofNullable(currencyPair).map(BinanceAdapters::toSymbol).orElse(null),
+                            getRecvWindow(),
+                            getTimestampFactory(),
+                            apiKey,
+                            signatureCreator))
+                    .withRetry(retry("getLeverageBrackets"))
+                    .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER))
+                    .call();
+        } catch (BinanceException e) {
+            throw BinanceErrorAdapter.adapt(e);
+        }
+    }
+
+    public List<BinanceFuturesPositionInformation> getPositionInformation(CurrencyPair currencyPair) throws IOException {
+        try {
+            return decorateApiCall(
+                    () -> binanceFutures.getPositionInformation(
+                            Optional.ofNullable(currencyPair).map(BinanceAdapters::toSymbol).orElse(null),
+                            getRecvWindow(),
+                            getTimestampFactory(),
+                            apiKey,
+                            signatureCreator))
+                    .withRetry(retry("getPositionInformation"))
+                    .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER), 5)
                     .call();
         } catch (BinanceException e) {
             throw BinanceErrorAdapter.adapt(e);
