@@ -343,12 +343,16 @@ public class FtxAdapters {
 
     ftxPositionDtos.forEach(
         ftxPositionDto -> {
-          if (ftxPositionDto.getSize().compareTo(BigDecimal.ZERO) > 0) {
+          BigDecimal size = ftxPositionDto.getSize();
+          if (size.compareTo(BigDecimal.ZERO) > 0) {
             openPositionList.add(
                 new OpenPosition.Builder()
                     .instrument(adaptFtxMarketToInstrument(ftxPositionDto.getFuture()))
                     .price(ftxPositionDto.getEntryPrice())
-                    .size(ftxPositionDto.getSize())
+                    .size(
+                        ftxPositionDto.getSide() == FtxOrderSide.buy
+                            ? size
+                            : size.negate())
                     .type(
                         ftxPositionDto.getSide() == FtxOrderSide.buy
                             ? OpenPosition.Type.LONG
