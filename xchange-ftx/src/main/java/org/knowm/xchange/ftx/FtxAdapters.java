@@ -256,13 +256,32 @@ public class FtxAdapters {
     return new UserTrades(userTrades, Trades.TradeSortType.SortByTimestamp);
   }
 
-  public static LimitOrder adaptLimitOrder(FtxOrderDto ftxOrderDto) {
+  public static UserTrade adaptUserTrade(FtxUserTradeDto ftxUserTrade) {
+    return new UserTrade.Builder()
+            .instrument(adaptFtxMarketToInstrument(ftxUserTrade.getMarket()))
+            .timestamp(ftxUserTrade.getTime())
+            .id(ftxUserTrade.getId())
+            .orderId(ftxUserTrade.getOrderId())
+            .originalAmount(ftxUserTrade.getSize())
+            .type(adaptFtxOrderSideToOrderType(ftxUserTrade.getSide()))
+            .price(ftxUserTrade.getPrice())
+            .feeCurrency(Currency.getInstance(ftxUserTrade.getFeeCurrency()))
+            .feeAmount(ftxUserTrade.getFee())
+            .build();
+  }
 
-    return new LimitOrder.Builder(
-            adaptFtxOrderSideToOrderType(ftxOrderDto.getSide()),
-            adaptFtxMarketToInstrument(ftxOrderDto.getMarket()))
+  public static Order adaptOrder(FtxOrderDto ftxOrderDto) {
+    Order.OrderType type = adaptFtxOrderSideToOrderType(ftxOrderDto.getSide());
+    Instrument instrument = adaptFtxMarketToInstrument(ftxOrderDto.getMarket());
+    Order.Builder builder;
+    if (ftxOrderDto.getType().equals(FtxOrderType.limit)) {
+      builder = new LimitOrder.Builder(type, instrument).limitPrice(ftxOrderDto.getPrice());
+    } else {
+      builder = new MarketOrder.Builder(type, instrument);
+    }
+    
+    return builder
         .originalAmount(ftxOrderDto.getSize())
-        .limitPrice(ftxOrderDto.getPrice())
         .averagePrice(ftxOrderDto.getAvgFillPrice())
         .userReference(ftxOrderDto.getClientId())
         .timestamp(ftxOrderDto.getCreatedAt())
@@ -280,13 +299,20 @@ public class FtxAdapters {
   }
 
   public static OpenOrders adaptOpenOrders(FtxResponse<List<FtxOrderDto>> ftxOpenOrdersResponse) {
-    List<LimitOrder> openOrders = new ArrayList<>();
-
+    List<LimitOrder> limitOrders = new ArrayList<>();
+    List<Order> otherOrders = new ArrayList<>();
     ftxOpenOrdersResponse
         .getResult()
-        .forEach(ftxOrderDto -> openOrders.add(adaptLimitOrder(ftxOrderDto)));
+        .forEach(ftxOrderDto -> {
+          Order order = adaptOrder(ftxOrderDto);
+          if (order instanceof LimitOrder) {
+            limitOrders.add((LimitOrder) order);
+          } else {
+            otherOrders.add(order);
+          }
+        });
 
-    return new OpenOrders(openOrders);
+    return new OpenOrders(limitOrders, otherOrders);
   }
 
   public static FtxOrderSide adaptOrderTypeToFtxOrderSide(Order.OrderType orderType) {

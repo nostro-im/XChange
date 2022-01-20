@@ -16,6 +16,10 @@ public class DefaultOpenOrdersParamInstrument implements OpenOrdersParamInstrume
     this.instrument = instrument;
   }
 
+  public DefaultOpenOrdersParamInstrument(Instrument instrument) {
+    this.instrument = instrument;
+  }
+
   public static List<Instrument> getInstruments(OpenOrdersParams params, Exchange exchange) {
     List<Instrument> instruments = new ArrayList<>();
     if (params instanceof OpenOrdersParamInstrument) {

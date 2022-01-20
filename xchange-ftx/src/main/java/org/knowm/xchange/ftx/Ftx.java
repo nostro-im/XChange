@@ -17,19 +17,16 @@ public interface Ftx {
 
   @GET
   @Path("/markets")
-  @Consumes(MediaType.APPLICATION_JSON)
   FtxResponse<FtxMarketsDto> getMarkets() throws IOException, FtxException;
 
   @GET
   @Path("/markets/{market_name}")
-  @Consumes(MediaType.APPLICATION_JSON)
   FtxResponse<FtxMarketDto> getMarket(
       @PathParam("market_name") String market)
       throws IOException, FtxException;
 
   @GET
   @Path("/markets/{market_name}/trades")
-  @Consumes(MediaType.APPLICATION_JSON)
   FtxResponse<List<FtxTradeDto>> getTrades(
       @PathParam("market_name") String market, @QueryParam("limit") int limit)
       throws IOException, FtxException;
@@ -37,7 +34,6 @@ public interface Ftx {
 
   @GET
   @Path("/markets/{market_name}/candles?resolution={resolution}")
-  @Consumes(MediaType.APPLICATION_JSON)
   FtxResponse<List<FtxCandleDto>> getCandles(
           @PathParam("market_name") String market, @PathParam("resolution") String resolution)
           throws IOException, FtxException;

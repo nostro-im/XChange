@@ -16,7 +16,7 @@ public class FtxStreamingExchange extends FtxExchange implements StreamingExchan
 
   private final String API_URI = "wss://ftx.com/ws/";
 
-  private FtxStreamingService ftxStreamingService;
+  protected FtxStreamingService ftxStreamingService;
   private FtxStreamingMarketDataService ftxStreamingMarketDataService;
   private FtxStreamingTradeService ftxStreamingTradeService;
 
