@@ -7,15 +7,11 @@ import javax.ws.rs.core.MediaType;
 import org.knowm.xchange.ftx.dto.FtxResponse;
 import org.knowm.xchange.ftx.dto.account.*;
 import org.knowm.xchange.ftx.dto.account.FtxBorrowingHistoryDto;
-import org.knowm.xchange.ftx.dto.trade.CancelAllFtxOrdersParams;
-import org.knowm.xchange.ftx.dto.trade.FtxModifyOrderRequestPayload;
-import org.knowm.xchange.ftx.dto.trade.FtxOrderDto;
-import org.knowm.xchange.ftx.dto.trade.FtxOrderRequestPayload;
+import org.knowm.xchange.ftx.dto.trade.*;
 import si.mazi.rescu.ParamsDigest;
 
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public interface FtxAuthenticated extends Ftx {
 
   @GET
@@ -46,6 +42,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @DELETE
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/subaccounts")
   FtxResponse deleteSubAccounts(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -63,6 +60,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @POST
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/subaccounts")
   FtxResponse<FtxSubAccountDto> createSubAccount(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -73,6 +71,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @POST
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/subaccounts/update_name")
   FtxResponse changeSubAccountName(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -82,6 +81,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @GET
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/subaccounts/{nickname}/balances")
   FtxResponse<FtxSubAccountBalanceDto> getSubAccountBalances(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -92,6 +92,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @POST
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/subaccounts/transfer")
   FtxResponse<FtxSubAccountTranferDto> transferBetweenSubAccounts(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -102,6 +103,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @POST
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/orders")
   FtxResponse<FtxOrderDto> placeOrder(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -112,6 +114,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @POST
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/orders/{order_id}/modify")
   FtxResponse<FtxOrderDto> modifyOrder(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -123,6 +126,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @POST
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/orders/by_client_id/{client_order_id}/modify")
   FtxResponse<FtxOrderDto> modifyOrderByClientId(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -144,22 +148,23 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @GET
-  @Path("/orders?market={market}")
+  @Path("/orders/by_client_id/{client_order_id}")
+  FtxResponse<FtxOrderDto> getOrderStatusByClientId(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount,
+      @PathParam("client_order_id") String clientOrderId)
+      throws IOException, FtxException;
+  
+  @GET
+  @Path("/orders")
   FtxResponse<List<FtxOrderDto>> openOrders(
       @HeaderParam("FTX-KEY") String apiKey,
       @HeaderParam("FTX-TS") Long nonce,
       @HeaderParam("FTX-SIGN") ParamsDigest signature,
       @HeaderParam("FTX-SUBACCOUNT") String subaccount,
-      @PathParam("market") String market)
-      throws IOException, FtxException;
-
-  @GET
-  @Path("/orders")
-  FtxResponse<List<FtxOrderDto>> openOrdersWithoutMarket(
-      @HeaderParam("FTX-KEY") String apiKey,
-      @HeaderParam("FTX-TS") Long nonce,
-      @HeaderParam("FTX-SIGN") ParamsDigest signature,
-      @HeaderParam("FTX-SUBACCOUNT") String subaccount)
+      @QueryParam("market") String market)
       throws IOException, FtxException;
 
   @DELETE
@@ -173,6 +178,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @DELETE
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/orders")
   FtxResponse<String> cancelAllOrders(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -183,18 +189,33 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @GET
-  @Path("/orders/history?market={market}")
+  @Path("/orders/history")
   FtxResponse<List<FtxOrderDto>> orderHistory(
       @HeaderParam("FTX-KEY") String apiKey,
       @HeaderParam("FTX-TS") Long nonce,
       @HeaderParam("FTX-SIGN") ParamsDigest signature,
       @HeaderParam("FTX-SUBACCOUNT") String subaccount,
-      @PathParam("market") String market)
+      @QueryParam("market") String market,
+      @QueryParam("start_time") Integer startTime,
+      @QueryParam("end_time") Integer endTime)
+      throws IOException, FtxException;
+
+  @GET
+  @Path("/fills")
+  FtxResponse<List<FtxUserTradeDto>> fills(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount,
+      @QueryParam("market") String market,
+      @QueryParam("start_time") Integer startTime,
+      @QueryParam("end_time") Integer endTime,
+      @QueryParam("order") String order)
       throws IOException, FtxException;
 
   @DELETE
   @Path("/orders/by_client_id/{client_order_id}")
-  FtxResponse<FtxOrderDto> cancelOrderByClientId(
+  FtxResponse<String> cancelOrderByClientId(
       @HeaderParam("FTX-KEY") String apiKey,
       @HeaderParam("FTX-TS") Long nonce,
       @HeaderParam("FTX-SIGN") ParamsDigest signature,
@@ -203,6 +224,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @POST
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/account/leverage")
   FtxResponse<FtxLeverageDto> changeLeverage(
       @HeaderParam("FTX-KEY") String apiKey,
@@ -262,6 +284,7 @@ public interface FtxAuthenticated extends Ftx {
       throws IOException, FtxException;
 
   @POST
+  @Consumes(MediaType.APPLICATION_JSON)
   @Path("/spot_margin/offers")
   FtxResponse submitLendingOffer(
       @HeaderParam("FTX-KEY") String apiKey,

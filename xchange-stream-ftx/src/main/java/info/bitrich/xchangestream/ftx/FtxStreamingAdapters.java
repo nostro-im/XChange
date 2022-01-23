@@ -12,6 +12,8 @@ import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +26,7 @@ import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
 import org.knowm.xchange.dto.trade.LimitOrder;
+import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.UserTrade;
 import org.knowm.xchange.ftx.FtxAdapters;
 import org.knowm.xchange.ftx.dto.marketdata.FtxTradeDto;
@@ -209,7 +212,7 @@ public class FtxStreamingAdapters {
         .instrument(FtxAdapters.adaptFtxMarketToInstrument(data.get("market").asText()))
         .originalAmount(data.get("size").decimalValue())
         .price(data.get("price").decimalValue())
-        .timestamp(Date.from(Instant.ofEpochMilli(data.get("time").asLong())))
+        .timestamp(parseDate(data.get("time").asText()))
         .id(data.get("id").asText())
         .orderId(data.get("orderId").asText())
         .feeAmount(data.get("fee").decimalValue())
@@ -219,19 +222,23 @@ public class FtxStreamingAdapters {
 
   public static Order adaptOrders(JsonNode jsonNode) {
     JsonNode data = jsonNode.get("data");
-    System.out.println(jsonNode.toPrettyString());
-    LimitOrder.Builder order =
-        new LimitOrder.Builder(
-                "buy".equals(data.get("side").asText()) ? Order.OrderType.BID : Order.OrderType.ASK,
-                FtxAdapters.adaptFtxMarketToInstrument(data.get("market").asText()))
-            .id(data.get("id").asText())
-            .timestamp(Date.from(Instant.now()))
-            .limitPrice(data.get("price").decimalValue())
+
+    Order.OrderType type = "buy".equals(data.get("side").asText()) ? Order.OrderType.BID : Order.OrderType.ASK;
+    Instrument instrument = FtxAdapters.adaptFtxMarketToInstrument(data.get("market").asText());
+    Order.Builder order;
+    if ("limit".equals(data.get("type").asText())) {
+      order = new LimitOrder.Builder(type, instrument).limitPrice(data.get("price").decimalValue());
+    } else {
+      order = new MarketOrder.Builder(type, instrument);
+    }
+
+    order.id(data.get("id").asText())
+            .timestamp(parseDate(data.get("createdAt").asText()))
             .originalAmount(data.get("size").decimalValue())
-            .userReference(data.get("clientId").asText())
             .cumulativeAmount(data.get("filledSize").decimalValue())
             .orderStatus(Order.OrderStatus.valueOf(data.get("status").asText().toUpperCase()));
 
+    if (data.hasNonNull("clientId")) order.userReference(data.get("clientId").asText());
     if (data.hasNonNull("avgFillPrice")) order.averagePrice(data.get("avgFillPrice").decimalValue());
     
     if (data.get("ioc").asBoolean()) order.flag(FtxOrderFlags.IOC);
@@ -239,5 +246,9 @@ public class FtxStreamingAdapters {
     if (data.get("reduceOnly").asBoolean()) order.flag(FtxOrderFlags.REDUCE_ONLY);
 
     return order.build();
+  }
+
+  private static Date parseDate(String str) {
+    return Date.from(OffsetDateTime.parse(str, DateTimeFormatter.ISO_OFFSET_DATE_TIME).toInstant());
   }
 }
