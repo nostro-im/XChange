@@ -38,7 +38,8 @@ public class FtxTimestampFactory implements SynchronizedValueFactory<Long> {
         deltaServerTime = serverTime - systemTime;
       } catch (IOException e) {
         LOG.error("Unable to get server time", e);
-        deltaServerTime = 0;
+        // Delay expiration for 5 sec from now
+        deltaServerTimeExpire = System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(5);
       }
     }
     return deltaServerTime;
