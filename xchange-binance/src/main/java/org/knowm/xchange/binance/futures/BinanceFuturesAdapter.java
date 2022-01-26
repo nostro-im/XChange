@@ -11,10 +11,7 @@ import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.dto.Order;
-import org.knowm.xchange.dto.account.AccountInfo;
-import org.knowm.xchange.dto.account.Balance;
-import org.knowm.xchange.dto.account.OpenPosition;
-import org.knowm.xchange.dto.account.Wallet;
+import org.knowm.xchange.dto.account.*;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
@@ -26,29 +23,36 @@ import org.knowm.xchange.instrument.Instrument;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class BinanceFuturesAdapter {
     public static AccountInfo adaptAccountInfo(BinanceFuturesAccountInformation account) {
         List<Balance> balances =
-                account.assets.stream()
+                Optional.ofNullable(account.assets).orElse(Collections.emptyList()).stream()
                         .map(BinanceFuturesAdapter::adaptBalance)
                         .collect(Collectors.toList());
 
         List<OpenPosition> openPositions =
-                account.positions.stream()
+                Optional.ofNullable(account.positions).orElse(Collections.emptyList()).stream()
                         .map(BinanceFuturesAdapter::adaptPosition)
                         .collect(Collectors.toList());
 
-        return new AccountInfo(
-                null,
-                null,
-                Collections.singleton(Wallet.Builder.from(balances).build()),
-                openPositions,
-                account.updateTime != 0 ? new Date(account.updateTime) : null);
+        return AccountInfo.Builder.from(Collections.singleton(Wallet.Builder.from(balances).build()))
+                .openPositions(openPositions)
+                .timestamp(account.updateTime != 0 ? new Date(account.updateTime) : null)
+                .margins(getAccountMargins(account))
+                .build();
+    }
+
+    public static Set<AccountMargin> getAccountMargins(BinanceFuturesAccountInformation account) {
+        AccountMargin margin = new AccountMargin.Builder()
+                .currency(Currency.USDT) // binance futures work with USDT base currency
+                .marginBalance(account.totalMarginBalance)
+                .unrealizedProfit(account.totalUnrealizedProfit)
+                .build();
+
+        return Collections.singleton(margin);
     }
 
     private static BigDecimal getMarginRatio(BinanceFuturesPosition p) {
@@ -65,6 +69,7 @@ public class BinanceFuturesAdapter {
                 .price(p.entryPrice)
                 .leverage(p.leverage)
                 .marginRatio(getMarginRatio(p))
+                .unrealizedProfit(p.unrealizedProfit)
                 .timestamp(p.updateTime != 0 ? new Date(p.updateTime) : null)
                 .build();
     }

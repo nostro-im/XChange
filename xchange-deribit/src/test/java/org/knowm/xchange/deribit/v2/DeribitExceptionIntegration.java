@@ -7,6 +7,8 @@ import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.deribit.v2.dto.DeribitException;
 import org.knowm.xchange.deribit.v2.service.DeribitMarketDataService;
+import org.knowm.xchange.derivative.FuturesContract;
+import org.knowm.xchange.derivative.OptionsContract;
 import org.knowm.xchange.exceptions.CurrencyPairNotValidException;
 
 public class DeribitExceptionIntegration {
@@ -22,8 +24,7 @@ public class DeribitExceptionIntegration {
 
   @Test(expected = CurrencyPairNotValidException.class)
   public void getTickerThrowsExceptionTest() throws Exception {
-    CurrencyPair pair = new CurrencyPair("?", "?");
-    deribitMarketDataService.getTicker(pair);
+    deribitMarketDataService.getTicker(new FuturesContract("?/?/PERPETUAL"));
   }
 
   @Test(expected = DeribitException.class)

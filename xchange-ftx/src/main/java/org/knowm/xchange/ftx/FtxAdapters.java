@@ -18,6 +18,8 @@ import org.knowm.xchange.ftx.dto.account.FtxWalletBalanceDto;
 import org.knowm.xchange.ftx.dto.marketdata.*;
 import org.knowm.xchange.ftx.dto.trade.*;
 import org.knowm.xchange.instrument.Instrument;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -115,12 +117,15 @@ public class FtxAdapters {
             .id("spot")
             .build();
 
-    return new AccountInfo(
-        result.getUsername(),
-        result.getTakerFee(),
-        Collections.unmodifiableList(Arrays.asList(accountWallet, spotWallet)),
-        openPositions,
-        Date.from(Instant.now()));
+    AccountMargin margin = getAccountMargin(ftxAccountDto.getResult(), openPositions);
+
+    return AccountInfo.Builder.from(Collections.unmodifiableList(Arrays.asList(accountWallet, spotWallet)))
+            .username(result.getUsername())
+            .tradingFee(result.getTakerFee())
+            .openPositions(openPositions)
+            .timestamp(Date.from(Instant.now()))
+            .margins(Collections.singleton(margin))
+            .build();
   }
 
   public static ExchangeMetaData adaptExchangeMetaData(FtxMarketsDto marketsDto) {
@@ -385,6 +390,8 @@ public class FtxAdapters {
                             : OpenPosition.Type.SHORT)
                     .leverage(leverage)
                     .marginRatio(getMarginRatio(ftxPositionDto))
+                    .unrealizedProfit(ftxPositionDto.getRecentPnl())
+                    .liquidationPrice(ftxPositionDto.getEstimatedLiquidationPrice())
                     .build());
           }
         });
@@ -451,5 +458,18 @@ public class FtxAdapters {
       throw new IllegalArgumentException(
               "Could not parse futures contract from name '" + name + "'");
     }
+  }
+
+  static AccountMargin getAccountMargin(FtxAccountDto ftxAccountDto, Collection<OpenPosition> openPositions) {
+    BigDecimal unrealizedProfit = openPositions.stream()
+            .map(OpenPosition::getUnrealizedProfit)
+            .filter(Objects::nonNull)
+            .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+    return new AccountMargin.Builder()
+            .currency(Currency.USD)
+            .marginBalance(ftxAccountDto.getTotalAccountValue().add(unrealizedProfit))
+            .unrealizedProfit(unrealizedProfit)
+            .build();
   }
 }

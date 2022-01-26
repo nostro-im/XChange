@@ -25,6 +25,7 @@ import org.knowm.xchange.deribit.v2.dto.trade.OrderType;
 import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.derivative.OptionsContract;
 import org.knowm.xchange.dto.Order;
+import org.knowm.xchange.dto.account.AccountMargin;
 import org.knowm.xchange.dto.account.Balance;
 import org.knowm.xchange.dto.account.Fee;
 import org.knowm.xchange.dto.account.OpenPosition;
@@ -42,7 +43,7 @@ import org.knowm.xchange.instrument.Instrument;
 
 public class DeribitAdapters {
   private static final String IMPLIED_COUNTER = "USD";
-  private static final String PERPETUAL = "perpetual";
+  private static final String PERPETUAL = "PERPETUAL";
   private static final int CURRENCY_SCALE = 8;
   private static final ThreadLocal<DateFormat> DATE_PARSER =
       ThreadLocal.withInitial(() -> new SimpleDateFormat("ddMMMyy"));
@@ -241,8 +242,10 @@ public class DeribitAdapters {
                 : p.getDirection() == Direction.sell ? OpenPosition.Type.SHORT : null)
         .price(p.getAveragePrice())
         .markPrice(p.getMarkPrice())
-        .leverage(p.getLeverage())   
-        .marginRatio(getMarginRatio(p))    
+        .liquidationPrice(p.getEstimatedLiquidationPrice())
+        .leverage(p.getLeverage())
+        .marginRatio(getMarginRatio(p))
+        .unrealizedProfit(p.getFloatingProfitLoss())
         .build();
   }
 
@@ -349,6 +352,10 @@ public class DeribitAdapters {
             .map(DeribitAdapters::adaptUserTrade)
             .collect(Collectors.toList()),
         Trades.TradeSortType.SortByTimestamp);
+  }
+
+  public static AccountMargin adapt(Currency c, AccountSummary accountSummary) {
+    return new AccountMargin(c, accountSummary.getMarginBalance(), accountSummary.getSessionUpl());
   }
 
   private static UserTrade adaptUserTrade(org.knowm.xchange.deribit.v2.dto.trade.Trade trade) {

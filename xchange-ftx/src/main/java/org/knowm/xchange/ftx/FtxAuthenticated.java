@@ -38,7 +38,8 @@ public interface FtxAuthenticated extends Ftx {
       @HeaderParam("FTX-KEY") String apiKey,
       @HeaderParam("FTX-TS") Long nonce,
       @HeaderParam("FTX-SIGN") ParamsDigest signature,
-      @HeaderParam("FTX-SUBACCOUNT") String subaccount)
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount,
+      @QueryParam("showAvgPrice") boolean showAvgPrice)
       throws IOException, FtxException;
 
   @DELETE

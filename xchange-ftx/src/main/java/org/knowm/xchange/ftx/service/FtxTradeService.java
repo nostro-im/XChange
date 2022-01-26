@@ -91,7 +91,7 @@ public class FtxTradeService extends FtxTradeServiceRaw implements TradeService 
             .getFtxAccountInformation(subaccount)
             .getResult()
             .getLeverage();
-    return getOpenPositionsForSubaccount(subaccount, leverage);
+    return getOpenPositionsForSubaccount(subaccount, leverage, false);
   }
 
   @Override
