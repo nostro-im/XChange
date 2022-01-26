@@ -125,6 +125,7 @@ public class BinanceFuturesExchange extends BinanceExchange {
                           pairPrecision, // counter precision
                           null,
                           stepSize,
+                          null,
                           null
                           
                   ));

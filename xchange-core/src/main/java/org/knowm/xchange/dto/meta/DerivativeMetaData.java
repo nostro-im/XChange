@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Date;
 
 public class DerivativeMetaData implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -40,6 +41,10 @@ public class DerivativeMetaData implements Serializable {
   @JsonProperty("price_step_size")
   private final BigDecimal priceStepSize;
 
+  /** The timestamp when the Derivative expires */
+  @JsonProperty("expire_timestamp")
+  private final Date expireTimestamp;
+
   public DerivativeMetaData(
       @JsonProperty("trading_fee") BigDecimal tradingFee,
       @JsonProperty("min_amount") BigDecimal minimumAmount,
@@ -48,7 +53,8 @@ public class DerivativeMetaData implements Serializable {
       @JsonProperty("price_scale") Integer priceScale,
       @JsonProperty("fee_tiers") FeeTier[] feeTiers,
       @JsonProperty("amount_step_size") BigDecimal amountStepSize,
-      @JsonProperty("price_step_size") BigDecimal priceStepSize) {
+      @JsonProperty("price_step_size") BigDecimal priceStepSize,
+      @JsonProperty("expire_timestamp") Date expireTimestamp) {
 
     this.tradingFee = tradingFee;
     this.minimumAmount = minimumAmount;
@@ -61,6 +67,7 @@ public class DerivativeMetaData implements Serializable {
     this.feeTiers = feeTiers;
     this.amountStepSize = amountStepSize;
     this.priceStepSize = priceStepSize;
+    this.expireTimestamp = expireTimestamp;
   }
 
   public BigDecimal getTradingFee() {
@@ -95,6 +102,10 @@ public class DerivativeMetaData implements Serializable {
     return priceStepSize;
   }
 
+  public Date getExpireTimestamp() {
+    return expireTimestamp;
+  }
+
   public static final class Builder {
     private BigDecimal tradingFee;
     private FeeTier[] feeTiers;
@@ -104,6 +115,7 @@ public class DerivativeMetaData implements Serializable {
     private Integer priceScale;
     private BigDecimal amountStepSize;
     private BigDecimal priceStepSize;
+    private Date expireTimestamp;
 
     public Builder() {}
 
@@ -146,7 +158,12 @@ public class DerivativeMetaData implements Serializable {
       priceStepSize = val;
       return this;
     }
-
+    
+    public Builder expireTimestamp(Date val) {
+      expireTimestamp = val;
+      return this;
+    }
+    
     public DerivativeMetaData build() {
 
       return new DerivativeMetaData(
@@ -157,7 +174,8 @@ public class DerivativeMetaData implements Serializable {
           priceScale,
           feeTiers,
           amountStepSize,
-          priceStepSize);
+          priceStepSize,
+          expireTimestamp);
     }
   }
 
@@ -177,6 +195,8 @@ public class DerivativeMetaData implements Serializable {
         + amountStepSize
         + ", priceStepSize="
         + priceStepSize
+        + ", expireTimestamp="
+        + expireTimestamp
         + "]";
   }
 }
