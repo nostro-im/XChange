@@ -52,6 +52,12 @@ public class DeribitAdaptersTest {
   }
 
   @Test
+  public void adaptInstrumentName() {
+    assertThat(DeribitAdapters.adaptInstrumentName(new FuturesContract("BTC/USD/perpetual"))).isEqualTo("BTC-PERPETUAL");
+    assertThat(DeribitAdapters.adaptInstrumentName(new OptionsContract("BTC/USD/210924/7000/P"))).isEqualTo("BTC-24SEP21-7000-P");
+  }
+
+  @Test
   public void adaptTicker() throws IOException {
     // given
     InputStream is =

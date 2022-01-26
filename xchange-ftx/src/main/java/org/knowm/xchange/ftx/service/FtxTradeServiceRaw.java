@@ -273,18 +273,19 @@ public class FtxTradeServiceRaw extends FtxBaseService {
     }
   }
 
-  public OpenPositions getOpenPositionsForSubaccount(String subaccount, BigDecimal leverage) throws IOException {
-    return FtxAdapters.adaptOpenPositions(getFtxPositions(subaccount).getResult(), leverage);
+  public OpenPositions getOpenPositionsForSubaccount(String subaccount, BigDecimal leverage, boolean showAvgPrice) throws IOException {
+    return FtxAdapters.adaptOpenPositions(getFtxPositions(subaccount, showAvgPrice).getResult(), leverage);
   }
 
-  public FtxResponse<List<FtxPositionDto>> getFtxPositions(String subaccount)
+  public FtxResponse<List<FtxPositionDto>> getFtxPositions(String subaccount, boolean showAvgPrice)
       throws FtxException, IOException {
     try {
       return ftx.getFtxPositions(
           exchange.getExchangeSpecification().getApiKey(),
           exchange.getNonceFactory().createValue(),
           signatureCreator,
-          subaccount);
+          subaccount,
+          showAvgPrice);
     } catch (FtxException e) {
       throw new FtxException(e.getMessage());
     }

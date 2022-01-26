@@ -2,6 +2,7 @@ package org.knowm.xchange.ftx.service;
 
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.dto.account.AccountInfo;
+import org.knowm.xchange.dto.account.OpenPosition;
 import org.knowm.xchange.ftx.FtxAdapters;
 import org.knowm.xchange.ftx.dto.FtxResponse;
 import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
@@ -10,6 +11,7 @@ import org.knowm.xchange.service.account.params.AccountLeverageParams;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class FtxAccountService extends FtxAccountServiceRaw implements AccountService {
 
@@ -29,7 +31,7 @@ public class FtxAccountService extends FtxAccountServiceRaw implements AccountSe
         ftxAccountInformation,
         getFtxWalletBalances(subaccount),
         ((FtxTradeService) exchange.getTradeService())
-            .getOpenPositionsForSubaccount(subaccount, leverage)
+            .getOpenPositionsForSubaccount(subaccount, leverage, true)
             .getOpenPositions());
   }
 

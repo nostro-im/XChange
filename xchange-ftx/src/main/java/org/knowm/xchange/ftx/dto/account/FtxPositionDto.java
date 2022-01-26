@@ -52,22 +52,30 @@ public class FtxPositionDto {
   @JsonProperty("collateralUsed")
   private final BigDecimal collateralUsed;
 
+  @JsonProperty("recentPnl")
+  private final BigDecimal recentPnl;
+
+  @JsonProperty("recentAverageOpenPrice")
+  private final BigDecimal recentAverageOpenPrice;
+
   public FtxPositionDto(
-      @JsonProperty("cost") BigDecimal cost,
-      @JsonProperty("entryPrice") BigDecimal entryPrice,
-      @JsonProperty("estimatedLiquidationPrice") BigDecimal estimatedLiquidationPrice,
-      @JsonProperty("future") String future,
-      @JsonProperty("initialMarginRequirement") BigDecimal initialMarginRequirement,
-      @JsonProperty("longOrderSize") BigDecimal longOrderSize,
-      @JsonProperty("maintenanceMarginRequirement") BigDecimal maintenanceMarginRequirement,
-      @JsonProperty("netSize") BigDecimal netSize,
-      @JsonProperty("openSize") BigDecimal openSize,
-      @JsonProperty("realizedPnl") BigDecimal realizedPnl,
-      @JsonProperty("shortOrderSize") BigDecimal shortOrderSize,
-      @JsonProperty("side") FtxOrderSide side,
-      @JsonProperty("size") BigDecimal size,
-      @JsonProperty("unrealizedPnl") BigDecimal unrealizedPnl,
-      @JsonProperty("collateralUsed") BigDecimal collateralUsed) {
+          @JsonProperty("cost") BigDecimal cost,
+          @JsonProperty("entryPrice") BigDecimal entryPrice,
+          @JsonProperty("estimatedLiquidationPrice") BigDecimal estimatedLiquidationPrice,
+          @JsonProperty("future") String future,
+          @JsonProperty("initialMarginRequirement") BigDecimal initialMarginRequirement,
+          @JsonProperty("longOrderSize") BigDecimal longOrderSize,
+          @JsonProperty("maintenanceMarginRequirement") BigDecimal maintenanceMarginRequirement,
+          @JsonProperty("netSize") BigDecimal netSize,
+          @JsonProperty("openSize") BigDecimal openSize,
+          @JsonProperty("realizedPnl") BigDecimal realizedPnl,
+          @JsonProperty("shortOrderSize") BigDecimal shortOrderSize,
+          @JsonProperty("side") FtxOrderSide side,
+          @JsonProperty("size") BigDecimal size,
+          @JsonProperty("unrealizedPnl") BigDecimal unrealizedPnl,
+          @JsonProperty("collateralUsed") BigDecimal collateralUsed,
+          @JsonProperty("recentPnl") BigDecimal recentPnl,
+          @JsonProperty("recentAverageOpenPrice") BigDecimal recentAverageOpenPrice) {
     this.cost = cost;
     this.entryPrice = entryPrice;
     this.estimatedLiquidationPrice = estimatedLiquidationPrice;
@@ -83,6 +91,8 @@ public class FtxPositionDto {
     this.size = size;
     this.unrealizedPnl = unrealizedPnl;
     this.collateralUsed = collateralUsed;
+    this.recentPnl = recentPnl;
+    this.recentAverageOpenPrice = recentAverageOpenPrice;
   }
 
   public BigDecimal getCost() {
@@ -145,39 +155,30 @@ public class FtxPositionDto {
     return collateralUsed;
   }
 
+  public BigDecimal getRecentPnl() {
+    return recentPnl;
+  }
+
   @Override
   public String toString() {
-    return "FtxPositionDto{"
-        + "cost="
-        + cost
-        + ", entryPrice="
-        + entryPrice
-        + ", estimatedLiquidationPrice="
-        + estimatedLiquidationPrice
-        + ", future="
-        + future
-        + ", initialMarginRequirement="
-        + initialMarginRequirement
-        + ", longOrderSize="
-        + longOrderSize
-        + ", maintenanceMarginRequirement="
-        + maintenanceMarginRequirement
-        + ", netSize="
-        + netSize
-        + ", openSize="
-        + openSize
-        + ", realizedPnl="
-        + realizedPnl
-        + ", shortOrderSize="
-        + shortOrderSize
-        + ", side="
-        + side
-        + ", size="
-        + size
-        + ", unrealizedPnl="
-        + unrealizedPnl
-        + ", collateralUsed="
-        + collateralUsed
-        + '}';
+    return "FtxPositionDto{" +
+            "cost=" + cost +
+            ", entryPrice=" + entryPrice +
+            ", estimatedLiquidationPrice=" + estimatedLiquidationPrice +
+            ", future='" + future + '\'' +
+            ", initialMarginRequirement=" + initialMarginRequirement +
+            ", longOrderSize=" + longOrderSize +
+            ", maintenanceMarginRequirement=" + maintenanceMarginRequirement +
+            ", netSize=" + netSize +
+            ", openSize=" + openSize +
+            ", realizedPnl=" + realizedPnl +
+            ", shortOrderSize=" + shortOrderSize +
+            ", side=" + side +
+            ", size=" + size +
+            ", unrealizedPnl=" + unrealizedPnl +
+            ", collateralUsed=" + collateralUsed +
+            ", recentPnl=" + recentPnl +
+            ", recentAverageOpenPrice=" + recentAverageOpenPrice +
+            '}';
   }
 }
