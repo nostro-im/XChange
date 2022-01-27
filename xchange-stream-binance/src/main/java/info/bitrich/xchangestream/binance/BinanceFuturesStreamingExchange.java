@@ -10,6 +10,8 @@ import info.bitrich.xchangestream.service.netty.ConnectionStateModel;
 import info.bitrich.xchangestream.util.Events;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
+import org.knowm.xchange.ExchangeSharedParameters;
+import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.binance.BinanceAuthenticated;
 import org.knowm.xchange.binance.futures.BinanceFuturesAuthenticated;
 import org.knowm.xchange.binance.BinanceFuturesExchange;
@@ -26,8 +28,6 @@ import java.util.stream.Stream;
 
 public class BinanceFuturesStreamingExchange extends BinanceFuturesExchange implements StreamingExchange {
     private static final Logger LOG = LoggerFactory.getLogger(BinanceFuturesStreamingExchange.class);
-    private static final String API_BASE_URI = "wss://fstream.binance.com";
-    private static final String SANDBOX_API_BASE_URI = "wss://stream.binancefuture.com";
     protected static final String USE_HIGHER_UPDATE_FREQUENCY =
             "Binance_Orderbook_Use_Higher_Frequency";
 
@@ -58,6 +58,14 @@ public class BinanceFuturesStreamingExchange extends BinanceFuturesExchange impl
         }
     }
 
+    @Override
+    public ExchangeSpecification getDefaultExchangeSpecification() {
+        ExchangeSpecification exchangeSpecification = super.getDefaultExchangeSpecification();
+        exchangeSpecification.setStreamingUri("wss://fstream.binance.com");
+        exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_SANDBOX_STREAMING_URI, "wss://stream.binancefuture.com");
+        return exchangeSpecification;
+    }
+
     /**
      * Binance streaming API expects connections to multiple channels to be defined at connection
      * time. To define the channels for this connection pass a `ProductSubscription` in at connection
@@ -77,9 +85,7 @@ public class BinanceFuturesStreamingExchange extends BinanceFuturesExchange impl
                     "Exchange only handles a single connection - disconnect the current connection.");
         }
 
-        final boolean useSandbox =
-                Boolean.TRUE.equals(exchangeSpecification.getExchangeSpecificParametersItem(Parameters.PARAM_USE_SANDBOX));
-        final String apiUri = useSandbox ? SANDBOX_API_BASE_URI : API_BASE_URI;
+        final String apiUri = exchangeSpecification.getStreamingUri();
 
         ProductSubscription subscriptions = args[0];
         streamingService = createStreamingService(apiUri, subscriptions);

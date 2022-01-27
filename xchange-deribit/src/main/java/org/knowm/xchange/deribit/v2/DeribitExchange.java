@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.BaseExchange;
 import org.knowm.xchange.Exchange;
+import org.knowm.xchange.ExchangeSharedParameters;
 import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.deribit.v2.dto.Kind;
@@ -45,13 +46,15 @@ public class DeribitExchange extends BaseExchange implements Exchange {
     //    exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("Deribit");
     exchangeSpecification.setExchangeDescription("Deribit is a Bitcoin futures exchange");
+    exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_USE_SANDBOX, false);
+    exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_SANDBOX_SSL_URI, "https://test.deribit.com");
     return exchangeSpecification;
   }
 
   public ExchangeSpecification getSandboxExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass());
-    exchangeSpecification.setSslUri("https://test.deribit.com/");
+    ExchangeSpecification exchangeSpecification = getDefaultExchangeSpecification();
+    exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_USE_SANDBOX, true);
     exchangeSpecification.setHost("test.deribit.com");
     //    exchangeSpecification.setPort(80);
     return exchangeSpecification;

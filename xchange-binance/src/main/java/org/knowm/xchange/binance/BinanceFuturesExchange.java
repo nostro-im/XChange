@@ -1,5 +1,6 @@
 package org.knowm.xchange.binance;
 
+import org.knowm.xchange.ExchangeSharedParameters;
 import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.binance.dto.meta.exchangeinfo.Filter;
 import org.knowm.xchange.binance.futures.BinanceFuturesAuthenticated;
@@ -21,16 +22,10 @@ import si.mazi.rescu.SynchronizedValueFactory;
 import java.math.BigDecimal;
 import java.util.Map;
 
-import static org.knowm.xchange.binance.BinanceExchange.Parameters.PARAM_USE_SANDBOX;
-import static org.knowm.xchange.binance.BinanceExchange.Parameters.PARAM_SANDBOX_SSL_URI;
-
 public class BinanceFuturesExchange extends BinanceExchange {
 
   @Override
   protected void initServices() {
-
-    concludeHostParams(exchangeSpecification);
-
     this.binance = ExchangeRestProxyBuilder.forInterface(
                     BinanceFuturesAuthenticated.class, getExchangeSpecification())
             .build();
@@ -59,8 +54,8 @@ public class BinanceFuturesExchange extends BinanceExchange {
     spec.setExchangeName("Binance Futures");
     spec.setExchangeDescription("Binance Futures Exchange.");
 
-    spec.setExchangeSpecificParametersItem(PARAM_USE_SANDBOX, false);
-    spec.setExchangeSpecificParametersItem(PARAM_SANDBOX_SSL_URI, "https://testnet.binancefuture.com/");
+    spec.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_USE_SANDBOX, false);
+    spec.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_SANDBOX_SSL_URI, "https://testnet.binancefuture.com/");
 
     AuthUtils.setApiAndSecretKey(spec, "binance");
     return spec;
