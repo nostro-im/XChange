@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.knowm.xchange.ExchangeSharedParameters;
+import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.binance.BinanceAuthenticated;
 import org.knowm.xchange.binance.BinanceExchange;
 import org.knowm.xchange.binance.service.BinanceMarketDataService;
@@ -25,8 +28,6 @@ import org.slf4j.LoggerFactory;
 public class BinanceStreamingExchange extends BinanceExchange implements StreamingExchange {
 
   private static final Logger LOG = LoggerFactory.getLogger(BinanceStreamingExchange.class);
-  private static final String API_BASE_URI = "wss://stream.binance.com:9443";
-  private static final String SANDBOX_API_BASE_URI = "wss://testnet.binance.vision";
   protected static final String USE_HIGHER_UPDATE_FREQUENCY =
       "Binance_Orderbook_Use_Higher_Frequency";
 
@@ -57,6 +58,14 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
     }
   }
 
+  @Override
+  public ExchangeSpecification getDefaultExchangeSpecification() {
+    ExchangeSpecification exchangeSpecification = super.getDefaultExchangeSpecification();
+    exchangeSpecification.setStreamingUri("wss://stream.binance.com:9443");
+    exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_SANDBOX_STREAMING_URI, "wss://testnet.binance.vision");
+    return exchangeSpecification;
+  }
+
   /**
    * Binance streaming API expects connections to multiple channels to be defined at connection
    * time. To define the channels for this connection pass a `ProductSubscription` in at connection
@@ -77,7 +86,8 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
     }
 
     ProductSubscription subscriptions = args[0];
-    streamingService = createStreamingService(subscriptions);
+    String streamingUri = exchangeSpecification.getStreamingUri();
+    streamingService = createStreamingService(streamingUri, subscriptions);
 
     List<Completable> completables = new ArrayList<>();
 
@@ -98,7 +108,7 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
       userDataChannel =
           new BinanceUserDataChannel(binance, exchangeSpecification.getApiKey(), onApiCall);
       try {
-        completables.add(createAndConnectUserDataService(userDataChannel.getListenKey()));
+        completables.add(createAndConnectUserDataService(streamingUri, userDataChannel.getListenKey()));
       } catch (NoActiveChannelException e) {
         throw new IllegalStateException("Failed to establish user data channel", e);
       }
@@ -119,8 +129,8 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
         .doOnComplete(() -> streamingTradeService.openSubscriptions());
   }
 
-  private Completable createAndConnectUserDataService(String listenKey) {
-    userDataStreamingService = BinanceUserDataStreamingService.create(listenKey);
+  private Completable createAndConnectUserDataService(String apiUri, String listenKey) {
+    userDataStreamingService = BinanceUserDataStreamingService.create(apiUri, listenKey);
     return userDataStreamingService
         .connect()
         .doOnComplete(
@@ -132,7 +142,7 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
                         .disconnect()
                         .doOnComplete(
                             () -> {
-                              createAndConnectUserDataService(newListenKey)
+                              createAndConnectUserDataService(apiUri, newListenKey)
                                   .doOnComplete(
                                       () -> {
                                         streamingAccountService.setUserDataStreamingService(
@@ -197,12 +207,8 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
     return streamingTradeService;
   }
 
-  private BinanceStreamingService createStreamingService(ProductSubscription subscription) {
-    final boolean useSandbox =
-            Boolean.TRUE.equals(exchangeSpecification.getExchangeSpecificParametersItem(Parameters.PARAM_USE_SANDBOX));
-    final String apiUri = useSandbox ? SANDBOX_API_BASE_URI : API_BASE_URI;
-    String path = apiUri + "/stream?streams=" + buildSubscriptionStreams(subscription);
-    return new BinanceStreamingService(path, subscription);
+  private BinanceStreamingService createStreamingService(String streamingUri, ProductSubscription subscription) {
+    return new BinanceStreamingService(streamingUri + "/stream?streams=" + buildSubscriptionStreams(subscription), subscription);
   }
 
   public String buildSubscriptionStreams(ProductSubscription subscription) {
