@@ -50,18 +50,18 @@ public class AccountUpdateBinanceWebsocketTransaction
   public List<Balance> toBalanceList() {
     if (getBalances() == null) return Collections.emptyList();
     return getBalances().stream()
-        .map(
-            b ->
-                new Balance(
-                    Currency.getInstance(b.getAsset()),
-                    b.getWalletBalance(),
-                    b.getWalletBalance(),
-                    BigDecimal.ZERO,
-                    BigDecimal.ZERO,
-                    BigDecimal.ZERO,
-                    BigDecimal.ZERO,
-                    BigDecimal.ZERO,
-                    new Date(transactionTime)))
+        .map(b -> {
+          return new Balance(
+                  Currency.getInstance(b.getAsset()),
+                  b.getWalletBalance(),
+                  getAvailable(b),
+                  BigDecimal.ZERO,
+                  BigDecimal.ZERO,
+                  BigDecimal.ZERO,
+                  BigDecimal.ZERO,
+                  BigDecimal.ZERO,
+                  new Date(transactionTime));
+            })
         .collect(Collectors.toList());
   }
 
@@ -76,5 +76,10 @@ public class AccountUpdateBinanceWebsocketTransaction
                     .timestamp(new Date(transactionTime))
                     .build())
             .collect(Collectors.toList());
+  }
+
+
+  static BigDecimal getAvailable(BinanceFuturesWebsocketBalance b) {
+    return b.getBalanceChange() != null ? b.getWalletBalance().add(b.getBalanceChange()) : b.getWalletBalance();
   }
 }
