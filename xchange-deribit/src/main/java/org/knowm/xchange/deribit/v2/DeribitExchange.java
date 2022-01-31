@@ -2,6 +2,7 @@ package org.knowm.xchange.deribit.v2;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.BaseExchange;
@@ -19,6 +20,7 @@ import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.derivative.OptionsContract;
 import org.knowm.xchange.dto.meta.CurrencyMetaData;
 import org.knowm.xchange.dto.meta.DerivativeMetaData;
+import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.instrument.Instrument;
 
 public class DeribitExchange extends BaseExchange implements Exchange {
@@ -64,16 +66,12 @@ public class DeribitExchange extends BaseExchange implements Exchange {
 
   public void updateExchangeMetaData() throws IOException {
 
-    Map<Currency, CurrencyMetaData> currencies = exchangeMetaData.getCurrencies();
-    Map<FuturesContract, DerivativeMetaData> futures = exchangeMetaData.getFutures();
-    Map<OptionsContract, DerivativeMetaData> options = exchangeMetaData.getOptions();
+    Map<Currency, CurrencyMetaData> currencies = new HashMap<>();
+    Map<FuturesContract, DerivativeMetaData> futures = new HashMap<>();
+    Map<OptionsContract, DerivativeMetaData> options = new HashMap<>();
 
     List<DeribitCurrency> activeDeribitCurrencies =
         ((DeribitMarketDataServiceRaw) marketDataService).getDeribitCurrencies();
-
-    currencies.clear();
-    futures.clear();
-    options.clear();
 
     for (DeribitCurrency deribitCurrency : activeDeribitCurrencies) {
       currencies.put(
@@ -95,6 +93,16 @@ public class DeribitExchange extends BaseExchange implements Exchange {
         }
       }
     }
+    
+    exchangeMetaData = new ExchangeMetaData(
+            exchangeMetaData.getCurrencyPairs(),
+            currencies,
+            futures,
+            options,
+            exchangeMetaData.getPublicRateLimits(),
+            exchangeMetaData.getPrivateRateLimits(),
+            exchangeMetaData.isShareRateLimits()
+    );
   }
 
   @Override

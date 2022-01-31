@@ -339,6 +339,7 @@ public class DeribitAdapters {
         .amountScale(instrument.getMinTradeAmount().scale())
         .priceScale(instrument.getTickSize().scale())
         .priceStepSize(instrument.getTickSize())
+        .expireTimestamp(instrument.getExpirationTimestamp())    
         .build();
   }
 
