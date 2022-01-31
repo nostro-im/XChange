@@ -506,6 +506,8 @@
           <skipTests>${skipIntegrationTests}</skipTests>
           <includes>
             <include>**/*Integration.java</include>
+            <include>**/*IntegrationTest.java</include>
+            <include>**/*Sample.java</include>
           </includes>
         </configuration>
       </plugin>
