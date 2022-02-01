@@ -28,6 +28,7 @@ import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class FtxAdapters {
   private static final String IMPLIED_COUNTER = "USD";
@@ -71,61 +72,37 @@ public class FtxAdapters {
       FtxResponse<List<FtxWalletBalanceDto>> ftxBalancesDto,
       Collection<OpenPosition> openPositions) {
 
-    List<Balance> ftxAccountInfo = new ArrayList<>();
-    List<Balance> ftxSpotBalances = new ArrayList<>();
-
     FtxAccountDto result = ftxAccountDto.getResult();
-    ftxAccountInfo.add(
-        new Balance(Currency.USD, result.getCollateral(), result.getFreeCollateral()));
 
-    ftxBalancesDto
-        .getResult()
-        .forEach(
-            ftxWalletBalanceDto ->
-                ftxSpotBalances.add(
-                    new Balance(
-                        ftxWalletBalanceDto.getCoin(),
-                        ftxWalletBalanceDto.getTotal(),
-                        ftxWalletBalanceDto.getFree())));
+    List<Balance> balances = Optional.ofNullable(ftxBalancesDto.getResult()).orElse(Collections.emptyList()).stream()
+            .map(FtxAdapters::adaptBalance)
+            .collect(Collectors.toList());
 
     BigDecimal totalPositionSize = result.getTotalPositionSize();
     BigDecimal totalAccountValue = result.getTotalAccountValue();
 
-    BigDecimal currentLeverage =
-        totalPositionSize.compareTo(BigDecimal.ZERO) == 0
+    BigDecimal currentLeverage = totalPositionSize == null || totalPositionSize.compareTo(BigDecimal.ZERO) == 0
             ? BigDecimal.ZERO
             : totalPositionSize.divide(totalAccountValue, 3, RoundingMode.HALF_EVEN);
-    Wallet accountWallet =
-        Wallet.Builder.from(ftxAccountInfo)
-            .features(
-                Collections.unmodifiableSet(
-                    new HashSet<>(
-                        Arrays.asList(
-                            Wallet.WalletFeature.MARGIN_TRADING,
-                            Wallet.WalletFeature.MARGIN_FUNDING))))
+
+    Wallet wallet = Wallet.Builder.from(balances)
             .maxLeverage(result.getLeverage())
             .currentLeverage(currentLeverage)
-            .id("margin")
-            .build();
-
-    Wallet spotWallet =
-        Wallet.Builder.from(ftxSpotBalances)
-            .features(
-                Collections.unmodifiableSet(
-                    new HashSet<>(
-                        Arrays.asList(Wallet.WalletFeature.FUNDING, Wallet.WalletFeature.TRADING))))
-            .id("spot")
             .build();
 
     AccountMargin margin = getAccountMargin(ftxAccountDto.getResult(), openPositions);
 
-    return AccountInfo.Builder.from(Collections.unmodifiableList(Arrays.asList(accountWallet, spotWallet)))
+    return AccountInfo.Builder.from(Collections.singleton(wallet))
             .username(result.getUsername())
             .tradingFee(result.getTakerFee())
             .openPositions(openPositions)
             .timestamp(Date.from(Instant.now()))
             .margins(Collections.singleton(margin))
             .build();
+  }
+
+  static Balance adaptBalance(FtxWalletBalanceDto dto) {
+    return new Balance(dto.getCoin(), dto.getTotal(), dto.getFree());
   }
 
   public static ExchangeMetaData adaptExchangeMetaData(FtxMarketsDto marketsDto) {
@@ -466,9 +443,11 @@ public class FtxAdapters {
             .filter(Objects::nonNull)
             .reduce(BigDecimal.ZERO, BigDecimal::add);
 
+    BigDecimal marginBalance = Optional.ofNullable(ftxAccountDto.getTotalAccountValue()).map(v -> v.add(unrealizedProfit)).orElse(null);
+
     return new AccountMargin.Builder()
             .currency(Currency.USD)
-            .marginBalance(ftxAccountDto.getTotalAccountValue().add(unrealizedProfit))
+            .marginBalance(marginBalance)
             .unrealizedProfit(unrealizedProfit)
             .build();
   }
