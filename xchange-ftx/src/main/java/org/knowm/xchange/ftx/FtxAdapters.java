@@ -18,8 +18,6 @@ import org.knowm.xchange.ftx.dto.account.FtxWalletBalanceDto;
 import org.knowm.xchange.ftx.dto.marketdata.*;
 import org.knowm.xchange.ftx.dto.trade.*;
 import org.knowm.xchange.instrument.Instrument;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -33,6 +31,12 @@ import java.util.stream.Collectors;
 public class FtxAdapters {
   private static final String IMPLIED_COUNTER = "USD";
   public static final String PERPETUAL = "PERP";
+
+  /**
+   * Margin ratio precision of the open positions.
+   * This is the number of digits after decimal point.
+   */
+  private static final int marginRatioPrecision = 4; // 4 digits after decimal point
 
   public static OrderBook adaptOrderBook(
       FtxResponse<FtxOrderbookDto> ftxOrderbookDto, Instrument instrument) {
@@ -346,42 +350,25 @@ public class FtxAdapters {
     return null;
   }
 
-  public static OpenPositions adaptOpenPositions(List<FtxPositionDto> ftxPositionDtos, BigDecimal leverage) {
-    List<OpenPosition> openPositionList = new ArrayList<>();
-
-    ftxPositionDtos.forEach(
-        ftxPositionDto -> {
-          BigDecimal size = ftxPositionDto.getSize();
-          if (size.compareTo(BigDecimal.ZERO) > 0) {
-            openPositionList.add(
-                new OpenPosition.Builder()
-                    .instrument(adaptFtxMarketToInstrument(ftxPositionDto.getFuture()))
-                    .price(ftxPositionDto.getEntryPrice())
-                    .size(
-                        ftxPositionDto.getSide() == FtxOrderSide.buy
-                            ? size
-                            : size.negate())
-                    .type(
-                        ftxPositionDto.getSide() == FtxOrderSide.buy
-                            ? OpenPosition.Type.LONG
-                            : OpenPosition.Type.SHORT)
-                    .leverage(leverage)
-                    .marginRatio(getMarginRatio(ftxPositionDto))
-                    .unrealizedProfit(ftxPositionDto.getRecentPnl())
-                    .liquidationPrice(ftxPositionDto.getEstimatedLiquidationPrice())
-                    .build());
-          }
-        });
-
-    return new OpenPositions(openPositionList);
+  public static OpenPositions adaptOpenPositions(List<FtxPositionDto> ftxPositionDtos, BigDecimal leverage, BigDecimal totalAccountValue) {
+    List<OpenPosition> positions = ftxPositionDtos.stream()
+            .filter(dto -> dto.getSize().compareTo(BigDecimal.ZERO) > 0)
+            .map(dto -> adaptOpenPosition(dto, leverage, totalAccountValue))
+            .collect(Collectors.toList());
+    return new OpenPositions(positions);
   }
 
-  private static BigDecimal getMarginRatio(FtxPositionDto p) {
-    return p.getInitialMarginRequirement() == null
-            || p.getInitialMarginRequirement().compareTo(BigDecimal.ZERO) == 0
-        ? null
-        : p.getMaintenanceMarginRequirement()
-            .divide(p.getInitialMarginRequirement(), RoundingMode.HALF_DOWN);
+  static OpenPosition adaptOpenPosition(FtxPositionDto dto, BigDecimal leverage, BigDecimal totalAccountValue) {
+    return new OpenPosition.Builder()
+            .instrument(adaptFtxMarketToInstrument(dto.getFuture()))
+            .price(getPositionPrice(dto))
+            .size(getPositionSize(dto))
+            .type(getPositionType(dto))
+            .leverage(leverage)
+            .marginRatio(getMarginRatio(dto.getMaintenanceMarginRequirement(), getMarginFraction(totalAccountValue, dto.getCost())))
+            .unrealizedProfit(dto.getRecentPnl())
+            .liquidationPrice(getPositionEstimatedLiquidationPrice(dto))
+            .build();
   }
 
   public static BigDecimal lendingRounding(BigDecimal value) {
@@ -451,4 +438,53 @@ public class FtxAdapters {
             .unrealizedProfit(unrealizedProfit)
             .build();
   }
+
+  static BigDecimal getPositionEstimatedLiquidationPrice(FtxPositionDto dto) {
+    BigDecimal price = dto.getEstimatedLiquidationPrice();
+    if (price != null && price.compareTo(BigDecimal.ZERO) == 0) return null;
+    return price;
+  }
+
+  static BigDecimal getPositionPrice(FtxPositionDto dto) {
+    return dto.getRecentAverageOpenPrice() != null ? dto.getRecentAverageOpenPrice() : dto.getEntryPrice();
+  }
+
+  static OpenPosition.Type getPositionType(FtxPositionDto dto) {
+    return dto.getSide() == FtxOrderSide.buy ? OpenPosition.Type.LONG : OpenPosition.Type.SHORT;
+  }
+
+  static BigDecimal getPositionSize(FtxPositionDto dto) {
+    return dto.getSide() == FtxOrderSide.buy ? dto.getSize() : dto.getSize().negate();
+  }
+
+  // Margin fraction = Total Account value / position size
+  // set scale to 4, when to converted to % will be more clear
+  static BigDecimal getMarginFraction(BigDecimal totalValue, BigDecimal positionValue) {
+    if (positionValue == null || positionValue.compareTo(BigDecimal.ZERO) == 0) return null;
+    return totalValue.divide(positionValue, RoundingMode.HALF_DOWN);
+  }
+
+  // Margin Ratio = Maintenance requirement / Margin fraction
+  // set scale to 4, when to converted to % will be more clear
+  static BigDecimal getMarginRatio(BigDecimal marginMaintenance, BigDecimal marginFraction) {
+    if (marginFraction == null || marginFraction.compareTo(BigDecimal.ZERO) == 0) return null;
+    return marginMaintenance.divide(marginFraction, marginRatioPrecision, RoundingMode.HALF_DOWN);
+  }
+
+  // MR Calculations Example
+
+  // Input
+  // Total collateral: US$1,995.37
+  // Free collateral: US$1,992.59
+  // Max position leverage:1x
+  // Margin fraction: 71721.66%
+  // Maintenance margin requirement: 3%
+  // pos size 0.001 ETH
+  // pos notional = 2.782$
+
+  // Calculations
+  // Margin fraction = 1995,37 / 2,782 = 717,242990654205607
+  // Margin Ratio = 0.03 / 717,242990654205607 = 0,000041826829109
+  // MR % = 0,004% - NO RISK
 }
+
