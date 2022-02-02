@@ -159,6 +159,10 @@ public class FtxPositionDto {
     return recentPnl;
   }
 
+  public BigDecimal getRecentAverageOpenPrice() {
+    return recentAverageOpenPrice;
+  }
+
   @Override
   public String toString() {
     return "FtxPositionDto{" +

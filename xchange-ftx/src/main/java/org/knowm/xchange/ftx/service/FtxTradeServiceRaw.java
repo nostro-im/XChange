@@ -10,6 +10,7 @@ import org.knowm.xchange.dto.trade.UserTrades;
 import org.knowm.xchange.ftx.FtxAdapters;
 import org.knowm.xchange.ftx.FtxException;
 import org.knowm.xchange.ftx.dto.FtxResponse;
+import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
 import org.knowm.xchange.ftx.dto.account.FtxPositionDto;
 import org.knowm.xchange.ftx.dto.trade.*;
 import org.knowm.xchange.instrument.Instrument;
@@ -273,8 +274,9 @@ public class FtxTradeServiceRaw extends FtxBaseService {
     }
   }
 
-  public OpenPositions getOpenPositionsForSubaccount(String subaccount, BigDecimal leverage, boolean showAvgPrice) throws IOException {
-    return FtxAdapters.adaptOpenPositions(getFtxPositions(subaccount, showAvgPrice).getResult(), leverage);
+  public OpenPositions getOpenPositionsForSubaccount(String subaccount, FtxAccountDto accountDto, boolean showAvgPrice) throws IOException {
+    List<FtxPositionDto> positionDtos = getFtxPositions(subaccount, showAvgPrice).getResult();
+    return FtxAdapters.adaptOpenPositions(positionDtos, accountDto.getLeverage(), accountDto.getTotalAccountValue());
   }
 
   public FtxResponse<List<FtxPositionDto>> getFtxPositions(String subaccount, boolean showAvgPrice)
