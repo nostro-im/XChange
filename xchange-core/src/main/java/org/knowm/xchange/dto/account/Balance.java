@@ -502,6 +502,17 @@ public final class Balance implements Comparable<Balance>, Serializable {
           .timestamp(balance.getTimestamp());
     }
 
+    public static Builder zero() {
+      return new Builder()
+              .total(BigDecimal.ZERO)
+              .available(BigDecimal.ZERO)
+              .frozen(BigDecimal.ZERO)
+              .borrowed(BigDecimal.ZERO)
+              .loaned(BigDecimal.ZERO)
+              .withdrawing(BigDecimal.ZERO)
+              .depositing(BigDecimal.ZERO);
+    }
+
     public Builder currency(Currency currency) {
 
       this.currency = currency;

@@ -38,6 +38,8 @@ public class FtxAdapters {
    */
   private static final int marginRatioPrecision = 4; // 4 digits after decimal point
 
+  private static final int leveragePrecision = 2; // 2 digits after decimal point
+
   public static OrderBook adaptOrderBook(
       FtxResponse<FtxOrderbookDto> ftxOrderbookDto, Instrument instrument) {
 
@@ -76,33 +78,48 @@ public class FtxAdapters {
       FtxResponse<List<FtxWalletBalanceDto>> ftxBalancesDto,
       Collection<OpenPosition> openPositions) {
 
-    FtxAccountDto result = ftxAccountDto.getResult();
+    FtxAccountDto accountDto = ftxAccountDto.getResult();
 
     List<Balance> balances = Optional.ofNullable(ftxBalancesDto.getResult()).orElse(Collections.emptyList()).stream()
             .map(FtxAdapters::adaptBalance)
             .collect(Collectors.toList());
 
-    BigDecimal totalPositionSize = result.getTotalPositionSize();
-    BigDecimal totalAccountValue = result.getTotalAccountValue();
-
-    BigDecimal currentLeverage = totalPositionSize == null || totalPositionSize.compareTo(BigDecimal.ZERO) == 0
-            ? BigDecimal.ZERO
-            : totalPositionSize.divide(totalAccountValue, 3, RoundingMode.HALF_EVEN);
-
     Wallet wallet = Wallet.Builder.from(balances)
-            .maxLeverage(result.getLeverage())
-            .currentLeverage(currentLeverage)
+            .maxLeverage(getMaxLeverage(accountDto))
+            .currentLeverage(getCurrentLeverage(accountDto))
             .build();
 
     AccountMargin margin = getAccountMargin(ftxAccountDto.getResult(), openPositions);
 
     return AccountInfo.Builder.from(Collections.singleton(wallet))
-            .username(result.getUsername())
-            .tradingFee(result.getTakerFee())
+            .username(accountDto.getUsername())
+            .tradingFee(accountDto.getTakerFee())
             .openPositions(openPositions)
             .timestamp(Date.from(Instant.now()))
             .margins(Collections.singleton(margin))
             .build();
+  }
+
+  // account max leverage set through the UI
+  static BigDecimal getMaxLeverage(FtxAccountDto dto) {
+    return dto.getLeverage();
+  }
+
+  // dynamic calculated leverage
+  static BigDecimal getCurrentLeverage(FtxAccountDto dto) {
+    BigDecimal value = dto.getTotalPositionSize();
+    BigDecimal total = dto.getTotalAccountValue();
+    if (value == null) return null;
+    if (total == null || total.compareTo(BigDecimal.ZERO) == 0) return null;
+    return value.divide(total, leveragePrecision, RoundingMode.HALF_EVEN).abs();
+  }
+
+  static BigDecimal getCurrentLeverage(FtxPositionDto p, FtxAccountDto a) {
+    BigDecimal value = p.getCost();
+    BigDecimal total = a.getTotalAccountValue();
+    if (value == null) return null;
+    if (total == null || total.compareTo(BigDecimal.ZERO) == 0) return null;
+    return value.divide(total, leveragePrecision, RoundingMode.HALF_EVEN).abs();
   }
 
   static Balance adaptBalance(FtxWalletBalanceDto dto) {
@@ -350,22 +367,23 @@ public class FtxAdapters {
     return null;
   }
 
-  public static OpenPositions adaptOpenPositions(List<FtxPositionDto> ftxPositionDtos, BigDecimal leverage, BigDecimal totalAccountValue) {
+  public static OpenPositions adaptOpenPositions(FtxAccountDto accountDto, List<FtxPositionDto> ftxPositionDtos) {
     List<OpenPosition> positions = ftxPositionDtos.stream()
             .filter(dto -> dto.getSize().compareTo(BigDecimal.ZERO) > 0)
-            .map(dto -> adaptOpenPosition(dto, leverage, totalAccountValue))
+            .map(dto -> adaptOpenPosition(accountDto, dto))
             .collect(Collectors.toList());
     return new OpenPositions(positions);
   }
 
-  static OpenPosition adaptOpenPosition(FtxPositionDto dto, BigDecimal leverage, BigDecimal totalAccountValue) {
+  static OpenPosition adaptOpenPosition(FtxAccountDto accountDto, FtxPositionDto dto) {
     return new OpenPosition.Builder()
             .instrument(adaptFtxMarketToInstrument(dto.getFuture()))
             .price(getPositionPrice(dto))
             .size(getPositionSize(dto))
             .type(getPositionType(dto))
-            .leverage(leverage)
-            .marginRatio(getMarginRatio(dto.getMaintenanceMarginRequirement(), getMarginFraction(totalAccountValue, dto.getCost())))
+            .currentLeverage(getCurrentLeverage(dto, accountDto))
+            .leverage(getMaxLeverage(accountDto))
+            .marginRatio(getMarginRatio(dto.getMaintenanceMarginRequirement(), getMarginFraction(accountDto.getTotalAccountValue(), dto.getCost())))
             .unrealizedProfit(dto.getRecentPnl())
             .liquidationPrice(getPositionEstimatedLiquidationPrice(dto))
             .build();
@@ -424,18 +442,23 @@ public class FtxAdapters {
     }
   }
 
-  static AccountMargin getAccountMargin(FtxAccountDto ftxAccountDto, Collection<OpenPosition> openPositions) {
+  static AccountMargin getAccountMargin(FtxAccountDto accountDto, Collection<OpenPosition> openPositions) {
     BigDecimal unrealizedProfit = openPositions.stream()
             .map(OpenPosition::getUnrealizedProfit)
             .filter(Objects::nonNull)
             .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-    BigDecimal marginBalance = Optional.ofNullable(ftxAccountDto.getTotalAccountValue()).map(v -> v.add(unrealizedProfit)).orElse(null);
+    BigDecimal marginBalance = Optional.ofNullable(accountDto.getTotalAccountValue()).map(v -> v.add(unrealizedProfit)).orElse(null);
 
+    BigDecimal maxLeverage = getMaxLeverage(accountDto);
+    BigDecimal currentLeverage = getCurrentLeverage(accountDto);
     return new AccountMargin.Builder()
             .currency(Currency.USD)
             .marginBalance(marginBalance)
             .unrealizedProfit(unrealizedProfit)
+            .freeCollateral(accountDto.getFreeCollateral())
+            .leverage(maxLeverage)
+            .currentLeverage(currentLeverage)
             .build();
   }
 

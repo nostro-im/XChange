@@ -12,6 +12,7 @@ import org.knowm.xchange.ftx.dto.account.FtxWalletBalanceDto;
 import org.knowm.xchange.ftx.dto.trade.FtxOrderSide;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -21,24 +22,107 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class FtxAdaptersTest {
 
 	@Test
+	public void testPositionGetCurrentLeverage() {
+		BigDecimal cost = new BigDecimal("10000");
+		FtxPositionDto position = new FtxPositionDto(cost, null, null, "BTC-PERP", null, null, null, null, null, null, null, null, BigDecimal.ZERO, null, null, BigDecimal.TEN, null);
+		BigDecimal totalAccountValue = new BigDecimal("1000");
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, null, false, null, null, null, null, null, totalAccountValue, cost, null, null);
+		assertThat(FtxAdapters.getCurrentLeverage(position, ftxAccountDto)).isEqualByComparingTo(BigDecimal.TEN);
+	}
+
+	@Test
+	public void testPositionGetCurrentLeverage_zero() {
+		BigDecimal cost = BigDecimal.ZERO;
+		FtxPositionDto position = new FtxPositionDto(cost, null, null, "BTC-PERP", null, null, null, null, null, null, null, null, BigDecimal.ZERO, null, null, BigDecimal.TEN, null);
+		BigDecimal totalAccountValue = new BigDecimal("1000");
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, null, false, null, null, null, null, null, totalAccountValue, cost, null, null);
+		assertThat(FtxAdapters.getCurrentLeverage(position, ftxAccountDto)).isEqualByComparingTo(BigDecimal.ZERO);
+	}
+
+	@Test
+	public void testPositionGetCurrentLeverage_null() {
+		BigDecimal cost = null;
+		FtxPositionDto position = new FtxPositionDto(cost, null, null, "BTC-PERP", null, null, null, null, null, null, null, null, BigDecimal.ZERO, null, null, BigDecimal.TEN, null);
+		BigDecimal totalAccountValue = new BigDecimal("1000");
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, null, false, null, null, null, null, null, totalAccountValue, cost, null, null);
+		assertThat(FtxAdapters.getCurrentLeverage(position, ftxAccountDto)).isNull();
+	}
+
+	@Test
+	public void testPositionGetCurrentLeverage_null2() {
+		BigDecimal cost = BigDecimal.ONE;
+		FtxPositionDto position = new FtxPositionDto(cost, null, null, "BTC-PERP", null, null, null, null, null, null, null, null, BigDecimal.ZERO, null, null, BigDecimal.TEN, null);
+		BigDecimal totalAccountValue = BigDecimal.ZERO;
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, null, false, null, null, null, null, null, totalAccountValue, cost, null, null);
+		assertThat(FtxAdapters.getCurrentLeverage(position, ftxAccountDto)).isNull();
+	}
+
+	@Test
+	public void testPositionGetCurrentLeverage_null3() {
+		BigDecimal cost = BigDecimal.ONE;
+		FtxPositionDto position = new FtxPositionDto(cost, null, null, "BTC-PERP", null, null, null, null, null, null, null, null, BigDecimal.ZERO, null, null, BigDecimal.TEN, null);
+		BigDecimal totalAccountValue = null;
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, null, false, null, null, null, null, null, totalAccountValue, cost, null, null);
+		assertThat(FtxAdapters.getCurrentLeverage(position, ftxAccountDto)).isNull();
+	}
+
+	@Test
+	public void testGetCurrentLeverage() {
+		BigDecimal totalAccountValue = new BigDecimal("1000");
+		BigDecimal totalPositionSize = new BigDecimal("10000");
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, null, false, null, null, null, null, null, totalAccountValue, totalPositionSize, null, null);
+		assertThat(FtxAdapters.getCurrentLeverage(ftxAccountDto)).isEqualByComparingTo(BigDecimal.TEN);
+	}
+
+	@Test
+	public void testGetCurrentLeverage_precision() {
+		BigDecimal totalAccountValue = new BigDecimal("1000");
+		BigDecimal totalPositionSize = new BigDecimal("1353");
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, null, false, null, null, null, null, null, totalAccountValue, totalPositionSize, null, null);
+		assertThat(FtxAdapters.getCurrentLeverage(ftxAccountDto)).isEqualByComparingTo(new BigDecimal("1.35"));
+	}
+
+	@Test
+	public void testGetCurrentLeverage_zero() {
+		BigDecimal totalAccountValue = new BigDecimal("1000");
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, null, false, null, null, null, null, null, totalAccountValue, null, null, null);
+		assertThat(FtxAdapters.getCurrentLeverage(ftxAccountDto)).isNull();
+	}
+
+	@Test
+	public void testGetMaxLeverage() {
+		BigDecimal accountLeverage = BigDecimal.TEN;
+		BigDecimal totalAccountValue = new BigDecimal("1000");
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, accountLeverage, false, null, null, null, null, null, totalAccountValue, BigDecimal.ONE, null, null);
+		assertThat(ftxAccountDto.getLeverage()).isEqualByComparingTo(accountLeverage);
+	}
+
+	@Test
     public void testGetAccountMargin() {
-		BigDecimal leverage = BigDecimal.ONE;
 		List<FtxPositionDto> positions = Arrays.asList(
                 new FtxPositionDto(null, null, null, "BTC-PERP", null, null, null, null, null, null, null, null, BigDecimal.ZERO, null, null, BigDecimal.TEN, null),
                 new FtxPositionDto(null, null, null, "ETH-PERP", null, null, null, null, null, null, null, null, BigDecimal.TEN, null, null, BigDecimal.ONE, null),
                 new FtxPositionDto(null, null, null, "XRP-PERP", null, null, null, null, null, null, null, null, BigDecimal.TEN, null, null, BigDecimal.TEN.negate(), null)
         );
+		BigDecimal accountLeverage = BigDecimal.TEN;
 		BigDecimal totalAccountValue = new BigDecimal("1000");
+		BigDecimal totalPositionSize = new BigDecimal("2500");
 		BigDecimal unrealizedProfit = new BigDecimal("9").negate();
 		BigDecimal marginBalance = totalAccountValue.add(unrealizedProfit);
+		BigDecimal collateral = totalAccountValue.multiply(new BigDecimal("0.95")); // emulate
+		BigDecimal freeCollateral =  totalAccountValue.multiply(new BigDecimal("0.6")); // emulate
+		BigDecimal currentLeverage = totalPositionSize.divide(totalAccountValue, 2, RoundingMode.HALF_EVEN);
 
-		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, null, null, null, null, false, null, null, null, null, null, totalAccountValue, BigDecimal.ONE, null, positions);
-        OpenPositions openPositions = FtxAdapters.adaptOpenPositions(positions, leverage, BigDecimal.ZERO);
+		FtxAccountDto ftxAccountDto = new FtxAccountDto(false, collateral, freeCollateral, null, accountLeverage, false, null, null, null, null, null, totalAccountValue, totalPositionSize, null, positions);
+        OpenPositions openPositions = FtxAdapters.adaptOpenPositions(ftxAccountDto, positions);
 
         AccountMargin margin = FtxAdapters.getAccountMargin(ftxAccountDto, openPositions.getOpenPositions());
         assertThat(margin.getCurrency()).isEqualTo(Currency.USD);
 		assertThat(margin.getUnrealizedProfit()).isEqualByComparingTo(unrealizedProfit);
         assertThat(margin.getMarginBalance()).isEqualByComparingTo(marginBalance);
+        assertThat(margin.getFreeCollateral()).isEqualByComparingTo(freeCollateral);
+        assertThat(margin.getLeverage()).isEqualByComparingTo(accountLeverage);
+        assertThat(margin.getCurrentLeverage()).isEqualByComparingTo(currentLeverage);
     }
 
 	@Test
@@ -105,7 +189,7 @@ public class FtxAdaptersTest {
 
 	@Test
 	public void testAdaptOpenPosition_instrument() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getInstrument()).isEqualTo(new FuturesContract(CurrencyPair.ETH_USD, null));
 	}
 
@@ -132,55 +216,61 @@ public class FtxAdaptersTest {
 
 	@Test
 	public void testAdaptOpenPosition_size() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getSize()).isEqualByComparingTo(new BigDecimal("0.001"));
 	}
 
 	@Test
 	public void testAdaptOpenPosition_type() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getType()).isEqualTo(OpenPosition.Type.LONG);
 	}
 
 	@Test
 	public void testAdaptOpenPosition_leverage() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getLeverage()).isEqualByComparingTo(FTX_POSITION_LEVERAGE);
 	}
 
 	@Test
+	public void testAdaptOpenPosition_cur_leverage() {
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
+		assertThat(position.getCurrentLeverage()).isEqualByComparingTo(FTX_TOTAL_POSITION_SIZE.divide(FTX_TOTAL_ACCOUNT_VALUE, 2, RoundingMode.HALF_EVEN));
+	}
+
+	@Test
 	public void testAdaptOpenPosition_price() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getPrice()).isEqualByComparingTo(new BigDecimal("2750.3"));
 	}
 
 	@Test
 	public void testAdaptOpenPosition_markPrice() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getMarkPrice()).isNull();
 	}
 
 	@Test
 	public void testAdaptOpenPosition_liquidationPrice() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getLiquidationPrice()).isNull();
 	}
 
 	@Test
 	public void testAdaptOpenPosition_mr() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getMarginRatio()).isEqualByComparingTo(BigDecimal.ZERO);
 	}
 
 	@Test
 	public void testAdaptOpenPosition_pnl() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getUnrealizedProfit()).isEqualByComparingTo(new BigDecimal("0.0371"));
 	}
 
 	@Test
 	public void testAdaptOpenPosition_time() {
-		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_POSITION_DTO, FTX_POSITION_LEVERAGE, FTX_TOTAL_ACCOUNT_VALUE);
+		OpenPosition position = FtxAdapters.adaptOpenPosition(FTX_ACCOUNT, FTX_POSITION);
 		assertThat(position.getTimestamp()).isNull();
 	}
 
@@ -213,8 +303,11 @@ public class FtxAdaptersTest {
 	}
 
 	private static final BigDecimal FTX_TOTAL_ACCOUNT_VALUE = new BigDecimal("1995.37");
-	private static final BigDecimal FTX_POSITION_LEVERAGE = new BigDecimal("1");
-	private static final FtxPositionDto FTX_POSITION_DTO = new FtxPositionDto(new BigDecimal("2.7874"),
+	private static final BigDecimal FTX_FREE_COLLATERAL = FTX_TOTAL_ACCOUNT_VALUE.multiply(new BigDecimal("0.95"));
+	private static final BigDecimal FTX_POSITION_LEVERAGE = new BigDecimal("2");
+	private static final BigDecimal FTX_TOTAL_POSITION_SIZE = new BigDecimal("2.7874");
+	private static final FtxAccountDto FTX_ACCOUNT = new FtxAccountDto(false, null, FTX_FREE_COLLATERAL, null, FTX_POSITION_LEVERAGE, false, null, null, null, null, null, FTX_TOTAL_ACCOUNT_VALUE, FTX_TOTAL_POSITION_SIZE, null, Collections.emptyList());
+	private static final FtxPositionDto FTX_POSITION = new FtxPositionDto(new BigDecimal("2.7874"),
 			new BigDecimal("2787.4"),
 			new BigDecimal("0.0"),
 			"ETH-PERP",

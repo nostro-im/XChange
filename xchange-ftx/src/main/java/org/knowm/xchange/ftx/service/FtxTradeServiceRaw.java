@@ -276,7 +276,7 @@ public class FtxTradeServiceRaw extends FtxBaseService {
 
   public OpenPositions getOpenPositionsForSubaccount(String subaccount, FtxAccountDto accountDto, boolean showAvgPrice) throws IOException {
     List<FtxPositionDto> positionDtos = getFtxPositions(subaccount, showAvgPrice).getResult();
-    return FtxAdapters.adaptOpenPositions(positionDtos, accountDto.getLeverage(), accountDto.getTotalAccountValue());
+    return FtxAdapters.adaptOpenPositions(accountDto, positionDtos);
   }
 
   public FtxResponse<List<FtxPositionDto>> getFtxPositions(String subaccount, boolean showAvgPrice)

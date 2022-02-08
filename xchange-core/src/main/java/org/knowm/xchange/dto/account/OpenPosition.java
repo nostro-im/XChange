@@ -23,18 +23,16 @@ public class OpenPosition implements Serializable {
   private final BigDecimal markPrice;
   /** Liquidation price */
   private final BigDecimal liquidationPrice;
-  /** Current initial leverage */
+  /** max or initial leverage */
   private final BigDecimal leverage;
+  /** current leverage: position value / total account value */
+  private final BigDecimal currentLeverage;
   /** Maintenance Margin / Margin Balance. Position will be liquidated once Margin Ratio reaches 1 */
   private final BigDecimal marginRatio;
   /** unrealized profit */
   private final BigDecimal unrealizedProfit;
   /** The time the position was valid on the exchange server */
   private final Date timestamp;
-
-  public OpenPosition(Instrument instrument, Type type, BigDecimal size, BigDecimal price) {
-    this(instrument, type, size, price, null, null, null, null, null, null);
-  }
 
   private OpenPosition(
           Instrument instrument,
@@ -44,6 +42,7 @@ public class OpenPosition implements Serializable {
           BigDecimal markPrice,
           BigDecimal liquidationPrice,
           BigDecimal leverage,
+          BigDecimal currentLeverage,
           BigDecimal marginRatio,
           BigDecimal unrealizedProfit,
           Date timestamp) {
@@ -54,6 +53,7 @@ public class OpenPosition implements Serializable {
     this.markPrice = markPrice;
     this.liquidationPrice = liquidationPrice;
     this.leverage = leverage;
+    this.currentLeverage = currentLeverage;
     this.marginRatio = marginRatio;
     this.unrealizedProfit = unrealizedProfit;
     this.timestamp = timestamp;
@@ -87,6 +87,10 @@ public class OpenPosition implements Serializable {
     return leverage;
   }
 
+  public BigDecimal getCurrentLeverage() {
+    return currentLeverage;
+  }
+
   public BigDecimal getMarginRatio() {
     return marginRatio;
   }
@@ -94,7 +98,7 @@ public class OpenPosition implements Serializable {
   public BigDecimal getUnrealizedProfit() {
     return unrealizedProfit;
   }
-
+  
   public Date getTimestamp() {
     return timestamp;
   }
@@ -111,6 +115,7 @@ public class OpenPosition implements Serializable {
             Objects.equals(markPrice, position.markPrice) &&
             Objects.equals(liquidationPrice, position.liquidationPrice) &&
             Objects.equals(leverage, position.leverage) &&
+            Objects.equals(currentLeverage, position.currentLeverage) &&
             Objects.equals(marginRatio, position.marginRatio) &&
             Objects.equals(unrealizedProfit, position.unrealizedProfit) &&
             Objects.equals(timestamp, position.timestamp);
@@ -118,7 +123,7 @@ public class OpenPosition implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrument, type, size, price, markPrice, liquidationPrice, leverage, marginRatio, unrealizedProfit, timestamp);
+    return Objects.hash(instrument, type, size, price, markPrice, liquidationPrice, leverage, currentLeverage, marginRatio, unrealizedProfit, timestamp);
   }
 
   @Override
@@ -131,6 +136,7 @@ public class OpenPosition implements Serializable {
             ", markPrice=" + markPrice +
             ", liquidationPrice=" + liquidationPrice +
             ", leverage=" + leverage +
+            ", currentLeverage=" + currentLeverage +
             ", marginRatio=" + marginRatio +
             ", unrealizedProfit=" + unrealizedProfit +
             ", timestamp=" + timestamp +
@@ -151,6 +157,7 @@ public class OpenPosition implements Serializable {
     private BigDecimal markPrice;
     private BigDecimal liquidationPrice;
     private BigDecimal leverage;
+    private BigDecimal currentLeverage;
     private BigDecimal marginRatio;
     private BigDecimal unrealizedProfit;
     private Date timestamp;
@@ -164,9 +171,22 @@ public class OpenPosition implements Serializable {
               .markPrice(openPosition.getMarkPrice())
               .liquidationPrice(openPosition.getLiquidationPrice())
               .leverage(openPosition.getLeverage())
+              .leverage(openPosition.getCurrentLeverage())
               .marginRatio(openPosition.getMarginRatio())
               .unrealizedProfit(openPosition.getUnrealizedProfit())
               .timestamp(openPosition.getTimestamp());
+    }
+
+    public static Builder zero() {
+      return new Builder()
+              .size(BigDecimal.ZERO)
+              .price(BigDecimal.ZERO)
+              .markPrice(BigDecimal.ZERO)
+              .liquidationPrice(BigDecimal.ZERO)
+              .leverage(BigDecimal.ZERO)
+              .leverage(BigDecimal.ZERO)
+              .marginRatio(BigDecimal.ZERO)
+              .unrealizedProfit(BigDecimal.ZERO);
     }
 
     public Builder instrument(final Instrument instrument) {
@@ -204,6 +224,11 @@ public class OpenPosition implements Serializable {
       return this;
     }
 
+    public Builder currentLeverage(final BigDecimal currentLeverage) {
+      this.currentLeverage = currentLeverage;
+      return this;
+    }
+
     public Builder marginRatio(final BigDecimal marginRatio) {
       this.marginRatio = marginRatio;
       return this;
@@ -220,7 +245,7 @@ public class OpenPosition implements Serializable {
     }
 
     public OpenPosition build() {
-      return new OpenPosition(instrument, type, size, price, markPrice, liquidationPrice, leverage, marginRatio, unrealizedProfit, timestamp);
+      return new OpenPosition(instrument, type, size, price, markPrice, liquidationPrice, leverage, currentLeverage, marginRatio, unrealizedProfit, timestamp);
     }
   }
 }

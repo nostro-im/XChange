@@ -22,8 +22,10 @@ public class DeribitAccountService extends DeribitAccountServiceRaw implements A
 
     List<Balance> balances = new ArrayList<>();
     Set<AccountMargin> margin = new HashSet<>();
+    Map<Currency, AccountSummary> accountSummaries = new HashMap<>();
     for (Currency c : currencies) {
       AccountSummary accountSummary = getAccountSummary(c.getCurrencyCode(), false);
+      accountSummaries.put(c, accountSummary);
       balances.add(DeribitAdapters.adapt(accountSummary));
       margin.add(DeribitAdapters.adapt(c, accountSummary));
     }
@@ -31,20 +33,25 @@ public class DeribitAccountService extends DeribitAccountServiceRaw implements A
     Wallet wallet = Wallet.Builder.from(balances).build();
 
     return AccountInfo.Builder.from(Collections.singleton(wallet))
-            .openPositions(openPositions(currencies))
+            .openPositions(openPositions(currencies, accountSummaries))
             .margins(margin)
             .build();
   }
 
   List<OpenPosition> openPositions() throws IOException {
-    return openPositions(currencies());
+    Map<Currency, AccountSummary> accountSummaries = new HashMap<>();
+    Collection<Currency> currencies = currencies();
+    for (Currency c : currencies) {
+      accountSummaries.put(c, getAccountSummary(c.getCurrencyCode(), false));
+    }
+    return openPositions(currencies, accountSummaries);
   }
 
-  private List<OpenPosition> openPositions(Collection<Currency> currencies) throws IOException {
+  private List<OpenPosition> openPositions(Collection<Currency> currencies, Map<Currency, AccountSummary> accountSummaries) throws IOException {
     List<OpenPosition> openPositions = new ArrayList<>();
     for (Currency c : currencies) {
       super.getPositions(c.getCurrencyCode(), null).stream()
-          .map(DeribitAdapters::adapt)
+          .map(position -> DeribitAdapters.adapt(position, accountSummaries.get(c)))
           .forEach(openPositions::add);
     }
     return openPositions;
