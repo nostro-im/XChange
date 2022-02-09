@@ -174,11 +174,11 @@ public interface BinanceFuturesAuthenticated extends BinanceAuthenticated {
      * @throws IOException
      * @throws BinanceException
      */
-    BinanceNewOrder newFuturesOrder(
+    BinanceFuturesOrder newFuturesOrder(
             @FormParam("symbol") String symbol,
             @FormParam("side") OrderSide side,
             @FormParam("positionSide") PositionSide positionSide,
-            @FormParam("type") OrderType type,
+            @FormParam("type") BinanceFuturesOrderType type,
             @FormParam("timeInForce") TimeInForce timeInForce,
             @FormParam("quantity") BigDecimal quantity,
             @FormParam("reduceOnly") Boolean reduceOnly,

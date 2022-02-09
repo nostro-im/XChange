@@ -2,15 +2,10 @@ package info.bitrich.xchangestream.binance.futures.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import info.bitrich.xchangestream.binance.dto.ExecutionReportBinanceUserTransaction;
-import info.bitrich.xchangestream.binance.dto.ProductBinanceWebSocketTransaction;
-import org.knowm.xchange.binance.BinanceAdapters;
 import org.knowm.xchange.binance.dto.trade.*;
+import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrderType;
 import org.knowm.xchange.binance.futures.dto.trade.PositionSide;
 import org.knowm.xchange.binance.futures.dto.trade.WorkingType;
-import org.knowm.xchange.currency.Currency;
-import org.knowm.xchange.currency.CurrencyPair;
-import org.knowm.xchange.dto.Order;
-import org.knowm.xchange.dto.trade.UserTrade;
 
 import java.math.BigDecimal;
 
@@ -19,7 +14,7 @@ public class OrderTradeUpdate {
   private final String symbol;
   private final String clientOrderId;
   private final OrderSide side;
-  private final OrderType orderType;
+  private final BinanceFuturesOrderType orderType;
   private final TimeInForce timeInForce;
   private final BigDecimal orderQuantity;
   private final BigDecimal orderPrice;
@@ -40,7 +35,7 @@ public class OrderTradeUpdate {
   private final BigDecimal askNotional;
   private final boolean reduceOnly;
   private final WorkingType stopPriceWorkingType;
-  private final OrderType originalOrderType;
+  private final BinanceFuturesOrderType originalOrderType;
   private final PositionSide positionSide;
   private final boolean closeAll;
   private final BigDecimal activationPrice;
@@ -72,7 +67,7 @@ public class OrderTradeUpdate {
           @JsonProperty("m") boolean buyerMarketMaker,
           @JsonProperty("R") boolean reduceOnly,
           @JsonProperty("wt") WorkingType stopPriceWorkingType,
-          @JsonProperty("ot") OrderType originalOrderType,
+          @JsonProperty("ot") String originalOrderType,
           @JsonProperty("ps") PositionSide positionSide,
           @JsonProperty("cp") boolean closeAll,
           @JsonProperty("AP") BigDecimal activationPrice,
@@ -81,7 +76,7 @@ public class OrderTradeUpdate {
     this.symbol = symbol;
     this.clientOrderId = clientOrderId;
     this.side = OrderSide.valueOf(side);
-    this.orderType = OrderType.valueOf(orderType);
+    this.orderType = BinanceFuturesOrderType.valueOf(orderType);
     this.timeInForce = TimeInForce.valueOf(timeInForce);
     this.orderQuantity = quantity;
     this.orderPrice = price;
@@ -102,7 +97,7 @@ public class OrderTradeUpdate {
     this.buyerMarketMaker = buyerMarketMaker;
     this.reduceOnly = reduceOnly;
     this.stopPriceWorkingType = stopPriceWorkingType;
-    this.originalOrderType = originalOrderType;
+    this.originalOrderType = BinanceFuturesOrderType.valueOf(originalOrderType);
     this.positionSide = positionSide;
     this.closeAll = closeAll;
     this.activationPrice = activationPrice;
@@ -122,7 +117,7 @@ public class OrderTradeUpdate {
     return side;
   }
 
-  public OrderType getOrderType() {
+  public BinanceFuturesOrderType getOrderType() {
     return orderType;
   }
 
@@ -206,7 +201,7 @@ public class OrderTradeUpdate {
     return stopPriceWorkingType;
   }
 
-  public OrderType getOriginalOrderType() {
+  public BinanceFuturesOrderType getOriginalOrderType() {
     return originalOrderType;
   }
 
