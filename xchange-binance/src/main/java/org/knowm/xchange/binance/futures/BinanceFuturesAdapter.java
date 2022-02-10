@@ -114,10 +114,9 @@ public class BinanceFuturesAdapter {
         Order.OrderType type = BinanceAdapters.convert(order.side);
         Instrument instrument = adaptInstrument(order.symbol);
         Order.Builder builder;
-        if (order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.MARKET)) {
+        if (order.type.equals(BinanceFuturesOrderType.MARKET)) {
             builder = new MarketOrder.Builder(type, instrument);
-        } else if (order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.LIMIT)
-                || order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.LIMIT_MAKER)) {
+        } else if (order.type.equals(BinanceFuturesOrderType.LIMIT)) {
             builder = new LimitOrder.Builder(type, instrument).limitPrice(order.price);
         } else {
             builder = new StopOrder.Builder(type, instrument).stopPrice(order.stopPrice);
