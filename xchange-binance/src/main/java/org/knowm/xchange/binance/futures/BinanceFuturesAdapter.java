@@ -5,6 +5,7 @@ import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAccountInform
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAsset;
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesPosition;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrder;
+import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrderType;
 import org.knowm.xchange.binance.futures.dto.trade.PositionSide;
 import org.knowm.xchange.binance.service.BinanceTradeService;
 import org.knowm.xchange.currency.Currency;
@@ -96,14 +97,26 @@ public class BinanceFuturesAdapter {
         return new FuturesContract(BinanceAdapters.adaptSymbol(symbol), null);
     }
 
+    public static BinanceFuturesOrderType adaptOrderType(org.knowm.xchange.binance.dto.trade.OrderType type) {
+        switch (type) {
+            case LIMIT: return BinanceFuturesOrderType.LIMIT;
+            case MARKET: return BinanceFuturesOrderType.MARKET;
+            case TAKE_PROFIT_LIMIT: return BinanceFuturesOrderType.TAKE_PROFIT;
+            case STOP_LOSS_LIMIT: return BinanceFuturesOrderType.STOP;
+            case STOP_LOSS: return BinanceFuturesOrderType.STOP_MARKET;
+            case TAKE_PROFIT: return BinanceFuturesOrderType.TAKE_PROFIT_MARKET;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
+        }
+    }
+
     public static Order adaptOrder(BinanceFuturesOrder order) {
         Order.OrderType type = BinanceAdapters.convert(order.side);
         Instrument instrument = adaptInstrument(order.symbol);
         Order.Builder builder;
-        if (order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.MARKET)) {
+        if (order.type.equals(BinanceFuturesOrderType.MARKET)) {
             builder = new MarketOrder.Builder(type, instrument);
-        } else if (order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.LIMIT)
-                || order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.LIMIT_MAKER)) {
+        } else if (order.type.equals(BinanceFuturesOrderType.LIMIT)) {
             builder = new LimitOrder.Builder(type, instrument).limitPrice(order.price);
         } else {
             builder = new StopOrder.Builder(type, instrument).stopPrice(order.stopPrice);
