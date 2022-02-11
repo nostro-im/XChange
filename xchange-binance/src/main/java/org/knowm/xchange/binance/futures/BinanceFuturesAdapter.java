@@ -28,6 +28,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class BinanceFuturesAdapter {
+    private static final int marginRatioPrecision = 4; // 4 digits after decimal point
+    private static final int leveragePrecision = 2; // 2 digits after decimal point
+
     public static AccountInfo adaptAccountInfo(BinanceFuturesAccountInformation account) {
         List<Balance> balances =
                 Optional.ofNullable(account.assets).orElse(Collections.emptyList()).stream()
@@ -36,7 +39,7 @@ public class BinanceFuturesAdapter {
 
         List<OpenPosition> openPositions =
                 Optional.ofNullable(account.positions).orElse(Collections.emptyList()).stream()
-                        .map(BinanceFuturesAdapter::adaptPosition)
+                        .map(position -> BinanceFuturesAdapter.adaptPosition(position, account))
                         .collect(Collectors.toList());
 
         return AccountInfo.Builder.from(Collections.singleton(Wallet.Builder.from(balances).build()))
@@ -47,29 +50,35 @@ public class BinanceFuturesAdapter {
     }
 
     public static Set<AccountMargin> getAccountMargins(BinanceFuturesAccountInformation account) {
+        // binance futures work with USDT currency when comparing value of other assets
+        Currency currency = Currency.USDT;
         AccountMargin margin = new AccountMargin.Builder()
-                .currency(Currency.USDT) // binance futures work with USDT base currency
+                .currency(currency)
                 .marginBalance(account.totalMarginBalance)
                 .unrealizedProfit(account.totalUnrealizedProfit)
+                .freeCollateral(getFreeCollateral(account, currency))
+                .currentLeverage(getCurrentLeverage(account))
                 .build();
 
         return Collections.singleton(margin);
     }
 
-    private static BigDecimal getMarginRatio(BinanceFuturesPosition p) {
-        return p.initialMargin == null || p.initialMargin.compareTo(BigDecimal.ZERO) == 0
+    private static BigDecimal getMarginRatio(BinanceFuturesPosition p, BinanceFuturesAccountInformation a) {
+        return a.totalMarginBalance == null || a.totalMarginBalance.compareTo(BigDecimal.ZERO) == 0
                 ? null
-                : p.maintMargin.divide(p.initialMargin, RoundingMode.HALF_DOWN);
+                : p.maintMargin.divide(a.totalMarginBalance, marginRatioPrecision, RoundingMode.HALF_DOWN);
     }
 
-    public static OpenPosition adaptPosition(BinanceFuturesPosition p) {
+    public static OpenPosition adaptPosition(BinanceFuturesPosition p, BinanceFuturesAccountInformation a) {
+        BigDecimal currentLeverage = getCurrentLeverage(p, a);
         return new OpenPosition.Builder()
                 .instrument(adaptInstrument(p.symbol))
                 .type(adaptPositionType(p.positionSide, p.positionAmt))
                 .size(p.positionAmt)
                 .price(p.entryPrice)
+                .currentLeverage(currentLeverage)
                 .leverage(p.leverage)
-                .marginRatio(getMarginRatio(p))
+                .marginRatio(getMarginRatio(p, a))
                 .unrealizedProfit(p.unrealizedProfit)
                 .timestamp(p.updateTime != 0 ? new Date(p.updateTime) : null)
                 .build();
@@ -183,4 +192,33 @@ public class BinanceFuturesAdapter {
     public static StopOrder replaceInstrument(StopOrder stop, CurrencyPair pair) {
         return StopOrder.Builder.from(stop).instrument(pair).build();
     }
+
+    // available balance!
+    public static BigDecimal getFreeCollateral(BinanceFuturesAccountInformation account, Currency currency) {
+        final String symbol = BinanceAdapters.toSymbol(currency);
+        return Optional.ofNullable(account.assets).orElse(Collections.emptyList()).stream()
+                .filter(asset -> asset.asset.equals(symbol))
+                .findFirst()
+                .map(binanceFuturesAsset -> binanceFuturesAsset.availableBalance)
+                .orElse(null);
+    }
+
+    // for position
+    public static BigDecimal getCurrentLeverage(BinanceFuturesPosition p, BinanceFuturesAccountInformation a) {
+        BigDecimal value = p.notional;
+        BigDecimal total = p.isolated == true ? p.isolatedWallet : a.totalWalletBalance;
+        if (value == null) return null;
+        if (total == null || total.compareTo(BigDecimal.ZERO) == 0) return null;
+        return value.divide(total, leveragePrecision, RoundingMode.HALF_EVEN).abs();
+    }
+
+    // for whole account
+    public static BigDecimal getCurrentLeverage(BinanceFuturesAccountInformation account) {
+        BigDecimal value = account.totalPositionInitialMargin;
+        BigDecimal total = account.totalWalletBalance;
+        if (value == null) return null;
+        if (total == null || total.compareTo(BigDecimal.ZERO) == 0) return null;
+        return value.divide(total, leveragePrecision, RoundingMode.HALF_EVEN).abs();
+    }
+
 }

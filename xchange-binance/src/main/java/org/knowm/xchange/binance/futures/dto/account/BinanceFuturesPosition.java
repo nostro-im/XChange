@@ -14,8 +14,10 @@ public class BinanceFuturesPosition {
     public final BigDecimal openOrderInitialMargin;
     public final BigDecimal leverage;
     public final boolean isolated;
+    public final BigDecimal isolatedWallet;
     public final BigDecimal entryPrice;
     public final BigDecimal maxNotional;
+    public final BigDecimal notional;
     public final PositionSide positionSide;
     public final BigDecimal positionAmt;
     public final long updateTime;
@@ -29,8 +31,10 @@ public class BinanceFuturesPosition {
             @JsonProperty("openOrderInitialMargin") BigDecimal openOrderInitialMargin,
             @JsonProperty("leverage") BigDecimal leverage,
             @JsonProperty("isolated") boolean isolated,
+            @JsonProperty("isolatedWallet") BigDecimal isolatedWallet,
             @JsonProperty("entryPrice") BigDecimal entryPrice,
             @JsonProperty("maxNotional") BigDecimal maxNotional,
+            @JsonProperty("notional") BigDecimal notional,
             @JsonProperty("positionSide") PositionSide positionSide,
             @JsonProperty("positionAmt") BigDecimal positionAmt,
             @JsonProperty("updateTime") long updateTime) {
@@ -42,8 +46,10 @@ public class BinanceFuturesPosition {
         this.openOrderInitialMargin = openOrderInitialMargin;
         this.leverage = leverage;
         this.isolated = isolated;
+        this.isolatedWallet = isolatedWallet;
         this.entryPrice = entryPrice;
         this.maxNotional = maxNotional;
+        this.notional = notional;
         this.positionSide = positionSide;
         this.positionAmt = positionAmt;
         this.updateTime = updateTime;

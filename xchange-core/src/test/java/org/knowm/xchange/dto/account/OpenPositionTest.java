@@ -22,6 +22,7 @@ public class OpenPositionTest {
             .size(new BigDecimal("0.17"))
             .price(new BigDecimal("54321"))
             .markPrice(null)
+            .currentLeverage(new BigDecimal("1.5"))
             .leverage(new BigDecimal("3"))
             .marginRatio(new BigDecimal("0.004"))
             .build();
