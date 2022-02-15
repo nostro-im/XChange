@@ -43,3 +43,6 @@ GRTAGS
 GPATH
 GSYMS
 *.factorypath
+
+# task
+.task
