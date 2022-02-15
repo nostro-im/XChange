@@ -1,0 +1,10 @@
+#!/usr/local/bin/task --taskfile
+
+# md
+# - > [Taskfile Documentation](https://taskfile.dev)
+# /md
+
+version: '3'
+
+includes:
+  xchange: tasks.yml
