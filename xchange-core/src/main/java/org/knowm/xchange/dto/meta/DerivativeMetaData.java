@@ -3,6 +3,7 @@ package org.knowm.xchange.dto.meta;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -46,15 +47,15 @@ public class DerivativeMetaData implements Serializable {
   private final Date expireTimestamp;
 
   public DerivativeMetaData(
-      @JsonProperty("trading_fee") BigDecimal tradingFee,
-      @JsonProperty("min_amount") BigDecimal minimumAmount,
-      @JsonProperty("max_amount") BigDecimal maximumAmount,
-      @JsonProperty("amount_scale") Integer amountScale,
-      @JsonProperty("price_scale") Integer priceScale,
-      @JsonProperty("fee_tiers") FeeTier[] feeTiers,
-      @JsonProperty("amount_step_size") BigDecimal amountStepSize,
-      @JsonProperty("price_step_size") BigDecimal priceStepSize,
-      @JsonProperty("expire_timestamp") Date expireTimestamp) {
+          @JsonProperty("trading_fee") BigDecimal tradingFee,
+          @JsonProperty("min_amount") BigDecimal minimumAmount,
+          @JsonProperty("max_amount") BigDecimal maximumAmount,
+          @JsonProperty("amount_scale") Integer amountScale,
+          @JsonProperty("price_scale") Integer priceScale,
+          @JsonProperty("fee_tiers") FeeTier[] feeTiers,
+          @JsonProperty("amount_step_size") BigDecimal amountStepSize,
+          @JsonProperty("price_step_size") BigDecimal priceStepSize,
+          @JsonProperty("expire_timestamp") Date expireTimestamp) {
 
     this.tradingFee = tradingFee;
     this.minimumAmount = minimumAmount;
