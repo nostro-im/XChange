@@ -2,23 +2,29 @@ package org.knowm.xchange.derivative;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.knowm.xchange.currency.CurrencyPair;
+import org.knowm.xchange.instrument.Instrument;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
-import org.knowm.xchange.currency.CurrencyPair;
-import org.knowm.xchange.instrument.Instrument;
 
 public class FuturesContract extends Instrument
     implements Derivative, Comparable<FuturesContract>, Serializable {
 
   private static final long serialVersionUID = 6876906648149216819L;
 
-  private static final ThreadLocal<DateFormat> DATE_PARSER =
-      ThreadLocal.withInitial(() -> new SimpleDateFormat("yyMMdd"));
+  private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyMMdd");
   private static final String PERPETUAL = "perpetual";
 
   private static final Comparator<FuturesContract> COMPARATOR =
@@ -29,9 +35,9 @@ public class FuturesContract extends Instrument
   private final CurrencyPair currencyPair;
 
   /** The Date when the FuturesContract expires, when null it is perpetual */
-  private final Date expireDate;
+  private final LocalDate expireDate;
 
-  public FuturesContract(CurrencyPair currencyPair, Date expireDate) {
+  public FuturesContract(CurrencyPair currencyPair, LocalDate expireDate) {
     this.currencyPair = currencyPair;
     this.expireDate = expireDate;
   }
@@ -49,8 +55,8 @@ public class FuturesContract extends Instrument
     this.currencyPair = new CurrencyPair(base, counter);
     if (!PERPETUAL.equalsIgnoreCase(expireDate)) {
       try {
-        this.expireDate = DATE_PARSER.get().parse(expireDate);
-      } catch (ParseException e) {
+        this.expireDate = LocalDate.parse(expireDate, DATE_FORMAT);
+      } catch (DateTimeParseException e) {
         throw new IllegalArgumentException(
             "Could not parse expire date from '"
                 + symbol
@@ -66,7 +72,7 @@ public class FuturesContract extends Instrument
     return currencyPair;
   }
 
-  public Date getExpireDate() {
+  public LocalDate getExpireDate() {
     return expireDate;
   }
 
@@ -96,11 +102,10 @@ public class FuturesContract extends Instrument
   @JsonValue
   @Override
   public String toString() {
-
     return currencyPair.base
         + "/"
         + currencyPair.counter
         + "/"
-        + (expireDate == null ? PERPETUAL : DATE_PARSER.get().format(this.expireDate));
+        + (expireDate == null ? PERPETUAL : DATE_FORMAT.format(expireDate));
   }
 }

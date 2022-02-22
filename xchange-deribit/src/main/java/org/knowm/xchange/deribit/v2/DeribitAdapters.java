@@ -7,6 +7,8 @@ import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,6 +49,7 @@ public class DeribitAdapters {
   private static final String IMPLIED_COUNTER = "USD";
   private static final String PERPETUAL = "PERPETUAL";
   private static final int CURRENCY_SCALE = 8;
+  private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("ddMMMyy");
   private static final ThreadLocal<DateFormat> DATE_PARSER =
       ThreadLocal.withInitial(() -> new SimpleDateFormat("ddMMMyy"));
   public static final BigDecimal MAX_LEVERAGE = new BigDecimal("50");
@@ -291,17 +294,17 @@ public class DeribitAdapters {
   public static FuturesContract adaptFuturesContract(DeribitInstrument instrument) {
     CurrencyPair currencyPair =
         new CurrencyPair(instrument.getBaseCurrency(), instrument.getQuoteCurrency());
-    Date expireDate = null;
+    LocalDate expireDate = null;
 
     if (!PERPETUAL.equalsIgnoreCase(instrument.getSettlementPeriod())) {
-      expireDate = instrument.getExpirationTimestamp();
+      expireDate = instrument.getExpirationLocalDate();
     }
     return new FuturesContract(currencyPair, expireDate);
   }
 
   public static OptionsContract adaptOptionsContract(DeribitInstrument instrument) {
     CurrencyPair currencyPair = new CurrencyPair(instrument.getBaseCurrency(), IMPLIED_COUNTER);
-    Date expireDate = instrument.getExpirationTimestamp();
+    LocalDate expireDate = instrument.getExpirationLocalDate();
 
     String[] parts = instrument.getInstrumentName().split("-");
     if (parts.length != 4) {
@@ -370,7 +373,7 @@ public class DeribitAdapters {
         .amountScale(instrument.getMinTradeAmount().scale())
         .priceScale(instrument.getTickSize().scale())
         .priceStepSize(instrument.getTickSize())
-        .expireTimestamp(instrument.getExpirationTimestamp())    
+        .expireTimestamp(instrument.getExpirationDate())
         .build();
   }
 
@@ -416,8 +419,8 @@ public class DeribitAdapters {
     return DATE_PARSER.get().parse(source);
   }
 
-  private static String formatDate(Date date) {
-    String str = DATE_PARSER.get().format(date).toUpperCase();
+  private static String formatDate(LocalDate date) {
+    String str = DATE_FORMAT.format(date).toUpperCase();
     if (str.charAt(0) == '0') {
       str = str.substring(1);
     }

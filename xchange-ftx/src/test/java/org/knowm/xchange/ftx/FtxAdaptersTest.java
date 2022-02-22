@@ -302,6 +302,13 @@ public class FtxAdaptersTest {
 		assertThat(FtxAdapters.getMarginRatio(marginMaintenance, marginFraction)).isEqualByComparingTo(new BigDecimal("0.0023"));
 	}
 
+	@Test
+	public void testParseFuturesContractDate() {
+		assertThat(FtxAdapters.parseFuturesContractDate("1INCH-0325")).isNotNull();
+		assertThat(FtxAdapters.parseFuturesContractDate("1INCH-PERP")).isNull();
+		assertThat(FtxAdapters.parseFuturesContractDate("MVDA10-PERP")).isNull();
+	}
+
 	private static final BigDecimal FTX_TOTAL_ACCOUNT_VALUE = new BigDecimal("1995.37");
 	private static final BigDecimal FTX_FREE_COLLATERAL = FTX_TOTAL_ACCOUNT_VALUE.multiply(new BigDecimal("0.95"));
 	private static final BigDecimal FTX_POSITION_LEVERAGE = new BigDecimal("2");

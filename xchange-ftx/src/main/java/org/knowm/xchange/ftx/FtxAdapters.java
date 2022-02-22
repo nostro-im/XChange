@@ -21,8 +21,7 @@ import org.knowm.xchange.instrument.Instrument;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.Instant;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -346,7 +345,8 @@ public class FtxAdapters {
       if (futuresContract.isPerpetual()) {
         date = PERPETUAL; 
       } else {
-        ZonedDateTime zdt = futuresContract.getExpireDate().toInstant().atZone(TimeZone.getDefault().toZoneId());
+        Instant instant = futuresContract.getExpireDate().atStartOfDay(ZoneId.systemDefault()).toInstant();
+        ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
         date = String.format("%02d%02d", zdt.getMonthValue(), zdt.getDayOfMonth());
       }
       return futuresContract.getCurrencyPair().base + "-" + date;
@@ -422,7 +422,7 @@ public class FtxAdapters {
         .build();
   }
 
-  private static Date parseFuturesContractDate(String name) {
+  static LocalDate parseFuturesContractDate(String name) {
     try {
       String[] split = name.split("-");
       if (PERPETUAL.equals(split[1])) {
@@ -435,7 +435,7 @@ public class FtxAdapters {
       if (instant.isBefore(Instant.now())) {
         instant = instant.atZone(TimeZone.getDefault().toZoneId()).plus(1, ChronoUnit.YEARS).toInstant();
       }
-      return Date.from(instant);
+      return instant.atZone(ZoneId.systemDefault()).toLocalDate();
     } catch (Exception e) {
       throw new IllegalArgumentException(
               "Could not parse futures contract from name '" + name + "'");

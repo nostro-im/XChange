@@ -2,16 +2,16 @@ package org.knowm.xchange.derivative;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.Objects;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.instrument.Instrument;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Comparator;
+import java.util.Objects;
 
 public class OptionsContract extends Instrument
     implements Derivative, Comparable<OptionsContract>, Serializable {
@@ -35,8 +35,7 @@ public class OptionsContract extends Instrument
     }
   }
 
-  private static final ThreadLocal<DateFormat> DATE_PARSER =
-      ThreadLocal.withInitial(() -> new SimpleDateFormat("yyMMdd"));
+  private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyMMdd");
 
   private static final Comparator<OptionsContract> COMPARATOR =
       Comparator.comparing(OptionsContract::getCurrencyPair)
@@ -46,14 +45,13 @@ public class OptionsContract extends Instrument
 
   private final CurrencyPair currencyPair;
 
-  private final Date expireDate;
+  private final LocalDate expireDate;
 
   private final BigDecimal strike;
 
   private final OptionType type;
 
-  private OptionsContract(
-      CurrencyPair currencyPair, Date expireDate, BigDecimal strike, OptionType type) {
+  private OptionsContract(CurrencyPair currencyPair, LocalDate expireDate, BigDecimal strike, OptionType type) {
     this.currencyPair = currencyPair;
     this.expireDate = expireDate;
     this.strike = strike;
@@ -75,8 +73,8 @@ public class OptionsContract extends Instrument
 
     this.currencyPair = new CurrencyPair(base, counter);
     try {
-      this.expireDate = DATE_PARSER.get().parse(expireDate);
-    } catch (ParseException e) {
+      this.expireDate = LocalDate.parse(expireDate, DATE_FORMAT);
+    } catch (DateTimeParseException e) {
       throw new IllegalArgumentException("Could not parse expire date from '" + symbol + "'");
     }
     this.strike = new BigDecimal(strike);
@@ -88,7 +86,7 @@ public class OptionsContract extends Instrument
     return currencyPair;
   }
 
-  public Date getExpireDate() {
+  public LocalDate getExpireDate() {
     return expireDate;
   }
 
@@ -123,7 +121,7 @@ public class OptionsContract extends Instrument
 
   public static final class Builder {
     private CurrencyPair currencyPair;
-    private Date expireDate;
+    private LocalDate expireDate;
     private BigDecimal strike;
     private OptionType type;
 
@@ -134,7 +132,7 @@ public class OptionsContract extends Instrument
       return this;
     }
 
-    public Builder expireDate(Date val) {
+    public Builder expireDate(LocalDate val) {
       expireDate = val;
       return this;
     }
@@ -161,7 +159,7 @@ public class OptionsContract extends Instrument
         + "/"
         + currencyPair.counter
         + "/"
-        + DATE_PARSER.get().format(this.expireDate)
+        + DATE_FORMAT.format(this.expireDate)
         + "/"
         + strike
         + "/"
