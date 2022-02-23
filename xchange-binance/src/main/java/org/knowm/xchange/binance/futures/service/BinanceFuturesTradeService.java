@@ -227,7 +227,7 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
                         BinanceFuturesAdapter.adaptOrder(
                                 futuresOrderStatus(
                                         currencyPair,
-                                        BinanceAdapters.id(orderId),
+                                        orderId != null ? BinanceAdapters.id(orderId) : null,
                                         userReference)));
             }
             return orders;
