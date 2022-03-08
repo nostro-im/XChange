@@ -9,6 +9,7 @@ import org.knowm.xchange.BaseExchange;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeSharedParameters;
 import org.knowm.xchange.ExchangeSpecification;
+import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.deribit.v2.dto.Kind;
 import org.knowm.xchange.deribit.v2.dto.marketdata.DeribitCurrency;
@@ -26,6 +27,8 @@ import org.knowm.xchange.instrument.Instrument;
 
 public class DeribitExchange extends BaseExchange implements Exchange {
 
+  private static ResilienceRegistries RESILIENCE_REGISTRIES;
+
   @Override
   public void applySpecification(ExchangeSpecification exchangeSpecification) {
 
@@ -34,9 +37,9 @@ public class DeribitExchange extends BaseExchange implements Exchange {
 
   @Override
   protected void initServices() {
-    this.marketDataService = new DeribitMarketDataService(this);
-    this.accountService = new DeribitAccountService(this);
-    this.tradeService = new DeribitTradeService(this);
+    this.marketDataService = new DeribitMarketDataService(this, getResilienceRegistries());
+    this.accountService = new DeribitAccountService(this, getResilienceRegistries());
+    this.tradeService = new DeribitTradeService(this, getResilienceRegistries());
   }
 
   @Override
@@ -48,6 +51,7 @@ public class DeribitExchange extends BaseExchange implements Exchange {
     //    exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("Deribit");
     exchangeSpecification.setExchangeDescription("Deribit is a Bitcoin futures exchange");
+    exchangeSpecification.getResilience().setRateLimiterEnabled(true);
     exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_USE_SANDBOX, false);
     exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_SANDBOX_SSL_URI, "https://test.deribit.com");
     return exchangeSpecification;
@@ -58,6 +62,7 @@ public class DeribitExchange extends BaseExchange implements Exchange {
     ExchangeSpecification exchangeSpecification = getDefaultExchangeSpecification();
     exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_USE_SANDBOX, true);
     exchangeSpecification.setHost("test.deribit.com");
+    exchangeSpecification.getResilience().setRateLimiterEnabled(true);
     //    exchangeSpecification.setPort(80);
     return exchangeSpecification;
   }
@@ -114,5 +119,13 @@ public class DeribitExchange extends BaseExchange implements Exchange {
     instruments.addAll(getExchangeMetaData().getFutures().keySet());
     instruments.addAll(getExchangeMetaData().getOptions().keySet());
     return instruments;
+  }
+
+  @Override
+  public ResilienceRegistries getResilienceRegistries() {
+    if (RESILIENCE_REGISTRIES == null) {
+      RESILIENCE_REGISTRIES = DeribitResilience.createRegistries();
+    }
+    return RESILIENCE_REGISTRIES;
   }
 }

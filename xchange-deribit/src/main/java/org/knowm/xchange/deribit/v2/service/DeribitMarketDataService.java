@@ -1,6 +1,8 @@
 package org.knowm.xchange.deribit.v2.service;
 
 import java.io.IOException;
+
+import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.deribit.v2.DeribitAdapters;
 import org.knowm.xchange.deribit.v2.DeribitExchange;
 import org.knowm.xchange.deribit.v2.dto.DeribitException;
@@ -29,9 +31,9 @@ public class DeribitMarketDataService extends DeribitMarketDataServiceRaw
    *
    * @param exchange
    */
-  public DeribitMarketDataService(DeribitExchange exchange) {
-
-    super(exchange);
+  public DeribitMarketDataService(DeribitExchange exchange,
+                                  ResilienceRegistries resilienceRegistries) {
+    super(exchange, resilienceRegistries);
   }
 
   @Override

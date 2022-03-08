@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+
+import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.deribit.v2.DeribitExchange;
 import org.knowm.xchange.deribit.v2.dto.Kind;
 import org.knowm.xchange.deribit.v2.dto.trade.AdvancedOptions;
@@ -16,10 +18,13 @@ import org.knowm.xchange.deribit.v2.dto.trade.Trigger;
 import org.knowm.xchange.deribit.v2.dto.trade.UserSettlements;
 import org.knowm.xchange.deribit.v2.dto.trade.UserTrades;
 
+import static org.knowm.xchange.deribit.v2.DeribitResilience.PRIVATE_REST_ENDPOINT_RATE_LIMITER;
+
 public class DeribitTradeServiceRaw extends DeribitBaseService {
 
-  public DeribitTradeServiceRaw(DeribitExchange exchange) {
-    super(exchange);
+  public DeribitTradeServiceRaw(DeribitExchange exchange,
+                                ResilienceRegistries resilienceRegistries) {
+    super(exchange, resilienceRegistries);
   }
 
   public OrderPlacement buy(
@@ -38,7 +43,7 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
       AdvancedOptions advanced,
       Boolean mmp)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .buy(
             instrumentName,
             amount,
@@ -55,7 +60,9 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
             advanced,
             mmp,
             deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public OrderPlacement sell(
@@ -74,7 +81,7 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
       AdvancedOptions advanced,
       Boolean mmp)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .sell(
             instrumentName,
             amount,
@@ -91,7 +98,9 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
             advanced,
             mmp,
             deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public OrderPlacement edit(
@@ -105,7 +114,7 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
       AdvancedOptions advanced,
       Boolean mmp)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .edit(
             orderId,
             amount,
@@ -117,29 +126,39 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
             advanced,
             mmp,
             deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public Order cancel(String orderId) throws IOException {
-    return deribitAuthenticated.cancel(orderId, deribitAuth).getResult();
+    return decorateApiCall(() -> deribitAuthenticated.cancel(orderId, deribitAuth).getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public Integer cancelByLabel(String label) throws IOException {
-    return deribitAuthenticated.cancelByLabel(label, deribitAuth).getResult();
+    return decorateApiCall(() -> deribitAuthenticated.cancelByLabel(label, deribitAuth).getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public List<Order> getOpenOrdersByCurrency(String currency, Kind kind, String type)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .getOpenOrdersByCurrency(currency, kind, type, deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public List<Order> getOpenOrdersByInstrument(String instrumentName, String type)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .getOpenOrdersByInstrument(instrumentName, type, deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public UserTrades getUserTradesByCurrency(
@@ -151,10 +170,12 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
       Boolean includeOld,
       String sorting)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .getUserTradesByCurrency(
             currency, kind, startId, endId, count, includeOld, sorting, deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public UserTrades getUserTradesByCurrencyAndTime(
@@ -166,7 +187,7 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
       Boolean includeOld,
       String sorting)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .getUserTradesByCurrencyAndTime(
             currency,
             kind,
@@ -176,7 +197,9 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
             includeOld,
             sorting,
             deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public UserTrades getUserTradesByInstrument(
@@ -187,10 +210,12 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
       Boolean includeOld,
       String sorting)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .getUserTradesByInstrument(
             instrumentName, startSeq, endSeq, count, includeOld, sorting, deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public UserTrades getUserTradesByInstrumentAndTime(
@@ -201,7 +226,7 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
       Boolean includeOld,
       String sorting)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .getUserTradesByInstrumentAndTime(
             instrumentName,
             startTimestamp.getTime(),
@@ -210,15 +235,19 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
             includeOld,
             sorting,
             deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public UserSettlements getUserSettlementsByInstrument(
       String instrumentName, SettlementType type, Integer count, String continuation)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .getSettlementHistoryByInstrument(instrumentName, type, count, continuation, deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public List<Order> getOrderHistoryByCurrency(
@@ -229,10 +258,12 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
       Boolean includeOld,
       Boolean includeUnfilled)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .getOrderHistoryByCurrency(
             currency, kind, count, offset, includeOld, includeUnfilled, deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public List<Order> getOrderHistoryByInstrument(
@@ -242,13 +273,17 @@ public class DeribitTradeServiceRaw extends DeribitBaseService {
       Boolean includeOld,
       Boolean includeUnfilled)
       throws IOException {
-    return deribitAuthenticated
+    return decorateApiCall(() -> deribitAuthenticated
         .getOrderHistoryByInstrument(
             instrumentName, count, offset, includeOld, includeUnfilled, deribitAuth)
-        .getResult();
+        .getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 
   public Order getOrderState(String orderId) throws IOException {
-    return deribitAuthenticated.getOrderState(orderId, deribitAuth).getResult();
+    return decorateApiCall(() -> deribitAuthenticated.getOrderState(orderId, deribitAuth).getResult())
+            .withRateLimiter(rateLimiter(PRIVATE_REST_ENDPOINT_RATE_LIMITER))
+            .call();
   }
 }
