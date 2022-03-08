@@ -117,6 +117,19 @@ public class DerivativeMetaData implements Serializable {
     private BigDecimal priceStepSize;
     private Date expireTimestamp;
 
+    public static Builder from(DerivativeMetaData metaData) {
+      return new Builder()
+              .tradingFee(metaData.tradingFee)
+              .minimumAmount(metaData.minimumAmount)
+              .maximumAmount(metaData.maximumAmount)
+              .amountScale(metaData.amountScale)
+              .priceScale(metaData.priceScale)
+              .feeTiers(metaData.feeTiers)
+              .amountStepSize(metaData.amountStepSize)
+              .priceStepSize(metaData.priceStepSize)
+              .expireTimestamp(metaData.expireTimestamp);
+    }
+
     public Builder() {}
 
     public Builder tradingFee(BigDecimal val) {
