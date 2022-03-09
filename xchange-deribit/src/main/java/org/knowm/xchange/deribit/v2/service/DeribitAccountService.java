@@ -3,6 +3,7 @@ package org.knowm.xchange.deribit.v2.service;
 import java.io.IOException;
 import java.util.*;
 
+import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.deribit.v2.DeribitAdapters;
 import org.knowm.xchange.deribit.v2.DeribitExchange;
@@ -12,8 +13,9 @@ import org.knowm.xchange.service.account.AccountService;
 
 public class DeribitAccountService extends DeribitAccountServiceRaw implements AccountService {
 
-  public DeribitAccountService(DeribitExchange exchange) {
-    super(exchange);
+  public DeribitAccountService(DeribitExchange exchange,
+                               ResilienceRegistries resilienceRegistries) {
+    super(exchange, resilienceRegistries);
   }
 
   @Override
