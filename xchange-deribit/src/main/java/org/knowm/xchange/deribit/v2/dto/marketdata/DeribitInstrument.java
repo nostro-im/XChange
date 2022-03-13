@@ -3,7 +3,11 @@ package org.knowm.xchange.deribit.v2.dto.marketdata;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
+
 import lombok.Data;
 import org.knowm.xchange.deribit.v2.dto.Kind;
 
@@ -77,8 +81,16 @@ public class DeribitInstrument {
   @JsonProperty("taker_commission")
   private BigDecimal takerCommission;
 
-  public Date getExpirationTimestamp() {
+  public LocalDate getExpirationLocalDate() {
+    return Instant.ofEpochMilli(expirationTimestamp).atZone(ZoneId.systemDefault()).toLocalDate();
+  }
+
+  public Date getExpirationDate() {
     return new Date(expirationTimestamp);
+  }
+
+  public long getExpirationTimestamp() {
+    return expirationTimestamp;
   }
 
   public Date getCreationTimestamp() {

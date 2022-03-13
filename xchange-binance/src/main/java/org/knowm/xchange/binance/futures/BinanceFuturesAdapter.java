@@ -5,16 +5,14 @@ import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAccountInform
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAsset;
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesPosition;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrder;
+import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrderType;
 import org.knowm.xchange.binance.futures.dto.trade.PositionSide;
 import org.knowm.xchange.binance.service.BinanceTradeService;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.dto.Order;
-import org.knowm.xchange.dto.account.AccountInfo;
-import org.knowm.xchange.dto.account.Balance;
-import org.knowm.xchange.dto.account.OpenPosition;
-import org.knowm.xchange.dto.account.Wallet;
+import org.knowm.xchange.dto.account.*;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
@@ -26,45 +24,62 @@ import org.knowm.xchange.instrument.Instrument;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class BinanceFuturesAdapter {
+    private static final int marginRatioPrecision = 4; // 4 digits after decimal point
+    private static final int leveragePrecision = 2; // 2 digits after decimal point
+
     public static AccountInfo adaptAccountInfo(BinanceFuturesAccountInformation account) {
         List<Balance> balances =
-                account.assets.stream()
+                Optional.ofNullable(account.assets).orElse(Collections.emptyList()).stream()
                         .map(BinanceFuturesAdapter::adaptBalance)
                         .collect(Collectors.toList());
 
         List<OpenPosition> openPositions =
-                account.positions.stream()
-                        .map(BinanceFuturesAdapter::adaptPosition)
+                Optional.ofNullable(account.positions).orElse(Collections.emptyList()).stream()
+                        .map(position -> BinanceFuturesAdapter.adaptPosition(position, account))
                         .collect(Collectors.toList());
 
-        return new AccountInfo(
-                null,
-                null,
-                Collections.singleton(Wallet.Builder.from(balances).build()),
-                openPositions,
-                account.updateTime != 0 ? new Date(account.updateTime) : null);
+        return AccountInfo.Builder.from(Collections.singleton(Wallet.Builder.from(balances).build()))
+                .openPositions(openPositions)
+                .timestamp(account.updateTime != 0 ? new Date(account.updateTime) : null)
+                .margins(getAccountMargins(account))
+                .build();
     }
 
-    private static BigDecimal getMarginRatio(BinanceFuturesPosition p) {
-        return p.initialMargin == null || p.initialMargin.compareTo(BigDecimal.ZERO) == 0
+    public static Set<AccountMargin> getAccountMargins(BinanceFuturesAccountInformation account) {
+        // binance futures work with USDT currency when comparing value of other assets
+        Currency currency = Currency.USDT;
+        AccountMargin margin = new AccountMargin.Builder()
+                .currency(currency)
+                .marginBalance(account.totalMarginBalance)
+                .unrealizedProfit(account.totalUnrealizedProfit)
+                .freeCollateral(getFreeCollateral(account, currency))
+                .currentLeverage(getCurrentLeverage(account))
+                .build();
+
+        return Collections.singleton(margin);
+    }
+
+    private static BigDecimal getMarginRatio(BinanceFuturesPosition p, BinanceFuturesAccountInformation a) {
+        return a.totalMarginBalance == null || a.totalMarginBalance.compareTo(BigDecimal.ZERO) == 0
                 ? null
-                : p.maintMargin.divide(p.initialMargin, RoundingMode.HALF_DOWN);
+                : p.maintMargin.divide(a.totalMarginBalance, marginRatioPrecision, RoundingMode.HALF_DOWN);
     }
 
-    public static OpenPosition adaptPosition(BinanceFuturesPosition p) {
+    public static OpenPosition adaptPosition(BinanceFuturesPosition p, BinanceFuturesAccountInformation a) {
+        BigDecimal currentLeverage = getCurrentLeverage(p, a);
         return new OpenPosition.Builder()
                 .instrument(adaptInstrument(p.symbol))
                 .type(adaptPositionType(p.positionSide, p.positionAmt))
                 .size(p.positionAmt)
                 .price(p.entryPrice)
+                .currentLeverage(currentLeverage)
                 .leverage(p.leverage)
-                .marginRatio(getMarginRatio(p))
+                .marginRatio(getMarginRatio(p, a))
+                .unrealizedProfit(p.unrealizedProfit)
                 .timestamp(p.updateTime != 0 ? new Date(p.updateTime) : null)
                 .build();
     }
@@ -91,14 +106,26 @@ public class BinanceFuturesAdapter {
         return new FuturesContract(BinanceAdapters.adaptSymbol(symbol), null);
     }
 
+    public static BinanceFuturesOrderType adaptOrderType(org.knowm.xchange.binance.dto.trade.OrderType type) {
+        switch (type) {
+            case LIMIT: return BinanceFuturesOrderType.LIMIT;
+            case MARKET: return BinanceFuturesOrderType.MARKET;
+            case TAKE_PROFIT_LIMIT: return BinanceFuturesOrderType.TAKE_PROFIT;
+            case STOP_LOSS_LIMIT: return BinanceFuturesOrderType.STOP;
+            case STOP_LOSS: return BinanceFuturesOrderType.STOP_MARKET;
+            case TAKE_PROFIT: return BinanceFuturesOrderType.TAKE_PROFIT_MARKET;
+            default:
+                throw new IllegalStateException("Unexpected value: " + type);
+        }
+    }
+
     public static Order adaptOrder(BinanceFuturesOrder order) {
         Order.OrderType type = BinanceAdapters.convert(order.side);
         Instrument instrument = adaptInstrument(order.symbol);
         Order.Builder builder;
-        if (order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.MARKET)) {
+        if (order.type.equals(BinanceFuturesOrderType.MARKET)) {
             builder = new MarketOrder.Builder(type, instrument);
-        } else if (order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.LIMIT)
-                || order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.LIMIT_MAKER)) {
+        } else if (order.type.equals(BinanceFuturesOrderType.LIMIT)) {
             builder = new LimitOrder.Builder(type, instrument).limitPrice(order.price);
         } else {
             builder = new StopOrder.Builder(type, instrument).stopPrice(order.stopPrice);
@@ -165,4 +192,33 @@ public class BinanceFuturesAdapter {
     public static StopOrder replaceInstrument(StopOrder stop, CurrencyPair pair) {
         return StopOrder.Builder.from(stop).instrument(pair).build();
     }
+
+    // available balance!
+    public static BigDecimal getFreeCollateral(BinanceFuturesAccountInformation account, Currency currency) {
+        final String symbol = BinanceAdapters.toSymbol(currency);
+        return Optional.ofNullable(account.assets).orElse(Collections.emptyList()).stream()
+                .filter(asset -> asset.asset.equals(symbol))
+                .findFirst()
+                .map(binanceFuturesAsset -> binanceFuturesAsset.availableBalance)
+                .orElse(null);
+    }
+
+    // for position
+    public static BigDecimal getCurrentLeverage(BinanceFuturesPosition p, BinanceFuturesAccountInformation a) {
+        BigDecimal value = p.notional;
+        BigDecimal total = p.isolated == true ? p.isolatedWallet : a.totalWalletBalance;
+        if (value == null) return null;
+        if (total == null || total.compareTo(BigDecimal.ZERO) == 0) return null;
+        return value.divide(total, leveragePrecision, RoundingMode.HALF_EVEN).abs();
+    }
+
+    // for whole account
+    public static BigDecimal getCurrentLeverage(BinanceFuturesAccountInformation account) {
+        BigDecimal value = account.totalPositionInitialMargin;
+        BigDecimal total = account.totalWalletBalance;
+        if (value == null) return null;
+        if (total == null || total.compareTo(BigDecimal.ZERO) == 0) return null;
+        return value.divide(total, leveragePrecision, RoundingMode.HALF_EVEN).abs();
+    }
+
 }

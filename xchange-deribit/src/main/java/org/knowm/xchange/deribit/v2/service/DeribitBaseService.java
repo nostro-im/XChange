@@ -8,6 +8,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import lombok.Getter;
 import org.knowm.xchange.client.ExchangeRestProxyBuilder;
+import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.deribit.v2.Deribit;
 import org.knowm.xchange.deribit.v2.DeribitAuthenticated;
 import org.knowm.xchange.deribit.v2.DeribitExchange;
@@ -16,13 +17,13 @@ import org.knowm.xchange.deribit.v2.dto.GrantType;
 import org.knowm.xchange.deribit.v2.dto.account.DeribitAuthentication;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.exceptions.ExchangeSecurityException;
-import org.knowm.xchange.service.BaseExchangeService;
 import org.knowm.xchange.service.BaseParamsDigest;
+import org.knowm.xchange.service.BaseResilientExchangeService;
 import org.knowm.xchange.service.BaseService;
 import org.knowm.xchange.utils.DigestUtils;
 import si.mazi.rescu.ParamsDigest;
 
-public class DeribitBaseService extends BaseExchangeService<DeribitExchange>
+public class DeribitBaseService extends BaseResilientExchangeService<DeribitExchange>
     implements BaseService {
 
   protected final Deribit deribit;
@@ -35,9 +36,9 @@ public class DeribitBaseService extends BaseExchangeService<DeribitExchange>
    *
    * @param exchange
    */
-  public DeribitBaseService(DeribitExchange exchange) {
-
-    super(exchange);
+  public DeribitBaseService(DeribitExchange exchange,
+                            ResilienceRegistries resilienceRegistries) {
+    super(exchange, resilienceRegistries);
     deribit =
         ExchangeRestProxyBuilder.forInterface(Deribit.class, exchange.getExchangeSpecification())
             .build();

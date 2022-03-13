@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.deribit.v2.DeribitAdapters;
@@ -27,8 +29,9 @@ import org.knowm.xchange.service.trade.params.orders.*;
 
 public class DeribitTradeService extends DeribitTradeServiceRaw implements TradeService {
 
-  public DeribitTradeService(DeribitExchange exchange) {
-    super(exchange);
+  public DeribitTradeService(DeribitExchange exchange,
+                             ResilienceRegistries resilienceRegistries) {
+    super(exchange, resilienceRegistries);
   }
 
   @Override

@@ -93,7 +93,6 @@
     <module>xchange-livecoin</module>
     <module>xchange-okcoin</module>
     <module>xchange-poloniex</module>
-
     <module>xchange-stream-binance</module>
     <module>xchange-stream-bitfinex</module>
     <module>xchange-stream-bitstamp</module>
@@ -101,8 +100,10 @@
     <module>xchange-stream-coinbasepro</module>
     <module>xchange-stream-core</module>
     <module>xchange-stream-ftx</module>
+    <module>xchange-stream-hitbtc</module>
     <module>xchange-stream-huobi</module>
     <module>xchange-stream-kraken</module>
+    <module>xchange-stream-okcoin</module>
     <module>xchange-stream-poloniex2</module>
     <module>xchange-stream-service-core</module>
     <module>xchange-stream-service-netty</module>
@@ -417,6 +418,8 @@
           <skipTests>${skipIntegrationTests}</skipTests>
           <includes>
             <include>**/*Integration.java</include>
+            <include>**/*IntegrationTest.java</include>
+            <include>**/*Sample.java</include>
           </includes>
         </configuration>
       </plugin>

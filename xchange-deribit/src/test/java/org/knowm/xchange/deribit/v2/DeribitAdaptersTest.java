@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import org.junit.Test;
+import org.knowm.xchange.deribit.v2.dto.account.Position;
 import org.knowm.xchange.deribit.v2.dto.marketdata.DeribitOrderBook;
 import org.knowm.xchange.deribit.v2.dto.marketdata.DeribitTicker;
 import org.knowm.xchange.deribit.v2.dto.marketdata.DeribitTrade;
@@ -49,6 +50,12 @@ public class DeribitAdaptersTest {
     instrument = DeribitAdapters.adaptInstrument("BTC-24SEP21-7000-P");
     assertThat(instrument).isExactlyInstanceOf(OptionsContract.class);
     assertThat(instrument).isEqualTo(new OptionsContract("BTC/USD/210924/7000/P"));
+  }
+
+  @Test
+  public void adaptInstrumentName() {
+    assertThat(DeribitAdapters.adaptInstrumentName(new FuturesContract("BTC/USD/perpetual"))).isEqualTo("BTC-PERPETUAL");
+    assertThat(DeribitAdapters.adaptInstrumentName(new OptionsContract("BTC/USD/210924/7000/P"))).isEqualTo("BTC-24SEP21-7000-P");
   }
 
   @Test
@@ -134,5 +141,10 @@ public class DeribitAdaptersTest {
 
     assertThat(trade.getTimestamp().getTime()).isEqualTo(1550050591859L);
     assertThat(trade.getId()).isEqualTo("48470");
+  }
+
+  @Test
+  public void getMarginRatio_null() {
+    assertThat(DeribitAdapters.getMarginRatio(null, null)).isNull();
   }
 }

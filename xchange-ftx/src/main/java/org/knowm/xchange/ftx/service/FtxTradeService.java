@@ -8,6 +8,7 @@ import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.dto.trade.UserTrades;
 import org.knowm.xchange.ftx.FtxAdapters;
+import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
 import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.service.trade.params.CancelOrderParams;
 import org.knowm.xchange.service.trade.params.DefaultTradeHistoryParamInstrument;
@@ -86,12 +87,10 @@ public class FtxTradeService extends FtxTradeServiceRaw implements TradeService 
   @Override
   public OpenPositions getOpenPositions() throws IOException {
     String subaccount = exchange.getExchangeSpecification().getUserName();
-    BigDecimal leverage =
-        ((FtxAccountService) exchange.getAccountService())
+    FtxAccountDto accountDto = ((FtxAccountService) exchange.getAccountService())
             .getFtxAccountInformation(subaccount)
-            .getResult()
-            .getLeverage();
-    return getOpenPositionsForSubaccount(subaccount, leverage);
+            .getResult();
+    return getOpenPositionsForSubaccount(subaccount, accountDto, false);
   }
 
   @Override

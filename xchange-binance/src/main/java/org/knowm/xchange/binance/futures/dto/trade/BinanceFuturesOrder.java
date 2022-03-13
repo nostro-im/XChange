@@ -3,7 +3,6 @@ package org.knowm.xchange.binance.futures.dto.trade;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.knowm.xchange.binance.dto.trade.OrderSide;
 import org.knowm.xchange.binance.dto.trade.OrderStatus;
-import org.knowm.xchange.binance.dto.trade.OrderType;
 import org.knowm.xchange.binance.dto.trade.TimeInForce;
 
 import java.math.BigDecimal;
@@ -16,7 +15,7 @@ public class BinanceFuturesOrder {
     public final BigDecimal executedQty;
     public final long orderId;
     public final BigDecimal origQty;
-    public final OrderType origType;
+    public final BinanceFuturesOrderType origType;
     public final BigDecimal price;
     public final boolean reduceOnly;
     public final OrderSide side;
@@ -27,7 +26,7 @@ public class BinanceFuturesOrder {
     public final String symbol;
     public final long time;
     public final TimeInForce timeInForce;
-    public final OrderType type;
+    public final BinanceFuturesOrderType type;
     public final BigDecimal activatePrice;
     public final BigDecimal priceRate;
     public final long updateTime;
@@ -41,7 +40,7 @@ public class BinanceFuturesOrder {
             @JsonProperty("executedQty") BigDecimal executedQty,
             @JsonProperty("orderId") long orderId,
             @JsonProperty("origQty") BigDecimal origQty,
-            @JsonProperty("origType") OrderType origType,
+            @JsonProperty("origType") BinanceFuturesOrderType origType,
             @JsonProperty("price") BigDecimal price,
             @JsonProperty("reduceOnly") boolean reduceOnly,
             @JsonProperty("side") OrderSide side,
@@ -52,7 +51,7 @@ public class BinanceFuturesOrder {
             @JsonProperty("symbol") String symbol,
             @JsonProperty("time") long time,
             @JsonProperty("timeInForce") TimeInForce timeInForce,
-            @JsonProperty("type") OrderType type,
+            @JsonProperty("type") BinanceFuturesOrderType type,
             @JsonProperty("activatePrice") BigDecimal activatePrice,
             @JsonProperty("priceRate") BigDecimal priceRate,
             @JsonProperty("updateTime") long updateTime,

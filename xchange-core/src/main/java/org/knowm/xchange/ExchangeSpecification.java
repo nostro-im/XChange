@@ -30,6 +30,7 @@ public class ExchangeSpecification {
   private Integer proxyPort;
   private int httpConnTimeout = 0; // default rescu configuration will be used if value not changed
   private int httpReadTimeout = 0; // default rescu configuration will be used if value not changed
+  private String streamingUri;
   private ResilienceSpecification resilience = new ResilienceSpecification();
   private String metaDataJsonFileOverride = null;
   private boolean shouldLoadRemoteMetaData = true; // default value
@@ -473,6 +474,22 @@ public class ExchangeSpecification {
   public void setShouldLoadRemoteMetaData(boolean shouldLoadRemoteMetaData) {
 
     this.shouldLoadRemoteMetaData = shouldLoadRemoteMetaData;
+  }
+
+  /**
+   * uri used for streaming
+   * @return uri
+   */
+  public String getStreamingUri() {
+    return streamingUri;
+  }
+
+  /**
+   * uri used for streaming
+   * @param streamingUri uri
+   */
+  public void setStreamingUri(String streamingUri) {
+    this.streamingUri = streamingUri;
   }
 
   public static class ResilienceSpecification {

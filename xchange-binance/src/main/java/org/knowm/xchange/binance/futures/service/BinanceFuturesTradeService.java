@@ -241,14 +241,14 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
             OrderType type, Order order, BigDecimal limitPrice, BigDecimal stopPrice, TimeInForce tif)
             throws IOException {
         try {
-            BinanceNewOrder newOrder =
+            BinanceFuturesOrder newOrder =
                     decorateApiCall(
                             () ->
                                     ((BinanceFuturesAuthenticated) binance).newFuturesOrder(
                                             BinanceAdapters.toSymbol(order.getCurrencyPair()),
                                             BinanceAdapters.convert(order.getType()),
                                             null,
-                                            type,
+                                            BinanceFuturesAdapter.adaptOrderType(type),
                                             tif,
                                             order.getOriginalAmount(),
                                             null,

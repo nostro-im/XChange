@@ -7,6 +7,8 @@ import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +27,7 @@ import org.knowm.xchange.deribit.v2.dto.trade.OrderType;
 import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.derivative.OptionsContract;
 import org.knowm.xchange.dto.Order;
+import org.knowm.xchange.dto.account.AccountMargin;
 import org.knowm.xchange.dto.account.Balance;
 import org.knowm.xchange.dto.account.Fee;
 import org.knowm.xchange.dto.account.OpenPosition;
@@ -40,12 +43,18 @@ import org.knowm.xchange.exceptions.CurrencyPairNotValidException;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.instrument.Instrument;
 
+import javax.annotation.Nullable;
+
 public class DeribitAdapters {
   private static final String IMPLIED_COUNTER = "USD";
-  private static final String PERPETUAL = "perpetual";
+  private static final String PERPETUAL = "PERPETUAL";
   private static final int CURRENCY_SCALE = 8;
+  private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("ddMMMyy");
   private static final ThreadLocal<DateFormat> DATE_PARSER =
       ThreadLocal.withInitial(() -> new SimpleDateFormat("ddMMMyy"));
+  public static final BigDecimal MAX_LEVERAGE = new BigDecimal("50");
+  private static final int marginRatioPrecision = 4; // 4 digits after decimal point
+  private static final int leveragePrecision = 2; // 2 digits after decimal point
 
   public static String adaptInstrumentName(Instrument instrument) {
     if (instrument instanceof FuturesContract) {
@@ -229,7 +238,7 @@ public class DeribitAdapters {
         Currency.getInstance(as.getCurrency()), as.getBalance(), as.getAvailableFunds());
   }
 
-  public static OpenPosition adapt(Position p) {
+  public static OpenPosition adapt(Position p, @Nullable AccountSummary a) {
     Instrument instrument = adaptInstrument(p.getInstrumentName());
     BigDecimal size = instrument instanceof FuturesContract ? p.getSizeCurrency() : p.getSize();
     return new OpenPosition.Builder()
@@ -241,16 +250,41 @@ public class DeribitAdapters {
                 : p.getDirection() == Direction.sell ? OpenPosition.Type.SHORT : null)
         .price(p.getAveragePrice())
         .markPrice(p.getMarkPrice())
-        .leverage(p.getLeverage())   
-        .marginRatio(getMarginRatio(p))    
+        .liquidationPrice(p.getEstimatedLiquidationPrice())
+        .currentLeverage(getCurrentLeverage(p, a))
+        .leverage(p.getLeverage())
+        .marginRatio(getMarginRatio(p, a))
+        .unrealizedProfit(p.getFloatingProfitLoss())
         .build();
   }
 
-  private static BigDecimal getMarginRatio(Position p) {
-    return p.getInitialMargin() == null || p.getInitialMargin().compareTo(BigDecimal.ZERO) == 0
+  // for position
+  static BigDecimal getCurrentLeverage(Position p, @Nullable AccountSummary a) {
+    if (a == null) return null;
+    BigDecimal value = p.getSizeCurrency();
+    BigDecimal total = a.getEquity();
+    if (value == null || value.compareTo(BigDecimal.ZERO) == 0) return BigDecimal.ZERO;
+    if (total == null || total.compareTo(BigDecimal.ZERO) == 0) return null;
+    return value.divide(total, leveragePrecision, RoundingMode.HALF_EVEN).abs();
+  }
+
+  // for account
+  static BigDecimal getCurrentLeverage(@Nullable AccountSummary a) {
+    if (a == null) return null;
+    BigDecimal value = a.getDeltaTotal();
+    BigDecimal total = a.getEquity();
+    if (value == null || value.compareTo(BigDecimal.ZERO) == 0) return BigDecimal.ZERO;
+    if (total == null || total.compareTo(BigDecimal.ZERO) == 0) return null;
+    return value.divide(total, leveragePrecision, RoundingMode.HALF_EVEN).abs();
+
+  }
+
+  static BigDecimal getMarginRatio(Position p, @Nullable AccountSummary a) {
+    if (a == null) return null;
+    BigDecimal marginBalance = a.getMarginBalance();
+    return marginBalance == null || marginBalance.compareTo(BigDecimal.ZERO) == 0
         ? null
-        : p.getMaintenanceMargin()
-            .divide(p.getInitialMargin(), RoundingMode.HALF_DOWN);
+        : p.getMaintenanceMargin().divide(marginBalance, marginRatioPrecision, RoundingMode.HALF_DOWN);
   }
 
   public static CurrencyMetaData adaptMeta(DeribitCurrency currency) {
@@ -260,17 +294,17 @@ public class DeribitAdapters {
   public static FuturesContract adaptFuturesContract(DeribitInstrument instrument) {
     CurrencyPair currencyPair =
         new CurrencyPair(instrument.getBaseCurrency(), instrument.getQuoteCurrency());
-    Date expireDate = null;
+    LocalDate expireDate = null;
 
     if (!PERPETUAL.equalsIgnoreCase(instrument.getSettlementPeriod())) {
-      expireDate = instrument.getExpirationTimestamp();
+      expireDate = instrument.getExpirationLocalDate();
     }
     return new FuturesContract(currencyPair, expireDate);
   }
 
   public static OptionsContract adaptOptionsContract(DeribitInstrument instrument) {
     CurrencyPair currencyPair = new CurrencyPair(instrument.getBaseCurrency(), IMPLIED_COUNTER);
-    Date expireDate = instrument.getExpirationTimestamp();
+    LocalDate expireDate = instrument.getExpirationLocalDate();
 
     String[] parts = instrument.getInstrumentName().split("-");
     if (parts.length != 4) {
@@ -339,6 +373,7 @@ public class DeribitAdapters {
         .amountScale(instrument.getMinTradeAmount().scale())
         .priceScale(instrument.getTickSize().scale())
         .priceStepSize(instrument.getTickSize())
+        .expireTimestamp(instrument.getExpirationDate())
         .build();
   }
 
@@ -349,6 +384,17 @@ public class DeribitAdapters {
             .map(DeribitAdapters::adaptUserTrade)
             .collect(Collectors.toList()),
         Trades.TradeSortType.SortByTimestamp);
+  }
+
+  public static AccountMargin adapt(Currency c, AccountSummary accountSummary) {
+    return new AccountMargin.Builder()
+            .currency(c)
+            .marginBalance(accountSummary.getMarginBalance())
+            .unrealizedProfit(accountSummary.getSessionUpl())
+            .freeCollateral(accountSummary.getAvailableFunds())
+            .currentLeverage(getCurrentLeverage(accountSummary))
+            .leverage(MAX_LEVERAGE)
+            .build();
   }
 
   private static UserTrade adaptUserTrade(org.knowm.xchange.deribit.v2.dto.trade.Trade trade) {
@@ -373,8 +419,8 @@ public class DeribitAdapters {
     return DATE_PARSER.get().parse(source);
   }
 
-  private static String formatDate(Date date) {
-    String str = DATE_PARSER.get().format(date).toUpperCase();
+  private static String formatDate(LocalDate date) {
+    String str = DATE_FORMAT.format(date).toUpperCase();
     if (str.charAt(0) == '0') {
       str = str.substring(1);
     }

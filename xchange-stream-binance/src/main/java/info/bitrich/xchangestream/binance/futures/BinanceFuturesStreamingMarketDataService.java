@@ -77,7 +77,7 @@ public class BinanceFuturesStreamingMarketDataService extends BinanceStreamingMa
     }
 
     protected Flowable<OrderBook> createOrderBookFlowable(CurrencyPair currencyPair) {
-        // 1. Open a stream to wss://stream.binance.com:9443/ws/bnbbtc@depth
+        // 1. Open a stream to ${STREAMING_URI}/ws/bnbbtc@depth
         // 2. Buffer the events you receive from the stream.
         OrderbookSubscription subscription =
                 new OrderbookSubscription(orderBookRawUpdatesSubscriptions.get(currencyPair));

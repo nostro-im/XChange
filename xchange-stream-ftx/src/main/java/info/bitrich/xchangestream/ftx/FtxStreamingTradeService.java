@@ -21,8 +21,7 @@ public class FtxStreamingTradeService implements StreamingTradeService {
     @Override
     public Flowable<UserTrade> getUserTrades(Instrument instrument, Object... args) {
         String market = FtxAdapters.adaptInstrumentToFtxMarket(instrument);
-        return fills
-                .filter(jsonNode -> jsonNode.hasNonNull("data"))
+        return getRawFills()
                 .filter(jsonNode -> jsonNode.get("data").get("market").asText().equals(market))
                 .map(FtxStreamingAdapters::adaptUserTrade);
     }
@@ -30,9 +29,16 @@ public class FtxStreamingTradeService implements StreamingTradeService {
     @Override
     public Flowable<Order> getOrderChanges(Instrument instrument, Object... args) {
         String market = FtxAdapters.adaptInstrumentToFtxMarket(instrument);
-        return orders
-                .filter(jsonNode -> jsonNode.hasNonNull("data"))
+        return getRawOrders()
                 .filter(jsonNode -> jsonNode.get("data").get("market").asText().equals(market))
                 .map(FtxStreamingAdapters::adaptOrders);
+    }
+
+    public Flowable<JsonNode> getRawFills() {
+        return fills.filter(jsonNode -> jsonNode.hasNonNull("data"));
+    }
+    
+    public Flowable<JsonNode> getRawOrders() {
+        return orders.filter(jsonNode -> jsonNode.hasNonNull("data"));
     }
 }

@@ -10,11 +10,9 @@ import org.knowm.xchange.dto.trade.UserTrades;
 import org.knowm.xchange.ftx.FtxAdapters;
 import org.knowm.xchange.ftx.FtxException;
 import org.knowm.xchange.ftx.dto.FtxResponse;
+import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
 import org.knowm.xchange.ftx.dto.account.FtxPositionDto;
-import org.knowm.xchange.ftx.dto.trade.CancelAllFtxOrdersParams;
-import org.knowm.xchange.ftx.dto.trade.FtxModifyOrderRequestPayload;
-import org.knowm.xchange.ftx.dto.trade.FtxOrderDto;
-import org.knowm.xchange.ftx.dto.trade.FtxOrderRequestPayload;
+import org.knowm.xchange.ftx.dto.trade.*;
 import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
@@ -155,7 +153,7 @@ public class FtxTradeServiceRaw extends FtxBaseService {
       throws IOException {
     List<Order> orderList = new ArrayList<>();
     for (String orderId : orderIds) {
-      Order order = FtxAdapters.adaptLimitOrder(getFtxOrderStatus(subaccount, orderId).getResult());
+      Order order = FtxAdapters.adaptOrder(getFtxOrderStatus(subaccount, orderId).getResult());
       orderList.add(order);
     }
     return orderList;
@@ -187,11 +185,11 @@ public class FtxTradeServiceRaw extends FtxBaseService {
           "TradeHistoryParams must implement TradeHistoryParamCurrencyPair or TradeHistoryParamInstrument interface.");
     }
     return FtxAdapters.adaptUserTrades(
-        getFtxOrderHistory(subaccount, FtxAdapters.adaptInstrumentToFtxMarket(instrument))
+        getFtxOrderHistory(subaccount, FtxAdapters.adaptInstrumentToFtxMarket(instrument), null, null)
             .getResult());
   }
 
-  public FtxResponse<List<FtxOrderDto>> getFtxOrderHistory(String subaccount, String market)
+  public FtxResponse<List<FtxOrderDto>> getFtxOrderHistory(String subaccount, String market, Integer startTime, Integer endTime)
       throws FtxException, IOException {
     try {
       return ftx.orderHistory(
@@ -199,7 +197,26 @@ public class FtxTradeServiceRaw extends FtxBaseService {
           exchange.getNonceFactory().createValue(),
           signatureCreator,
           subaccount,
-          market);
+          market,
+          startTime,
+          endTime);
+    } catch (FtxException e) {
+      throw new FtxException(e.getMessage());
+    }
+  }
+
+  public FtxResponse<List<FtxUserTradeDto>> getFtxTradeHistory(String subaccount, String market, Integer startTime, Integer endTime)
+          throws FtxException, IOException {
+    try {
+      return ftx.fills(
+              exchange.getExchangeSpecification().getApiKey(),
+              exchange.getNonceFactory().createValue(),
+              signatureCreator,
+              subaccount,
+              market,
+              startTime,
+              endTime,
+              "asc");
     } catch (FtxException e) {
       throw new FtxException(e.getMessage());
     }
@@ -226,15 +243,7 @@ public class FtxTradeServiceRaw extends FtxBaseService {
 
   public FtxResponse<List<FtxOrderDto>> getFtxAllOpenOrdersForSubaccount(String subaccount)
       throws FtxException, IOException {
-    try {
-      return ftx.openOrdersWithoutMarket(
-          exchange.getExchangeSpecification().getApiKey(),
-          exchange.getNonceFactory().createValue(),
-          signatureCreator,
-          subaccount);
-    } catch (FtxException e) {
-      throw new FtxException(e.getMessage());
-    }
+    return getFtxOpenOrders(subaccount, null);
   }
 
   public FtxResponse<FtxOrderDto> getFtxOrderStatus(String subaccount, String orderId)
@@ -251,18 +260,34 @@ public class FtxTradeServiceRaw extends FtxBaseService {
     }
   }
 
-  public OpenPositions getOpenPositionsForSubaccount(String subaccount, BigDecimal leverage) throws IOException {
-    return FtxAdapters.adaptOpenPositions(getFtxPositions(subaccount).getResult(), leverage);
+  public FtxResponse<FtxOrderDto> getFtxOrderStatusByClientId(String subaccount, String clientId)
+          throws FtxException, IOException {
+    try {
+      return ftx.getOrderStatusByClientId(
+              exchange.getExchangeSpecification().getApiKey(),
+              exchange.getNonceFactory().createValue(),
+              signatureCreator,
+              subaccount,
+              clientId);
+    } catch (FtxException e) {
+      throw new FtxException(e.getMessage());
+    }
   }
 
-  public FtxResponse<List<FtxPositionDto>> getFtxPositions(String subaccount)
+  public OpenPositions getOpenPositionsForSubaccount(String subaccount, FtxAccountDto accountDto, boolean showAvgPrice) throws IOException {
+    List<FtxPositionDto> positionDtos = getFtxPositions(subaccount, showAvgPrice).getResult();
+    return FtxAdapters.adaptOpenPositions(accountDto, positionDtos);
+  }
+
+  public FtxResponse<List<FtxPositionDto>> getFtxPositions(String subaccount, boolean showAvgPrice)
       throws FtxException, IOException {
     try {
       return ftx.getFtxPositions(
           exchange.getExchangeSpecification().getApiKey(),
           exchange.getNonceFactory().createValue(),
           signatureCreator,
-          subaccount);
+          subaccount,
+          showAvgPrice);
     } catch (FtxException e) {
       throw new FtxException(e.getMessage());
     }

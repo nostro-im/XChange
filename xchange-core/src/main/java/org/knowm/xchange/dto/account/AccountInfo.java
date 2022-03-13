@@ -1,5 +1,7 @@
 package org.knowm.xchange.dto.account;
 
+import org.knowm.xchange.currency.Currency;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
@@ -34,6 +36,9 @@ public final class AccountInfo implements Serializable {
    * the exchange.
    */
   @Nullable private final Date timestamp;
+
+  /** margin info per currency **/
+  private final Map<Currency, AccountMargin> margins;
 
   /** @see #AccountInfo(String, BigDecimal, Collection) */
   public AccountInfo(Wallet... wallets) {
@@ -91,7 +96,7 @@ public final class AccountInfo implements Serializable {
   public AccountInfo(
       String username, BigDecimal tradingFee, Collection<Wallet> wallets, Date timestamp) {
 
-    this(username, tradingFee, wallets, Collections.emptySet(), timestamp);
+    this(username, tradingFee, wallets, Collections.emptySet(), Collections.emptySet(), timestamp);
   }
 
   /**
@@ -101,21 +106,23 @@ public final class AccountInfo implements Serializable {
    * @param tradingFee the trading fee.
    * @param wallets the user's wallets
    * @param openPositions the users's open positions
+   * @param margins account margin info collection
    * @param timestamp the timestamp for the account snapshot.
    */
   public AccountInfo(
-      String username,
-      BigDecimal tradingFee,
-      Collection<Wallet> wallets,
-      Collection<OpenPosition> openPositions,
-      Date timestamp) {
+          String username,
+          BigDecimal tradingFee,
+          Collection<Wallet> wallets,
+          Collection<OpenPosition> openPositions,
+          Collection<AccountMargin> margins,
+          Date timestamp) {
 
     this.username = username;
     this.tradingFee = tradingFee;
     this.timestamp = timestamp;
     this.openPositions = openPositions;
 
-    if (wallets.size() == 0) {
+    if (wallets == null || wallets.size() == 0) {
       this.wallets = Collections.emptyMap();
     } else if (wallets.size() == 1) {
       Wallet wallet = wallets.iterator().next();
@@ -127,6 +134,18 @@ public final class AccountInfo implements Serializable {
           throw new IllegalArgumentException("duplicate wallets passed to AccountInfo");
         }
         this.wallets.put(wallet.getId(), wallet);
+      }
+    }
+
+    if (margins == null || margins.size() == 0) {
+      this.margins = Collections.emptyMap();
+    } else if (margins.size() == 1) {
+      AccountMargin margin = margins.iterator().next();
+      this.margins = Collections.singletonMap(margin.getCurrency(), margin);
+    } else {
+      this.margins = new HashMap<>();
+      for (AccountMargin margin : margins) {
+        this.margins.put(margin.getCurrency(), margin);
       }
     }
   }
@@ -214,6 +233,18 @@ public final class AccountInfo implements Serializable {
     return openPositions;
   }
 
+  public Optional<AccountMargin> getAccountMargin(Currency currency) {
+    return Optional.ofNullable(margins.get(currency));
+  }
+
+  public Optional<AccountMargin> getAccountMargin() {
+    return margins.values().stream().findFirst();
+  }
+
+  public Map<Currency, AccountMargin> getAccountMargins() {
+    return margins;
+  }
+
   @Override
   public String toString() {
 
@@ -225,6 +256,57 @@ public final class AccountInfo implements Serializable {
         + wallets
         + ", openPositions="
         + openPositions
+        + ", margins="
+        + margins
         + "]";
+  }
+
+  public static final class Builder {
+    private String username;
+    private BigDecimal tradingFee;
+    private Collection<Wallet> wallets;
+    private Collection<OpenPosition> openPositions;
+    private Date timestamp;
+    private Collection<AccountMargin> margins;
+
+    private Builder() {}
+
+    public static Builder from(Collection<Wallet> wallets) {
+      return new Builder().wallets(wallets);
+    }
+
+    public Builder username(String username) {
+      this.username = username;
+      return this;
+    }
+
+    public Builder tradingFee(BigDecimal tradingFee) {
+      this.tradingFee = tradingFee;
+      return this;
+    }
+
+    public Builder wallets(Collection<Wallet> wallets) {
+      this.wallets = wallets;
+      return this;
+    }
+
+    public Builder openPositions(Collection<OpenPosition> openPositions) {
+      this.openPositions = openPositions;
+      return this;
+    }
+
+    public Builder timestamp(Date timestamp) {
+      this.timestamp = timestamp;
+      return this;
+    }
+
+    public Builder margins(Collection<AccountMargin> margins) {
+      this.margins = margins;
+      return this;
+    }
+
+    public AccountInfo build() {
+      return new AccountInfo(username, tradingFee, wallets, openPositions, margins, timestamp);
+    }
   }
 }

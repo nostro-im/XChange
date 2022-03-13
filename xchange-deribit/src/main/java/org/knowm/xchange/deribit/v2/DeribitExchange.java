@@ -2,11 +2,14 @@ package org.knowm.xchange.deribit.v2;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.knowm.xchange.BaseExchange;
 import org.knowm.xchange.Exchange;
+import org.knowm.xchange.ExchangeSharedParameters;
 import org.knowm.xchange.ExchangeSpecification;
+import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.deribit.v2.dto.Kind;
 import org.knowm.xchange.deribit.v2.dto.marketdata.DeribitCurrency;
@@ -19,9 +22,12 @@ import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.derivative.OptionsContract;
 import org.knowm.xchange.dto.meta.CurrencyMetaData;
 import org.knowm.xchange.dto.meta.DerivativeMetaData;
+import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.instrument.Instrument;
 
 public class DeribitExchange extends BaseExchange implements Exchange {
+
+  private static ResilienceRegistries RESILIENCE_REGISTRIES;
 
   @Override
   public void applySpecification(ExchangeSpecification exchangeSpecification) {
@@ -31,9 +37,9 @@ public class DeribitExchange extends BaseExchange implements Exchange {
 
   @Override
   protected void initServices() {
-    this.marketDataService = new DeribitMarketDataService(this);
-    this.accountService = new DeribitAccountService(this);
-    this.tradeService = new DeribitTradeService(this);
+    this.marketDataService = new DeribitMarketDataService(this, getResilienceRegistries());
+    this.accountService = new DeribitAccountService(this, getResilienceRegistries());
+    this.tradeService = new DeribitTradeService(this, getResilienceRegistries());
   }
 
   @Override
@@ -45,14 +51,18 @@ public class DeribitExchange extends BaseExchange implements Exchange {
     //    exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("Deribit");
     exchangeSpecification.setExchangeDescription("Deribit is a Bitcoin futures exchange");
+    exchangeSpecification.getResilience().setRateLimiterEnabled(true);
+    exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_USE_SANDBOX, false);
+    exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_SANDBOX_SSL_URI, "https://test.deribit.com");
     return exchangeSpecification;
   }
 
   public ExchangeSpecification getSandboxExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass());
-    exchangeSpecification.setSslUri("https://test.deribit.com/");
+    ExchangeSpecification exchangeSpecification = getDefaultExchangeSpecification();
+    exchangeSpecification.setExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_USE_SANDBOX, true);
     exchangeSpecification.setHost("test.deribit.com");
+    exchangeSpecification.getResilience().setRateLimiterEnabled(true);
     //    exchangeSpecification.setPort(80);
     return exchangeSpecification;
   }
@@ -64,16 +74,12 @@ public class DeribitExchange extends BaseExchange implements Exchange {
 
   public void updateExchangeMetaData() throws IOException {
 
-    Map<Currency, CurrencyMetaData> currencies = exchangeMetaData.getCurrencies();
-    Map<FuturesContract, DerivativeMetaData> futures = exchangeMetaData.getFutures();
-    Map<OptionsContract, DerivativeMetaData> options = exchangeMetaData.getOptions();
+    Map<Currency, CurrencyMetaData> currencies = new HashMap<>();
+    Map<FuturesContract, DerivativeMetaData> futures = new HashMap<>();
+    Map<OptionsContract, DerivativeMetaData> options = new HashMap<>();
 
     List<DeribitCurrency> activeDeribitCurrencies =
         ((DeribitMarketDataServiceRaw) marketDataService).getDeribitCurrencies();
-
-    currencies.clear();
-    futures.clear();
-    options.clear();
 
     for (DeribitCurrency deribitCurrency : activeDeribitCurrencies) {
       currencies.put(
@@ -95,6 +101,16 @@ public class DeribitExchange extends BaseExchange implements Exchange {
         }
       }
     }
+    
+    exchangeMetaData = new ExchangeMetaData(
+            exchangeMetaData.getCurrencyPairs(),
+            currencies,
+            futures,
+            options,
+            exchangeMetaData.getPublicRateLimits(),
+            exchangeMetaData.getPrivateRateLimits(),
+            exchangeMetaData.isShareRateLimits()
+    );
   }
 
   @Override
@@ -103,5 +119,13 @@ public class DeribitExchange extends BaseExchange implements Exchange {
     instruments.addAll(getExchangeMetaData().getFutures().keySet());
     instruments.addAll(getExchangeMetaData().getOptions().keySet());
     return instruments;
+  }
+
+  @Override
+  public ResilienceRegistries getResilienceRegistries() {
+    if (RESILIENCE_REGISTRIES == null) {
+      RESILIENCE_REGISTRIES = DeribitResilience.createRegistries();
+    }
+    return RESILIENCE_REGISTRIES;
   }
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +56,9 @@ public abstract class BaseExchange implements Exchange {
       if (exchangeSpecification.getSslUri() == null) {
         exchangeSpecification.setSslUri(defaultSpecification.getSslUri());
       }
+      if (exchangeSpecification.getStreamingUri() == null) {
+        exchangeSpecification.setStreamingUri(defaultSpecification.getStreamingUri());
+      }
       if (exchangeSpecification.getHost() == null) {
         exchangeSpecification.setHost(defaultSpecification.getHost());
       }
@@ -76,6 +81,9 @@ public abstract class BaseExchange implements Exchange {
 
       this.exchangeSpecification = exchangeSpecification;
     }
+
+    // immediately after specification is loaded - apply overrides
+    applyHostOverrides(this.exchangeSpecification);
 
     if (this.exchangeSpecification.getMetaDataJsonFileOverride()
         != null) { // load the metadata from the file system
@@ -203,5 +211,29 @@ public abstract class BaseExchange implements Exchange {
             ? exchangeSpecification.getExchangeName()
             : getClass().getName();
     return name + "#" + hashCode();
+  }
+
+  /** Adjust host parameters depending on exchange specific parameters */
+  private void applyHostOverrides(ExchangeSpecification exchangeSpecification) {
+    if (exchangeSpecification.getExchangeSpecificParameters() != null) {
+      Object useSandbox = exchangeSpecification.getExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_USE_SANDBOX);
+      if (useSandbox != null && useSandbox.equals(true)) {
+        Object param = exchangeSpecification.getExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_SANDBOX_SSL_URI);
+        if (param instanceof String) {
+          String paramStr = (String) param;
+          exchangeSpecification.setSslUri(paramStr);
+          try {
+            URI uri = new URI(paramStr);
+            exchangeSpecification.setHost(uri.getHost());
+          } catch (URISyntaxException e) {
+            logger.error("failed to build uri from param: {}", paramStr, e);
+          }
+        }
+        Object streamingUri = exchangeSpecification.getExchangeSpecificParametersItem(ExchangeSharedParameters.PARAM_SANDBOX_STREAMING_URI);
+        if (streamingUri instanceof String) {
+          exchangeSpecification.setStreamingUri((String) streamingUri);
+        }
+      }
+    }
   }
 }

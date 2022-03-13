@@ -24,12 +24,12 @@ public class FtxAccountService extends FtxAccountServiceRaw implements AccountSe
 
   public AccountInfo getSubaccountInfo(String subaccount) throws IOException {
     FtxResponse<FtxAccountDto> ftxAccountInformation = getFtxAccountInformation(subaccount);
-    BigDecimal leverage = ftxAccountInformation.getResult().getLeverage();
+    FtxAccountDto accountDto = ftxAccountInformation.getResult();
     return FtxAdapters.adaptAccountInfo(
         ftxAccountInformation,
         getFtxWalletBalances(subaccount),
         ((FtxTradeService) exchange.getTradeService())
-            .getOpenPositionsForSubaccount(subaccount, leverage)
+            .getOpenPositionsForSubaccount(subaccount, accountDto, true)
             .getOpenPositions());
   }
 

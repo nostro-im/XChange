@@ -6,9 +6,11 @@ import org.junit.Rule;
 import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
+
 public class AbstractResilienceTest {
 
-  @Rule public WireMockRule wireMockRule = new WireMockRule();
+  @Rule public WireMockRule wireMockRule = new WireMockRule(options().port(8888).httpsPort(8889));
 
   public static int READ_TIMEOUT_MS = 1000;
 
