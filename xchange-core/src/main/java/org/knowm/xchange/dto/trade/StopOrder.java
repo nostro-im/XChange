@@ -440,6 +440,12 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
 
       return (Builder) super.timestamp(timestamp);
     }
+    
+    @Override
+    public Builder completedTimestamp(Date timestamp) {
+
+    	return (Builder) super.completedTimestamp(timestamp);
+    }
 
     @Override
     public Builder orderStatus(OrderStatus status) {

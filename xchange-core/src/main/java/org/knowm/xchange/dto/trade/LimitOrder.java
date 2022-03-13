@@ -309,6 +309,12 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
 
       return (Builder) super.timestamp(timestamp);
     }
+    
+    @Override
+    public Builder completedTimestamp(Date timestamp) {
+
+    	return (Builder) super.completedTimestamp(timestamp);
+    }
 
     @Override
     public Builder orderStatus(Order.OrderStatus status) {
