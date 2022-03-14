@@ -238,8 +238,8 @@ public class CurrencyPairMetaData implements Serializable {
     private FeeTier[] feeTiers;
     private BigDecimal minimumAmount;
     private BigDecimal maximumAmount;
-    private BigDecimal counterMinimumAmount;
     private BigDecimal counterMaximumAmount;
+    private BigDecimal counterMinimumAmount;
     private Integer baseScale;
     private Integer priceScale;
     private Integer volumeScale;
