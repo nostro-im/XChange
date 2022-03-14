@@ -143,7 +143,7 @@ public class FtxAdapters {
                 CurrencyPairMetaData currencyPairMetaData =
                     new CurrencyPairMetaData.Builder()
                         .amountStepSize(ftxMarketDto.getPriceIncrement())
-                        .minimumAmount(ftxMarketDto.getSizeIncrement())
+                        .minimumAmount(ftxMarketDto.getMinProvideSize())
                         .priceScale(ftxMarketDto.getPriceIncrement().scale())
                         .baseScale(ftxMarketDto.getSizeIncrement().scale())
                         .tradingFee(new BigDecimal("0.0007")) // Trading fee at Ftx is 0.07 % for a 1 Tier (max value)
