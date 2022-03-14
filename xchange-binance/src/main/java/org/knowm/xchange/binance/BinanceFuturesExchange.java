@@ -109,21 +109,19 @@ public class BinanceFuturesExchange extends BinanceExchange {
               counterMinQty = new BigDecimal(filter.getNotional()).stripTrailingZeros();
             }
           }
-          
-          futures.put(
-                  new FuturesContract(currentCurrencyPair, null),
-                  new DerivativeMetaData(
-                          new BigDecimal("0.001"), // Trading fee at Binance is 0.1 %
-                          minQty, // Min amount
-                          maxQty, // Max amount
-                          amountPrecision, // base precision
-                          pairPrecision, // counter precision
-                          null,
-                          stepSize,
-                          null,
-                          null
-                          
-                  ));
+
+          DerivativeMetaData metaData = new DerivativeMetaData.Builder()
+                  .tradingFee(new BigDecimal("0.001")) // Trading fee at Binance is 0.1 %
+                  .minimumAmount(minQty) // Min amount
+                  .maximumAmount(maxQty) // Max amount
+                  .counterMinimumAmount(counterMinQty)
+                  .counterMaximumAmount(counterMaxQty)
+                  .amountScale(amountPrecision) // base precision
+                  .priceScale(pairPrecision) // counter precision
+                  .amountStepSize(stepSize)
+                  .build();
+          FuturesContract instrument = new FuturesContract(currentCurrencyPair, null);
+          futures.put(instrument, metaData);
 
           Currency baseCurrency = currentCurrencyPair.base;
           CurrencyMetaData baseCurrencyMetaData =
