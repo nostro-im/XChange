@@ -101,10 +101,6 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
       }
 
       LOG.info("Connecting to authenticated web socket");
-      BinanceAuthenticated binance =
-          ExchangeRestProxyBuilder.forInterface(
-                  BinanceAuthenticated.class, getExchangeSpecification())
-              .build();
       userDataChannel =
           new BinanceUserDataChannel(binance, exchangeSpecification.getApiKey(), onApiCall);
       try {
