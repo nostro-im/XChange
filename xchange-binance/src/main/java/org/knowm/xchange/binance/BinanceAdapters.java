@@ -247,7 +247,7 @@ public class BinanceAdapters {
                             BigDecimal.ZERO,
                             BigDecimal.ZERO))
                     .collect(Collectors.toList());
-    return new AccountInfo(Wallet.Builder.from(balances)
+    return new AccountInfo(new Date(), Wallet.Builder.from(balances)
             .features(EnumSet.of(Wallet.WalletFeature.MARGIN_TRADING))
             .currentLeverage(marginAccount.marginLevel)
             .build());
