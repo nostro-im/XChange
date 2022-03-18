@@ -26,12 +26,12 @@ public class DerivativeMetaData implements Serializable {
   private final BigDecimal maximumAmount;
 
   /** Minimum trade amount */
-  @JsonProperty("counter_min_amount")
-  private final BigDecimal counterMinimumAmount;
+  @JsonProperty("min_price")
+  private final BigDecimal minimumPrice;
 
   /** Maximum trade amount */
-  @JsonProperty("counter_max_amount")
-  private final BigDecimal counterMaximumAmount;
+  @JsonProperty("max_price")
+  private final BigDecimal maximumPrice;
 
   /** Decimal places for amount */
   @JsonProperty("amount_scale")
@@ -57,8 +57,8 @@ public class DerivativeMetaData implements Serializable {
       @JsonProperty("trading_fee") BigDecimal tradingFee,
       @JsonProperty("min_amount") BigDecimal minimumAmount,
       @JsonProperty("max_amount") BigDecimal maximumAmount,
-      @JsonProperty("counter_min_amount") BigDecimal counterMinimumAmount,
-      @JsonProperty("counter_max_amount") BigDecimal counterMaximumAmount,
+      @JsonProperty("min_price") BigDecimal minimumPrice,
+      @JsonProperty("max_price") BigDecimal maximumPrice,
       @JsonProperty("amount_scale") Integer amountScale,
       @JsonProperty("price_scale") Integer priceScale,
       @JsonProperty("fee_tiers") FeeTier[] feeTiers,
@@ -69,8 +69,8 @@ public class DerivativeMetaData implements Serializable {
     this.tradingFee = tradingFee;
     this.minimumAmount = minimumAmount;
     this.maximumAmount = maximumAmount;
-    this.counterMinimumAmount = counterMinimumAmount;
-    this.counterMaximumAmount = counterMaximumAmount;
+    this.minimumPrice = minimumPrice;
+    this.maximumPrice = maximumPrice;
     this.amountScale = amountScale;
     this.priceScale = priceScale;
     if (feeTiers != null) {
@@ -118,12 +118,12 @@ public class DerivativeMetaData implements Serializable {
     return expireTimestamp;
   }
 
-  public BigDecimal getCounterMinimumAmount() {
-    return counterMinimumAmount;
+  public BigDecimal getMinimumPrice() {
+    return minimumPrice;
   }
 
-  public BigDecimal getCounterMaximumAmount() {
-    return counterMaximumAmount;
+  public BigDecimal getMaximumPrice() {
+    return maximumPrice;
   }
 
   public static final class Builder {
@@ -131,8 +131,8 @@ public class DerivativeMetaData implements Serializable {
     private FeeTier[] feeTiers;
     private BigDecimal minimumAmount;
     private BigDecimal maximumAmount;
-    private BigDecimal counterMaximumAmount;
-    private BigDecimal counterMinimumAmount;
+    private BigDecimal minimumPrice;
+    private BigDecimal maximumPrice;
     private Integer amountScale;
     private Integer priceScale;
     private BigDecimal amountStepSize;
@@ -144,6 +144,8 @@ public class DerivativeMetaData implements Serializable {
               .tradingFee(metaData.tradingFee)
               .minimumAmount(metaData.minimumAmount)
               .maximumAmount(metaData.maximumAmount)
+              .minimumPrice(metaData.minimumPrice)
+              .maximumPrice(metaData.maximumPrice)
               .amountScale(metaData.amountScale)
               .priceScale(metaData.priceScale)
               .feeTiers(metaData.feeTiers)
@@ -174,13 +176,13 @@ public class DerivativeMetaData implements Serializable {
       return this;
     }
 
-    public Builder counterMinimumAmount(BigDecimal counterMinimumAmount) {
-      this.counterMinimumAmount = counterMinimumAmount;
+    public Builder minimumPrice(BigDecimal val) {
+      this.minimumPrice = val;
       return this;
     }
 
-    public Builder counterMaximumAmount(BigDecimal counterMaximumAmount) {
-      this.counterMaximumAmount = counterMaximumAmount;
+    public Builder maximumPrice(BigDecimal val) {
+      this.maximumPrice = val;
       return this;
     }
 
@@ -215,8 +217,8 @@ public class DerivativeMetaData implements Serializable {
           tradingFee,
           minimumAmount,
           maximumAmount,
-          counterMinimumAmount,
-          counterMaximumAmount,
+          minimumPrice,
+          maximumPrice,
           amountScale,
           priceScale,
           feeTiers,
@@ -234,6 +236,10 @@ public class DerivativeMetaData implements Serializable {
         + minimumAmount
         + ", maximumAmount="
         + maximumAmount
+        + ", minimumPrice="
+        + minimumPrice
+        + ", maximumPrice="
+        + maximumPrice
         + ", amountScale="
         + amountScale
         + ", priceScale="

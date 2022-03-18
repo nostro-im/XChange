@@ -114,8 +114,8 @@ public class BinanceFuturesExchange extends BinanceExchange {
                   .tradingFee(new BigDecimal("0.001")) // Trading fee at Binance is 0.1 %
                   .minimumAmount(minQty) // Min amount
                   .maximumAmount(maxQty) // Max amount
-                  .counterMinimumAmount(counterMinQty)
-                  .counterMaximumAmount(counterMaxQty)
+                  .minimumPrice(counterMinQty)
+                  .maximumPrice(counterMaxQty)
                   .amountScale(amountPrecision) // base precision
                   .priceScale(pairPrecision) // counter precision
                   .amountStepSize(stepSize)
