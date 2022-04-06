@@ -27,10 +27,7 @@ import org.knowm.xchange.utils.Assert;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.knowm.xchange.binance.BinanceResilience.*;
@@ -112,15 +109,14 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
     @Override
     public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
         try {
-            Assert.isTrue(
-                    params instanceof TradeHistoryParamCurrencyPair,
-                    "You need to provide the currency pair to get the user trades.");
-            TradeHistoryParamCurrencyPair pairParams = (TradeHistoryParamCurrencyPair) params;
-            CurrencyPair pair = pairParams.getCurrencyPair();
-            if (pair == null) {
-                throw new ExchangeException(
-                        "You need to provide the currency pair to get the user trades.");
+            Assert.isTrue(params instanceof TradeHistoryParamInstrument,"You need to provide instrument to get user trades");
+            TradeHistoryParamInstrument pairParams = (TradeHistoryParamInstrument) params;
+            Instrument instrument = ((TradeHistoryParamInstrument) params).getInstrument();
+            if (instrument == null) {
+                throw new ExchangeException("You need to provide instrument to get user trades");
             }
+            Assert.isTrue(instrument instanceof FuturesContract,"not supported instrument " + instrument);
+            CurrencyPair pair = ((FuturesContract) instrument).getCurrencyPair();
 
             Integer limit = null;
             if (params instanceof TradeHistoryParamLimit) {
@@ -176,7 +172,7 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
 
     @Override
     public TradeHistoryParams createTradeHistoryParams() {
-        return super.createTradeHistoryParams();        // DONE
+        return new BinanceFuturesTradeHistoryParams();
     }
 
     @Override
@@ -343,5 +339,39 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
                 .withRetry(retry("myFuturesTrades"))
                 .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER), 5)
                 .call();
+    }
+
+    @Override
+    public OrderHistoryParams createOrderHistoryParams() {
+        return new DefaultOrderHistoryParamsInstrumentSpan();
+    }
+
+    @Override
+    public List<Order> getOrderHistory(OrderHistoryParams params) throws IOException {
+        Assert.isTrue(params instanceof InstrumentParam,"You need to provide instrument to get order history");
+        Instrument instrument = ((InstrumentParam) params).getInstrument();
+        if (instrument == null) {
+            throw new ExchangeException("You need to provide instrument to get order history");
+        }
+        Assert.isTrue(instrument instanceof FuturesContract,"not supported instrument " + instrument);
+        CurrencyPair pair = ((FuturesContract) instrument).getCurrencyPair();
+        
+        Assert.isTrue(params instanceof OrderHistoryParamsTimeSpan,"You need to provide start and end times to get order history");
+        Date startTime = ((OrderHistoryParamsTimeSpan) params).getStartTime();
+        Date endTime = ((OrderHistoryParamsTimeSpan) params).getEndTime();
+        if (startTime == null || endTime == null) {
+            throw new ExchangeException("You need to provide start and end times to get order history");
+        }
+
+        List<BinanceFuturesOrder> orders = futuresAllOrders(
+                pair, 
+                null,
+                startTime.getTime(),
+                endTime.getTime(),
+        1000);
+        
+        return orders.stream()
+                .map(BinanceFuturesAdapter::adaptOrder)
+                .collect(Collectors.toList());
     }
 }
