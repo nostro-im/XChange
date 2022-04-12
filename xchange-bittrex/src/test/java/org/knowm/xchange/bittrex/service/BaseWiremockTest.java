@@ -7,10 +7,12 @@ import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.bittrex.BittrexExchange;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
+
 /** @author walec51 */
 public class BaseWiremockTest {
 
-  @Rule public WireMockRule wireMockRule = new WireMockRule();
+  @Rule public WireMockRule wireMockRule = new WireMockRule(options().dynamicPort().dynamicHttpsPort());
   public static final String WIREMOCK_FILES_PATH = "__files";
 
   public Exchange createExchange() {

@@ -10,7 +10,7 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 
 public class AbstractResilienceTest {
 
-  @Rule public WireMockRule wireMockRule = new WireMockRule(options().port(8888).httpsPort(8889));
+  @Rule public WireMockRule wireMockRule = new WireMockRule(options().dynamicPort().dynamicHttpsPort());
 
   public static int READ_TIMEOUT_MS = 1000;
 
