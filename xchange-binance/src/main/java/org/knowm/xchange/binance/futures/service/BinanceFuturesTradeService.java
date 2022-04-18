@@ -11,6 +11,7 @@ import org.knowm.xchange.binance.futures.BinanceFuturesAuthenticated;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrder;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesTrade;
 import org.knowm.xchange.binance.service.BinanceTradeService;
+import org.knowm.xchange.client.PlaceOrderLimiter;
 import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -34,8 +35,22 @@ import static org.knowm.xchange.binance.BinanceResilience.*;
 import static org.knowm.xchange.client.ResilienceRegistries.NON_IDEMPOTENT_CALLS_RETRY_CONFIG_NAME;
 
 public class BinanceFuturesTradeService extends BinanceTradeService {
+    private static final int DEF_PLACE_LIMIT = 0; // no limit for binance futures by default
+    private static final long DEF_PLACE_SLEEP = 10_000;
+    private static final long DEF_PLACE_MAX_SLEEP = 10_000;
+
+    private final PlaceOrderLimiter placeOrderLimiter;
+    
     public BinanceFuturesTradeService(BinanceExchange exchange, BinanceAuthenticated binance, ResilienceRegistries resilienceRegistries) {
         super(exchange, binance, resilienceRegistries);
+        
+        this.placeOrderLimiter = PlaceOrderLimiter.fromSpecificParams(
+                exchange.getExchangeSpecification().getExchangeSpecificParameters(),
+                DEF_PLACE_LIMIT,
+                DEF_PLACE_SLEEP,
+                DEF_PLACE_MAX_SLEEP);
+
+        LOG.info("Created {}", placeOrderLimiter);
     }
 
     @Override
@@ -237,36 +252,38 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
             OrderType type, Order order, BigDecimal limitPrice, BigDecimal stopPrice, TimeInForce tif)
             throws IOException {
         try {
-            BinanceFuturesOrder newOrder =
-                    decorateApiCall(
-                            () ->
-                                    ((BinanceFuturesAuthenticated) binance).newFuturesOrder(
-                                            BinanceAdapters.toSymbol(order.getCurrencyPair()),
-                                            BinanceAdapters.convert(order.getType()),
-                                            null,
-                                            BinanceFuturesAdapter.adaptOrderType(type),
-                                            tif,
-                                            order.getOriginalAmount(),
-                                            null,
-                                            limitPrice,
-                                            getClientOrderId(order),
-                                            stopPrice,
-                                            null,
-                                            null,
-                                            null,
-                                            null,
-                                            null,
-                                            null,
-                                            getRecvWindow(),
-                                            getTimestampFactory(),
-                                            apiKey,
-                                            signatureCreator))
-                            .withRetry(retry("newOrder", NON_IDEMPOTENT_CALLS_RETRY_CONFIG_NAME))
-                            .withRateLimiter(rateLimiter(ORDERS_PER_SECOND_RATE_LIMITER))
-                            .withRateLimiter(rateLimiter(ORDERS_PER_DAY_RATE_LIMITER))
-                            .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER))
-                            .call();
-            return Long.toString(newOrder.orderId);
+            return placeOrderLimiter.executePlace(() -> {
+                BinanceFuturesOrder newOrder =
+                        decorateApiCall(
+                                () ->
+                                        ((BinanceFuturesAuthenticated) binance).newFuturesOrder(
+                                                BinanceAdapters.toSymbol(order.getCurrencyPair()),
+                                                BinanceAdapters.convert(order.getType()),
+                                                null,
+                                                BinanceFuturesAdapter.adaptOrderType(type),
+                                                tif,
+                                                order.getOriginalAmount(),
+                                                null,
+                                                limitPrice,
+                                                getClientOrderId(order),
+                                                stopPrice,
+                                                null,
+                                                null,
+                                                null,
+                                                null,
+                                                null,
+                                                null,
+                                                getRecvWindow(),
+                                                getTimestampFactory(),
+                                                apiKey,
+                                                signatureCreator))
+                                .withRetry(retry("newOrder", NON_IDEMPOTENT_CALLS_RETRY_CONFIG_NAME))
+                                .withRateLimiter(rateLimiter(ORDERS_PER_SECOND_RATE_LIMITER))
+                                .withRateLimiter(rateLimiter(ORDERS_PER_DAY_RATE_LIMITER))
+                                .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER))
+                                .call();
+                return Long.toString(newOrder.orderId);
+            });
         } catch (BinanceException e) {
             throw BinanceErrorAdapter.adapt(e);
         }
