@@ -16,6 +16,7 @@ import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.dto.meta.CurrencyMetaData;
 import org.knowm.xchange.dto.meta.DerivativeMetaData;
 import org.knowm.xchange.exceptions.ExchangeException;
+import org.knowm.xchange.service.fee.FeeProviderBuilder;
 import org.knowm.xchange.utils.AuthUtils;
 import si.mazi.rescu.SynchronizedValueFactory;
 
@@ -23,6 +24,9 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 public class BinanceFuturesExchange extends BinanceExchange {
+  // Highest trading fees at Binance USD-M 0.0200%/0.0400%
+  private static final BigDecimal TRADING_FEE_MAKER = new BigDecimal("0.0002");
+  private static final BigDecimal TRADING_FEE_TAKER = new BigDecimal("0.0004");
 
   @Override
   protected void initServices() {
@@ -36,6 +40,11 @@ public class BinanceFuturesExchange extends BinanceExchange {
     this.timestampFactory =
             new BinanceTimestampFactory(
                     binance, getExchangeSpecification().getResilience(), getResilienceRegistries());
+
+    this.feeProvider = FeeProviderBuilder.from(this)
+            .defaultMakerFee(TRADING_FEE_MAKER)
+            .defaultTakerFee(TRADING_FEE_TAKER)
+            .build();
   }
 
   @Override
@@ -111,7 +120,7 @@ public class BinanceFuturesExchange extends BinanceExchange {
           }
 
           DerivativeMetaData metaData = new DerivativeMetaData.Builder()
-                  .tradingFee(new BigDecimal("0.001")) // Trading fee at Binance is 0.1 %
+                  .tradingFee(TRADING_FEE_TAKER)
                   .minimumAmount(minQty) // Min amount
                   .maximumAmount(maxQty) // Max amount
                   .minimumPrice(counterMinQty)

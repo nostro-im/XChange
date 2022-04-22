@@ -1,18 +1,27 @@
 package org.knowm.xchange.binance;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.IOException;
-import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.binance.dto.account.AssetDividendResponse;
 import org.knowm.xchange.binance.dto.trade.BinanceOrder;
 import org.knowm.xchange.binance.service.BinanceTradeService.BinanceOrderFlags;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.trade.MarketOrder;
+import org.knowm.xchange.service.fee.BaseFeeProvider;
+import org.knowm.xchange.service.fee.ConstantFeeProvider;
+import org.knowm.xchange.service.fee.FeeProvider;
 import org.knowm.xchange.utils.ObjectMapperHelper;
 
+import java.io.IOException;
+import java.math.BigDecimal;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class BinanceAdaptersTest {
+
+  private final FeeProvider feeProvider = new ConstantFeeProvider.Builder()
+          .takerFee(BaseFeeProvider.defaultTradingFee)
+          .makerFee(BaseFeeProvider.defaultTradingFee)
+          .build();
 
   @Test
   public void testFilledMarketOrder() throws IOException {
@@ -24,12 +33,13 @@ public class BinanceAdaptersTest {
     //    ObjectMapper mapper = new ObjectMapper();
     //    BinanceOrder binanceOrder = mapper.readValue(is, BinanceOrder.class);
 
+    BinanceAdapters adapter = new BinanceAdapters(feeProvider);
     BinanceOrder binanceOrder =
         ObjectMapperHelper.readValue(
             BinanceAdaptersTest.class.getResource(
                 "/org/knowm/xchange/binance/filled-market-order.json"),
             BinanceOrder.class);
-    Order order = BinanceAdapters.adaptOrder(binanceOrder);
+    Order order = adapter.adaptOrder(binanceOrder);
     assertThat(order).isInstanceOf(MarketOrder.class);
     MarketOrder marketOrder = (MarketOrder) order;
     assertThat(marketOrder.getStatus()).isEqualByComparingTo(Order.OrderStatus.FILLED);

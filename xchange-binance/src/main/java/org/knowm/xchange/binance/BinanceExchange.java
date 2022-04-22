@@ -1,8 +1,5 @@
 package org.knowm.xchange.binance;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Map;
 import org.knowm.xchange.BaseExchange;
 import org.knowm.xchange.ExchangeSharedParameters;
 import org.knowm.xchange.ExchangeSpecification;
@@ -21,13 +18,21 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.meta.CurrencyMetaData;
 import org.knowm.xchange.dto.meta.CurrencyPairMetaData;
 import org.knowm.xchange.exceptions.ExchangeException;
+import org.knowm.xchange.service.fee.FeeProviderBuilder;
 import org.knowm.xchange.utils.AuthUtils;
 import si.mazi.rescu.SynchronizedValueFactory;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Map;
 
 public class BinanceExchange extends BaseExchange {
 
   public static final String EXCHANGE_TYPE_MARGIN = "BinanceMarginExchange";
   public static final String EXCHANGE_TYPE = "BinanceExchangeType";
+
+  // Highest trading fee at Binance Spot is 0.1 %
+  private static final BigDecimal TRADING_FEE = new BigDecimal("0.001");
 
   private static ResilienceRegistries RESILIENCE_REGISTRIES;
 
@@ -56,6 +61,10 @@ public class BinanceExchange extends BaseExchange {
 
     this.marketDataService = new BinanceMarketDataService(this, binance, getResilienceRegistries());
     this.tradeService = new BinanceTradeService(this, binance, getResilienceRegistries());
+    this.feeProvider = FeeProviderBuilder.from(this)
+            .defaultMakerFee(TRADING_FEE)
+            .defaultTakerFee(TRADING_FEE)
+            .build();
   }
 
   public SynchronizedValueFactory<Long> getTimestampFactory() {
@@ -160,7 +169,7 @@ public class BinanceExchange extends BaseExchange {
           currencyPairs.put(
               currentCurrencyPair,
               new CurrencyPairMetaData(
-                  new BigDecimal("0.001"), // Trading fee at Binance is 0.1 %
+                      TRADING_FEE,
                   minQty, // Min amount
                   maxQty, // Max amount
                   counterMinQty,

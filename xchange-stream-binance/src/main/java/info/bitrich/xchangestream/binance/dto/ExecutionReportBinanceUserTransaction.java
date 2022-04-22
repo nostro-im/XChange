@@ -197,41 +197,6 @@ public class ExecutionReportBinanceUserTransaction extends ProductBinanceWebSock
     return cumulativeQuoteAssetTransactedQuantity;
   }
 
-  public UserTrade toUserTrade() {
-    if (executionType != ExecutionType.TRADE) throw new IllegalStateException("Not a trade");
-    return new UserTrade.Builder()
-        .type(BinanceAdapters.convert(side))
-        .originalAmount(lastExecutedQuantity)
-        .currencyPair(currencyPair)
-        .price(lastExecutedPrice)
-        .timestamp(getEventTime())
-        .id(Long.toString(tradeId))
-        .orderId(Long.toString(orderId))
-        .feeAmount(commissionAmount)
-        .feeCurrency(Currency.getInstance(commissionAsset))
-        .build();
-  }
-
-  public Order toOrder() {
-    return BinanceAdapters.adaptOrder(
-        new BinanceOrder(
-            BinanceAdapters.toSymbol(getCurrencyPair()),
-            orderId,
-            clientOrderId,
-            orderPrice,
-            orderQuantity,
-            cumulativeFilledQuantity,
-            cumulativeQuoteAssetTransactedQuantity,
-            currentOrderStatus,
-            timeInForce,
-            orderType,
-            side,
-            stopPrice,
-            BigDecimal.ZERO,
-            orderCreationTime,
-            timestamp));
-  }
-
   @Override
   public String toString() {
     return "ExecutionReportBinanceUserTransaction [eventTime="

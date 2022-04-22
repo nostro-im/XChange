@@ -2,6 +2,7 @@ package info.bitrich.xchangestream.binance.futures;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import info.bitrich.xchangestream.binance.BinanceFuturesStreamingExchange;
 import info.bitrich.xchangestream.binance.BinanceUserDataStreamingService;
 import info.bitrich.xchangestream.binance.dto.BaseBinanceWebSocketTransaction;
 import info.bitrich.xchangestream.binance.dto.ExecutionReportBinanceUserTransaction;
@@ -12,6 +13,7 @@ import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.processors.FlowableProcessor;
 import io.reactivex.rxjava3.processors.PublishProcessor;
+import org.knowm.xchange.binance.futures.BinanceFuturesAdapter;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.dto.Order;
@@ -27,14 +29,16 @@ public class BinanceFuturesStreamingTradeService implements StreamingTradeServic
 
     protected final FlowableProcessor<OrderTradeUpdateBinanceUserTransaction> executionReportsPublisher =
             PublishProcessor.<OrderTradeUpdateBinanceUserTransaction>create().toSerialized();
+    private final BinanceFuturesStreamingAdapter binanceFuturesStreamingAdapter;
 
     protected volatile Disposable executionReports;
     protected volatile BinanceUserDataStreamingService binanceUserDataStreamingService;
 
     protected final ObjectMapper mapper = StreamingObjectMapperHelper.getObjectMapper();
 
-    public BinanceFuturesStreamingTradeService(BinanceUserDataStreamingService binanceUserDataStreamingService) {
+    public BinanceFuturesStreamingTradeService(BinanceFuturesStreamingExchange exchange, BinanceUserDataStreamingService binanceUserDataStreamingService) {
         this.binanceUserDataStreamingService = binanceUserDataStreamingService;
+        this.binanceFuturesStreamingAdapter = new BinanceFuturesStreamingAdapter(new BinanceFuturesAdapter(exchange.getFeeProvider()));
     }
 
     public Flowable<OrderTradeUpdateBinanceUserTransaction> getRawExecutionReports() {
@@ -46,7 +50,7 @@ public class BinanceFuturesStreamingTradeService implements StreamingTradeServic
     public Flowable<Order> getOrderChanges() {
         return getRawExecutionReports()
                 .filter(r -> !r.getOrderTradeUpdate().getExecutionType().equals(ExecutionReportBinanceUserTransaction.ExecutionType.REJECTED))
-                .map(OrderTradeUpdateBinanceUserTransaction::toOrder);
+                .map(binanceFuturesStreamingAdapter::adaptOrder);
     }
 
     @Override
@@ -65,7 +69,7 @@ public class BinanceFuturesStreamingTradeService implements StreamingTradeServic
     public Flowable<UserTrade> getUserTrades() {
         return getRawExecutionReports()
                 .filter(r -> r.getOrderTradeUpdate().getExecutionType().equals(ExecutionReportBinanceUserTransaction.ExecutionType.TRADE))
-                .map(OrderTradeUpdateBinanceUserTransaction::toUserTrade);
+                .map(binanceFuturesStreamingAdapter::adaptUserTrade);
     }
 
     @Override

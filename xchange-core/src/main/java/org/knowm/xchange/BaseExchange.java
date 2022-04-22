@@ -15,6 +15,8 @@ import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.service.BaseExchangeService;
 import org.knowm.xchange.service.account.AccountService;
+import org.knowm.xchange.service.fee.FeeProvider;
+import org.knowm.xchange.service.fee.MetaDataFeeProvider;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.utils.nonce.CurrentTimeIncrementalNonceFactory;
@@ -30,6 +32,7 @@ public abstract class BaseExchange implements Exchange {
   protected MarketDataService marketDataService;
   protected TradeService tradeService;
   protected AccountService accountService;
+  protected FeeProvider feeProvider;
 
   private final SynchronizedValueFactory<Long> nonceFactory =
       new CurrentTimeIncrementalNonceFactory(TimeUnit.MILLISECONDS);
@@ -201,6 +204,15 @@ public abstract class BaseExchange implements Exchange {
   public AccountService getAccountService() {
 
     return accountService;
+  }
+
+  @Override
+  public FeeProvider getFeeProvider() {
+    if (feeProvider == null) {
+      logger.warn("dynamic fees provider is not set for exchange. fallback to metadata fee provider instead");
+      feeProvider = new MetaDataFeeProvider(this);
+    }
+    return feeProvider;
   }
 
   @Override

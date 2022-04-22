@@ -13,6 +13,7 @@ import io.reactivex.rxjava3.core.Flowable;
 import org.knowm.xchange.ExchangeSharedParameters;
 import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.binance.BinanceAuthenticated;
+import org.knowm.xchange.binance.futures.BinanceFuturesAdapter;
 import org.knowm.xchange.binance.futures.BinanceFuturesAuthenticated;
 import org.knowm.xchange.binance.BinanceFuturesExchange;
 import org.knowm.xchange.binance.service.BinanceMarketDataService;
@@ -122,7 +123,7 @@ public class BinanceFuturesStreamingExchange extends BinanceFuturesExchange impl
                         onApiCall,
                         orderBookUpdateFrequencyParameter);
         streamingAccountService = new BinanceFuturesStreamingAccountService(userDataStreamingService);
-        streamingTradeService = new BinanceFuturesStreamingTradeService(userDataStreamingService);
+        streamingTradeService = new BinanceFuturesStreamingTradeService(this, userDataStreamingService);
 
         return Completable.concat(completables)
                 .doOnComplete(() -> streamingMarketDataService.openSubscriptions(subscriptions))

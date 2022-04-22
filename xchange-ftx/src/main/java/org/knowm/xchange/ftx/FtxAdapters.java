@@ -18,6 +18,7 @@ import org.knowm.xchange.ftx.dto.account.FtxWalletBalanceDto;
 import org.knowm.xchange.ftx.dto.marketdata.*;
 import org.knowm.xchange.ftx.dto.trade.*;
 import org.knowm.xchange.instrument.Instrument;
+import org.knowm.xchange.service.fee.FeeProvider;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -38,6 +39,12 @@ public class FtxAdapters {
   private static final int marginRatioPrecision = 4; // 4 digits after decimal point
 
   private static final int leveragePrecision = 2; // 2 digits after decimal point
+
+  private final FeeProvider feeProvider;
+
+  public FtxAdapters(FeeProvider feeProvider) {
+    this.feeProvider = feeProvider;
+  }
 
   public static OrderBook adaptOrderBook(
       FtxResponse<FtxOrderbookDto> ftxOrderbookDto, Instrument instrument) {
@@ -272,7 +279,7 @@ public class FtxAdapters {
             .build();
   }
 
-  public static Order adaptOrder(FtxOrderDto ftxOrderDto) {
+  public Order adaptOrder(FtxOrderDto ftxOrderDto) {
     Order.OrderType type = adaptFtxOrderSideToOrderType(ftxOrderDto.getSide());
     Instrument instrument = adaptFtxMarketToInstrument(ftxOrderDto.getMarket());
     Order.Builder builder;
@@ -281,7 +288,7 @@ public class FtxAdapters {
     } else {
       builder = new MarketOrder.Builder(type, instrument);
     }
-    
+
     return builder
         .originalAmount(ftxOrderDto.getSize())
         .averagePrice(ftxOrderDto.getAvgFillPrice())
@@ -297,10 +304,16 @@ public class FtxAdapters {
         .cumulativeAmount(ftxOrderDto.getFilledSize())
         .orderStatus(ftxOrderDto.getStatus())
         .id(ftxOrderDto.getId())
+        .fee(ftxOrderDto.getStatus() == Order.OrderStatus.FILLED ? getOrderFee(ftxOrderDto, instrument) : null)
         .build();
   }
 
-  public static OpenOrders adaptOpenOrders(FtxResponse<List<FtxOrderDto>> ftxOpenOrdersResponse) {
+  private BigDecimal getOrderFee(FtxOrderDto dto, Instrument instrument) {
+    boolean isMaker = dto.getType().equals(FtxOrderType.market) == false;
+    return feeProvider.calculateFee(dto.getFilledSize(), dto.getAvgFillPrice(), instrument, isMaker);
+  }
+
+  public OpenOrders adaptOpenOrders(FtxResponse<List<FtxOrderDto>> ftxOpenOrdersResponse) {
     List<LimitOrder> limitOrders = new ArrayList<>();
     List<Order> otherOrders = new ArrayList<>();
     ftxOpenOrdersResponse

@@ -10,6 +10,7 @@ import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.exceptions.NotYetImplementedForExchangeException;
 import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.account.AccountService;
+import org.knowm.xchange.service.fee.FeeProvider;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.service.trade.TradeService;
 import si.mazi.rescu.SynchronizedValueFactory;
@@ -124,4 +125,12 @@ public interface Exchange {
    * their services.
    */
   void remoteInit() throws IOException, ExchangeException;
+
+  /**
+   * Fee provider.
+   * Responsible for providing up-to-date fee information
+   *
+   * @return The exchange's fee provider
+   */
+  FeeProvider getFeeProvider();
 }

@@ -18,15 +18,17 @@ import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class FtxTradeServiceRaw extends FtxBaseService {
 
+  private final FtxAdapters ftxAdapters;
+
   public FtxTradeServiceRaw(Exchange exchange) {
     super(exchange);
+    ftxAdapters = new FtxAdapters(exchange.getFeeProvider());
   }
 
   public String placeMarketOrderForSubaccount(String subaccount, MarketOrder marketOrder)
@@ -153,7 +155,7 @@ public class FtxTradeServiceRaw extends FtxBaseService {
       throws IOException {
     List<Order> orderList = new ArrayList<>();
     for (String orderId : orderIds) {
-      Order order = FtxAdapters.adaptOrder(getFtxOrderStatus(subaccount, orderId).getResult());
+      Order order = ftxAdapters.adaptOrder(getFtxOrderStatus(subaccount, orderId).getResult());
       orderList.add(order);
     }
     return orderList;
@@ -223,7 +225,7 @@ public class FtxTradeServiceRaw extends FtxBaseService {
   }
 
   public OpenOrders getOpenOrdersForSubaccount(String subaccount) throws IOException {
-    return FtxAdapters.adaptOpenOrders(getFtxAllOpenOrdersForSubaccount(subaccount));
+    return ftxAdapters.adaptOpenOrders(getFtxAllOpenOrdersForSubaccount(subaccount));
   }
 
   public OpenOrders getOpenOrdersForSubaccount(String subaccount, OpenOrdersParams params)
@@ -237,7 +239,7 @@ public class FtxTradeServiceRaw extends FtxBaseService {
       throw new IOException(
           "OpenOrdersParams must implement CurrencyPairParam or OpenOrdersParamInstrument interface.");
     }
-    return FtxAdapters.adaptOpenOrders(
+    return ftxAdapters.adaptOpenOrders(
         getFtxOpenOrders(subaccount, FtxAdapters.adaptInstrumentToFtxMarket(instrument)));
   }
 

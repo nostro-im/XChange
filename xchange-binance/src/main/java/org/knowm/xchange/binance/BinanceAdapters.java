@@ -2,16 +2,17 @@ package org.knowm.xchange.binance;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import com.google.common.base.Enums;
 import org.knowm.xchange.binance.dto.account.AssetDetail;
 import org.knowm.xchange.binance.dto.account.BinanceMarginAccountInformation;
 import org.knowm.xchange.binance.dto.marketdata.BinancePriceQuantity;
 import org.knowm.xchange.binance.dto.trade.BinanceOrder;
 import org.knowm.xchange.binance.dto.trade.OrderSide;
 import org.knowm.xchange.binance.dto.trade.OrderStatus;
+import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrderType;
 import org.knowm.xchange.binance.service.BinanceTradeService.BinanceOrderFlags;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -26,10 +27,17 @@ import org.knowm.xchange.dto.meta.WalletHealth;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.StopOrder;
+import org.knowm.xchange.instrument.Instrument;
+import org.knowm.xchange.service.fee.FeeProvider;
+import org.knowm.xchange.utils.InstrumentUtils;
 
 public class BinanceAdapters {
 
-  private BinanceAdapters() {}
+  private final FeeProvider feeProvider;
+
+  public BinanceAdapters(FeeProvider feeProvider) {
+    this.feeProvider = feeProvider;
+  }
 
   public static String toSymbol(CurrencyPair pair) {
     if (pair.equals(CurrencyPair.IOTA_BTC)) {
@@ -129,7 +137,7 @@ public class BinanceAdapters {
     }
   }
 
-  public static Order adaptOrder(BinanceOrder order) {
+  public Order adaptOrder(BinanceOrder order) {
     OrderType type = convert(order.side);
     CurrencyPair currencyPair = adaptSymbol(order.symbol);
     Order.Builder builder;
@@ -148,14 +156,23 @@ public class BinanceAdapters {
         .timestamp(order.getUpdateTime())
         .cumulativeAmount(order.executedQty);
     if (order.executedQty.signum() != 0 && order.cummulativeQuoteQty.signum() != 0) {
-      builder.averagePrice(
-          order.cummulativeQuoteQty.divide(order.executedQty, MathContext.DECIMAL32));
+      builder.averagePrice(getAveragePrice(order));
     }
     if (order.clientOrderId != null) {
       builder.userReference(order.clientOrderId);
       builder.flag(BinanceOrderFlags.withClientId(order.clientOrderId)); // backward compatibility 
     }
+    if (order.status == OrderStatus.FILLED) {
+      // TODO: clarify
+      boolean isMaker = order.type.equals(org.knowm.xchange.binance.dto.trade.OrderType.MARKET) == false;
+      BigDecimal fee = feeProvider.calculateFee(order.executedQty, getAveragePrice(order), currencyPair, isMaker);
+      builder.fee(fee);
+    }
     return builder.build();
+  }
+
+  private static BigDecimal getAveragePrice(BinanceOrder order) {
+    return order.cummulativeQuoteQty.divide(order.executedQty, MathContext.DECIMAL32);
   }
 
   private static Ticker adaptPriceQuantity(BinancePriceQuantity priceQuantity) {

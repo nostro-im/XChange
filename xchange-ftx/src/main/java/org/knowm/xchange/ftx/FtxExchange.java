@@ -1,6 +1,8 @@
 package org.knowm.xchange.ftx;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+
 import org.knowm.xchange.BaseExchange;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeSpecification;
@@ -9,12 +11,17 @@ import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.ftx.dto.marketdata.FtxMarketsDto;
 import org.knowm.xchange.ftx.service.*;
 import org.knowm.xchange.service.account.AccountService;
+import org.knowm.xchange.service.fee.FeeProviderBuilder;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.service.trade.TradeService;
 import si.mazi.rescu.SynchronizedValueFactory;
 
 public class FtxExchange extends BaseExchange implements Exchange {
   private static final String FTX_OTC_BASE_URL = "https://otc.ftx.com/";
+
+  // Highest trading fees at Ftx 0.0200%/0.0700%
+  private static final BigDecimal TRADING_FEE_MAKER = new BigDecimal("0.0002");
+  private static final BigDecimal TRADING_FEE_TAKER = new BigDecimal("0.0007");
 
   private FtxLendingServiceRaw lendingService;
   private FtxBorrowingServiceRaw borrowingService;
@@ -32,6 +39,10 @@ public class FtxExchange extends BaseExchange implements Exchange {
             ExchangeRestProxyBuilder.forInterface(FtxOtc.class, this.getExchangeSpecification())
                 .baseUrl(FTX_OTC_BASE_URL)
                 .build());
+    this.feeProvider = FeeProviderBuilder.from(this)
+            .defaultMakerFee(TRADING_FEE_MAKER)
+            .defaultTakerFee(TRADING_FEE_TAKER)
+            .build();
   }
 
   @Override

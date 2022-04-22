@@ -5,7 +5,8 @@ import org.knowm.xchange.binance.BinanceAuthenticated;
 import org.knowm.xchange.binance.BinanceErrorAdapter;
 import org.knowm.xchange.binance.BinanceExchange;
 import org.knowm.xchange.binance.dto.BinanceException;
-import org.knowm.xchange.binance.dto.trade.*;
+import org.knowm.xchange.binance.dto.trade.OrderType;
+import org.knowm.xchange.binance.dto.trade.TimeInForce;
 import org.knowm.xchange.binance.futures.BinanceFuturesAdapter;
 import org.knowm.xchange.binance.futures.BinanceFuturesAuthenticated;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrder;
@@ -34,8 +35,11 @@ import static org.knowm.xchange.binance.BinanceResilience.*;
 import static org.knowm.xchange.client.ResilienceRegistries.NON_IDEMPOTENT_CALLS_RETRY_CONFIG_NAME;
 
 public class BinanceFuturesTradeService extends BinanceTradeService {
+    private final BinanceFuturesAdapter binanceFuturesAdapter;
+
     public BinanceFuturesTradeService(BinanceExchange exchange, BinanceAuthenticated binance, ResilienceRegistries resilienceRegistries) {
         super(exchange, binance, resilienceRegistries);
+        binanceFuturesAdapter = new BinanceFuturesAdapter(exchange.getFeeProvider());
     }
 
     @Override
@@ -61,7 +65,7 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
             List<Order> otherOrders = new ArrayList<>();
             binanceOpenOrders.forEach(
                     binanceOrder -> {
-                        Order order = BinanceFuturesAdapter.adaptOrder(binanceOrder);
+                        Order order = binanceFuturesAdapter.adaptOrder(binanceOrder);
                         if (order instanceof LimitOrder) {
                             limitOrders.add((LimitOrder) order);
                         } else {
@@ -220,7 +224,7 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
                 }
 
                 orders.add(
-                        BinanceFuturesAdapter.adaptOrder(
+                        binanceFuturesAdapter.adaptOrder(
                                 futuresOrderStatus(
                                         currencyPair,
                                         BinanceAdapters.id(orderId),
@@ -371,7 +375,7 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
         1000);
         
         return orders.stream()
-                .map(BinanceFuturesAdapter::adaptOrder)
+                .map(binanceFuturesAdapter::adaptOrder)
                 .collect(Collectors.toList());
     }
 }

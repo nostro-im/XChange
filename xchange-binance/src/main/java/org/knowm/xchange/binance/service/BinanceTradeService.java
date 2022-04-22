@@ -54,11 +54,14 @@ import org.knowm.xchange.utils.Assert;
 
 public class BinanceTradeService extends BinanceTradeServiceRaw implements TradeService {
 
+  private final BinanceAdapters binanceAdapter;
+
   public BinanceTradeService(
       BinanceExchange exchange,
       BinanceAuthenticated binance,
       ResilienceRegistries resilienceRegistries) {
     super(exchange, binance, resilienceRegistries);
+    binanceAdapter = new BinanceAdapters(exchange.getFeeProvider());
   }
 
   @Override
@@ -86,7 +89,7 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
       List<Order> otherOrders = new ArrayList<>();
       binanceOpenOrders.forEach(
           binanceOrder -> {
-            Order order = BinanceAdapters.adaptOrder(binanceOrder);
+            Order order = binanceAdapter.adaptOrder(binanceOrder);
             if (order instanceof LimitOrder) {
               limitOrders.add((LimitOrder) order);
             } else {
@@ -343,7 +346,7 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
         }
         
         orders.add(
-            BinanceAdapters.adaptOrder(
+                binanceAdapter.adaptOrder(
                 super.orderStatus(
                     currencyPair,
                     BinanceAdapters.id(orderId),

@@ -1,6 +1,7 @@
 package org.knowm.xchange.binance.futures;
 
 import org.knowm.xchange.binance.BinanceAdapters;
+import org.knowm.xchange.binance.dto.trade.OrderStatus;
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAccountInformation;
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAsset;
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesPosition;
@@ -21,6 +22,8 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.StopOrder;
 import org.knowm.xchange.instrument.Instrument;
+import org.knowm.xchange.service.fee.FeeProvider;
+import org.knowm.xchange.utils.InstrumentUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -30,6 +33,12 @@ import java.util.stream.Collectors;
 public class BinanceFuturesAdapter {
     private static final int marginRatioPrecision = 4; // 4 digits after decimal point
     private static final int leveragePrecision = 2; // 2 digits after decimal point
+
+    private final FeeProvider feeProvider;
+
+    public BinanceFuturesAdapter(FeeProvider feeProvider) {
+        this.feeProvider = feeProvider;
+    }
 
     public static AccountInfo adaptAccountInfo(BinanceFuturesAccountInformation account) {
         List<Balance> balances =
@@ -119,7 +128,7 @@ public class BinanceFuturesAdapter {
         }
     }
 
-    public static Order adaptOrder(BinanceFuturesOrder order) {
+    public Order adaptOrder(BinanceFuturesOrder order) {
         Order.OrderType type = BinanceAdapters.convert(order.side);
         Instrument instrument = adaptInstrument(order.symbol);
         Order.Builder builder;
@@ -140,6 +149,12 @@ public class BinanceFuturesAdapter {
         if (order.clientOrderId != null) {
             builder.userReference(order.clientOrderId);
             builder.flag(BinanceTradeService.BinanceOrderFlags.withClientId(order.clientOrderId)); // backward compatibility
+        }
+        if (order.status == OrderStatus.FILLED) {
+            // TODO: clarify
+            boolean isMaker = order.type.equals(BinanceFuturesOrderType.MARKET) == false;
+            BigDecimal fee = feeProvider.calculateFee(order.executedQty, order.avgPrice, instrument, isMaker);
+            builder.fee(fee);
         }
         return builder.build();
     }

@@ -9,14 +9,16 @@ import info.bitrich.xchangestream.core.StreamingTradeService;
 import info.bitrich.xchangestream.service.netty.StreamingObjectMapperHelper;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.processors.PublishProcessor;
 import io.reactivex.rxjava3.processors.FlowableProcessor;
-import java.io.IOException;
+import io.reactivex.rxjava3.processors.PublishProcessor;
+import org.knowm.xchange.binance.BinanceAdapters;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.trade.UserTrade;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.exceptions.ExchangeSecurityException;
+
+import java.io.IOException;
 
 public class BinanceStreamingTradeService implements StreamingTradeService {
 
@@ -25,12 +27,13 @@ public class BinanceStreamingTradeService implements StreamingTradeService {
 
   protected volatile Disposable executionReports;
   protected volatile BinanceUserDataStreamingService binanceUserDataStreamingService;
+  private volatile BinanceStreamingAdapter binanceStreamingAdapter;
 
   protected final ObjectMapper mapper = StreamingObjectMapperHelper.getObjectMapper();
 
-  public BinanceStreamingTradeService(
-      BinanceUserDataStreamingService binanceUserDataStreamingService) {
+  public BinanceStreamingTradeService(BinanceStreamingExchange exchange, BinanceUserDataStreamingService binanceUserDataStreamingService) {
     this.binanceUserDataStreamingService = binanceUserDataStreamingService;
+    this.binanceStreamingAdapter = new BinanceStreamingAdapter(new BinanceAdapters(exchange.getFeeProvider()));
   }
 
   public Flowable<ExecutionReportBinanceUserTransaction> getRawExecutionReports() {
@@ -42,7 +45,7 @@ public class BinanceStreamingTradeService implements StreamingTradeService {
   public Flowable<Order> getOrderChanges() {
     return getRawExecutionReports()
         .filter(r -> !r.getExecutionType().equals(ExecutionType.REJECTED))
-        .map(ExecutionReportBinanceUserTransaction::toOrder);
+        .map(binanceStreamingAdapter::adaptOrder);
   }
 
   @Override
@@ -53,7 +56,7 @@ public class BinanceStreamingTradeService implements StreamingTradeService {
   public Flowable<UserTrade> getUserTrades() {
     return getRawExecutionReports()
         .filter(r -> r.getExecutionType().equals(ExecutionType.TRADE))
-        .map(ExecutionReportBinanceUserTransaction::toUserTrade);
+        .map(binanceStreamingAdapter::adaptUserTrade);
   }
 
   @Override

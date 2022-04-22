@@ -29,45 +29,7 @@ public class OrderTradeUpdateBinanceUserTransaction extends BaseBinanceWebSocket
     return orderTradeUpdate;
   }
 
-  public UserTrade toUserTrade() {
-    return new UserTrade.Builder()
-            .type(BinanceAdapters.convert(orderTradeUpdate.getSide()))
-            .originalAmount(orderTradeUpdate.getLastExecutedQuantity())
-            .instrument(new FuturesContract(BinanceAdapters.adaptSymbol(orderTradeUpdate.getSymbol()), null))
-            .price(orderTradeUpdate.getLastExecutedPrice())
-            .timestamp(getEventTime())
-            .id(Long.toString(orderTradeUpdate.getTradeId()))
-            .orderId(Long.toString(orderTradeUpdate.getOrderId()))
-            .feeAmount(orderTradeUpdate.getCommissionAmount())
-            .feeCurrency(Currency.getInstance(orderTradeUpdate.getCommissionAsset()))
-            .orderUserReference(orderTradeUpdate.getClientOrderId())
-            .build();
-  }
-
-  public Order toOrder() {
-    return BinanceFuturesAdapter.adaptOrder(new BinanceFuturesOrder(
-            orderTradeUpdate.getAveragePrice(),
-            orderTradeUpdate.getClientOrderId(),
-            orderTradeUpdate.getCumulativeFilledQuantity(),
-            orderTradeUpdate.getCumulativeFilledQuantity(),
-            orderTradeUpdate.getOrderId(),
-            orderTradeUpdate.getOrderQuantity(),
-            orderTradeUpdate.getOriginalOrderType(),
-            orderTradeUpdate.getOrderPrice(),
-            orderTradeUpdate.isReduceOnly(),
-            orderTradeUpdate.getSide(),
-            orderTradeUpdate.getPositionSide(),
-            orderTradeUpdate.getCurrentOrderStatus(),
-            orderTradeUpdate.getStopPrice(),
-            orderTradeUpdate.isCloseAll(),
-            orderTradeUpdate.getSymbol(),
-            orderTradeUpdate.getTimestamp(),
-            orderTradeUpdate.getTimeInForce(),
-            orderTradeUpdate.getOrderType(),
-            orderTradeUpdate.getActivationPrice(),
-            orderTradeUpdate.getCallbackRate(),
-            transactionTime,
-            orderTradeUpdate.getStopPriceWorkingType(),
-            false));
+  public long getTransactionTime() {
+    return transactionTime;
   }
 }

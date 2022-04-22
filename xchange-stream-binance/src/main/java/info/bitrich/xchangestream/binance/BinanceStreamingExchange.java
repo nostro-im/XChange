@@ -10,20 +10,18 @@ import info.bitrich.xchangestream.service.netty.ConnectionStateModel.State;
 import info.bitrich.xchangestream.util.Events;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
+import org.knowm.xchange.ExchangeSharedParameters;
+import org.knowm.xchange.ExchangeSpecification;
+import org.knowm.xchange.binance.BinanceExchange;
+import org.knowm.xchange.binance.service.BinanceMarketDataService;
+import org.knowm.xchange.currency.CurrencyPair;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import org.knowm.xchange.ExchangeSharedParameters;
-import org.knowm.xchange.ExchangeSpecification;
-import org.knowm.xchange.binance.BinanceAuthenticated;
-import org.knowm.xchange.binance.BinanceExchange;
-import org.knowm.xchange.binance.service.BinanceMarketDataService;
-import org.knowm.xchange.client.ExchangeRestProxyBuilder;
-import org.knowm.xchange.currency.CurrencyPair;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class BinanceStreamingExchange extends BinanceExchange implements StreamingExchange {
 
@@ -117,7 +115,7 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
             onApiCall,
             orderBookUpdateFrequencyParameter);
     streamingAccountService = new BinanceStreamingAccountService(userDataStreamingService);
-    streamingTradeService = new BinanceStreamingTradeService(userDataStreamingService);
+    streamingTradeService = new BinanceStreamingTradeService(this, userDataStreamingService);
 
     return Completable.concat(completables)
         .doOnComplete(() -> streamingMarketDataService.openSubscriptions(subscriptions))
