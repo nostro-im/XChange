@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Interface to provide the following to {@link Exchange}:
@@ -211,6 +212,24 @@ public interface AccountService extends BaseService {
     throw new NotYetImplementedForExchangeException("getDynamicTradingFees");
   }
 
+  /**
+   * Get the trading fees of instruments as determined by the given exchange's rules for
+   * adjusting fees by recent volume traded. Some exchanges will provide the current fees per
+   * currency via a single API request, while others require more logic to compute by hand.
+   *
+   * @return instrument fees at the time of invocation.
+   * @throws ExchangeException - Indication that the exchange reported some kind of error with the
+   *     request or response
+   * @throws NotAvailableFromExchangeException - Indication that the exchange does not support the
+   *     requested function or data
+   * @throws NotYetImplementedForExchangeException - Indication that the exchange supports the
+   *     requested function or data, but it has not yet been implemented
+   * @throws IOException - Indication that a networking error occurred while fetching JSON data
+   */
+
+  default Map<Instrument, Fee> getDynamicTradingFees(Set<Instrument> instruments) throws IOException {
+    throw new NotYetImplementedForExchangeException("getDynamicTradingFee");
+  }
   /**
    * Change account leverage
    *

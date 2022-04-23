@@ -1,26 +1,21 @@
 package org.knowm.xchange.poloniex.service;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.currency.Currency;
-import org.knowm.xchange.dto.account.AccountInfo;
-import org.knowm.xchange.dto.account.Balance;
-import org.knowm.xchange.dto.account.FundingRecord;
-import org.knowm.xchange.dto.account.Wallet;
+import org.knowm.xchange.currency.CurrencyPair;
+import org.knowm.xchange.dto.account.*;
+import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.poloniex.PoloniexAdapters;
 import org.knowm.xchange.poloniex.PoloniexErrorAdapter;
 import org.knowm.xchange.poloniex.dto.PoloniexException;
 import org.knowm.xchange.poloniex.dto.trade.PoloniexDepositsWithdrawalsResponse;
 import org.knowm.xchange.service.account.AccountService;
-import org.knowm.xchange.service.trade.params.DefaultTradeHistoryParamsTimeSpan;
-import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
-import org.knowm.xchange.service.trade.params.RippleWithdrawFundsParams;
-import org.knowm.xchange.service.trade.params.TradeHistoryParams;
-import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
-import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
+import org.knowm.xchange.service.trade.params.*;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /** @author Zach Holmes */
 public class PoloniexAccountService extends PoloniexAccountServiceRaw implements AccountService {
@@ -111,6 +106,29 @@ public class PoloniexAccountService extends PoloniexAccountServiceRaw implements
       final PoloniexDepositsWithdrawalsResponse poloFundings =
           returnDepositsWithdrawals(start, end);
       return PoloniexAdapters.adaptFundingRecords(poloFundings);
+    } catch (PoloniexException e) {
+      throw PoloniexErrorAdapter.adapt(e);
+    }
+  }
+
+  @Override
+  public Map<CurrencyPair, Fee> getDynamicTradingFees() throws IOException {
+    Fee fee = getDynamicTradingFee();
+    return exchange.getExchangeSymbols().stream().collect(Collectors.toMap(pair -> pair, pair -> fee));
+  }
+
+  @Override
+  public Map<Instrument, Fee> getDynamicTradingFees(Set<Instrument> instruments) throws IOException {
+    Fee fee = getDynamicTradingFee();
+    return instruments.stream().collect(Collectors.toMap(instrument -> instrument, instrument -> fee));
+  }
+
+  private Fee getDynamicTradingFee() throws IOException {
+    try {
+      HashMap<String, String> info = getFeeInfo();
+      BigDecimal makerFee = new BigDecimal(info.get("makerFee"));
+      BigDecimal takerFee = new BigDecimal(info.get("takerFee"));
+      return new Fee(makerFee, takerFee);
     } catch (PoloniexException e) {
       throw PoloniexErrorAdapter.adapt(e);
     }

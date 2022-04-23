@@ -174,24 +174,6 @@ public class PoloniexTradeService extends PoloniexTradeServiceRaw implements Tra
     }
   }
 
-  public BigDecimal getMakerFee() throws IOException {
-    try {
-      String value = getFeeInfo().get("makerFee");
-      return new BigDecimal(value);
-    } catch (PoloniexException e) {
-      throw PoloniexErrorAdapter.adapt(e);
-    }
-  }
-
-  public BigDecimal getTakerFee() throws IOException {
-    try {
-      String value = getFeeInfo().get("takerFee");
-      return new BigDecimal(value);
-    } catch (PoloniexException e) {
-      throw PoloniexErrorAdapter.adapt(e);
-    }
-  }
-
   private UserTrades getTradeHistory(
       CurrencyPair currencyPair, final Long startTime, final Long endTime, Integer limit)
       throws IOException {

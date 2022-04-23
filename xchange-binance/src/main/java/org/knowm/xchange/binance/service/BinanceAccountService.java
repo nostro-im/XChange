@@ -8,8 +8,8 @@ import org.knowm.xchange.binance.BinanceExchange;
 import org.knowm.xchange.binance.dto.BinanceException;
 import org.knowm.xchange.binance.dto.account.AssetDetail;
 import org.knowm.xchange.binance.dto.account.BinanceAccountInformation;
-import org.knowm.xchange.binance.dto.account.DepositAddress;
 import org.knowm.xchange.binance.dto.account.BinanceFutureTransferType;
+import org.knowm.xchange.binance.dto.account.DepositAddress;
 import org.knowm.xchange.binance.service.account.params.BinanceFuturesAccountFundsTransferParams;
 import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.Currency;
@@ -17,6 +17,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.account.*;
 import org.knowm.xchange.dto.account.FundingRecord.Status;
 import org.knowm.xchange.dto.account.FundingRecord.Type;
+import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.account.AccountService;
 import org.knowm.xchange.service.account.params.AccountFundsTransferParams;
 import org.knowm.xchange.service.trade.params.*;
@@ -86,20 +87,34 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
   public Map<CurrencyPair, Fee> getDynamicTradingFees() throws IOException {
     try {
       BinanceAccountInformation acc = account();
-      BigDecimal makerFee =
-          acc.makerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
-      BigDecimal takerFee =
-          acc.takerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
-
       Map<CurrencyPair, Fee> tradingFees = new HashMap<>();
       List<CurrencyPair> pairs = exchange.getExchangeSymbols();
 
-      pairs.forEach(pair -> tradingFees.put(pair, new Fee(makerFee, takerFee)));
+      pairs.forEach(pair -> tradingFees.put(pair, getTradingFee(acc)));
 
       return tradingFees;
     } catch (BinanceException e) {
       throw BinanceErrorAdapter.adapt(e);
     }
+  }
+
+  @Override
+  public Map<Instrument, Fee> getDynamicTradingFees(Set<Instrument> instruments) throws IOException {
+    try {
+      BinanceAccountInformation acc = account();
+      Map<Instrument, Fee> tradingFees = new HashMap<>();
+      instruments.forEach(instrument -> tradingFees.put(instrument, getTradingFee(acc)));
+      return tradingFees;
+    } catch (BinanceException e) {
+      throw BinanceErrorAdapter.adapt(e);
+    }
+  }
+
+  private Fee getTradingFee(BinanceAccountInformation acc) {
+    BigDecimal makerFee = acc.makerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
+    BigDecimal takerFee = acc.takerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
+
+    return new Fee(makerFee.stripTrailingZeros(), takerFee.stripTrailingZeros());
   }
 
   @Override
