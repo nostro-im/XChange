@@ -4,11 +4,12 @@ import org.knowm.xchange.instrument.Instrument;
 
 import java.util.Date;
 
-public class DefaultOrderHistoryParamsInstrumentSpan implements InstrumentParam, OrderHistoryParamsTimeSpan {
+public class DefaultOrderHistoryParamsInstrumentSpan implements InstrumentParam, OrderHistoryParamsTimeSpan, TradeHistoryParamOrder {
     
     private Instrument instrument;
     private Date startTime;
     private Date endTime;
+    private String id;
 
     public DefaultOrderHistoryParamsInstrumentSpan() {
     }
@@ -47,5 +48,15 @@ public class DefaultOrderHistoryParamsInstrumentSpan implements InstrumentParam,
     @Override
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
     }
 }

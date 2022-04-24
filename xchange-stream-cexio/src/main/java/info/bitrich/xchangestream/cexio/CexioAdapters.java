@@ -28,7 +28,8 @@ public class CexioAdapters {
           order.getTime(),
           order.getPrice(),
           order.getFee(),
-          getOrderStatus(order));
+          getOrderStatus(order),
+          null);
     } else {
       return new CexioOrder(
           adaptCurrencyPair(order.getPair()),

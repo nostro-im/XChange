@@ -17,7 +17,6 @@ import org.knowm.xchange.service.trade.params.orders.DefaultOpenOrdersParamInstr
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Collection;
 
 public class FtxTradeService extends FtxTradeServiceRaw implements TradeService {

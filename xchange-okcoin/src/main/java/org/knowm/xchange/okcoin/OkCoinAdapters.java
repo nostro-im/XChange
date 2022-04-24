@@ -257,7 +257,8 @@ public final class OkCoinAdapters {
         order.getAveragePrice(),
         order.getDealAmount(),
         null,
-        adaptOrderStatus(order.getStatus()));
+        adaptOrderStatus(order.getStatus()),
+        null);
   }
 
   public static LimitOrder adaptOpenOrderFutures(OkCoinFuturesOrder order) {
@@ -271,7 +272,8 @@ public final class OkCoinAdapters {
         order.getAvgPrice(),
         order.getDealAmount(),
         order.getFee(),
-        adaptOrderStatus(order.getStatus()));
+        adaptOrderStatus(order.getStatus()),
+        null);
   }
 
   public static OrderType adaptOrderType(String type) {

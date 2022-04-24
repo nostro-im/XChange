@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.junit.Test;
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.utils.ObjectMapperHelper;
@@ -27,6 +28,7 @@ public class StopOrderTest {
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
     final String reference = "reference";
     final StopOrder.Intention intention = StopOrder.Intention.TAKE_PROFIT;
+    final Currency feeCurrency = Currency.DX;
 
     final StopOrder copy =
         new StopOrder.Builder(type, currencyPair)
@@ -42,6 +44,7 @@ public class StopOrderTest {
             .fee(fee)
             .userReference(reference)
             .intention(intention)
+            .feeCurrency(feeCurrency)
             .build();
 
     assertThat(copy.getType()).isEqualTo(type);
@@ -60,6 +63,7 @@ public class StopOrderTest {
     assertThat(copy.getFee()).isEqualTo(fee);
     assertThat(copy.getUserReference()).isEqualTo(reference);
     assertThat(copy.getIntention()).isEqualTo(intention);
+    assertThat(copy.getFeeCurrency()).isEqualTo(feeCurrency);
   }
 
   @Test
@@ -77,6 +81,7 @@ public class StopOrderTest {
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
     final String reference = "reference";
     final StopOrder.Intention intention = StopOrder.Intention.TAKE_PROFIT;
+    final Currency feeCurrency = Currency.DX;
 
     final StopOrder original =
         new StopOrder(
@@ -92,12 +97,13 @@ public class StopOrderTest {
             fee,
             status,
             reference,
-            intention);
+            intention,
+            feeCurrency);
     original.addOrderFlag(TestFlags.TEST1);
     original.addOrderFlag(TestFlags.TEST3);
     final StopOrder copy = StopOrder.Builder.from(original).build();
 
-    assertThat(copy).isEqualToComparingFieldByField(original);
+    assertThat(copy).usingRecursiveComparison().isEqualTo(original);
   }
 
   @Test
@@ -115,6 +121,7 @@ public class StopOrderTest {
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
     final String reference = "reference";
     final StopOrder.Intention intention = StopOrder.Intention.TAKE_PROFIT;
+    final Currency feeCurrency = Currency.DX;
 
     final StopOrder original =
         new StopOrder(
@@ -130,7 +137,8 @@ public class StopOrderTest {
             fee,
             status,
             reference,
-            intention);
+            intention,
+            feeCurrency);
     original.addOrderFlag(TestFlags.TEST1);
     original.addOrderFlag(TestFlags.TEST3);
 

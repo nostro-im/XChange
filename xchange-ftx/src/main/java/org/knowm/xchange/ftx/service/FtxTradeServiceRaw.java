@@ -18,7 +18,6 @@ import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -184,9 +183,13 @@ public class FtxTradeServiceRaw extends FtxBaseService {
       throw new IOException(
           "TradeHistoryParams must implement TradeHistoryParamCurrencyPair or TradeHistoryParamInstrument interface.");
     }
-    return FtxAdapters.adaptUserTrades(
-        getFtxOrderHistory(subaccount, FtxAdapters.adaptInstrumentToFtxMarket(instrument), null, null)
-            .getResult());
+
+    String orderId = null;
+    if (params instanceof TradeHistoryParamOrder) {
+      orderId =((TradeHistoryParamOrder) params).getId();
+    }
+
+    return FtxAdapters.adaptUserTradesFromTrades(getFtxTradeHistory(subaccount, FtxAdapters.adaptInstrumentToFtxMarket(instrument), null, null, orderId).getResult());
   }
 
   public FtxResponse<List<FtxOrderDto>> getFtxOrderHistory(String subaccount, String market, Integer startTime, Integer endTime)
@@ -205,7 +208,7 @@ public class FtxTradeServiceRaw extends FtxBaseService {
     }
   }
 
-  public FtxResponse<List<FtxUserTradeDto>> getFtxTradeHistory(String subaccount, String market, Integer startTime, Integer endTime)
+  public FtxResponse<List<FtxUserTradeDto>> getFtxTradeHistory(String subaccount, String market, Integer startTime, Integer endTime, String orderId)
           throws FtxException, IOException {
     try {
       return ftx.fills(
@@ -216,7 +219,8 @@ public class FtxTradeServiceRaw extends FtxBaseService {
               market,
               startTime,
               endTime,
-              "asc");
+              "asc",
+              orderId);
     } catch (FtxException e) {
       throw new FtxException(e.getMessage());
     }

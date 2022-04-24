@@ -274,7 +274,8 @@ public class CexIOAdapters {
         null,
         cumulativeAmount,
         null,
-        status);
+        status,
+        null);
   }
 
   public static LimitOrder adaptOrder(CexIOFullOrder cexIOOrder) {
@@ -319,7 +320,8 @@ public class CexIOAdapters {
         averagePrice,
         cumulativeAmount,
         fee.compareTo(BigDecimal.ZERO) > 0 ? fee : null,
-        status);
+        status,
+        null);
   }
 
   /**

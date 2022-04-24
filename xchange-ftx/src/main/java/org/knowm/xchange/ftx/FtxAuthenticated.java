@@ -211,7 +211,8 @@ public interface FtxAuthenticated extends Ftx {
       @QueryParam("market") String market,
       @QueryParam("start_time") Integer startTime,
       @QueryParam("end_time") Integer endTime,
-      @QueryParam("order") String order)
+      @QueryParam("order") String order,
+      @QueryParam("orderId") String orderId)
       throws IOException, FtxException;
 
   @DELETE

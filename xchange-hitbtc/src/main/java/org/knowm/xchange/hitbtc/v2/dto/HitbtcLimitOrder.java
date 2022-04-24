@@ -2,6 +2,8 @@ package org.knowm.xchange.hitbtc.v2.dto;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
@@ -33,7 +35,8 @@ public class HitbtcLimitOrder extends LimitOrder {
         null,
         null,
         null,
-        clientOrderId);
+        clientOrderId,
+        null);
   }
 
   public HitbtcLimitOrder(
@@ -56,7 +59,8 @@ public class HitbtcLimitOrder extends LimitOrder {
         cumulativeAmount,
         null,
         null,
-        clientOrderId);
+        clientOrderId,
+        null);
   }
 
   public HitbtcLimitOrder(
@@ -70,7 +74,8 @@ public class HitbtcLimitOrder extends LimitOrder {
       BigDecimal cumulativeAmount,
       BigDecimal fee,
       OrderStatus status,
-      String clientOrderId) {
+      String clientOrderId,
+      Currency feeCurrency) {
     super(
         type,
         originalAmount,
@@ -82,7 +87,8 @@ public class HitbtcLimitOrder extends LimitOrder {
         cumulativeAmount,
         fee,
         status,
-        clientOrderId);
+        clientOrderId,
+        feeCurrency);
   }
 
   public String getClientOrderId() {

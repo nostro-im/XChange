@@ -2,6 +2,8 @@ package info.bitrich.xchangestream.binance.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
+import java.util.Optional;
+
 import org.knowm.xchange.binance.BinanceAdapters;
 import org.knowm.xchange.binance.dto.trade.BinanceOrder;
 import org.knowm.xchange.binance.dto.trade.OrderSide;
@@ -213,23 +215,26 @@ public class ExecutionReportBinanceUserTransaction extends ProductBinanceWebSock
   }
 
   public Order toOrder() {
-    return BinanceAdapters.adaptOrder(
-        new BinanceOrder(
-            BinanceAdapters.toSymbol(getCurrencyPair()),
-            orderId,
-            clientOrderId,
-            orderPrice,
-            orderQuantity,
-            cumulativeFilledQuantity,
-            cumulativeQuoteAssetTransactedQuantity,
-            currentOrderStatus,
-            timeInForce,
-            orderType,
-            side,
-            stopPrice,
-            BigDecimal.ZERO,
-            orderCreationTime,
-            timestamp));
+    Order order = BinanceAdapters.adaptOrder(
+            new BinanceOrder(
+                    BinanceAdapters.toSymbol(getCurrencyPair()),
+                    orderId,
+                    clientOrderId,
+                    orderPrice,
+                    orderQuantity,
+                    cumulativeFilledQuantity,
+                    cumulativeQuoteAssetTransactedQuantity,
+                    currentOrderStatus,
+                    timeInForce,
+                    orderType,
+                    side,
+                    stopPrice,
+                    BigDecimal.ZERO,
+                    orderCreationTime,
+                    timestamp));
+    order.setFee(getCommissionAmount());
+    order.setFeeCurrency(Optional.ofNullable(getCommissionAsset()).map(Currency::new).orElse(null));
+    return order;
   }
 
   @Override

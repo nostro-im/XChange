@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 import org.apache.commons.lang3.ObjectUtils;
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.instrument.Instrument;
@@ -92,7 +93,8 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
         BigDecimal.ZERO,
         cumulativeAmount,
         BigDecimal.ZERO,
-        OrderStatus.PENDING_NEW);
+        OrderStatus.PENDING_NEW,
+        null);
     this.stopPrice = stopPrice;
   }
 
@@ -129,7 +131,8 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
         averagePrice,
         cumulativeAmount,
         BigDecimal.ZERO,
-        status);
+        status,
+        null);
     this.stopPrice = stopPrice;
   }
 
@@ -171,7 +174,8 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
         averagePrice,
         cumulativeAmount,
         BigDecimal.ZERO,
-        status);
+        status,
+        null);
   }
 
   /**
@@ -189,6 +193,7 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
    * @param cumulativeAmount the amount that has been filled
    * @param fee the fee associated with this order
    * @param status the status of the order at the exchange or broker
+   * @param feeCurrency fee currency
    */
   public StopOrder(
       OrderType type,
@@ -201,7 +206,8 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
       BigDecimal averagePrice,
       BigDecimal cumulativeAmount,
       BigDecimal fee,
-      OrderStatus status) {
+      OrderStatus status,
+      Currency feeCurrency) {
 
     super(
         type,
@@ -212,7 +218,8 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
         averagePrice,
         cumulativeAmount,
         fee,
-        status);
+        status,
+        feeCurrency);
     this.stopPrice = stopPrice;
     this.limitPrice = limitPrice;
   }
@@ -231,6 +238,7 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
    * @param averagePrice the weighted average price of any fills belonging to the order
    * @param cumulativeAmount the amount that has been filled
    * @param status the status of the order at the exchange or broker
+   * @param feeCurrency fee currency
    */
   public StopOrder(
       OrderType type,
@@ -245,7 +253,8 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
       BigDecimal fee,
       OrderStatus status,
       String userReference,
-      Intention intention) {
+      Intention intention,
+      Currency feeCurrency) {
 
     super(
         type,
@@ -257,7 +266,8 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
         cumulativeAmount,
         fee,
         status,
-        userReference);
+        userReference,
+        feeCurrency);
     this.stopPrice = stopPrice;
     this.limitPrice = limitPrice;
     this.intention = intention;
@@ -369,6 +379,7 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
               .flags(order.getOrderFlags())
               .orderStatus(order.getStatus())
               .fee(order.getFee())
+              .feeCurrency(order.getFeeCurrency())
               .averagePrice(order.getAveragePrice())
               .userReference(order.getUserReference());
       if (order instanceof StopOrder) {
@@ -402,6 +413,11 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
     public Builder fee(BigDecimal fee) {
 
       return (Builder) super.fee(fee);
+    }
+
+    @Override
+    public Builder feeCurrency(Currency feeCurrency) {
+      return (Builder) super.feeCurrency(feeCurrency);
     }
 
     @Override
@@ -508,7 +524,7 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
               fee,
               status,
               userReference,
-              intention);
+              intention, feeCurrency);
 
       order.setOrderFlags(flags);
       order.setLeverage(leverage);
