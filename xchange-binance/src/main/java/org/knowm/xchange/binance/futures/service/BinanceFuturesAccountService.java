@@ -15,6 +15,7 @@ import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.dto.account.Fee;
+import org.knowm.xchange.service.account.RawAccountService;
 import org.knowm.xchange.service.account.params.AccountLeverageParams;
 import org.knowm.xchange.service.account.params.AccountLeverageParamsCurrencyPair;
 import org.knowm.xchange.service.account.params.AccountMarginParams;
@@ -39,6 +40,11 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
     @Override
     public AccountInfo getAccountInfo() throws IOException {
         return BinanceFuturesAdapter.adaptAccountInfo(getFuturesAccountInfo());
+    }
+
+    @Override
+    public Object getRawAccountInfo() throws IOException {
+        return getFuturesAccountInfo();
     }
 
     public BinanceFuturesAccountInformation getFuturesAccountInfo() throws IOException {

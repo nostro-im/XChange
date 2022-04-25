@@ -83,6 +83,11 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
   }
 
   @Override
+  public Object getRawAccountInfo() throws IOException {
+    return account();
+  }
+
+  @Override
   public Map<CurrencyPair, Fee> getDynamicTradingFees() throws IOException {
     try {
       BinanceAccountInformation acc = account();
