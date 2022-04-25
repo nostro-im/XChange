@@ -15,7 +15,6 @@ import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.dto.account.Fee;
-import org.knowm.xchange.service.account.RawAccountService;
 import org.knowm.xchange.service.account.params.AccountLeverageParams;
 import org.knowm.xchange.service.account.params.AccountLeverageParamsCurrencyPair;
 import org.knowm.xchange.service.account.params.AccountMarginParams;
