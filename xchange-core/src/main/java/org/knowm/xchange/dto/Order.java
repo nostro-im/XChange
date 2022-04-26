@@ -14,6 +14,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.StopOrder;
+import org.knowm.xchange.dto.trade.TrailingStopOrder;
 import org.knowm.xchange.instrument.Instrument;
 
 /** Data object representing an order */
@@ -21,7 +22,8 @@ import org.knowm.xchange.instrument.Instrument;
 @JsonSubTypes({
   @JsonSubTypes.Type(value = LimitOrder.class, name = "limit"),
   @JsonSubTypes.Type(value = StopOrder.class, name = "stop"),
-  @JsonSubTypes.Type(value = MarketOrder.class, name = "market")
+  @JsonSubTypes.Type(value = MarketOrder.class, name = "market"),
+  @JsonSubTypes.Type(value = TrailingStopOrder.class, name = "trailing_stop")  
 })
 public abstract class Order implements Serializable {
 
