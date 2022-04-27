@@ -112,8 +112,7 @@ public class TrailingStopOrder extends Order implements Comparable<TrailingStopO
 
   @Override
   public String toString() {
-
-    return "LimitOrder [triggerPrice=" + triggerPrice + ", trailingRatio=" + trailingRatio + super.toString() + "]";
+    return "TrailingStopOrder [triggerPrice=" + triggerPrice + ", trailingRatio=" + trailingRatio + ", triggerType=" + triggerType + ", " + super.toString() + "]";
   }
 
   @Override
