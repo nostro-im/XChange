@@ -1,6 +1,7 @@
 package org.knowm.xchange.ftx.service;
 
 import org.knowm.xchange.Exchange;
+import org.knowm.xchange.client.PlaceOrderLimiter;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.account.OpenPositions;
 import org.knowm.xchange.dto.trade.LimitOrder;
@@ -15,21 +16,36 @@ import org.knowm.xchange.service.trade.params.DefaultTradeHistoryParamInstrument
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.orders.DefaultOpenOrdersParamInstrument;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Collection;
 
 public class FtxTradeService extends FtxTradeServiceRaw implements TradeService {
+  private static final Logger LOG = LoggerFactory.getLogger(FtxTradeService.class);
   
-  private final FtxPlaceOrderExecutor placeOrderExecutor = new FtxPlaceOrderExecutor();
+  private static final int DEF_PLACE_LIMIT = 2;
+  private static final long DEF_PLACE_SLEEP = 200;
+  private static final long DEF_PLACE_MAX_SLEEP = 10_000;
+  
+  private final PlaceOrderLimiter placeOrderLimiter;
 
   public FtxTradeService(Exchange exchange) {
     super(exchange);
+    
+    this.placeOrderLimiter = PlaceOrderLimiter.fromSpecificParams(
+            exchange.getExchangeSpecification().getExchangeSpecificParameters(),
+            DEF_PLACE_LIMIT,
+            DEF_PLACE_SLEEP,
+            DEF_PLACE_MAX_SLEEP);
+    
+    LOG.info("Created {}", placeOrderLimiter);
   }
 
   @Override
   public String placeMarketOrder(MarketOrder marketOrder) throws IOException {
-    return placeOrderExecutor.executePlace(
+    return placeOrderLimiter.executePlace(
         () ->
             placeMarketOrderForSubaccount(
                 exchange.getExchangeSpecification().getUserName(), marketOrder));
@@ -37,7 +53,7 @@ public class FtxTradeService extends FtxTradeServiceRaw implements TradeService 
 
   @Override
   public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
-    return placeOrderExecutor.executePlace(
+    return placeOrderLimiter.executePlace(
         () ->
             placeLimitOrderForSubaccount(
                 exchange.getExchangeSpecification().getUserName(), limitOrder));

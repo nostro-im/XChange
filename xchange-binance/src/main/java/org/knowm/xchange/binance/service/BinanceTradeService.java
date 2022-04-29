@@ -20,6 +20,7 @@ import org.knowm.xchange.binance.dto.trade.BinanceOrder;
 import org.knowm.xchange.binance.dto.trade.BinanceTrade;
 import org.knowm.xchange.binance.dto.trade.OrderType;
 import org.knowm.xchange.binance.dto.trade.TimeInForce;
+import org.knowm.xchange.client.PlaceOrderLimiter;
 import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
@@ -53,12 +54,25 @@ import org.knowm.xchange.service.trade.params.orders.OrderQueryParams;
 import org.knowm.xchange.utils.Assert;
 
 public class BinanceTradeService extends BinanceTradeServiceRaw implements TradeService {
+  private static final int DEF_PLACE_LIMIT = 50;
+  private static final long DEF_PLACE_SLEEP = 10_000;
+  private static final long DEF_PLACE_MAX_SLEEP = 10_000;
+
+  private final PlaceOrderLimiter placeOrderLimiter;
 
   public BinanceTradeService(
       BinanceExchange exchange,
       BinanceAuthenticated binance,
       ResilienceRegistries resilienceRegistries) {
     super(exchange, binance, resilienceRegistries);
+    
+    this.placeOrderLimiter = PlaceOrderLimiter.fromSpecificParams(
+      exchange.getExchangeSpecification().getExchangeSpecificParameters(),
+      DEF_PLACE_LIMIT,
+      DEF_PLACE_SLEEP,
+      DEF_PLACE_MAX_SLEEP);
+
+    LOG.info("Created {}", placeOrderLimiter);
   }
 
   @Override
@@ -145,18 +159,20 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
       Long recvWindow =
           (Long)
               exchange.getExchangeSpecification().getExchangeSpecificParametersItem("recvWindow");
-      BinanceNewOrder newOrder =
-          newOrder(
-              order.getCurrencyPair(),
-              BinanceAdapters.convert(order.getType()),
-              type,
-              tif,
-              order.getOriginalAmount(),
-              limitPrice,
-              getClientOrderId(order),
-              stopPrice,
-              null);
-      return Long.toString(newOrder.orderId);
+      return placeOrderLimiter.executePlace(() -> {
+        BinanceNewOrder newOrder =
+                newOrder(
+                        order.getCurrencyPair(),
+                        BinanceAdapters.convert(order.getType()),
+                        type,
+                        tif,
+                        order.getOriginalAmount(),
+                        limitPrice,
+                        getClientOrderId(order),
+                        stopPrice,
+                        null);
+        return Long.toString(newOrder.orderId);
+      });
     } catch (BinanceException e) {
       throw BinanceErrorAdapter.adapt(e);
     }

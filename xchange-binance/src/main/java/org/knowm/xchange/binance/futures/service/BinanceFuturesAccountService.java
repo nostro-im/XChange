@@ -41,6 +41,11 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
         return BinanceFuturesAdapter.adaptAccountInfo(getFuturesAccountInfo());
     }
 
+    @Override
+    public Object getRawAccountInfo() throws IOException {
+        return getFuturesAccountInfo();
+    }
+
     public BinanceFuturesAccountInformation getFuturesAccountInfo() throws IOException {
         try {
             return decorateApiCall(
