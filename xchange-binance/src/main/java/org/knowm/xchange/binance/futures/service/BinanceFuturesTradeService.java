@@ -9,7 +9,9 @@ import org.knowm.xchange.binance.dto.trade.*;
 import org.knowm.xchange.binance.futures.BinanceFuturesAdapter;
 import org.knowm.xchange.binance.futures.BinanceFuturesAuthenticated;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrder;
+import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrderType;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesTrade;
+import org.knowm.xchange.binance.futures.dto.trade.WorkingType;
 import org.knowm.xchange.binance.service.BinanceTradeService;
 import org.knowm.xchange.client.PlaceOrderLimiter;
 import org.knowm.xchange.client.ResilienceRegistries;
@@ -116,6 +118,21 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
         throw new NotAvailableFromExchangeException("not supported instrument " + stopOrder.getInstrument());
     }
 
+    @Override
+    public String placeTrailingStopOrder(TrailingStopOrder trailingStopOrder) throws IOException {
+        if (trailingStopOrder.getInstrument() instanceof FuturesContract) {
+            CurrencyPair pair = ((FuturesContract) trailingStopOrder.getInstrument()).getCurrencyPair();
+            
+            TrailingStopOrder order = BinanceFuturesAdapter.replaceInstrument(trailingStopOrder, pair);
+            BinanceFuturesOrderType type = BinanceFuturesOrderType.TRAILING_STOP_MARKET;
+            BigDecimal callbackRate = order.getTrailingRatio().movePointRight(2);
+            WorkingType workingType = BinanceFuturesAdapter.convert(order.getTriggerType());
+            
+            return placeOrder(type, order, null, null, order.getTriggerPrice(), callbackRate, workingType,null);
+        }
+        throw new NotAvailableFromExchangeException("not supported instrument " + trailingStopOrder.getInstrument());
+    }
+    
     @Override
     public boolean cancelOrder(CancelOrderParams orderParams) throws IOException {
         return super.cancelOrder(orderParams);// DONE
@@ -251,6 +268,14 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
     protected String placeOrder(
             OrderType type, Order order, BigDecimal limitPrice, BigDecimal stopPrice, TimeInForce tif)
             throws IOException {
+        BinanceFuturesOrderType futuresOrderType = BinanceFuturesAdapter.adaptOrderType(type);
+        return placeOrder(futuresOrderType, order, limitPrice, stopPrice, null, null, null, tif);
+    }
+    
+    private String placeOrder(
+            BinanceFuturesOrderType futuresOrderType, Order order, BigDecimal limitPrice, BigDecimal stopPrice,
+            BigDecimal activationPrice, BigDecimal callbackRate, WorkingType workingType, TimeInForce tif)
+            throws IOException {
         try {
             return placeOrderLimiter.executePlace(() -> {
                 BinanceFuturesOrder newOrder =
@@ -260,7 +285,7 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
                                                 BinanceAdapters.toSymbol(order.getCurrencyPair()),
                                                 BinanceAdapters.convert(order.getType()),
                                                 null,
-                                                BinanceFuturesAdapter.adaptOrderType(type),
+                                                futuresOrderType,
                                                 tif,
                                                 order.getOriginalAmount(),
                                                 null,
@@ -268,9 +293,9 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
                                                 getClientOrderId(order),
                                                 stopPrice,
                                                 null,
-                                                null,
-                                                null,
-                                                null,
+                                                activationPrice,
+                                                callbackRate,
+                                                workingType,
                                                 null,
                                                 null,
                                                 getRecvWindow(),
