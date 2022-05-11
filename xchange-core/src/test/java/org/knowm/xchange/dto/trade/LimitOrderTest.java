@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.junit.Test;
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.Order.IOrderFlags;
@@ -28,6 +29,7 @@ public class LimitOrderTest {
     final Date timestamp = new Date();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
+    final Currency feeCurrency = Currency.DX;
 
     final LimitOrder copy =
         new LimitOrder.Builder(type, currencyPair)
@@ -41,6 +43,7 @@ public class LimitOrderTest {
             .flag(TestFlags.TEST1)
             .fee(fee)
             .userReference(userReference)
+            .feeCurrency(feeCurrency)
             .build();
     assertThat(copy.getType()).isEqualTo(type);
     assertThat(copy.getOriginalAmount()).isEqualTo(originalAmount);
@@ -56,6 +59,7 @@ public class LimitOrderTest {
     assertThat(copy.getStatus()).isEqualTo(status);
     assertThat(copy.getFee()).isEqualTo(fee);
     assertThat(copy.getUserReference()).isEqualTo(userReference);
+    assertThat(copy.getFeeCurrency()).isEqualTo(feeCurrency);
   }
 
   @Test
@@ -70,6 +74,7 @@ public class LimitOrderTest {
     final Date timestamp = new Date();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
+    final Currency feeCurrency = Currency.DX;
 
     final LimitOrder original =
         new LimitOrder(
@@ -82,12 +87,13 @@ public class LimitOrderTest {
             averagePrice,
             cumulativeAmount,
             fee,
-            status);
+            status,
+            feeCurrency);
     original.addOrderFlag(TestFlags.TEST1);
     original.addOrderFlag(TestFlags.TEST3);
     final LimitOrder copy = LimitOrder.Builder.from(original).build();
 
-    assertThat(copy).isEqualToComparingFieldByField(original);
+    assertThat(copy).usingRecursiveComparison().isEqualTo(original);
   }
 
   @Test
@@ -102,6 +108,7 @@ public class LimitOrderTest {
     final Date timestamp = new Date();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
+    final Currency feeCurrency = Currency.DX;
 
     final LimitOrder original =
         new LimitOrder(
@@ -114,7 +121,8 @@ public class LimitOrderTest {
             averagePrice,
             cumulativeAmount,
             fee,
-            status);
+            status,
+            feeCurrency);
     original.addOrderFlag(TestFlags.TEST1);
     original.addOrderFlag(TestFlags.TEST3);
 

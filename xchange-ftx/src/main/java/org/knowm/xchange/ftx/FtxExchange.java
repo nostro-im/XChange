@@ -16,17 +16,21 @@ import si.mazi.rescu.SynchronizedValueFactory;
 public class FtxExchange extends BaseExchange implements Exchange {
   private static final String FTX_OTC_BASE_URL = "https://otc.ftx.com/";
 
+  private FtxAuthenticated ftx;
   private FtxLendingServiceRaw lendingService;
   private FtxBorrowingServiceRaw borrowingService;
   private SynchronizedValueFactory<Long> timestampFactory;
 
   @Override
   protected void initServices() {
-    this.marketDataService = new FtxMarketDataService(this);
-    this.accountService = new FtxAccountService(this);
-    this.tradeService = new FtxTradeService(this);
-    this.lendingService = new FtxLendingServiceRaw(this);
-    this.borrowingService = new FtxBorrowingServiceRaw(this);
+    this.ftx = ExchangeRestProxyBuilder.forInterface(
+                    FtxAuthenticated.class, getExchangeSpecification())
+            .build();
+    this.marketDataService = new FtxMarketDataService(this, ftx);
+    this.accountService = new FtxAccountService(this, ftx);
+    this.tradeService = new FtxTradeService(this, ftx);
+    this.lendingService = new FtxLendingServiceRaw(this, ftx);
+    this.borrowingService = new FtxBorrowingServiceRaw(this, ftx);
     this.timestampFactory =
         new FtxTimestampFactory(
             ExchangeRestProxyBuilder.forInterface(FtxOtc.class, this.getExchangeSpecification())

@@ -2,6 +2,8 @@ package org.knowm.xchange.bitstamp.order.dto;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 
@@ -16,7 +18,8 @@ public class BitstampGenericOrder extends Order {
       BigDecimal averagePrice,
       BigDecimal cumulativeAmount,
       BigDecimal fee,
-      OrderStatus status) {
+      OrderStatus status,
+      Currency feeCurrency) {
 
     super(
         type,
@@ -27,6 +30,7 @@ public class BitstampGenericOrder extends Order {
         averagePrice,
         cumulativeAmount,
         fee,
-        status);
+        status,
+        feeCurrency);
   }
 }

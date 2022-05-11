@@ -389,6 +389,7 @@ public class PoloniexAdapters {
         weightedAveragePrice,
         amount,
         null,
-        Order.OrderStatus.UNKNOWN);
+        Order.OrderStatus.UNKNOWN,
+        null);
   }
 }

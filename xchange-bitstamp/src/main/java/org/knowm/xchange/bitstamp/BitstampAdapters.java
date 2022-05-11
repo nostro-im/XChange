@@ -380,7 +380,8 @@ public final class BitstampAdapters {
             averagePrice,
             cumulativeAmount,
             totalFee,
-            orderStatus);
+            orderStatus,
+            null);
 
     return bitstampGenericOrder;
   }

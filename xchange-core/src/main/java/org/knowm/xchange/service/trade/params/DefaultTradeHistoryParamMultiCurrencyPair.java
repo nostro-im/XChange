@@ -5,9 +5,10 @@ import java.util.Collections;
 import org.knowm.xchange.currency.CurrencyPair;
 
 public class DefaultTradeHistoryParamMultiCurrencyPair
-    implements TradeHistoryParamMultiCurrencyPair {
+    implements TradeHistoryParamMultiCurrencyPair, TradeHistoryParamOrder {
 
   private Collection<CurrencyPair> pairs = Collections.emptySet();
+  private String orderId;
 
   @Override
   public Collection<CurrencyPair> getCurrencyPairs() {
@@ -17,5 +18,15 @@ public class DefaultTradeHistoryParamMultiCurrencyPair
   @Override
   public void setCurrencyPairs(Collection<CurrencyPair> value) {
     pairs = value;
+  }
+
+  @Override
+  public String getOrderId() {
+    return orderId;
+  }
+
+  @Override
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
   }
 }

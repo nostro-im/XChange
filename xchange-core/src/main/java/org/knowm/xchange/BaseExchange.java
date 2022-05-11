@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.exceptions.ExchangeException;
+import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.BaseExchangeService;
 import org.knowm.xchange.service.account.AccountService;
 import org.knowm.xchange.service.marketdata.MarketDataService;
@@ -164,6 +165,14 @@ public abstract class BaseExchange implements Exchange {
   public List<CurrencyPair> getExchangeSymbols() {
 
     return new ArrayList<>(getExchangeMetaData().getCurrencyPairs().keySet());
+  }
+
+  public List<Instrument> getExchangeFutures() {
+    return new ArrayList<>(getExchangeMetaData().getFutures().keySet());
+  }
+
+  public List<Instrument> getExchangeOptions() {
+    return new ArrayList<>(getExchangeMetaData().getOptions().keySet());
   }
 
   public String getMetaDataFileName(ExchangeSpecification exchangeSpecification) {

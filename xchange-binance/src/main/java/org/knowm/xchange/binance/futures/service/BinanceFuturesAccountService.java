@@ -13,18 +13,18 @@ import org.knowm.xchange.binance.service.account.params.BinanceAccountMarginPara
 import org.knowm.xchange.binance.service.account.params.BinanceAccountPositionMarginParams;
 import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.CurrencyPair;
+import org.knowm.xchange.derivative.Derivative;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.dto.account.Fee;
+import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.account.params.AccountLeverageParams;
 import org.knowm.xchange.service.account.params.AccountLeverageParamsCurrencyPair;
 import org.knowm.xchange.service.account.params.AccountMarginParams;
 import org.knowm.xchange.service.account.params.AccountPositionMarginParams;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.knowm.xchange.binance.BinanceResilience.REQUEST_WEIGHT_RATE_LIMITER;
 
@@ -76,7 +76,30 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
         return tradingFees;
     }
 
-    public BinanceUserCommissionRate getTradingCommission(CurrencyPair pair) throws IOException {
+    @Override
+    public Map<Instrument, Fee> getDynamicTradingFees(Set<Instrument> instruments) throws IOException {
+        Map<Instrument, Fee> items = new HashMap<>();
+        for (Instrument instrument : instruments) {
+            items.put(instrument, getDynamicTradingFee(instrument));
+        }
+        return items;
+    }
+
+    private Fee getDynamicTradingFee(Instrument instrument) throws IOException {
+        BinanceUserCommissionRate commission = getTradingCommission(instrument);
+        return new Fee(commission.makerCommissionRate.stripTrailingZeros(), commission.takerCommissionRate.stripTrailingZeros());
+    }
+
+    private BinanceUserCommissionRate getTradingCommission(Instrument instrument) throws IOException {
+        CurrencyPair pair;
+        if (instrument instanceof Derivative) {
+            pair = ((Derivative) instrument).getCurrencyPair();
+        } else if (instrument instanceof CurrencyPair) {
+            pair = (CurrencyPair) instrument;
+        } else {
+            throw new IllegalStateException("Can't resolve currency pair from instrument: " + instrument);
+        }
+
         try {
             return decorateApiCall(
                     () -> binanceFutures.userCommissionRate(BinanceAdapters.toSymbol(pair), getRecvWindow(), getTimestampFactory(), apiKey, signatureCreator))

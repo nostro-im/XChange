@@ -211,7 +211,8 @@ public class HuobiAdapters {
               openOrder.getFieldAmount(),
               openOrder.getFieldFees(),
               adaptOrderStatus(openOrder.getState()),
-              openOrder.getClOrdId());
+              openOrder.getClOrdId(),
+              null);
     }
     if (openOrder.isLimit()) {
       order =
@@ -226,7 +227,8 @@ public class HuobiAdapters {
               openOrder.getFieldAmount(),
               openOrder.getFieldFees(),
               adaptOrderStatus(openOrder.getState()),
-              openOrder.getClOrdId());
+              openOrder.getClOrdId(),
+              null);
     }
     if (openOrder.isStop()) {
       order =
@@ -243,7 +245,8 @@ public class HuobiAdapters {
               openOrder.getFieldFees(),
               adaptOrderStatus(openOrder.getState()),
               openOrder.getClOrdId(),
-              openOrder.getOperator().equals("lte") ? Intention.STOP_LOSS : Intention.TAKE_PROFIT);
+              openOrder.getOperator().equals("lte") ? Intention.STOP_LOSS : Intention.TAKE_PROFIT,
+              null);
     }
 
     order.setAveragePrice(openOrderAvgPrice);

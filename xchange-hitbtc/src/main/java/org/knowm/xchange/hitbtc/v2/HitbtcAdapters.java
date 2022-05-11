@@ -197,7 +197,8 @@ public class HitbtcAdapters {
         hitbtcOrder.cumQuantity,
         null,
         convertOrderStatus(hitbtcOrder.status),
-        hitbtcOrder.clientOrderId);
+        hitbtcOrder.clientOrderId,
+        null);
   }
 
   public static List<LimitOrder> adaptOrders(List<HitbtcOrder> openOrdersRaw) {

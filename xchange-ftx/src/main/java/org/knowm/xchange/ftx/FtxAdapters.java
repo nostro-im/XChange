@@ -272,6 +272,14 @@ public class FtxAdapters {
             .build();
   }
 
+  public static UserTrades adaptUserTradesFromTrades(List<FtxUserTradeDto> ftxUserTrades) {
+    List<UserTrade> userTrades = ftxUserTrades.stream()
+            .filter(dto -> dto.getSize().compareTo(BigDecimal.ZERO) != 0)
+            .map(FtxAdapters::adaptUserTrade)
+            .collect(Collectors.toList());
+    return new UserTrades(userTrades, Trades.TradeSortType.SortByTimestamp);
+  }
+
   public static Order adaptOrder(FtxOrderDto ftxOrderDto) {
     Order.OrderType type = adaptFtxOrderSideToOrderType(ftxOrderDto.getSide());
     Instrument instrument = adaptFtxMarketToInstrument(ftxOrderDto.getMarket());

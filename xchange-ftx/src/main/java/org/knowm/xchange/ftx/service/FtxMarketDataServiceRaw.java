@@ -3,14 +3,15 @@ package org.knowm.xchange.ftx.service;
 import java.io.IOException;
 import java.util.List;
 import org.knowm.xchange.Exchange;
+import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.ftx.FtxException;
 import org.knowm.xchange.ftx.dto.FtxResponse;
 import org.knowm.xchange.ftx.dto.marketdata.*;
 
 public class FtxMarketDataServiceRaw extends FtxBaseService {
 
-  public FtxMarketDataServiceRaw(Exchange exchange) {
-    super(exchange);
+  public FtxMarketDataServiceRaw(Exchange exchange, FtxAuthenticated ftx) {
+    super(exchange, ftx);
   }
 
   public FtxResponse<FtxMarketDto> getFtxMarket(String market)

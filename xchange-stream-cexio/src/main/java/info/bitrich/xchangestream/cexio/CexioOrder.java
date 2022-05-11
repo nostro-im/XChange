@@ -2,6 +2,8 @@ package info.bitrich.xchangestream.cexio;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
@@ -17,14 +19,15 @@ public class CexioOrder extends LimitOrder {
       Date timestamp,
       BigDecimal limitPrice,
       BigDecimal fee,
-      OrderStatus status) {
-    super(type, originalAmount, currencyPair, id, timestamp, limitPrice, null, null, fee, status);
+      OrderStatus status,
+      Currency feeCurrency) {
+    super(type, originalAmount, currencyPair, id, timestamp, limitPrice, null, null, fee, status, feeCurrency);
     this.remainingAmount = null;
   }
 
   public CexioOrder(
       CurrencyPair currencyPair, String id, OrderStatus status, BigDecimal remainingAmount) {
-    this(null, currencyPair, null, id, null, null, null, status);
+    this(null, currencyPair, null, id, null, null, null, status, null);
     this.remainingAmount = remainingAmount;
   }
 

@@ -6,13 +6,14 @@ import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.ftx.FtxAdapters;
+import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 public class FtxMarketDataService extends FtxMarketDataServiceRaw implements MarketDataService {
 
-  public FtxMarketDataService(Exchange exchange) {
-    super(exchange);
+  public FtxMarketDataService(Exchange exchange, FtxAuthenticated ftx) {
+    super(exchange, ftx);
   }
 
   @Override

@@ -8,6 +8,7 @@ import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.dto.trade.UserTrades;
 import org.knowm.xchange.ftx.FtxAdapters;
+import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.ftx.FtxException;
 import org.knowm.xchange.ftx.dto.FtxResponse;
 import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
@@ -18,15 +19,14 @@ import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class FtxTradeServiceRaw extends FtxBaseService {
 
-  public FtxTradeServiceRaw(Exchange exchange) {
-    super(exchange);
+  public FtxTradeServiceRaw(Exchange exchange, FtxAuthenticated ftx) {
+    super(exchange, ftx);
   }
 
   public String placeMarketOrderForSubaccount(String subaccount, MarketOrder marketOrder)
@@ -184,9 +184,13 @@ public class FtxTradeServiceRaw extends FtxBaseService {
       throw new IOException(
           "TradeHistoryParams must implement TradeHistoryParamCurrencyPair or TradeHistoryParamInstrument interface.");
     }
-    return FtxAdapters.adaptUserTrades(
-        getFtxOrderHistory(subaccount, FtxAdapters.adaptInstrumentToFtxMarket(instrument), null, null)
-            .getResult());
+
+    String orderId = null;
+    if (params instanceof TradeHistoryParamOrder) {
+      orderId =((TradeHistoryParamOrder) params).getOrderId();
+    }
+
+    return FtxAdapters.adaptUserTradesFromTrades(getFtxTradeHistory(subaccount, FtxAdapters.adaptInstrumentToFtxMarket(instrument), null, null, orderId).getResult());
   }
 
   public FtxResponse<List<FtxOrderDto>> getFtxOrderHistory(String subaccount, String market, Integer startTime, Integer endTime)
@@ -205,7 +209,7 @@ public class FtxTradeServiceRaw extends FtxBaseService {
     }
   }
 
-  public FtxResponse<List<FtxUserTradeDto>> getFtxTradeHistory(String subaccount, String market, Integer startTime, Integer endTime)
+  public FtxResponse<List<FtxUserTradeDto>> getFtxTradeHistory(String subaccount, String market, Integer startTime, Integer endTime, String orderId)
           throws FtxException, IOException {
     try {
       return ftx.fills(
@@ -216,7 +220,8 @@ public class FtxTradeServiceRaw extends FtxBaseService {
               market,
               startTime,
               endTime,
-              "asc");
+              "asc",
+              orderId);
     } catch (FtxException e) {
       throw new FtxException(e.getMessage());
     }

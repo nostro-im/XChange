@@ -9,6 +9,7 @@ import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.dto.trade.UserTrades;
 import org.knowm.xchange.ftx.FtxAdapters;
+import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
 import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.service.trade.params.CancelOrderParams;
@@ -31,8 +32,8 @@ public class FtxTradeService extends FtxTradeServiceRaw implements TradeService 
   
   private final PlaceOrderLimiter placeOrderLimiter;
 
-  public FtxTradeService(Exchange exchange) {
-    super(exchange);
+  public FtxTradeService(Exchange exchange, FtxAuthenticated ftx) {
+    super(exchange, ftx);
     
     this.placeOrderLimiter = PlaceOrderLimiter.fromSpecificParams(
             exchange.getExchangeSpecification().getExchangeSpecificParameters(),

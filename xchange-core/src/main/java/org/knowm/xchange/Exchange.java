@@ -55,6 +55,22 @@ public interface Exchange {
   }
 
   /**
+   * Returns a list of futures instruments. This list can either come originally from a loaded json
+   * file or from a remote call if the implementation override's the `remoteInit` method.
+   *
+   * @return The exchange's supported future instruments
+   */
+  List<Instrument> getExchangeFutures();
+
+  /**
+   * Returns a list of options instruments. This list can either come originally from a loaded json
+   * file or from a remote call if the implementation override's the `remoteInit` method.
+   *
+   * @return The exchange's supported options instruments
+   */
+  List<Instrument> getExchangeOptions();
+
+  /**
    * The nonce factory used to create a nonce value. Allows services to accept a placeholder that is
    * replaced with generated value just before message is serialized and sent. If a method of a rest
    * accepts ValueFactory as a parameter, it's evaluated, the message is serialized and sent in a

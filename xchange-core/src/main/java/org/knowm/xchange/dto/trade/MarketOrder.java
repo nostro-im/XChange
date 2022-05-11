@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
+
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.instrument.Instrument;
@@ -35,6 +37,7 @@ public class MarketOrder extends Order {
    * @param cumulativeAmount the amount that has been filled
    * @param fee the fee associated with this order
    * @param status the status of the order at the exchange or broker
+   * @param feeCurrency fee currency
    */
   public MarketOrder(
       OrderType type,
@@ -46,7 +49,8 @@ public class MarketOrder extends Order {
       BigDecimal cumulativeAmount,
       BigDecimal fee,
       OrderStatus status,
-      String userReference) {
+      String userReference,
+      Currency feeCurrency) {
     super(
         type,
         originalAmount,
@@ -57,7 +61,8 @@ public class MarketOrder extends Order {
         cumulativeAmount,
         fee,
         status,
-        userReference);
+        userReference,
+        feeCurrency);
   }
 
   /**
@@ -66,11 +71,12 @@ public class MarketOrder extends Order {
    * @param instrument The identifier (e.g. BTC/USD)
    * @param id An id (usually provided by the exchange)
    * @param timestamp a Date object representing the order's timestamp according to the exchange's
-   *     server, null if not provided
+*     server, null if not provided
    * @param averagePrice the weighted average price of any fills belonging to the order
    * @param cumulativeAmount the amount that has been filled
    * @param fee the fee associated with this order
    * @param status the status of the order at the exchange or broker
+   * @param feeCurrency fee currency
    */
   public MarketOrder(
       OrderType type,
@@ -81,7 +87,7 @@ public class MarketOrder extends Order {
       BigDecimal averagePrice,
       BigDecimal cumulativeAmount,
       BigDecimal fee,
-      OrderStatus status) {
+      OrderStatus status, Currency feeCurrency) {
     super(
         type,
         originalAmount,
@@ -91,7 +97,8 @@ public class MarketOrder extends Order {
         averagePrice,
         cumulativeAmount,
         fee,
-        status);
+        status,
+        feeCurrency);
   }
 
   /**
@@ -150,6 +157,7 @@ public class MarketOrder extends Order {
           .flags(order.getOrderFlags())
           .averagePrice(order.getAveragePrice())
           .fee(order.getFee())
+          .feeCurrency(order.getFeeCurrency())
           .userReference(order.getUserReference())
           .orderStatus(order.getStatus());
     }
@@ -182,6 +190,11 @@ public class MarketOrder extends Order {
     public Builder fee(BigDecimal fee) {
 
       return (Builder) super.fee(fee);
+    }
+
+    @Override
+    public Builder feeCurrency(Currency feeCurrency) {
+      return (Builder) super.feeCurrency(feeCurrency);
     }
 
     @Override
@@ -247,7 +260,7 @@ public class MarketOrder extends Order {
               cumulativeAmount,
               fee,
               status,
-              userReference);
+              userReference, feeCurrency);
       order.setOrderFlags(flags);
       order.setLeverage(leverage);
       return order;

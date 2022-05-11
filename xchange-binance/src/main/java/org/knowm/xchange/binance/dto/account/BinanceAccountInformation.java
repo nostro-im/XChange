@@ -6,16 +6,16 @@ import java.util.List;
 
 public final class BinanceAccountInformation {
 
-  public final BigDecimal makerCommission;
-  public final BigDecimal takerCommission;
-  public final BigDecimal buyerCommission;
-  public final BigDecimal sellerCommission;
-  public final boolean canTrade;
-  public final boolean canWithdraw;
-  public final boolean canDeposit;
-  public final long updateTime;
-  public List<BinanceBalance> balances;
-  public List<String> permissions;
+  final BigDecimal makerCommission;
+  final BigDecimal takerCommission;
+  final BigDecimal buyerCommission;
+  final BigDecimal sellerCommission;
+  final boolean canTrade;
+  final boolean canWithdraw;
+  final boolean canDeposit;
+  final long updateTime;
+  List<BinanceBalance> balances;
+  List<String> permissions;
 
   public BinanceAccountInformation(
       @JsonProperty("makerCommission") BigDecimal makerCommission,
@@ -38,5 +38,45 @@ public final class BinanceAccountInformation {
     this.updateTime = updateTime;
     this.balances = balances;
     this.permissions = permissions;
+  }
+
+  public BigDecimal getMakerCommission() {
+    return makerCommission;
+  }
+
+  public BigDecimal getTakerCommission() {
+    return takerCommission;
+  }
+
+  public BigDecimal getBuyerCommission() {
+    return buyerCommission;
+  }
+
+  public BigDecimal getSellerCommission() {
+    return sellerCommission;
+  }
+
+  public boolean isCanTrade() {
+    return canTrade;
+  }
+
+  public boolean isCanWithdraw() {
+    return canWithdraw;
+  }
+
+  public boolean isCanDeposit() {
+    return canDeposit;
+  }
+
+  public long getUpdateTime() {
+    return updateTime;
+  }
+
+  public List<BinanceBalance> getBalances() {
+    return balances;
+  }
+
+  public List<String> getPermissions() {
+    return permissions;
   }
 }

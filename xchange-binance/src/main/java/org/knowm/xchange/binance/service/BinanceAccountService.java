@@ -8,8 +8,8 @@ import org.knowm.xchange.binance.BinanceExchange;
 import org.knowm.xchange.binance.dto.BinanceException;
 import org.knowm.xchange.binance.dto.account.AssetDetail;
 import org.knowm.xchange.binance.dto.account.BinanceAccountInformation;
-import org.knowm.xchange.binance.dto.account.DepositAddress;
 import org.knowm.xchange.binance.dto.account.BinanceFutureTransferType;
+import org.knowm.xchange.binance.dto.account.DepositAddress;
 import org.knowm.xchange.binance.service.account.params.BinanceFuturesAccountFundsTransferParams;
 import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.Currency;
@@ -17,6 +17,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.account.*;
 import org.knowm.xchange.dto.account.FundingRecord.Status;
 import org.knowm.xchange.dto.account.FundingRecord.Type;
+import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.account.AccountService;
 import org.knowm.xchange.service.account.params.AccountFundsTransferParams;
 import org.knowm.xchange.service.trade.params.*;
@@ -73,10 +74,10 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
     try {
       BinanceAccountInformation acc = account();
       List<Balance> balances =
-          acc.balances.stream()
+          acc.getBalances().stream()
               .map(b -> new Balance(b.getCurrency(), b.getTotal(), b.getAvailable()))
               .collect(Collectors.toList());
-      return new AccountInfo(new Date(acc.updateTime), Wallet.Builder.from(balances).build());
+      return new AccountInfo(new Date(acc.getUpdateTime()), Wallet.Builder.from(balances).build());
     } catch (BinanceException e) {
       throw BinanceErrorAdapter.adapt(e);
     }
@@ -91,20 +92,42 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
   public Map<CurrencyPair, Fee> getDynamicTradingFees() throws IOException {
     try {
       BinanceAccountInformation acc = account();
-      BigDecimal makerFee =
-          acc.makerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
-      BigDecimal takerFee =
-          acc.takerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
-
       Map<CurrencyPair, Fee> tradingFees = new HashMap<>();
       List<CurrencyPair> pairs = exchange.getExchangeSymbols();
 
-      pairs.forEach(pair -> tradingFees.put(pair, new Fee(makerFee, takerFee)));
+      pairs.forEach(pair -> tradingFees.put(pair, getTradingFee(acc)));
 
       return tradingFees;
     } catch (BinanceException e) {
       throw BinanceErrorAdapter.adapt(e);
     }
+  }
+
+  @Override
+  public Map<Instrument, Fee> getDynamicTradingFees(Set<Instrument> instruments) throws IOException {
+    for (Instrument instrument : instruments) {
+      if (instrument instanceof CurrencyPair) {
+        Preconditions.checkArgument(exchange.getExchangeSymbols().contains(instrument), "Exchange meta data does not contain requested instrument: {}", instrument);
+      } else {
+        throw new IllegalArgumentException("Instrument is not supported: " + instrument);
+      }
+    }
+
+    try {
+      BinanceAccountInformation acc = account();
+      Map<Instrument, Fee> tradingFees = new HashMap<>();
+      Fee tradingFee = getTradingFee(acc);
+      instruments.forEach(instrument -> tradingFees.put(instrument, tradingFee));
+      return tradingFees;
+    } catch (BinanceException e) {
+      throw BinanceErrorAdapter.adapt(e);
+    }
+  }
+
+  Fee getTradingFee(BinanceAccountInformation acc) {
+    BigDecimal makerFee = acc.getMakerCommission().divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
+    BigDecimal takerFee = acc.getTakerCommission().divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
+    return new Fee(makerFee.stripTrailingZeros(), takerFee.stripTrailingZeros());
   }
 
   @Override

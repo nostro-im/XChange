@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
+
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.instrument.Instrument;
@@ -78,7 +80,8 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
         BigDecimal.ZERO,
         cumulativeAmount,
         BigDecimal.ZERO,
-        OrderStatus.PENDING_NEW);
+        OrderStatus.PENDING_NEW,
+        null);
     this.limitPrice = limitPrice;
   }
 
@@ -106,7 +109,8 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
       BigDecimal averagePrice,
       BigDecimal cumulativeAmount,
       BigDecimal fee,
-      OrderStatus status) {
+      OrderStatus status,
+      Currency feeCurrency) {
 
     super(
         type,
@@ -117,7 +121,8 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
         averagePrice,
         cumulativeAmount,
         fee,
-        status);
+        status,
+        feeCurrency);
     this.limitPrice = limitPrice;
   }
 
@@ -146,7 +151,8 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
       BigDecimal cumulativeAmount,
       BigDecimal fee,
       OrderStatus status,
-      String userReference) {
+      String userReference,
+      Currency feeCurrency) {
 
     super(
         type,
@@ -158,7 +164,8 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
         cumulativeAmount,
         fee,
         status,
-        userReference);
+        userReference,
+        feeCurrency);
     this.limitPrice = limitPrice;
   }
 
@@ -246,6 +253,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
               .flags(order.getOrderFlags())
               .orderStatus(order.getStatus())
               .fee(order.getFee())
+              .feeCurrency(order.getFeeCurrency())
               .averagePrice(order.getAveragePrice())
               .userReference(order.getUserReference());
       if (order instanceof LimitOrder) {
@@ -345,6 +353,11 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
       return (Builder) super.fee(fee);
     }
 
+    @Override
+    public Builder feeCurrency(Currency feeCurrency) {
+      return (Builder) super.feeCurrency(feeCurrency);
+    }
+
     public Builder limitPrice(BigDecimal limitPrice) {
 
       this.limitPrice = limitPrice;
@@ -368,7 +381,8 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
                   : originalAmount.subtract(remainingAmount),
               fee,
               status,
-              userReference);
+              userReference,
+              feeCurrency);
       order.setOrderFlags(flags);
       order.setLeverage(leverage);
       return order;

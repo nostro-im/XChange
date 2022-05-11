@@ -44,7 +44,8 @@ public class CexioStreamingServiceTest {
             new Date(1522135708956L),
             new BigDecimal("7176.5"),
             new BigDecimal("0.16"),
-            Order.OrderStatus.NEW);
+            Order.OrderStatus.NEW,
+            null);
     test.assertValue(expected);
   }
 

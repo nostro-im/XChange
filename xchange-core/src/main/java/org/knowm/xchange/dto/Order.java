@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.MarketOrder;
@@ -52,6 +54,8 @@ public abstract class Order implements Serializable {
   private BigDecimal averagePrice;
   /** The total of the fees incurred for all transactions related to this order */
   private BigDecimal fee;
+  /** Fee currency */
+  private Currency feeCurrency;
   /** The leverage to use for margin related to this order */
   private String leverage = null;
 
@@ -65,7 +69,7 @@ public abstract class Order implements Serializable {
    */
   public Order(
       OrderType type, BigDecimal originalAmount, Instrument instrument, String id, Date timestamp) {
-    this(type, originalAmount, instrument, id, timestamp, null, null, null, null);
+    this(type, originalAmount, instrument, id, timestamp, null, null, null, null, null);
   }
 
   /**
@@ -89,7 +93,8 @@ public abstract class Order implements Serializable {
       BigDecimal averagePrice,
       BigDecimal cumulativeAmount,
       BigDecimal fee,
-      OrderStatus status) {
+      OrderStatus status,
+      Currency feeCurrency) {
 
     this(
         type,
@@ -101,7 +106,7 @@ public abstract class Order implements Serializable {
         cumulativeAmount,
         fee,
         status,
-        Integer.toString(100000000 + random.nextInt(100000000)));
+        Integer.toString(100000000 + random.nextInt(100000000)), feeCurrency);
   }
 
   /**
@@ -116,6 +121,7 @@ public abstract class Order implements Serializable {
    * @param fee the fee associated with this order
    * @param status the status of the order at the exchange
    * @param userReference a reference provided by the user to identify the order
+   * @param feeCurrency fee currency
    */
   public Order(
       OrderType type,
@@ -127,7 +133,8 @@ public abstract class Order implements Serializable {
       BigDecimal cumulativeAmount,
       BigDecimal fee,
       OrderStatus status,
-      String userReference) {
+      String userReference,
+      Currency feeCurrency) {
 
     this.type = type;
     this.originalAmount = originalAmount;
@@ -137,6 +144,7 @@ public abstract class Order implements Serializable {
     this.averagePrice = averagePrice;
     this.cumulativeAmount = cumulativeAmount;
     this.fee = fee;
+    this.feeCurrency = feeCurrency;
     this.status = status;
     this.userReference = userReference;
   }
@@ -157,6 +165,14 @@ public abstract class Order implements Serializable {
 
   public void setFee(BigDecimal fee) {
     this.fee = fee;
+  }
+
+  public Currency getFeeCurrency() {
+    return feeCurrency;
+  }
+
+  public void setFeeCurrency(Currency feeCurrency) {
+    this.feeCurrency = feeCurrency;
   }
 
   /** @return The type (BID or ASK) */
@@ -502,6 +518,7 @@ public abstract class Order implements Serializable {
     protected BigDecimal averagePrice;
     protected OrderStatus status;
     protected BigDecimal fee;
+    protected Currency feeCurrency;
     protected String leverage;
 
     protected Builder(OrderType orderType, Instrument instrument) {
@@ -539,6 +556,12 @@ public abstract class Order implements Serializable {
     public Builder fee(BigDecimal fee) {
 
       this.fee = fee;
+      return this;
+    }
+
+    public Builder feeCurrency(Currency feeCurrency) {
+
+      this.feeCurrency = feeCurrency;
       return this;
     }
 

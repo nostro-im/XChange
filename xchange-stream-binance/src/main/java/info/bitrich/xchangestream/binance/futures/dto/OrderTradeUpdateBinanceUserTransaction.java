@@ -10,6 +10,8 @@ import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.trade.UserTrade;
 
+import java.util.Optional;
+
 public class OrderTradeUpdateBinanceUserTransaction extends BaseBinanceWebSocketTransaction {
 
   protected final long transactionTime;
@@ -45,7 +47,7 @@ public class OrderTradeUpdateBinanceUserTransaction extends BaseBinanceWebSocket
   }
 
   public Order toOrder() {
-    return BinanceFuturesAdapter.adaptOrder(new BinanceFuturesOrder(
+    Order order = BinanceFuturesAdapter.adaptOrder(new BinanceFuturesOrder(
             orderTradeUpdate.getAveragePrice(),
             orderTradeUpdate.getClientOrderId(),
             orderTradeUpdate.getCumulativeFilledQuantity(),
@@ -69,5 +71,8 @@ public class OrderTradeUpdateBinanceUserTransaction extends BaseBinanceWebSocket
             transactionTime,
             orderTradeUpdate.getStopPriceWorkingType(),
             false));
+    order.setFee(orderTradeUpdate.getCommissionAmount());
+    order.setFeeCurrency(Optional.ofNullable(orderTradeUpdate.getCommissionAsset()).map(Currency::new).orElse(null));
+    return order;
   }
 }

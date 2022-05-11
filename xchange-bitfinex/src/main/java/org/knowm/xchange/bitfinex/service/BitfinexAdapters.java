@@ -440,7 +440,8 @@ public final class BitfinexAdapters {
                   order.getAvgExecutionPrice(),
                   order.getExecutedAmount(),
                   null,
-                  status);
+                  status,
+                  null);
 
       Supplier<LimitOrder> limitOrderCreator =
           () ->
@@ -454,7 +455,8 @@ public final class BitfinexAdapters {
                   order.getAvgExecutionPrice(),
                   order.getExecutedAmount(),
                   null,
-                  status);
+                  status,
+                  null);
 
       Supplier<StopOrder> stopOrderCreator =
           () ->

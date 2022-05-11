@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.junit.Test;
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.utils.ObjectMapperHelper;
@@ -23,6 +24,7 @@ public class MarketOrderTest {
     final Date timestamp = new Date();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
+    final Currency feeCurrency = Currency.DX;
 
     final MarketOrder copy =
         new MarketOrder.Builder(type, currencyPair)
@@ -35,6 +37,7 @@ public class MarketOrderTest {
             .flag(TestFlags.TEST1)
             .fee(fee)
             .userReference(userReference)
+            .feeCurrency(feeCurrency)
             .build();
 
     assertThat(copy.getType()).isEqualTo(type);
@@ -50,6 +53,7 @@ public class MarketOrderTest {
     assertThat(copy.getStatus()).isEqualTo(status);
     assertThat(copy.getFee()).isEqualTo(fee);
     assertThat(copy.getUserReference()).isEqualTo(userReference);
+    assertThat(copy.getFeeCurrency()).isEqualTo(feeCurrency);
   }
 
   @Test
@@ -63,6 +67,7 @@ public class MarketOrderTest {
     final Date timestamp = new Date();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
+    final Currency feeCurrency = Currency.DX;
 
     final MarketOrder original =
         new MarketOrder(
@@ -74,12 +79,13 @@ public class MarketOrderTest {
             averagePrice,
             cumulativeAmount,
             fee,
-            status);
+            status,
+            feeCurrency);
     original.addOrderFlag(TestFlags.TEST1);
     original.addOrderFlag(TestFlags.TEST3);
     final MarketOrder copy = MarketOrder.Builder.from(original).build();
 
-    assertThat(copy).isEqualToComparingFieldByField(original);
+    assertThat(copy).usingRecursiveComparison().isEqualTo(original);
   }
 
   @Test
@@ -93,6 +99,7 @@ public class MarketOrderTest {
     final Date timestamp = new Date();
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
+    final Currency feeCurrency = Currency.DX;
 
     final MarketOrder original =
         new MarketOrder(
@@ -104,12 +111,13 @@ public class MarketOrderTest {
             averagePrice,
             cumulativeAmount,
             fee,
-            status);
+            status,
+            feeCurrency);
     original.addOrderFlag(TestFlags.TEST1);
     original.addOrderFlag(TestFlags.TEST3);
 
     MarketOrder jsonCopy = ObjectMapperHelper.viaJSON(original);
-    assertThat(jsonCopy).isEqualToComparingFieldByField(original);
+    assertThat(jsonCopy).usingRecursiveComparison().isEqualTo(original);
   }
 
   private enum TestFlags implements Order.IOrderFlags {

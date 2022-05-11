@@ -71,7 +71,8 @@ public class BitstampTradeService extends BitstampTradeServiceRaw implements Tra
               null, // avgPrice
               null, // cumAmount
               null, // fee
-              Order.OrderStatus.NEW));
+              Order.OrderStatus.NEW,
+              null));
     }
 
     return new OpenOrders(limitOrders);
