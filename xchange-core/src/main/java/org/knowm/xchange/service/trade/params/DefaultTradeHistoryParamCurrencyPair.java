@@ -5,7 +5,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 public class DefaultTradeHistoryParamCurrencyPair implements TradeHistoryParamCurrencyPair, TradeHistoryParamOrder {
 
   private CurrencyPair pair;
-  private String id;
+  private String orderId;
 
   public DefaultTradeHistoryParamCurrencyPair() {}
 
@@ -26,12 +26,12 @@ public class DefaultTradeHistoryParamCurrencyPair implements TradeHistoryParamCu
   }
 
   @Override
-  public String getId() {
-    return id;
+  public String getOrderId() {
+    return orderId;
   }
 
   @Override
-  public void setId(String id) {
-    this.id = id;
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
   }
 }

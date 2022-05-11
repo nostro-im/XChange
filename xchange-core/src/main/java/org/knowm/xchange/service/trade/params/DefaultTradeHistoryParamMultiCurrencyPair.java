@@ -8,7 +8,7 @@ public class DefaultTradeHistoryParamMultiCurrencyPair
     implements TradeHistoryParamMultiCurrencyPair, TradeHistoryParamOrder {
 
   private Collection<CurrencyPair> pairs = Collections.emptySet();
-  private String id;
+  private String orderId;
 
   @Override
   public Collection<CurrencyPair> getCurrencyPairs() {
@@ -21,12 +21,12 @@ public class DefaultTradeHistoryParamMultiCurrencyPair
   }
 
   @Override
-  public String getId() {
-    return id;
+  public String getOrderId() {
+    return orderId;
   }
 
   @Override
-  public void setId(String id) {
-    this.id = id;
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
   }
 }

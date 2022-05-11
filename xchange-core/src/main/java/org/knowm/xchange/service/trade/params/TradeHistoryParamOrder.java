@@ -1,7 +1,7 @@
 package org.knowm.xchange.service.trade.params;
 
 public interface TradeHistoryParamOrder extends TradeHistoryParams {
-	String getId();
+	String getOrderId();
 
-	void setId(String orderId);
+	void setOrderId(String orderId);
 }

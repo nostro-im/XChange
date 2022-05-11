@@ -1,20 +1,20 @@
 package org.knowm.xchange.service.trade.params;
 
 public class DefaultTradeHistoryParamOrder implements TradeHistoryParamOrderUserReference {
-	private String id;
+	private String orderId;
 	private String userReference;
 
 	public DefaultTradeHistoryParamOrder() {
 	}
 
 	@Override
-	public String getId() {
-		return id;
+	public String getOrderId() {
+		return orderId;
 	}
 
 	@Override
-	public void setId(String id) {
-		this.id = id;
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 
 	@Override

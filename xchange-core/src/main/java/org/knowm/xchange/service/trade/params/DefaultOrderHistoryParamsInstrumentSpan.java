@@ -9,7 +9,7 @@ public class DefaultOrderHistoryParamsInstrumentSpan implements InstrumentParam,
     private Instrument instrument;
     private Date startTime;
     private Date endTime;
-    private String id;
+    private String orderId;
 
     public DefaultOrderHistoryParamsInstrumentSpan() {
     }
@@ -51,12 +51,12 @@ public class DefaultOrderHistoryParamsInstrumentSpan implements InstrumentParam,
     }
 
     @Override
-    public String getId() {
-        return id;
+    public String getOrderId() {
+        return orderId;
     }
 
     @Override
-    public void setId(String id) {
-        this.id = id;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }

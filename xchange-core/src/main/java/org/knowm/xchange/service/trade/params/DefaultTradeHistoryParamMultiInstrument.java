@@ -7,7 +7,7 @@ import org.knowm.xchange.instrument.Instrument;
 public class DefaultTradeHistoryParamMultiInstrument implements TradeHistoryParamMultiInstrument, TradeHistoryParamOrder {
 
   private Collection<Instrument> instruments = Collections.emptySet();
-  private String id;
+  private String orderId;
 
   public DefaultTradeHistoryParamMultiInstrument() {}
 
@@ -26,12 +26,12 @@ public class DefaultTradeHistoryParamMultiInstrument implements TradeHistoryPara
   }
 
   @Override
-  public String getId() {
-    return id;
+  public String getOrderId() {
+    return orderId;
   }
 
   @Override
-  public void setId(String id) {
-    this.id = id;
+  public void setOrderId(String orderId) {
+    this.orderId = orderId;
   }
 }

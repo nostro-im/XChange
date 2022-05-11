@@ -187,7 +187,7 @@ public class FtxTradeServiceRaw extends FtxBaseService {
 
     String orderId = null;
     if (params instanceof TradeHistoryParamOrder) {
-      orderId =((TradeHistoryParamOrder) params).getId();
+      orderId =((TradeHistoryParamOrder) params).getOrderId();
     }
 
     return FtxAdapters.adaptUserTradesFromTrades(getFtxTradeHistory(subaccount, FtxAdapters.adaptInstrumentToFtxMarket(instrument), null, null, orderId).getResult());
