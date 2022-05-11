@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
+import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.ftx.FtxExchange;
 import org.knowm.xchange.ftx.dto.account.FtxBorrowingHistoryDto;
 import org.knowm.xchange.ftx.dto.account.FtxBorrowingInfoDto;
@@ -12,8 +13,8 @@ import org.knowm.xchange.ftx.dto.account.FtxBorrowingRatesDto;
 
 public class FtxBorrowingServiceRaw extends FtxBaseService {
 
-  public FtxBorrowingServiceRaw(FtxExchange exchange) {
-    super(exchange);
+  public FtxBorrowingServiceRaw(FtxExchange exchange, FtxAuthenticated ftx) {
+    super(exchange, ftx);
   }
 
   public List<FtxBorrowingHistoryDto> histories(String subaccount) {

@@ -8,6 +8,7 @@ import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.dto.trade.UserTrades;
 import org.knowm.xchange.ftx.FtxAdapters;
+import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.ftx.FtxException;
 import org.knowm.xchange.ftx.dto.FtxResponse;
 import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
@@ -24,8 +25,8 @@ import java.util.List;
 
 public class FtxTradeServiceRaw extends FtxBaseService {
 
-  public FtxTradeServiceRaw(Exchange exchange) {
-    super(exchange);
+  public FtxTradeServiceRaw(Exchange exchange, FtxAuthenticated ftx) {
+    super(exchange, ftx);
   }
 
   public String placeMarketOrderForSubaccount(String subaccount, MarketOrder marketOrder)

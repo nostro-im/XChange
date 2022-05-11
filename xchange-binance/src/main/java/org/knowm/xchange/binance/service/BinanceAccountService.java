@@ -74,10 +74,10 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
     try {
       BinanceAccountInformation acc = account();
       List<Balance> balances =
-          acc.balances.stream()
+          acc.getBalances().stream()
               .map(b -> new Balance(b.getCurrency(), b.getTotal(), b.getAvailable()))
               .collect(Collectors.toList());
-      return new AccountInfo(new Date(acc.updateTime), Wallet.Builder.from(balances).build());
+      return new AccountInfo(new Date(acc.getUpdateTime()), Wallet.Builder.from(balances).build());
     } catch (BinanceException e) {
       throw BinanceErrorAdapter.adapt(e);
     }
@@ -105,20 +105,28 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
 
   @Override
   public Map<Instrument, Fee> getDynamicTradingFees(Set<Instrument> instruments) throws IOException {
+    for (Instrument instrument : instruments) {
+      if (instrument instanceof CurrencyPair) {
+        Preconditions.checkArgument(exchange.getExchangeSymbols().contains(instrument), "Exchange meta data does not contain requested instrument: {}", instrument);
+      } else {
+        throw new IllegalArgumentException("Instrument is not supported: " + instrument);
+      }
+    }
+
     try {
       BinanceAccountInformation acc = account();
       Map<Instrument, Fee> tradingFees = new HashMap<>();
-      instruments.forEach(instrument -> tradingFees.put(instrument, getTradingFee(acc)));
+      Fee tradingFee = getTradingFee(acc);
+      instruments.forEach(instrument -> tradingFees.put(instrument, tradingFee));
       return tradingFees;
     } catch (BinanceException e) {
       throw BinanceErrorAdapter.adapt(e);
     }
   }
 
-  private Fee getTradingFee(BinanceAccountInformation acc) {
-    BigDecimal makerFee = acc.makerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
-    BigDecimal takerFee = acc.takerCommission.divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
-
+  Fee getTradingFee(BinanceAccountInformation acc) {
+    BigDecimal makerFee = acc.getMakerCommission().divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
+    BigDecimal takerFee = acc.getTakerCommission().divide(new BigDecimal("10000"), 4, RoundingMode.UNNECESSARY);
     return new Fee(makerFee.stripTrailingZeros(), takerFee.stripTrailingZeros());
   }
 

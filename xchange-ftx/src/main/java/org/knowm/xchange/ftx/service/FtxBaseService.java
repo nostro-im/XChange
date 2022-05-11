@@ -12,13 +12,10 @@ public class FtxBaseService extends BaseExchangeService implements BaseService {
   protected final FtxAuthenticated ftx;
   protected final ParamsDigest signatureCreator;
 
-  public FtxBaseService(Exchange exchange) {
+  public FtxBaseService(Exchange exchange, FtxAuthenticated ftx) {
     super(exchange);
 
-    ftx =
-        ExchangeRestProxyBuilder.forInterface(
-                FtxAuthenticated.class, exchange.getExchangeSpecification())
-            .build();
+    this.ftx = ftx;
     signatureCreator = FtxDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
   }
 }

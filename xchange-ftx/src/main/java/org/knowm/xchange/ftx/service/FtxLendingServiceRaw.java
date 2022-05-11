@@ -6,13 +6,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 import org.apache.commons.lang3.StringUtils;
 import org.knowm.xchange.ftx.FtxAdapters;
+import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.ftx.FtxExchange;
 import org.knowm.xchange.ftx.dto.account.*;
 
 public class FtxLendingServiceRaw extends FtxBaseService {
 
-  public FtxLendingServiceRaw(FtxExchange exchange) {
-    super(exchange);
+  public FtxLendingServiceRaw(FtxExchange exchange, FtxAuthenticated ftx) {
+    super(exchange, ftx);
   }
 
   public FtxLendDataDto stopLending(String subaccount, String coin) {
