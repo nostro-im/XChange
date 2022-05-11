@@ -1,5 +1,9 @@
 package org.knowm.xchange.service.trade;
 
+import java.io.IOException;
+import java.util.Collection;
+import java.util.List;
+
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.account.OpenPositions;
 import org.knowm.xchange.dto.trade.*;
@@ -11,11 +15,6 @@ import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.DefaultQueryOrderParam;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 import org.knowm.xchange.service.trade.params.orders.OrderQueryParams;
-
-import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Interface to provide the following to {@link org.knowm.xchange.Exchange}:
