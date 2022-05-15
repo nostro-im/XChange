@@ -25,10 +25,7 @@ import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.Order.OrderType;
-import org.knowm.xchange.dto.account.AccountInfo;
-import org.knowm.xchange.dto.account.Balance;
-import org.knowm.xchange.dto.account.FundingRecord;
-import org.knowm.xchange.dto.account.Wallet;
+import org.knowm.xchange.dto.account.*;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
@@ -75,8 +72,10 @@ public final class BitstampAdapters {
               ZERO);
       balances.add(xchangeBalance);
     }
+    BigDecimal fee = bitstampBalance.getFee();
+    Fee tradingFee = new Fee(fee, fee);
     return new AccountInfo(
-        userName, bitstampBalance.getFee(), Wallet.Builder.from(balances).build());
+        userName, tradingFee, Wallet.Builder.from(balances).build());
   }
 
   /**

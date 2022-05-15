@@ -48,13 +48,12 @@ public class LatokenAdapters {
   }
 
   public static CurrencyPairMetaData adaptPairMetaData(LatokenPair latokenPair) {
-    BigDecimal tradingFee = latokenPair.getTakerFee();
     BigDecimal minAmount =
         latokenPair
             .getMinOrderAmount()
             .setScale(latokenPair.getAmountPrecision(), RoundingMode.HALF_DOWN);
     int priceScale = latokenPair.getPricePrecision();
-    return new CurrencyPairMetaData(tradingFee, minAmount, null, priceScale, null);
+    return new CurrencyPairMetaData(latokenPair.getMakerFee(), latokenPair.getTakerFee(), minAmount, null, priceScale, null);
   }
 
   public static CurrencyPair adaptCurrencyPair(Exchange exchange, String latokenSymbol) {

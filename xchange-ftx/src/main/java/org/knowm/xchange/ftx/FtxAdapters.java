@@ -39,6 +39,9 @@ public class FtxAdapters {
 
   private static final int leveragePrecision = 2; // 2 digits after decimal point
 
+  private static final BigDecimal MAX_MAKER_FEE = new BigDecimal("0.0002"); // maker fee at Ftx is 0.02 % for a 1 Tier (max value)
+  private static final BigDecimal MAX_TAKER_FEE = new BigDecimal("0.0007"); // taker fee at Ftx is 0.07 % for a 1 Tier (max value)
+
   public static OrderBook adaptOrderBook(
       FtxResponse<FtxOrderbookDto> ftxOrderbookDto, Instrument instrument) {
 
@@ -92,7 +95,7 @@ public class FtxAdapters {
 
     return AccountInfo.Builder.from(Collections.singleton(wallet))
             .username(accountDto.getUsername())
-            .tradingFee(accountDto.getTakerFee())
+            .tradingFee(getTradingFee(accountDto))
             .openPositions(openPositions)
             .timestamp(Date.from(Instant.now()))
             .margins(Collections.singleton(margin))
@@ -146,7 +149,8 @@ public class FtxAdapters {
                         .minimumAmount(ftxMarketDto.getSizeIncrement())
                         .priceScale(ftxMarketDto.getPriceIncrement().scale())
                         .baseScale(ftxMarketDto.getSizeIncrement().scale())
-                        .tradingFee(new BigDecimal("0.0007")) // Trading fee at Ftx is 0.07 % for a 1 Tier (max value)
+                        .makerFee(MAX_MAKER_FEE)
+                        .takerFee(MAX_TAKER_FEE)
                         .build();
 
                 currencyPairs.put(currencyPair, currencyPairMetaData);
@@ -172,7 +176,8 @@ public class FtxAdapters {
                           .amountScale(ftxMarketDto.getSizeIncrement().scale())
                           .priceStepSize(ftxMarketDto.getPriceIncrement())
                           .priceScale(ftxMarketDto.getPriceIncrement().scale())
-                          .tradingFee(new BigDecimal("0.0007")) // Trading fee at Ftx is 0.07 % for a 1 Tier (max value)
+                          .makerFee(MAX_MAKER_FEE)
+                          .takerFee(MAX_TAKER_FEE)
                           .build();
 
                   futures.put((FuturesContract) instrument, futuresContractMetaData);
@@ -517,5 +522,9 @@ public class FtxAdapters {
   // Margin fraction = 1995,37 / 2,782 = 717,242990654205607
   // Margin Ratio = 0.03 / 717,242990654205607 = 0,000041826829109
   // MR % = 0,004% - NO RISK
+
+  public static Fee getTradingFee(FtxAccountDto accountDto) {
+    return new Fee(accountDto.getMakerFee(), accountDto.getTakerFee());
+  }
 }
 

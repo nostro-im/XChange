@@ -114,6 +114,7 @@ public class HitbtcExchange extends BaseExchange implements org.knowm.xchange.Ex
                     hitbtcSymbol ->
                         new CurrencyPairMetaData(
                             (BigDecimal) null,
+                            (BigDecimal) null,
                             hitbtcSymbol.getQuantityIncrement(),
                             (BigDecimal) null,
                             hitbtcSymbol.getTickSize().scale(),

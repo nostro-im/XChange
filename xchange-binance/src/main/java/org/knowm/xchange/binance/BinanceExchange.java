@@ -28,6 +28,7 @@ public class BinanceExchange extends BaseExchange {
 
   public static final String EXCHANGE_TYPE_MARGIN = "BinanceMarginExchange";
   public static final String EXCHANGE_TYPE = "BinanceExchangeType";
+  public static final BigDecimal MAX_TRADING_FEE = new BigDecimal("0.001"); // max taker/maker fee at Binance is 0.1 %
 
   private static ResilienceRegistries RESILIENCE_REGISTRIES;
 
@@ -160,7 +161,8 @@ public class BinanceExchange extends BaseExchange {
           currencyPairs.put(
               currentCurrencyPair,
               new CurrencyPairMetaData(
-                  new BigDecimal("0.001"), // Trading fee at Binance is 0.1 %
+                  MAX_TRADING_FEE,
+                  MAX_TRADING_FEE,
                   minQty, // Min amount
                   maxQty, // Max amount
                   counterMinQty,

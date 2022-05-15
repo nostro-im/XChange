@@ -118,6 +118,7 @@ public class HuobiAdapters {
     FeeTier[] feeTiers = metadata == null ? null : metadata.getFeeTiers();
     return new CurrencyPairMetaData(
         fee,
+        fee,
         minQty,
         null,
         null,

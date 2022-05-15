@@ -45,6 +45,9 @@ public class CoinbaseProAdapters {
 
   private static final Logger logger = LoggerFactory.getLogger(CoinbaseProAdapters.class);
 
+  private static final BigDecimal MAX_MAKER_FEE = new BigDecimal("0.004"); // Max maker fee at Coinbase is 0.4 %
+  private static final BigDecimal MAX_TAKER_FEE = new BigDecimal("0.006"); // Max taker fee at Coinbase is 0.6 %
+
   private CoinbaseProAdapters() {}
 
   protected static Date parseDate(final String rawDate) {
@@ -369,7 +372,8 @@ public class CoinbaseProAdapters {
 
       currencyPairs.put(pair,
               new CurrencyPairMetaData(
-                      new BigDecimal("0.0025"), // Trading fee at Coinbase is 0.25 %
+                      MAX_MAKER_FEE,
+                      MAX_TAKER_FEE,
                       product.getBaseMinSize(),
                       product.getBaseMaxSize(),
                       product.getMinMarketFunds(),

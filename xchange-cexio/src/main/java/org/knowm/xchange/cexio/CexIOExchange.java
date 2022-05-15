@@ -53,14 +53,15 @@ public class CexIOExchange extends BaseExchange implements Exchange {
     for (CexIOCurrencyLimits.Pair pair : currencyLimits.getData().getPairs()) {
       CurrencyPair currencyPair = new CurrencyPair(pair.getSymbol1(), pair.getSymbol2());
       CurrencyPairMetaData metaData =
-          new CurrencyPairMetaData(null, pair.getMinLotSize(), pair.getMaxLotSize(), null, null);
+          new CurrencyPairMetaData(null, null, pair.getMinLotSize(), pair.getMaxLotSize(), null, null);
       currencyPairs.merge(
           currencyPair,
           metaData,
           (oldMetaData, newMetaData) ->
               new CurrencyPairMetaData(
                   // trading fee is not present in this response. using the previous values.
-                  oldMetaData.getTradingFee(),
+                  oldMetaData.getMakerFee(),
+                  oldMetaData.getTakerFee(),
                   newMetaData.getMinimumAmount(),
                   // some maximumAmount's in the currency_limits api response are null - using the
                   // json values
