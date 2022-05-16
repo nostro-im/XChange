@@ -11,6 +11,9 @@ import java.util.Date;
 public class DerivativeMetaData implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  @JsonProperty("trading_fee")
+  private BigDecimal tradingFee;
+
   /** maker fee */
   @JsonProperty("maker_fee")
   private final BigDecimal makerFee;
@@ -61,7 +64,7 @@ public class DerivativeMetaData implements Serializable {
 
   public DerivativeMetaData(
       @JsonProperty("maker_fee") BigDecimal makerFee,
-      @JsonProperty("take_fee") BigDecimal takerFee,
+      @JsonProperty("taker_fee") BigDecimal takerFee,
       @JsonProperty("min_amount") BigDecimal minimumAmount,
       @JsonProperty("max_amount") BigDecimal maximumAmount,
       @JsonProperty("min_price") BigDecimal minimumPrice,

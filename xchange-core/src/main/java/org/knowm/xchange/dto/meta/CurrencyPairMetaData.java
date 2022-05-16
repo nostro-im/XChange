@@ -11,6 +11,9 @@ public class CurrencyPairMetaData implements Serializable {
 
   private static final long serialVersionUID = 4749144540694704221L;
 
+  @JsonProperty("trading_fee")
+  private BigDecimal tradingFee;
+
   /** maker fee */
   @JsonProperty("maker_fee")
   private final BigDecimal makerFee;
@@ -164,7 +167,7 @@ public class CurrencyPairMetaData implements Serializable {
    */
   public CurrencyPairMetaData(
       @JsonProperty("maker_fee") BigDecimal makerFee,
-      @JsonProperty("take_fee") BigDecimal takerFee,
+      @JsonProperty("taker_fee") BigDecimal takerFee,
       @JsonProperty("min_amount") BigDecimal minimumAmount,
       @JsonProperty("max_amount") BigDecimal maximumAmount,
       @JsonProperty("counter_min_amount") BigDecimal counterMinimumAmount,
