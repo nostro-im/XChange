@@ -5,7 +5,8 @@
       "max_amount": 1000000,
       "price_scale": 0,
       "base_scale": 3,
-      "trading_fee": 0.002,
+      "maker_fee": 0.002,
+      "taker_fee": 0.002,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -49,7 +50,8 @@
       "max_amount": 1000000,
       "price_scale": 2,
       "base_scale": 3,
-      "trading_fee": 0.002,
+      "maker_fee": 0.002,
+      "taker_fee": 0.002,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -93,7 +95,8 @@
       "max_amount": 1000000,
       "price_scale": 5,
       "base_scale": 2,
-      "trading_fee": 0,
+      "maker_fee": 0,
+      "taker_fee": 0,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -109,7 +112,8 @@
       "max_amount": 1000000,
       "price_scale": 4,
       "base_scale": 0,
-      "trading_fee": 0.002,
+      "maker_fee": 0.002,
+      "taker_fee": 0.002,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -153,7 +157,8 @@
       "max_amount": 1000000,
       "price_scale": 8,
       "base_scale": 0,
-      "trading_fee": 0,
+      "maker_fee": 0,
+      "taker_fee": 0,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -169,7 +174,8 @@
       "max_amount": 1000000,
       "price_scale": 2,
       "base_scale": 0,
-      "trading_fee": 0.002,
+      "maker_fee": 0.002,
+      "taker_fee": 0.002,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -213,7 +219,8 @@
       "max_amount": 1000000,
       "price_scale": 5,
       "base_scale": 0,
-      "trading_fee": 0,
+      "maker_fee": 0,
+      "taker_fee": 0,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -229,7 +236,8 @@
       "max_amount": 1000000,
       "price_scale": 2,
       "base_scale": 0,
-      "trading_fee": 0.002,
+      "maker_fee": 0.002,
+      "taker_fee": 0.002,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -273,7 +281,8 @@
       "max_amount": 1000000,
       "price_scale": 5,
       "base_scale": 0,
-      "trading_fee": 0,
+      "maker_fee": 0,
+      "taker_fee": 0,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -289,7 +298,8 @@
       "max_amount": 1000000,
       "price_scale": 0.01,
       "base_scale": 2,
-      "trading_fee": 0,
+      "maker_fee": 0,
+      "taker_fee": 0,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -305,7 +315,8 @@
       "max_amount": 1000000,
       "price_scale": 10,
       "base_scale": 3,
-      "trading_fee": 0.002,
+      "maker_fee": 0.002,
+      "taker_fee": 0.002,
       "fee_tiers": [
         {
           "begin_quantity": 0,
@@ -349,7 +360,8 @@
       "max_amount": 1000000,
       "price_scale": 10,
       "base_scale": 3,
-      "trading_fee": 0.002,
+      "maker_fee": 0.002,
+      "taker_fee": 0.002,
       "fee_tiers": [
         {
           "begin_quantity": 0,

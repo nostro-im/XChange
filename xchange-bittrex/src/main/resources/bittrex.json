@@ -3,507 +3,608 @@
     "ADA/BTC": {
       "price_scale": 8,
       "min_amount": 25.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ADA/ETH": {
       "price_scale": 8,
       "min_amount": 25.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ADA/USDT": {
       "price_scale": 8,
       "min_amount": 25.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "AMP/BTC": {
       "price_scale": 8,
       "min_amount": 15.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ARK/BTC": {
       "price_scale": 8,
       "min_amount": 1.75000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "BCH/BTC": {
       "price_scale": 8,
       "min_amount": 0.00600000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "BCH/ETH": {
       "price_scale": 8,
       "min_amount": 0.00600000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "BCH/USDT": {
       "price_scale": 8,
       "min_amount": 0.00600000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "BCY/BTC": {
       "price_scale": 8,
       "min_amount": 18.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "BLK/BTC": {
       "price_scale": 8,
       "min_amount": 20.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "BTC/USDT": {
       "price_scale": 8,
       "min_amount": 0.00055000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "BTG/BTC": {
       "price_scale": 8,
       "min_amount": 0.07000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "BTG/ETH": {
       "price_scale": 8,
       "min_amount": 0.07000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "BTG/USDT": {
       "price_scale": 8,
       "min_amount": 0.07000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "DASH/BTC": {
       "price_scale": 8,
       "min_amount": 0.01200000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "DASH/ETH": {
       "price_scale": 8,
       "min_amount": 0.01200000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "DASH/USDT": {
       "price_scale": 8,
       "min_amount": 0.01200000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "DCR/BTC": {
       "price_scale": 8,
       "min_amount": 0.06000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "DGB/BTC": {
       "price_scale": 8,
       "min_amount": 230.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "DGB/ETH": {
       "price_scale": 8,
       "min_amount": 230.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "DMT/BTC": {
       "price_scale": 8,
       "min_amount": 13.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "DMT/ETH": {
       "price_scale": 8,
       "min_amount": 13.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "DOGE/BTC": {
       "price_scale": 8,
       "min_amount": 1600.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "EMC2/BTC": {
       "price_scale": 8,
       "min_amount": 30.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "EOS/BTC": {
       "price_scale": 8,
       "min_amount": 1.5,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "EOS/ETH": {
       "price_scale": 8,
       "min_amount": 1.0,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ETC/BTC": {
       "price_scale": 8,
       "min_amount": 0.30000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ETC/ETH": {
       "price_scale": 8,
       "min_amount": 0.30000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ETC/USDT": {
       "price_scale": 8,
       "min_amount": 0.30000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ETH/BTC": {
       "price_scale": 8,
       "min_amount": 0.00860000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ETH/USDT": {
       "price_scale": 8,
       "min_amount": 0.00860000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "FCT/BTC": {
       "price_scale": 8,
       "min_amount": 0.25000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "FCT/ETH": {
       "price_scale": 8,
       "min_amount": 0.25000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "GAME/BTC": {
       "price_scale": 8,
       "min_amount": 3.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "GRS/BTC": {
       "price_scale": 8,
       "min_amount": 4.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "IOC/BTC": {
       "price_scale": 8,
       "min_amount": 4.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "LTC/BTC": {
       "price_scale": 8,
       "min_amount": 0.03500000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "LTC/ETH": {
       "price_scale": 8,
       "min_amount": 0.03500000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "LTC/USDT": {
       "price_scale": 8,
       "min_amount": 0.03500000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "LRC/BTC": {
       "price_scale": 8,
       "min_amount": 7.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "LSK/BTC": {
       "price_scale": 8,
       "min_amount": 0.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "MCO/BTC": {
       "price_scale": 8,
       "min_amount": 0.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "MCO/ETH": {
       "price_scale": 8,
       "min_amount": 0.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "NEO/BTC": {
       "price_scale": 8,
       "min_amount": 0.07000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "NEO/ETH": {
       "price_scale": 8,
       "min_amount": 0.07000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "NEO/USDT": {
       "price_scale": 8,
       "min_amount": 0.07000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "OMG/BTC": {
       "price_scale": 8,
       "min_amount": 0.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "OMG/ETH": {
       "price_scale": 8,
       "min_amount": 0.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "OMG/USDT": {
       "price_scale": 8,
       "min_amount": 0.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "PART/BTC": {
       "price_scale": 8,
       "min_amount": 0.40000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "PAY/BTC": {
       "price_scale": 8,
       "min_amount": 4.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "PAY/ETH": {
       "price_scale": 8,
       "min_amount": 4.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "POLY/BTC": {
       "price_scale": 8,
       "min_amount": 6.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "POLY/ETH": {
       "price_scale": 8,
       "min_amount": 6.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "POWR/BTC": {
       "price_scale": 8,
       "min_amount": 12.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "POWR/ETH": {
       "price_scale": 8,
       "min_amount": 12.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "PPC/BTC": {
       "price_scale": 8,
       "min_amount": 3.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "REP/BTC": {
       "price_scale": 8,
       "min_amount": 0.10000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "REP/ETH": {
       "price_scale": 8,
       "min_amount": 0.10000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "RDD/BTC": {
       "price_scale": 8,
       "min_amount": 600.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "RVN/BTC": {
       "price_scale": 8,
       "min_amount": 150.0,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "STEEM/BTC": {
       "price_scale": 8,
       "min_amount": 2.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "SC/BTC": {
       "price_scale": 8,
       "min_amount": 430.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "SC/ETH": {
       "price_scale": 8,
       "min_amount": 430.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "SC/USDT": {
       "price_scale": 8,
       "min_amount": 430.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "SRN/BTC": {
       "price_scale": 8,
       "min_amount": 15.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "SRN/ETH": {
       "price_scale": 8,
       "min_amount": 15.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "STORM/BTC": {
       "price_scale": 8,
       "min_amount": 120.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "STORM/ETH": {
       "price_scale": 8,
       "min_amount": 120.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "STRAT/BTC": {
       "price_scale": 8,
       "min_amount": 0.10000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "STRAT/ETH": {
       "price_scale": 8,
       "min_amount": 0.10000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "SYS/BTC": {
       "price_scale": 8,
       "min_amount": 12.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "TRX/BTC": {
       "price_scale": 8,
       "min_amount": 80.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "TRX/ETH": {
       "price_scale": 8,
       "min_amount": 80.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "TRX/USDT": {
       "price_scale": 8,
       "min_amount": 80.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "VIB/BTC": {
       "price_scale": 8,
       "min_amount": 20.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "VIB/ETH": {
       "price_scale": 8,
       "min_amount": 20.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "VTC/BTC": {
       "price_scale": 8,
       "min_amount": 2.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "WAVES/BTC": {
       "price_scale": 8,
       "min_amount": 0.80000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "WAVES/ETH": {
       "price_scale": 8,
       "min_amount": 0.80000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "WAX/BTC": {
       "price_scale": 8,
       "min_amount": 20.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "WAX/ETH": {
       "price_scale": 8,
       "min_amount": 20.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XCP/BTC": {
       "price_scale": 8,
       "min_amount": 0.50000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XEM/BTC": {
       "price_scale": 8,
       "min_amount": 1.20000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XEM/ETH": {
       "price_scale": 8,
       "min_amount": 1.20000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XLM/BTC": {
       "price_scale": 8,
       "min_amount": 25.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XLM/ETH": {
       "price_scale": 8,
       "min_amount": 25.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XMR/BTC": {
       "price_scale": 8,
       "min_amount": 0.01800000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XMR/ETH": {
       "price_scale": 8,
       "min_amount": 0.01800000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XMR/USDT": {
       "price_scale": 8,
       "min_amount": 0.01800000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XRP/BTC": {
       "price_scale": 8,
       "min_amount": 7.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XRP/ETH": {
       "price_scale": 8,
       "min_amount": 7.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XRP/USDT": {
       "price_scale": 8,
       "min_amount": 7.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XVG/BTC": {
       "price_scale": 8,
       "min_amount": 160.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "XVG/USDT": {
       "price_scale": 8,
       "min_amount": 160.00000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ZEC/BTC": {
       "price_scale": 8,
       "min_amount": 0.01800000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ZEC/ETH": {
       "price_scale": 8,
       "min_amount": 0.01800000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ZEC/USDT": {
       "price_scale": 8,
       "min_amount": 0.01800000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ZCL/BTC": {
       "price_scale": 8,
       "min_amount": 0.35000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ZRX/BTC": {
       "price_scale": 8,
       "min_amount": 0.30000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     },
     "ZRX/ETH": {
       "price_scale": 8,
       "min_amount": 0.30000000,
-      "trading_fee": 0.0025
+      "maker_fee": 0.0035,
+      "taker_fee": 0.0035
     }
   },
   "currencies": {

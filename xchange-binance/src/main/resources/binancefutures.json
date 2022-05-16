@@ -1,1550 +1,1816 @@
 {
-  "currencies": {
-    "BTC": {
-      "scale": 8
-    },
-    "USDT": {
-      "scale": 8
-    },
-    "ETH": {
-      "scale": 8
-    },
-    "BCH": {
-      "scale": 8
-    },
-    "XRP": {
-      "scale": 8
-    },
-    "EOS": {
-      "scale": 8
-    },
-    "LTC": {
-      "scale": 8
-    },
-    "TRX": {
-      "scale": 8
-    },
-    "ETC": {
-      "scale": 8
-    },
-    "LINK": {
-      "scale": 8
-    },
-    "XLM": {
-      "scale": 8
-    },
-    "ADA": {
-      "scale": 8
-    },
-    "XMR": {
-      "scale": 8
-    },
-    "DASH": {
-      "scale": 8
-    },
-    "ZEC": {
-      "scale": 8
-    },
-    "XTZ": {
-      "scale": 8
-    },
-    "BNB": {
-      "scale": 8
-    },
-    "ATOM": {
-      "scale": 8
-    },
-    "ONT": {
-      "scale": 8
-    },
-    "IOTA": {
-      "scale": 8
-    },
-    "BAT": {
-      "scale": 8
-    },
-    "VET": {
-      "scale": 8
-    },
-    "NEO": {
-      "scale": 8
-    },
-    "QTUM": {
-      "scale": 8
-    },
-    "IOST": {
-      "scale": 8
-    },
-    "THETA": {
-      "scale": 8
-    },
-    "ALGO": {
-      "scale": 8
-    },
-    "ZIL": {
-      "scale": 8
-    },
-    "KNC": {
-      "scale": 8
-    },
-    "ZRX": {
-      "scale": 8
-    },
-    "COMP": {
-      "scale": 8
-    },
-    "OMG": {
-      "scale": 8
-    },
-    "DOGE": {
-      "scale": 8
-    },
-    "SXP": {
-      "scale": 8
-    },
-    "KAVA": {
-      "scale": 8
-    },
-    "BAND": {
-      "scale": 8
-    },
-    "RLC": {
-      "scale": 8
-    },
-    "WAVES": {
-      "scale": 8
-    },
-    "MKR": {
-      "scale": 8
-    },
-    "SNX": {
-      "scale": 8
-    },
-    "DOT": {
-      "scale": 8
-    },
-    "DEFI": {
-      "scale": 8
-    },
-    "YFI": {
-      "scale": 8
-    },
-    "BAL": {
-      "scale": 8
-    },
-    "CRV": {
-      "scale": 8
-    },
-    "TRB": {
-      "scale": 8
-    },
-    "YFII": {
-      "scale": 8
-    },
-    "RUNE": {
-      "scale": 8
-    },
-    "SUSHI": {
-      "scale": 8
-    },
-    "SRM": {
-      "scale": 8
-    },
-    "BZRX": {
-      "scale": 8
-    },
-    "EGLD": {
-      "scale": 8
-    },
-    "SOL": {
-      "scale": 8
-    },
-    "ICX": {
-      "scale": 8
-    },
-    "STORJ": {
-      "scale": 8
-    },
-    "BLZ": {
-      "scale": 8
-    },
-    "UNI": {
-      "scale": 8
-    },
-    "AVAX": {
-      "scale": 8
-    },
-    "FTM": {
-      "scale": 8
-    },
-    "HNT": {
-      "scale": 8
-    },
-    "ENJ": {
-      "scale": 8
-    },
-    "FLM": {
-      "scale": 8
-    },
-    "TOMO": {
-      "scale": 8
-    },
-    "REN": {
-      "scale": 8
-    },
-    "KSM": {
-      "scale": 8
-    },
-    "NEAR": {
-      "scale": 8
-    },
-    "AAVE": {
-      "scale": 8
-    },
-    "FIL": {
-      "scale": 8
-    },
-    "RSR": {
-      "scale": 8
-    },
-    "LRC": {
-      "scale": 8
-    },
-    "MATIC": {
-      "scale": 8
-    },
-    "OCEAN": {
-      "scale": 8
-    },
-    "CVC": {
-      "scale": 8
-    },
-    "BEL": {
-      "scale": 8
-    },
-    "CTK": {
-      "scale": 8
-    },
-    "AXS": {
-      "scale": 8
-    },
-    "ALPHA": {
-      "scale": 8
-    },
-    "ZEN": {
-      "scale": 8
-    },
-    "SKL": {
-      "scale": 8
-    },
-    "GRT": {
-      "scale": 8
-    },
-    "1INCH": {
-      "scale": 8
-    },
-    "BUSD": {
-      "scale": 8
-    },
-    "AKRO": {
-      "scale": 8
-    },
-    "CHZ": {
-      "scale": 8
-    },
-    "SAND": {
-      "scale": 8
-    },
-    "ANKR": {
-      "scale": 8
-    },
-    "LUNA": {
-      "scale": 8
-    },
-    "BTS": {
-      "scale": 8
-    },
-    "LIT": {
-      "scale": 8
-    },
-    "UNFI": {
-      "scale": 8
-    },
-    "DODO": {
-      "scale": 8
-    },
-    "REEF": {
-      "scale": 8
-    },
-    "RVN": {
-      "scale": 8
-    },
-    "SFP": {
-      "scale": 8
-    },
-    "XEM": {
-      "scale": 8
-    },
-    "COTI": {
-      "scale": 8
-    },
-    "CHR": {
-      "scale": 8
-    },
-    "MANA": {
-      "scale": 8
-    },
-    "ALICE": {
-      "scale": 8
-    },
-    "HBAR": {
-      "scale": 8
-    },
-    "ONE": {
-      "scale": 8
-    },
-    "LINA": {
-      "scale": 8
-    },
-    "STMX": {
-      "scale": 8
-    },
-    "DENT": {
-      "scale": 8
-    },
-    "CELR": {
-      "scale": 8
-    },
-    "HOT": {
-      "scale": 8
-    },
-    "MTL": {
-      "scale": 8
-    },
-    "OGN": {
-      "scale": 8
-    },
-    "BTT": {
-      "scale": 8
-    },
-    "NKN": {
-      "scale": 8
-    },
-    "SC": {
-      "scale": 8
-    },
-    "DGB": {
-      "scale": 8
-    },
-    "1000SHIB": {
-      "scale": 8
-    },
-    "ICP": {
-      "scale": 8
-    },
-    "BAKE": {
-      "scale": 8
-    },
-    "GTC": {
-      "scale": 8
-    },
-    "BTCDOM": {
-      "scale": 8
-    },
-    "KEEP": {
-      "scale": 8
-    },
-    "TLM": {
-      "scale": 8
-    },
-    "IOTX": {
-      "scale": 8
-    },
-    "AUDIO": {
-      "scale": 8
-    },
-    "RAY": {
-      "scale": 8
-    },
-    "C98": {
-      "scale": 8
-    },
-    "MASK": {
-      "scale": 8
-    },
-    "ATA": {
-      "scale": 8
-    },
-    "FTT": {
-      "scale": 8
-    },
-    "DYDX": {
-      "scale": 8
-    },
-    "1000XEC": {
-      "scale": 8
-    },
-    "GALA": {
-      "scale": 8
-    },
-    "CELO": {
-      "scale": 8
-    },
-    "AR": {
-      "scale": 8
-    },
-    "KLAY": {
-      "scale": 8
-    },
-    "ARPA": {
-      "scale": 8
-    },
-    "NU": {
-      "scale": 8
-    },
-    "CTSI": {
-      "scale": 8
-    },
-    "LPT": {
-      "scale": 8
-    }
-  },
-  "futures": {
-    "BTC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 5E+2,
-      "amount_scale": 3,
-      "price_scale": 1,
-      "amount_step_size": 0.001
-    },
-    "ETH/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 2,
-      "amount_step_size": 0.001
-    },
-    "BCH/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 2,
-      "amount_step_size": 0.001
-    },
-    "XRP/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "EOS/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "LTC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 2,
-      "amount_step_size": 0.001
-    },
-    "TRX/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "ETC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.01,
-      "max_amount": 1E+5,
-      "amount_scale": 2,
-      "price_scale": 3,
-      "amount_step_size": 0.01
-    },
-    "LINK/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.01,
-      "max_amount": 1E+5,
-      "amount_scale": 2,
-      "price_scale": 3,
-      "amount_step_size": 0.01
-    },
-    "XLM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "ADA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 2E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "XMR/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 2,
-      "amount_step_size": 0.001
-    },
-    "DASH/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 2,
-      "amount_step_size": 0.001
-    },
-    "ZEC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 2,
-      "amount_step_size": 0.001
-    },
-    "XTZ/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "BNB/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.01,
-      "max_amount": 1E+5,
-      "amount_scale": 2,
-      "price_scale": 2,
-      "amount_step_size": 0.01
-    },
-    "ATOM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.01,
-      "max_amount": 1E+5,
-      "amount_scale": 2,
-      "price_scale": 3,
-      "amount_step_size": 0.01
-    },
-    "ONT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "IOTA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "BAT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "VET/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "NEO/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.01,
-      "max_amount": 1E+5,
-      "amount_scale": 2,
-      "price_scale": 3,
-      "amount_step_size": 0.01
-    },
-    "QTUM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 5E+5,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "IOST/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 6,
-      "amount_step_size": 1
-    },
-    "THETA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "ALGO/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "ZIL/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "KNC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 5E+6,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "ZRX/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "COMP/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 2,
-      "amount_step_size": 0.001
-    },
-    "OMG/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "DOGE/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "SXP/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "KAVA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "BAND/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "RLC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "WAVES/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "MKR/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 1,
-      "amount_step_size": 0.001
-    },
-    "SNX/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "DOT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "DEFI/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 1,
-      "amount_step_size": 0.001
-    },
-    "YFI/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 5E+2,
-      "amount_scale": 3,
-      "price_scale": 0,
-      "amount_step_size": 0.001
-    },
-    "BAL/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "CRV/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "TRB/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 2,
-      "amount_step_size": 0.1
-    },
-    "YFII/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 5E+2,
-      "amount_scale": 3,
-      "price_scale": 1,
-      "amount_step_size": 0.001
-    },
-    "RUNE/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "SUSHI/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "SRM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "BZRX/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "EGLD/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 2,
-      "amount_step_size": 0.1
-    },
-    "SOL/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "ICX/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "STORJ/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "BLZ/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "UNI/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "AVAX/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+5,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "FTM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "HNT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "ENJ/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "FLM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "TOMO/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "REN/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "KSM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 2,
-      "amount_step_size": 0.1
-    },
-    "NEAR/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "AAVE/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 2,
-      "amount_step_size": 0.1
-    },
-    "FIL/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+7,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "RSR/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 6,
-      "amount_step_size": 1
-    },
-    "LRC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "MATIC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "OCEAN/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "CVC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "BEL/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "CTK/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "AXS/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 2,
-      "amount_step_size": 1
-    },
-    "ALPHA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "ZEN/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "SKL/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "GRT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "1INCH/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "BTC/BUSD/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 5E+2,
-      "amount_scale": 3,
-      "price_scale": 1,
-      "amount_step_size": 0.001
-    },
-    "AKRO/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "CHZ/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "SAND/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "ANKR/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "LUNA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "BTS/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "LIT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "UNFI/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+5,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "DODO/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 5E+5,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "REEF/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 6,
-      "amount_step_size": 1
-    },
-    "RVN/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "SFP/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "XEM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "COTI/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 5E+6,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "CHR/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "MANA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "ALICE/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 5E+4,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "HBAR/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "ONE/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "LINA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "STMX/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "DENT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 6,
-      "amount_step_size": 1
-    },
-    "CELR/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "HOT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 2E+7,
-      "amount_scale": 0,
-      "price_scale": 6,
-      "amount_step_size": 1
-    },
-    "MTL/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "OGN/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "BTT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+8,
-      "amount_scale": 0,
-      "price_scale": 6,
-      "amount_step_size": 1
-    },
-    "NKN/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "SC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 6,
-      "amount_step_size": 1
-    },
-    "DGB/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "1000SHIB/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+8,
-      "amount_scale": 0,
-      "price_scale": 6,
-      "amount_step_size": 1
-    },
-    "ICP/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.01,
-      "max_amount": 1E+5,
-      "amount_scale": 2,
-      "price_scale": 2,
-      "amount_step_size": 0.01
-    },
-    "BAKE/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 5E+5,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "GTC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+5,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "ETH/BUSD/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 2,
-      "amount_step_size": 0.001
-    },
-    "BTCDOM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.001,
-      "max_amount": 1E+4,
-      "amount_scale": 3,
-      "price_scale": 1,
-      "amount_step_size": 0.001
-    },
-    "KEEP/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "TLM/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "BNB/BUSD/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.01,
-      "max_amount": 1E+4,
-      "amount_scale": 2,
-      "price_scale": 2,
-      "amount_step_size": 0.01
-    },
-    "ADA/BUSD/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "XRP/BUSD/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "IOTX/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "DOGE/BUSD/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "AUDIO/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "RAY/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 5E+5,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "C98/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 2.5E+5,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "MASK/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+5,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "ATA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "SOL/BUSD/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 3,
-      "amount_step_size": 1
-    },
-    "FTT/BUSD/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "DYDX/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "1000XEC/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "GALA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "CELO/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "AR/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    },
-    "KLAY/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "ARPA/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+7,
-      "amount_scale": 0,
-      "price_scale": 5,
-      "amount_step_size": 1
-    },
-    "NU/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 4,
-      "amount_step_size": 0.1
-    },
-    "CTSI/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 1,
-      "max_amount": 1E+6,
-      "amount_scale": 0,
-      "price_scale": 4,
-      "amount_step_size": 1
-    },
-    "LPT/USDT/perpetual": {
-      "trading_fee": 0.001,
-      "min_amount": 0.1,
-      "max_amount": 1E+6,
-      "amount_scale": 1,
-      "price_scale": 3,
-      "amount_step_size": 0.1
-    }
-  },
-  "public_rate_limits": [
-    {
-      "calls": 2,
-      "time_span": 1,
-      "time_unit": "SECONDS"
-    }
-  ],
-  "share_rate_limits": false
+	"currencies": {
+		"1000SHIB": {
+			"scale": 8
+		},
+		"1000XEC": {
+			"scale": 8
+		},
+		"1INCH": {
+			"scale": 8
+		},
+		"AAVE": {
+			"scale": 8
+		},
+		"ADA": {
+			"scale": 8
+		},
+		"AKRO": {
+			"scale": 8
+		},
+		"ALGO": {
+			"scale": 8
+		},
+		"ALICE": {
+			"scale": 8
+		},
+		"ALPHA": {
+			"scale": 8
+		},
+		"ANKR": {
+			"scale": 8
+		},
+		"ANT": {
+			"scale": 8
+		},
+		"APE": {
+			"scale": 8
+		},
+		"API3": {
+			"scale": 8
+		},
+		"AR": {
+			"scale": 8
+		},
+		"ARPA": {
+			"scale": 8
+		},
+		"ATA": {
+			"scale": 8
+		},
+		"ATOM": {
+			"scale": 8
+		},
+		"AUDIO": {
+			"scale": 8
+		},
+		"AVAX": {
+			"scale": 8
+		},
+		"AXS": {
+			"scale": 8
+		},
+		"BAKE": {
+			"scale": 8
+		},
+		"BAL": {
+			"scale": 8
+		},
+		"BAND": {
+			"scale": 8
+		},
+		"BAT": {
+			"scale": 8
+		},
+		"BCH": {
+			"scale": 8
+		},
+		"BEL": {
+			"scale": 8
+		},
+		"BLZ": {
+			"scale": 8
+		},
+		"BNB": {
+			"scale": 8
+		},
+		"BNX": {
+			"scale": 8
+		},
+		"BTC": {
+			"scale": 8
+		},
+		"BTCDOM": {
+			"scale": 8
+		},
+		"BTS": {
+			"scale": 8
+		},
+		"BUSD": {
+			"scale": 8
+		},
+		"C98": {
+			"scale": 8
+		},
+		"CELO": {
+			"scale": 8
+		},
+		"CELR": {
+			"scale": 8
+		},
+		"CHR": {
+			"scale": 8
+		},
+		"CHZ": {
+			"scale": 8
+		},
+		"COMP": {
+			"scale": 8
+		},
+		"COTI": {
+			"scale": 8
+		},
+		"CRV": {
+			"scale": 8
+		},
+		"CTK": {
+			"scale": 8
+		},
+		"CTSI": {
+			"scale": 8
+		},
+		"CVC": {
+			"scale": 8
+		},
+		"DAR": {
+			"scale": 8
+		},
+		"DASH": {
+			"scale": 8
+		},
+		"DEFI": {
+			"scale": 8
+		},
+		"DENT": {
+			"scale": 8
+		},
+		"DGB": {
+			"scale": 8
+		},
+		"DODO": {
+			"scale": 8
+		},
+		"DOGE": {
+			"scale": 8
+		},
+		"DOT": {
+			"scale": 8
+		},
+		"DUSK": {
+			"scale": 8
+		},
+		"DYDX": {
+			"scale": 8
+		},
+		"EGLD": {
+			"scale": 8
+		},
+		"ENJ": {
+			"scale": 8
+		},
+		"ENS": {
+			"scale": 8
+		},
+		"EOS": {
+			"scale": 8
+		},
+		"ETC": {
+			"scale": 8
+		},
+		"ETH": {
+			"scale": 8
+		},
+		"FIL": {
+			"scale": 8
+		},
+		"FLM": {
+			"scale": 8
+		},
+		"FLOW": {
+			"scale": 8
+		},
+		"FTM": {
+			"scale": 8
+		},
+		"FTT": {
+			"scale": 8
+		},
+		"GAL": {
+			"scale": 8
+		},
+		"GALA": {
+			"scale": 8
+		},
+		"GMT": {
+			"scale": 8
+		},
+		"GRT": {
+			"scale": 8
+		},
+		"GTC": {
+			"scale": 8
+		},
+		"HBAR": {
+			"scale": 8
+		},
+		"HNT": {
+			"scale": 8
+		},
+		"HOT": {
+			"scale": 8
+		},
+		"ICP": {
+			"scale": 8
+		},
+		"ICX": {
+			"scale": 8
+		},
+		"IMX": {
+			"scale": 8
+		},
+		"IOST": {
+			"scale": 8
+		},
+		"IOTA": {
+			"scale": 8
+		},
+		"IOTX": {
+			"scale": 8
+		},
+		"JASMY": {
+			"scale": 8
+		},
+		"KAVA": {
+			"scale": 8
+		},
+		"KLAY": {
+			"scale": 8
+		},
+		"KNC": {
+			"scale": 8
+		},
+		"KSM": {
+			"scale": 8
+		},
+		"LINA": {
+			"scale": 8
+		},
+		"LINK": {
+			"scale": 8
+		},
+		"LIT": {
+			"scale": 8
+		},
+		"LPT": {
+			"scale": 8
+		},
+		"LRC": {
+			"scale": 8
+		},
+		"LTC": {
+			"scale": 8
+		},
+		"MANA": {
+			"scale": 8
+		},
+		"MASK": {
+			"scale": 8
+		},
+		"MATIC": {
+			"scale": 8
+		},
+		"MKR": {
+			"scale": 8
+		},
+		"MTL": {
+			"scale": 8
+		},
+		"NEAR": {
+			"scale": 8
+		},
+		"NEO": {
+			"scale": 8
+		},
+		"NKN": {
+			"scale": 8
+		},
+		"OCEAN": {
+			"scale": 8
+		},
+		"OGN": {
+			"scale": 8
+		},
+		"OMG": {
+			"scale": 8
+		},
+		"ONE": {
+			"scale": 8
+		},
+		"ONT": {
+			"scale": 8
+		},
+		"PEOPLE": {
+			"scale": 8
+		},
+		"QTUM": {
+			"scale": 8
+		},
+		"RAY": {
+			"scale": 8
+		},
+		"REEF": {
+			"scale": 8
+		},
+		"REN": {
+			"scale": 8
+		},
+		"RLC": {
+			"scale": 8
+		},
+		"ROSE": {
+			"scale": 8
+		},
+		"RSR": {
+			"scale": 8
+		},
+		"RUNE": {
+			"scale": 8
+		},
+		"RVN": {
+			"scale": 8
+		},
+		"SAND": {
+			"scale": 8
+		},
+		"SC": {
+			"scale": 8
+		},
+		"SFP": {
+			"scale": 8
+		},
+		"SKL": {
+			"scale": 8
+		},
+		"SNX": {
+			"scale": 8
+		},
+		"SOL": {
+			"scale": 8
+		},
+		"SRM": {
+			"scale": 8
+		},
+		"STMX": {
+			"scale": 8
+		},
+		"STORJ": {
+			"scale": 8
+		},
+		"SUSHI": {
+			"scale": 8
+		},
+		"SXP": {
+			"scale": 8
+		},
+		"THETA": {
+			"scale": 8
+		},
+		"TLM": {
+			"scale": 8
+		},
+		"TOMO": {
+			"scale": 8
+		},
+		"TRB": {
+			"scale": 8
+		},
+		"TRX": {
+			"scale": 8
+		},
+		"UNFI": {
+			"scale": 8
+		},
+		"UNI": {
+			"scale": 8
+		},
+		"USDT": {
+			"scale": 8
+		},
+		"VET": {
+			"scale": 8
+		},
+		"WAVES": {
+			"scale": 8
+		},
+		"WOO": {
+			"scale": 8
+		},
+		"XEM": {
+			"scale": 8
+		},
+		"XLM": {
+			"scale": 8
+		},
+		"XMR": {
+			"scale": 8
+		},
+		"XRP": {
+			"scale": 8
+		},
+		"XTZ": {
+			"scale": 8
+		},
+		"YFI": {
+			"scale": 8
+		},
+		"ZEC": {
+			"scale": 8
+		},
+		"ZEN": {
+			"scale": 8
+		},
+		"ZIL": {
+			"scale": 8
+		},
+		"ZRX": {
+			"scale": 8
+		}
+	},
+	"futures": {
+		"1000SHIB/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 100000000,
+			"price_scale": 6,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"1000XEC/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"1INCH/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"AAVE/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ADA/BUSD/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ADA/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 2000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"AKRO/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ALGO/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ALICE/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 50000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ALPHA/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ANKR/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ANT/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"APE/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"API3/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"AR/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ARPA/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ATA/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ATOM/USDT/perpetual": {
+			"amount_scale": 2,
+			"amount_step_size": 0.01,
+			"min_amount": 0.01,
+			"max_amount": 100000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"AUDIO/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"AVAX/BUSD/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"AVAX/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 100000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"AXS/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BAKE/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 500000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BAL/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BAND/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BAT/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BCH/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BEL/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BLZ/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BNB/BUSD/perpetual": {
+			"amount_scale": 2,
+			"amount_step_size": 0.01,
+			"min_amount": 0.01,
+			"max_amount": 10000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BNB/USDT/perpetual": {
+			"amount_scale": 2,
+			"amount_step_size": 0.01,
+			"min_amount": 0.01,
+			"max_amount": 100000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BNX/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BTC/BUSD/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 500,
+			"price_scale": 1,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BTC/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 500,
+			"price_scale": 1,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BTCDOM/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 1,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"BTS/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"C98/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 250000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"CELO/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"CELR/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"CHR/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"CHZ/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"COMP/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"COTI/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 5000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"CRV/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"CTK/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"CTSI/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"CVC/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DAR/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DASH/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DEFI/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 1,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DENT/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 6,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DGB/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DODO/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 500000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DOGE/BUSD/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DOGE/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DOT/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DUSK/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"DYDX/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"EGLD/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ENJ/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ENS/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"EOS/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ETC/USDT/perpetual": {
+			"amount_scale": 2,
+			"amount_step_size": 0.01,
+			"min_amount": 0.01,
+			"max_amount": 100000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ETH/BUSD/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ETH/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"FIL/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 10000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"FLM/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"FLOW/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"FTM/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"FTT/BUSD/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"FTT/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"GAL/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"GALA/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"GMT/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"GRT/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"GTC/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 100000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"HBAR/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"HNT/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"HOT/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 20000000,
+			"price_scale": 6,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ICP/USDT/perpetual": {
+			"amount_scale": 2,
+			"amount_step_size": 0.01,
+			"min_amount": 0.01,
+			"max_amount": 100000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ICX/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"IMX/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"IOST/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 6,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"IOTA/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"IOTX/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"JASMY/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"KAVA/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"KLAY/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"KNC/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 5000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"KSM/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"LINA/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"LINK/USDT/perpetual": {
+			"amount_scale": 2,
+			"amount_step_size": 0.01,
+			"min_amount": 0.01,
+			"max_amount": 100000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"LIT/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"LPT/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"LRC/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"LTC/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"MANA/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"MASK/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 100000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"MATIC/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"MKR/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 1,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"MTL/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"NEAR/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"NEO/USDT/perpetual": {
+			"amount_scale": 2,
+			"amount_step_size": 0.01,
+			"min_amount": 0.01,
+			"max_amount": 100000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"NKN/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"OCEAN/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"OGN/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"OMG/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ONE/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ONT/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"PEOPLE/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"QTUM/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 500000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"RAY/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 500000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"REEF/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 6,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"REN/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"RLC/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ROSE/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"RSR/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 6,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"RUNE/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"RVN/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SAND/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SC/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 6,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SFP/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SKL/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SNX/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SOL/BUSD/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SOL/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SRM/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"STMX/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"STORJ/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SUSHI/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"SXP/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"THETA/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"TLM/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"TOMO/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"TRB/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"TRX/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"UNFI/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 100000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"UNI/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"VET/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"WAVES/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"WOO/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"XEM/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"XLM/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"XMR/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"XRP/BUSD/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"XRP/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"XTZ/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"YFI/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 500,
+			"price_scale": 0,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ZEC/USDT/perpetual": {
+			"amount_scale": 3,
+			"amount_step_size": 0.001,
+			"min_amount": 0.001,
+			"max_amount": 10000,
+			"price_scale": 2,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ZEN/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 3,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ZIL/USDT/perpetual": {
+			"amount_scale": 0,
+			"amount_step_size": 1,
+			"min_amount": 1,
+			"max_amount": 10000000,
+			"price_scale": 5,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		},
+		"ZRX/USDT/perpetual": {
+			"amount_scale": 1,
+			"amount_step_size": 0.1,
+			"min_amount": 0.1,
+			"max_amount": 1000000,
+			"price_scale": 4,
+			"maker_fee": 0.0002,
+			"taker_fee": 0.0004
+		}
+	},
+	"public_rate_limits": [
+		{
+			"calls": 2,
+			"time_span": 1,
+			"time_unit": "SECONDS"
+		}
+	]
 }
