@@ -46,48 +46,6 @@
 			"maker_fee": 0.0,
 			"taker_fee": 0.0005
 		},
-		"BTC/USD/220520": {
-			"amount_scale": 1,
-			"min_amount": 10.0,
-			"price_scale": 1,
-			"maker_fee": -0.0001,
-			"taker_fee": 0.0005
-		},
-		"BTC/USD/220527": {
-			"amount_scale": 1,
-			"min_amount": 10.0,
-			"price_scale": 1,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"BTC/USD/220624": {
-			"amount_scale": 1,
-			"min_amount": 10.0,
-			"price_scale": 1,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"BTC/USD/220930": {
-			"amount_scale": 1,
-			"min_amount": 10.0,
-			"price_scale": 1,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"BTC/USD/221230": {
-			"amount_scale": 1,
-			"min_amount": 10.0,
-			"price_scale": 1,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"BTC/USD/230331": {
-			"amount_scale": 1,
-			"min_amount": 10.0,
-			"price_scale": 1,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
 		"BTC/USD/perpetual": {
 			"amount_scale": 1,
 			"min_amount": 10.0,
@@ -113,48 +71,6 @@
 			"amount_scale": 0,
 			"min_amount": 1,
 			"price_scale": 3,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"ETH/USD/220520": {
-			"amount_scale": 0,
-			"min_amount": 1,
-			"price_scale": 2,
-			"maker_fee": -0.0001,
-			"taker_fee": 0.0005
-		},
-		"ETH/USD/220527": {
-			"amount_scale": 0,
-			"min_amount": 1,
-			"price_scale": 2,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"ETH/USD/220624": {
-			"amount_scale": 0,
-			"min_amount": 1,
-			"price_scale": 2,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"ETH/USD/220930": {
-			"amount_scale": 0,
-			"min_amount": 1,
-			"price_scale": 2,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"ETH/USD/221230": {
-			"amount_scale": 0,
-			"min_amount": 1,
-			"price_scale": 2,
-			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"ETH/USD/230331": {
-			"amount_scale": 0,
-			"min_amount": 1,
-			"price_scale": 2,
 			"maker_fee": 0.0,
 			"taker_fee": 0.0005
 		},
@@ -198,27 +114,6 @@
 			"min_amount": 1,
 			"price_scale": 3,
 			"maker_fee": 0.0,
-			"taker_fee": 0.0005
-		},
-		"SOL/USD/220520": {
-			"amount_scale": 1,
-			"min_amount": 10.0,
-			"price_scale": 2,
-			"maker_fee": -0.0002,
-			"taker_fee": 0.0005
-		},
-		"SOL/USD/220527": {
-			"amount_scale": 1,
-			"min_amount": 10.0,
-			"price_scale": 2,
-			"maker_fee": -0.0002,
-			"taker_fee": 0.0005
-		},
-		"SOL/USD/220624": {
-			"amount_scale": 1,
-			"min_amount": 10.0,
-			"price_scale": 2,
-			"maker_fee": -0.0002,
 			"taker_fee": 0.0005
 		},
 		"SOL/USD/perpetual": {
