@@ -2,67 +2,80 @@
   "currency_pairs": {
     "BTC/USD": {
       "price_scale": 2,
-      "trading_fee": 0.002,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.010000000
     },
     "BTC/EUR": {
       "price_scale": 2,
-      "trading_fee": 0.001,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.010000000
     },
     "BTC/GBP": {
       "price_scale": 2,
-      "trading_fee": 0.01,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.010000000
     },
     "ETH/GBP": {
       "price_scale": 4,
-      "trading_fee": 0.001,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.100000000
     },
     "GHS/BTC": {
       "price_scale": 8,
-      "trading_fee": 0.0000,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 1.000000000
     },
     "ETH/BTC": {
       "price_scale": 8,
-      "trading_fee": 0.0000,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.500000000
     },
     "ETH/USD": {
       "price_scale": 4,
-      "trading_fee": 0.002,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.500000000
     },
     "ETH/EUR": {
       "price_scale": 4,
-      "trading_fee": 0.001,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.500000000
     },
     "BTC/RUB": {
       "price_scale": 2,
-      "trading_fee": 0.001,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.010000000
     },
     "BCH/BTC": {
       "price_scale": 8,
-      "trading_fee": 0.0000,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.100000000
     },
     "BCH/USD": {
       "price_scale": 4,
-      "trading_fee": 0.002,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.0100000000
     },
     "BCH/EUR": {
       "price_scale": 4,
-      "trading_fee": 0.001,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.0100000000
     },
     "BCH/GBP": {
       "price_scale": 4,
-      "trading_fee": 0.002,
+      "maker_fee": 0.0015,
+      "taker_fee": 0.0025,
       "min_amount": 0.010000000
     },
     "XRP/USD": {

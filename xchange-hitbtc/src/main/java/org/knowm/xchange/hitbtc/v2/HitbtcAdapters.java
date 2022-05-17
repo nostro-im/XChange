@@ -299,7 +299,7 @@ public class HitbtcAdapters {
 
         CurrencyPairMetaData meta =
             new CurrencyPairMetaData(
-                tradingFee, minimumAmount, maximumAmount, priceScale, feeTiers);
+                tradingFee, tradingFee, minimumAmount, maximumAmount, priceScale, feeTiers);
 
         currencyPairs.put(pair, meta);
       }

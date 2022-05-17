@@ -692,11 +692,8 @@ public final class BitfinexAdapters {
 
                 CurrencyPairMetaData newMetaData =
                     new CurrencyPairMetaData(
-                        currencyPairs.get(currencyPair) == null
-                            ? null
-                            : currencyPairs
-                                .get(currencyPair)
-                                .getTradingFee(), // Take tradingFee from static metaData if exists
+                        currencyPairs.get(currencyPair) == null ? null : currencyPairs.get(currencyPair).getMakerFee(), // Take from static metaData if exists
+                        currencyPairs.get(currencyPair) == null ? null : currencyPairs.get(currencyPair).getTakerFee(), // Take from static metaData if exists
                         bitfinexSymbolDetail.getMinimum_order_size(),
                         bitfinexSymbolDetail.getMaximum_order_size(),
                         priceScale,
@@ -735,7 +732,7 @@ public final class BitfinexAdapters {
     // also setting the taker_fee as the trading_fee for now.
     final CurrencyPairMetaData metaData =
         new CurrencyPairMetaData(
-            bitfinexAccountInfos[0].getTakerFees().movePointLeft(2), null, null, null, null);
+                bitfinexAccountInfos[0].getMakerFees().movePointLeft(2), bitfinexAccountInfos[0].getTakerFees().movePointLeft(2), null, null, null, null);
     currencyPairs.keySet().parallelStream()
         .forEach(
             currencyPair ->
@@ -744,7 +741,8 @@ public final class BitfinexAdapters {
                     metaData,
                     (oldMetaData, newMetaData) ->
                         new CurrencyPairMetaData(
-                            newMetaData.getTradingFee(),
+                            newMetaData.getMakerFee(),
+                            newMetaData.getTakerFee(),
                             oldMetaData.getMinimumAmount(),
                             oldMetaData.getMaximumAmount(),
                             oldMetaData.getPriceScale(),

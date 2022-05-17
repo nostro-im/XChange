@@ -1,6 +1,8 @@
 package org.knowm.xchange.dto.meta;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.knowm.xchange.dto.account.Fee;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -9,9 +11,13 @@ import java.util.Date;
 public class DerivativeMetaData implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  /** Trading fee (fraction) */
-  @JsonProperty("trading_fee")
-  private final BigDecimal tradingFee;
+  /** maker fee */
+  @JsonProperty("maker_fee")
+  private final BigDecimal makerFee;
+
+  /** taker fee */
+  @JsonProperty("take_fee")
+  private final BigDecimal takerFee;
 
   /** Trading fee tiers by volume (fraction). Sorted in ascending order by quantity */
   @JsonProperty("fee_tiers")
@@ -54,7 +60,8 @@ public class DerivativeMetaData implements Serializable {
   private final Date expireTimestamp;
 
   public DerivativeMetaData(
-      @JsonProperty("trading_fee") BigDecimal tradingFee,
+      @JsonProperty("maker_fee") BigDecimal makerFee,
+      @JsonProperty("taker_fee") BigDecimal takerFee,
       @JsonProperty("min_amount") BigDecimal minimumAmount,
       @JsonProperty("max_amount") BigDecimal maximumAmount,
       @JsonProperty("min_price") BigDecimal minimumPrice,
@@ -66,7 +73,8 @@ public class DerivativeMetaData implements Serializable {
       @JsonProperty("price_step_size") BigDecimal priceStepSize,
       @JsonProperty("expire_timestamp") Date expireTimestamp) {
 
-    this.tradingFee = tradingFee;
+    this.makerFee = makerFee;
+    this.takerFee = takerFee;
     this.minimumAmount = minimumAmount;
     this.maximumAmount = maximumAmount;
     this.minimumPrice = minimumPrice;
@@ -82,8 +90,16 @@ public class DerivativeMetaData implements Serializable {
     this.expireTimestamp = expireTimestamp;
   }
 
-  public BigDecimal getTradingFee() {
-    return tradingFee;
+  public BigDecimal getMakerFee() {
+    return makerFee;
+  }
+
+  public BigDecimal getTakerFee() {
+    return takerFee;
+  }
+
+  public Fee getTradingFee() {
+    return new Fee(makerFee, takerFee);
   }
 
   public FeeTier[] getFeeTiers() {
@@ -127,7 +143,8 @@ public class DerivativeMetaData implements Serializable {
   }
 
   public static final class Builder {
-    private BigDecimal tradingFee;
+    private BigDecimal makerFee;
+    private BigDecimal takerFee;
     private FeeTier[] feeTiers;
     private BigDecimal minimumAmount;
     private BigDecimal maximumAmount;
@@ -141,7 +158,8 @@ public class DerivativeMetaData implements Serializable {
 
     public static Builder from(DerivativeMetaData metaData) {
       return new Builder()
-              .tradingFee(metaData.tradingFee)
+              .takerFee(metaData.takerFee)
+              .makerFee(metaData.makerFee)
               .minimumAmount(metaData.minimumAmount)
               .maximumAmount(metaData.maximumAmount)
               .minimumPrice(metaData.minimumPrice)
@@ -156,8 +174,13 @@ public class DerivativeMetaData implements Serializable {
 
     public Builder() {}
 
-    public Builder tradingFee(BigDecimal val) {
-      tradingFee = val;
+    public Builder makerFee(BigDecimal val) {
+      makerFee = val;
+      return this;
+    }
+
+    public Builder takerFee(BigDecimal val) {
+      takerFee = val;
       return this;
     }
 
@@ -214,7 +237,8 @@ public class DerivativeMetaData implements Serializable {
     public DerivativeMetaData build() {
 
       return new DerivativeMetaData(
-          tradingFee,
+          makerFee,
+          takerFee,
           minimumAmount,
           maximumAmount,
           minimumPrice,
@@ -230,8 +254,10 @@ public class DerivativeMetaData implements Serializable {
 
   @Override
   public String toString() {
-    return "DerivativeMetaData [tradingFee="
-        + tradingFee
+    return "DerivativeMetaData [makerFee="
+        + makerFee
+        + ", takerFee="
+        + takerFee
         + ", minimumAmount="
         + minimumAmount
         + ", maximumAmount="

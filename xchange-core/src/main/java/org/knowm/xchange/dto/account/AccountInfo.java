@@ -23,7 +23,7 @@ public final class AccountInfo implements Serializable {
    * The current fee this account must pay as a fraction of the value of each trade. Null if there
    * is no such fee.
    */
-  private final BigDecimal tradingFee;
+  private final Fee tradingFee;
 
   /** The wallets owned by this account */
   private final Map<String, Wallet> wallets;
@@ -40,7 +40,7 @@ public final class AccountInfo implements Serializable {
   /** margin info per currency **/
   private final Map<Currency, AccountMargin> margins;
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
+  /** @see #AccountInfo(String, Fee, Collection) */
   public AccountInfo(Wallet... wallets) {
 
     // TODO when refactoring for separate feature interfaces, change this constructor to require at
@@ -48,7 +48,7 @@ public final class AccountInfo implements Serializable {
     this(null, null, wallets);
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection, Date) */
+  /** @see #AccountInfo(String, Fee, Collection, Date) */
   public AccountInfo(Date timestamp, Wallet... wallets) {
 
     // TODO when refactoring for separate feature interfaces, change this constructor to require at
@@ -56,19 +56,19 @@ public final class AccountInfo implements Serializable {
     this(null, null, Arrays.asList(wallets), timestamp);
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
+  /** @see #AccountInfo(String, Fee, Collection) */
   public AccountInfo(Collection<Wallet> wallets) {
 
     this(null, null, wallets);
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
+  /** @see #AccountInfo(String, Fee, Collection) */
   public AccountInfo(String username, Wallet... wallets) {
 
     this(username, null, wallets);
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
+  /** @see #AccountInfo(String, Fee, Collection) */
   public AccountInfo(String username, Collection<Wallet> wallets) {
 
     this(username, null, wallets);
@@ -81,7 +81,7 @@ public final class AccountInfo implements Serializable {
    * @param tradingFee the trading fee.
    * @param wallets the user's wallets
    */
-  public AccountInfo(String username, BigDecimal tradingFee, Collection<Wallet> wallets) {
+  public AccountInfo(String username, Fee tradingFee, Collection<Wallet> wallets) {
     this(username, tradingFee, wallets, null);
   }
 
@@ -94,7 +94,7 @@ public final class AccountInfo implements Serializable {
    * @param timestamp the timestamp for the account snapshot.
    */
   public AccountInfo(
-      String username, BigDecimal tradingFee, Collection<Wallet> wallets, Date timestamp) {
+      String username, Fee tradingFee, Collection<Wallet> wallets, Date timestamp) {
 
     this(username, tradingFee, wallets, Collections.emptySet(), Collections.emptySet(), timestamp);
   }
@@ -111,7 +111,7 @@ public final class AccountInfo implements Serializable {
    */
   public AccountInfo(
           String username,
-          BigDecimal tradingFee,
+          Fee tradingFee,
           Collection<Wallet> wallets,
           Collection<OpenPosition> openPositions,
           Collection<AccountMargin> margins,
@@ -150,8 +150,8 @@ public final class AccountInfo implements Serializable {
     }
   }
 
-  /** @see #AccountInfo(String, BigDecimal, Collection) */
-  public AccountInfo(String username, BigDecimal tradingFee, Wallet... wallets) {
+  /** @see #AccountInfo(String, Fee, Collection) */
+  public AccountInfo(String username, Fee tradingFee, Wallet... wallets) {
 
     this(username, tradingFee, Arrays.asList(wallets));
   }
@@ -216,7 +216,7 @@ public final class AccountInfo implements Serializable {
    *
    * @return The trading fee
    */
-  public BigDecimal getTradingFee() {
+  public Fee getTradingFee() {
 
     return tradingFee;
   }
@@ -263,7 +263,7 @@ public final class AccountInfo implements Serializable {
 
   public static final class Builder {
     private String username;
-    private BigDecimal tradingFee;
+    private Fee tradingFee;
     private Collection<Wallet> wallets;
     private Collection<OpenPosition> openPositions;
     private Date timestamp;
@@ -280,7 +280,7 @@ public final class AccountInfo implements Serializable {
       return this;
     }
 
-    public Builder tradingFee(BigDecimal tradingFee) {
+    public Builder tradingFee(Fee fee) {
       this.tradingFee = tradingFee;
       return this;
     }

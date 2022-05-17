@@ -2,41 +2,50 @@
   "currency_pairs": {
     "LTC/BTC": {
       "price_scale": 8,
-      "trading_fee": 0.001
+      "maker_fee": 0.002,
+      "taker_fee": 0.002
     },
     "ETH/BTC": {
       "price_scale": 8,
-      "trading_fee": 0.001
+      "maker_fee": 0.002,
+      "taker_fee": 0.002
     },
     "DOGE/BTC": {
       "price_scale": 9,
-      "trading_fee": 0.001
+      "maker_fee": 0.002,
+      "taker_fee": 0.002
     },
     "XMR/BTC": {
       "price_scale": 8,
-      "trading_fee": 0.001
+      "maker_fee": 0.002,
+      "taker_fee": 0.002
     },
     "BCH/BTC": {
       "price_scale": 8,
       "min_amount": 0.001,
-      "trading_fee": 0.001
+      "maker_fee": 0.002,
+      "taker_fee": 0.002
     },
     "BCH/ETH": {
       "price_scale": 8,
-      "trading_fee": 0.001
+      "maker_fee": 0.002,
+      "taker_fee": 0.002
     },
     "XRP/BTC": {
       "price_scale": 8,
-      "trading_fee": 0.001
+      "maker_fee": 0.002,
+      "taker_fee": 0.002
     },
     "ARN/BTC": {
       "price_scale": 8,
-      "trading_fee": 0.001
+      "maker_fee": 0.002,
+      "taker_fee": 0.002
     },
     "XVG/BTC": {
       "price_scale": 8,
       "min_amount": 1000,
-      "trading_fee": 0.001
+      "maker_fee": 0.002,
+      "taker_fee": 0.002
     }
   },
   "currencies": {

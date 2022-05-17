@@ -367,7 +367,8 @@ public class DeribitAdapters {
           new Fee(instrument.getMakerCommission(), instrument.getTakerCommission()))
     };
     return new DerivativeMetaData.Builder()
-        .tradingFee(instrument.getTakerCommission())
+        .makerFee(instrument.getMakerCommission())
+        .takerFee(instrument.getTakerCommission())
         .feeTiers(feeTiers)
         .minimumAmount(instrument.getMinTradeAmount())
         .amountScale(instrument.getMinTradeAmount().scale())

@@ -24,6 +24,9 @@ import java.util.Map;
 
 public class BinanceFuturesExchange extends BinanceExchange {
 
+  private static final BigDecimal MAX_MAKER_FEE = new BigDecimal("0.0002"); // Max maker fee at Binance is 0.02 %
+  private static final BigDecimal MAX_TAKER_FEE = new BigDecimal("0.0004");  // Max taker fee at Binance is 0.04 %
+
   @Override
   protected void initServices() {
     this.binance = ExchangeRestProxyBuilder.forInterface(
@@ -111,7 +114,8 @@ public class BinanceFuturesExchange extends BinanceExchange {
           }
 
           DerivativeMetaData metaData = new DerivativeMetaData.Builder()
-                  .tradingFee(new BigDecimal("0.001")) // Trading fee at Binance is 0.1 %
+                  .makerFee(MAX_MAKER_FEE)
+                  .takerFee(MAX_TAKER_FEE)
                   .minimumAmount(minQty) // Min amount
                   .maximumAmount(maxQty) // Max amount
                   .minimumPrice(counterMinQty)

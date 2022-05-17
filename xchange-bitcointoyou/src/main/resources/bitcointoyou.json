@@ -2,7 +2,8 @@
   "currency_pairs": {
     "BTC/BRL": {
       "price_scale": 8,
-      "trading_fee": 0.001
+      "maker_fee": 0.001,
+      "taker_fee": 0.001
     }
   },
   "currencies": {

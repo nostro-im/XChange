@@ -450,6 +450,7 @@ public class KrakenAdapters {
       KrakenAssetPair krakenPair, CurrencyPairMetaData OriginalMeta) {
     return new CurrencyPairMetaData(
         krakenPair.getFees().get(0).getPercentFee().divide(new BigDecimal(100)),
+        krakenPair.getFees().get(0).getPercentFee().divide(new BigDecimal(100)),
         krakenPair.getOrderMin(),
         null,
         krakenPair.getPairScale(),

@@ -11,19 +11,21 @@ public class BinanceCurrencyPairMetaData extends CurrencyPairMetaData {
   /**
    * Constructor
    *
-   * @param tradingFee Trading fee (fraction)
+   * @param makerFee Maker fee
+   * @param takerFee Taker fee
    * @param minimumAmount Minimum trade amount
    * @param maximumAmount Maximum trade amount
    * @param priceScale Price scale
    */
   public BinanceCurrencyPairMetaData(
-      BigDecimal tradingFee,
+      BigDecimal makerFee,
+      BigDecimal takerFee,
       BigDecimal minimumAmount,
       BigDecimal maximumAmount,
       Integer priceScale,
       BigDecimal minNotional,
       FeeTier[] feeTiers) {
-    super(tradingFee, minimumAmount, maximumAmount, priceScale, feeTiers);
+    super(makerFee, takerFee, minimumAmount, maximumAmount, priceScale, feeTiers);
     this.minNotional = minNotional;
   }
 

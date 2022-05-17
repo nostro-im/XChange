@@ -1,60 +1,162 @@
 {
-  "currency_pairs": {},
-  "currencies": {
-    "BTC": {
-      "scale": "8",
-      "withdrawal_fee": "0.00002"
-    },
-    "ETH": {
-      "scale": "8",
-      "withdrawal_fee": "0.0038"
-    }
-  },
-  "futures": {
-    "BTC/USD/perpetual": {
-      "trading_fee": 0.0005,
-      "min_amount": 10.0,
-      "amount_scale": 1,
-      "price_scale": 1,
-      "price_step_size": 0.5
-    },
-    "ETH/USD/perpetual": {
-      "trading_fee": 0.0005,
-      "min_amount": 1,
-      "amount_scale": 0,
-      "price_scale": 2,
-      "price_step_size": 0.05
-    }
-  },
-  "options": {
-    "BTC/USD/000101/0/C" : {
-      "trading_fee" : 0.0003,
-      "min_amount" : 0.1,
-      "amount_scale" : 1,
-      "price_scale" : 4,
-      "price_step_size" : 0.0005
-    },
-    "ETH/USD/000101/0/C" : {
-      "trading_fee" : 0.0003,
-      "min_amount" : 1,
-      "amount_scale" : 0,
-      "price_scale" : 4,
-      "price_step_size" : 0.0005
-    }
-  },
-  "public_rate_limits": [
-    {
-      "calls": 200,
-      "time_span": 1,
-      "time_unit": "seconds"
-    }
-  ],
-  "private_rate_limits": [
-    {
-      "calls": 200,
-      "time_span": 1,
-      "time_unit": "seconds"
-    }
-  ],
-  "share_rate_limits": true
+	"currencies": {
+		"BTC": {
+			"scale": 8,
+			"withdrawal_fee": 0.00006
+		},
+		"ETH": {
+			"scale": 8,
+			"withdrawal_fee": 0.0006
+		},
+		"SOL": {
+			"scale": 8,
+			"withdrawal_fee": 0.0001
+		},
+		"USDC": {
+			"scale": 8,
+			"withdrawal_fee": 10.0
+		}
+	},
+	"futures": {
+		"ADA/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 10,
+			"price_scale": 4,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"ALGO/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 10,
+			"price_scale": 4,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"AVAX/USDC/perpetual": {
+			"amount_scale": 1,
+			"min_amount": 0.1,
+			"price_scale": 2,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"BCH/USDC/perpetual": {
+			"amount_scale": 2,
+			"min_amount": 0.02,
+			"price_scale": 2,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"BTC/USD/perpetual": {
+			"amount_scale": 1,
+			"min_amount": 10.0,
+			"price_scale": 1,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"BTC/USDC/perpetual": {
+			"amount_scale": 3,
+			"min_amount": 0.001,
+			"price_scale": 1,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"DOGE/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 100,
+			"price_scale": 5,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"DOT/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 1,
+			"price_scale": 3,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"ETH/USD/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 1,
+			"price_scale": 2,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"ETH/USDC/perpetual": {
+			"amount_scale": 2,
+			"min_amount": 0.01,
+			"price_scale": 1,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"LINK/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 1,
+			"price_scale": 3,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"LTC/USDC/perpetual": {
+			"amount_scale": 1,
+			"min_amount": 0.1,
+			"price_scale": 2,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"MATIC/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 10,
+			"price_scale": 4,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"NEAR/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 1,
+			"price_scale": 3,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"SOL/USD/perpetual": {
+			"amount_scale": 1,
+			"min_amount": 10.0,
+			"price_scale": 2,
+			"maker_fee": -0.0002,
+			"taker_fee": 0.0005
+		},
+		"SOL/USDC/perpetual": {
+			"amount_scale": 1,
+			"min_amount": 0.1,
+			"price_scale": 2,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"TRX/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 100,
+			"price_scale": 5,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"UNI/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 1,
+			"price_scale": 3,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		},
+		"XRP/USDC/perpetual": {
+			"amount_scale": 0,
+			"min_amount": 10,
+			"price_scale": 4,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0005
+		}
+	},
+	"public_rate_limits": [
+		{
+			"calls": 2,
+			"time_span": 1,
+			"time_unit": "SECONDS"
+		}
+	]
 }

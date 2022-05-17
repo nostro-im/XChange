@@ -93,6 +93,6 @@ public class FtxAccountService extends FtxAccountServiceRaw implements AccountSe
   }
 
   Fee getDynamicTradingFee(FtxAccountDto accountDto) {
-    return new Fee(accountDto.getMakerFee(), accountDto.getTakerFee());
+    return FtxAdapters.getTradingFee(accountDto);
   }
 }

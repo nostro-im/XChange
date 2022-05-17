@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.dto.account.Balance;
+import org.knowm.xchange.dto.account.Fee;
 import org.knowm.xchange.dto.account.Wallet;
 import org.knowm.xchange.latoken.LatokenAdapters;
 import org.knowm.xchange.latoken.LatokenErrorAdapter;
@@ -35,7 +36,7 @@ public class LatokenAccountService extends LatokenAccountServiceRaw implements A
               .map(latokenBalance -> LatokenAdapters.adaptBalance(latokenBalance))
               .collect(Collectors.toList());
       Wallet wallet = Wallet.Builder.from(balances).build();
-      return new AccountInfo(null, TRADING_FEE, Arrays.asList(wallet), new Date());
+      return new AccountInfo(null, new Fee(TRADING_FEE, TRADING_FEE), Arrays.asList(wallet), new Date());
 
     } catch (LatokenException e) {
       throw LatokenErrorAdapter.adapt(e);

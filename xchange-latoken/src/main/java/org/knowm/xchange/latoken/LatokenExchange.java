@@ -130,7 +130,8 @@ public class LatokenExchange extends BaseExchange {
     pairs.put(
         pair,
         new CurrencyPairMetaData.Builder()
-            .tradingFee(pairMetadata.getTradingFee())
+            .makerFee(pairMetadata.getMakerFee().movePointLeft(2))
+            .takerFee(pairMetadata.getTakerFee().movePointLeft(2))
             .minimumAmount(pairMetadata.getMinimumAmount())
             .maximumAmount(maxAmount)
             .priceScale(pairMetadata.getPriceScale())
