@@ -154,14 +154,16 @@
 	},
 	"options": {
 		"BTC/USD/000101/0/C" : {
-			"trading_fee" : 0.0003,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0003,
 			"min_amount" : 0.1,
 			"amount_scale" : 1,
 			"price_scale" : 4,
 			"price_step_size" : 0.0005
 		},
 		"ETH/USD/000101/0/C" : {
-			"trading_fee" : 0.0003,
+			"maker_fee": 0.0,
+			"taker_fee": 0.0003,
 			"min_amount" : 1,
 			"amount_scale" : 0,
 			"price_scale" : 4,
