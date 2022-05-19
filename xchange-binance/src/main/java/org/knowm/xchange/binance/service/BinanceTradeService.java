@@ -145,7 +145,7 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
     return placeOrder(orderType, order, order.getLimitPrice(), order.getStopPrice(), tif);
   }
 
-  private Optional<TimeInForce> timeInForceFromOrder(Order order) {
+  protected Optional<TimeInForce> timeInForceFromOrder(Order order) {
     return order.getOrderFlags().stream()
         .filter(flag -> flag instanceof TimeInForce)
         .map(flag -> (TimeInForce) flag)

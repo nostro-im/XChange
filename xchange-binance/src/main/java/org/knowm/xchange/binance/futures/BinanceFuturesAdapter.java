@@ -7,7 +7,7 @@ import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesPosition;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrder;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrderType;
 import org.knowm.xchange.binance.futures.dto.trade.PositionSide;
-import org.knowm.xchange.binance.service.BinanceTradeService;
+import org.knowm.xchange.binance.futures.dto.trade.WorkingType;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.FuturesContract;
@@ -20,6 +20,7 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.StopOrder;
+import org.knowm.xchange.dto.trade.TrailingStopOrder;
 import org.knowm.xchange.instrument.Instrument;
 
 import java.math.BigDecimal;
@@ -123,25 +124,61 @@ public class BinanceFuturesAdapter {
         Order.OrderType type = BinanceAdapters.convert(order.side);
         Instrument instrument = adaptInstrument(order.symbol);
         Order.Builder builder;
-        if (order.type.equals(BinanceFuturesOrderType.MARKET)) {
-            builder = new MarketOrder.Builder(type, instrument);
-        } else if (order.type.equals(BinanceFuturesOrderType.LIMIT)) {
-            builder = new LimitOrder.Builder(type, instrument).limitPrice(order.price);
-        } else {
-            builder = new StopOrder.Builder(type, instrument).stopPrice(order.stopPrice);
+
+        switch (order.origType) {
+            case TRAILING_STOP_MARKET:
+                builder = new TrailingStopOrder.Builder(type, instrument)
+                        .triggerPrice(order.activatePrice)
+                        .trailingRatio(order.priceRate.movePointLeft(2))
+                        .triggerType(convert(order.workingType));
+                break;
+                
+            case STOP:
+            case TAKE_PROFIT:
+                builder = new StopOrder.Builder(type, instrument)
+                        .stopPrice(order.stopPrice)
+                        .limitPrice(order.price);
+                break;
+
+            case STOP_MARKET:
+            case TAKE_PROFIT_MARKET:
+                builder = new StopOrder.Builder(type, instrument)
+                        .stopPrice(order.stopPrice);
+                break;    
+                
+            case LIMIT:
+                builder = new LimitOrder.Builder(type, instrument)
+                        .limitPrice(order.price);
+                break;
+                
+            default:
+                builder = new MarketOrder.Builder(type, instrument);
+                break;
         }
-        builder
-                .orderStatus(BinanceAdapters.adaptOrderStatus(order.status))
+        
+        builder.orderStatus(BinanceAdapters.adaptOrderStatus(order.status))
                 .originalAmount(order.origQty)
                 .id(Long.toString(order.orderId))
                 .timestamp(order.getTime())
-                .cumulativeAmount(order.executedQty);
-        builder.averagePrice(order.avgPrice);
+                .cumulativeAmount(order.executedQty)
+                .averagePrice(order.avgPrice);
+        
         if (order.clientOrderId != null) {
             builder.userReference(order.clientOrderId);
-            builder.flag(BinanceTradeService.BinanceOrderFlags.withClientId(order.clientOrderId)); // backward compatibility
         }
         return builder.build();
+    }
+
+    public static WorkingType convert(TrailingStopOrder.TriggerType triggerType) {
+        if (triggerType == TrailingStopOrder.TriggerType.LAST_PRICE) return WorkingType.CONTRACT_PRICE;
+        if (triggerType == TrailingStopOrder.TriggerType.MARK_PRICE) return WorkingType.MARK_PRICE;
+        return null;
+    }
+
+    public static TrailingStopOrder.TriggerType convert(WorkingType workingType) {
+        if (workingType == WorkingType.CONTRACT_PRICE) return TrailingStopOrder.TriggerType.LAST_PRICE;
+        if (workingType == WorkingType.MARK_PRICE) return TrailingStopOrder.TriggerType.MARK_PRICE;
+        return null;
     }
 
     public static Ticker replaceInstrument(Ticker ticker, FuturesContract futuresContract) {
@@ -191,6 +228,10 @@ public class BinanceFuturesAdapter {
 
     public static StopOrder replaceInstrument(StopOrder stop, CurrencyPair pair) {
         return StopOrder.Builder.from(stop).instrument(pair).build();
+    }
+
+    public static TrailingStopOrder replaceInstrument(TrailingStopOrder trailingStop, CurrencyPair pair) {
+        return TrailingStopOrder.Builder.from(trailingStop).instrument(pair).build();
     }
 
     // available balance!
