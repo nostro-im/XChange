@@ -1,6 +1,7 @@
 package org.knowm.xchange.dto.trade;
 
 import org.junit.Test;
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.utils.ObjectMapperHelper;
@@ -27,6 +28,7 @@ public class TrailingStopOrderTest {
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
     final String reference = "reference";
+    final Currency feeCurrency = Currency.DX;
     final TrailingStopOrder.TriggerType triggerType = TrailingStopOrder.TriggerType.LAST_PRICE;
 
     final TrailingStopOrder copy =
@@ -42,6 +44,7 @@ public class TrailingStopOrderTest {
             .flag(TestFlags.TEST1)
             .fee(fee)
             .userReference(reference)
+            .feeCurrency(feeCurrency)
             .triggerType(triggerType)
             .build();
 
@@ -60,6 +63,7 @@ public class TrailingStopOrderTest {
     assertThat(copy.getStatus()).isEqualTo(status);
     assertThat(copy.getFee()).isEqualTo(fee);
     assertThat(copy.getUserReference()).isEqualTo(reference);
+    assertThat(copy.getFeeCurrency()).isEqualTo(feeCurrency);
     assertThat(copy.getTriggerType()).isEqualTo(triggerType);
   }
 
@@ -77,6 +81,7 @@ public class TrailingStopOrderTest {
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
     final String reference = "reference";
+    final Currency feeCurrency = Currency.DX;
     final TrailingStopOrder.TriggerType triggerType = TrailingStopOrder.TriggerType.MARK_PRICE;
 
     final TrailingStopOrder original =
@@ -93,7 +98,8 @@ public class TrailingStopOrderTest {
             cumulativeAmount,
             fee,
             status,
-            reference);
+            reference,
+            feeCurrency);
     original.addOrderFlag(TestFlags.TEST1);
     original.addOrderFlag(TestFlags.TEST3);
     final TrailingStopOrder copy = TrailingStopOrder.Builder.from(original).build();
@@ -115,6 +121,7 @@ public class TrailingStopOrderTest {
     final String id = "id";
     final Order.OrderStatus status = Order.OrderStatus.FILLED;
     final String reference = "reference";
+    final Currency feeCurrency = Currency.DX;
     final TrailingStopOrder.TriggerType triggerType = TrailingStopOrder.TriggerType.LAST_PRICE;
 
     final TrailingStopOrder original =
@@ -131,7 +138,8 @@ public class TrailingStopOrderTest {
             cumulativeAmount,
             fee,
             status,
-            reference);
+            reference,
+            feeCurrency);
     original.addOrderFlag(TestFlags.TEST1);
     original.addOrderFlag(TestFlags.TEST3);
 

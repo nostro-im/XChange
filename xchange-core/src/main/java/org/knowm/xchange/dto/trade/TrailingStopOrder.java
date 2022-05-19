@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import org.apache.commons.lang3.ObjectUtils;
+import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.instrument.Instrument;
@@ -80,7 +81,8 @@ public class TrailingStopOrder extends Order implements Comparable<TrailingStopO
       BigDecimal cumulativeAmount,
       BigDecimal fee,
       OrderStatus status,
-      String userReference) {
+      String userReference,
+      Currency feeCurrency) {
 
     super(
         type,
@@ -92,7 +94,8 @@ public class TrailingStopOrder extends Order implements Comparable<TrailingStopO
         cumulativeAmount,
         fee,
         status,
-        userReference);
+        userReference,
+        feeCurrency);
     this.triggerPrice = triggerPrice;
     this.trailingRatio = trailingRatio;
     this.triggerType = triggerType;
@@ -185,6 +188,7 @@ public class TrailingStopOrder extends Order implements Comparable<TrailingStopO
               .flags(order.getOrderFlags())
               .orderStatus(order.getStatus())
               .fee(order.getFee())
+              .feeCurrency(order.getFeeCurrency())    
               .averagePrice(order.getAveragePrice())
               .userReference(order.getUserReference());
       if (order instanceof TrailingStopOrder) {
@@ -285,7 +289,12 @@ public class TrailingStopOrder extends Order implements Comparable<TrailingStopO
     public Builder fee(BigDecimal fee) {
       return (Builder) super.fee(fee);
     }
-
+    
+    @Override
+    public Builder feeCurrency(Currency feeCurrency) {
+      return (Builder) super.feeCurrency(feeCurrency);
+    }
+    
     public Builder triggerPrice(BigDecimal triggerPrice) {
 
       this.triggerPrice = triggerPrice;
@@ -323,7 +332,8 @@ public class TrailingStopOrder extends Order implements Comparable<TrailingStopO
                   : originalAmount.subtract(remainingAmount),
               fee,
               status,
-              userReference);
+              userReference,
+              feeCurrency);
       order.setOrderFlags(flags);
       order.setLeverage(leverage);
       return order;
