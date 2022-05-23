@@ -4,7 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.FuturesContract;
@@ -67,17 +70,17 @@ public class ExchangeMetaData implements Serializable {
 
   public ExchangeMetaData(
       @JsonProperty("currency_pairs") Map<CurrencyPair, CurrencyPairMetaData> currencyPairs,
-      @JsonProperty("currencies") Map<Currency, CurrencyMetaData> currency,
+      @JsonProperty("currencies") Map<Currency, CurrencyMetaData> currencies,
       @JsonProperty("futures") Map<FuturesContract, DerivativeMetaData> futures,
       @JsonProperty("options") Map<OptionsContract, DerivativeMetaData> options,
       @JsonProperty("public_rate_limits") RateLimit[] publicRateLimits,
       @JsonProperty("private_rate_limits") RateLimit[] privateRateLimits,
       @JsonProperty("share_rate_limits") Boolean shareRateLimits) {
 
-    this.currencyPairs = currencyPairs;
-    this.currencies = currency;
-    this.futures = futures;
-    this.options = options;
+    this.currencyPairs = Optional.ofNullable(currencyPairs).orElse(new HashMap<>());
+    this.currencies = Optional.ofNullable(currencies).orElse(new HashMap<>());
+    this.futures = Optional.ofNullable(futures).orElse(new HashMap<>());
+    this.options = Optional.ofNullable(options).orElse(new HashMap<>());
 
     this.publicRateLimits = publicRateLimits;
     this.privateRateLimits = privateRateLimits;
