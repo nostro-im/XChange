@@ -249,6 +249,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
               .originalAmount(order.getOriginalAmount())
               .cumulativeAmount(order.getCumulativeAmount())
               .timestamp(order.getTimestamp())
+              .completedTimestamp(order.getCompletedTimestamp())
               .id(order.getId())
               .flags(order.getOrderFlags())
               .orderStatus(order.getStatus())

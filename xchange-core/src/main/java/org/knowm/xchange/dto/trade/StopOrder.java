@@ -375,6 +375,7 @@ public class StopOrder extends Order implements Comparable<StopOrder> {
               .originalAmount(order.getOriginalAmount())
               .cumulativeAmount(order.getCumulativeAmount())
               .timestamp(order.getTimestamp())
+              .completedTimestamp(order.getCompletedTimestamp())
               .id(order.getId())
               .flags(order.getOrderFlags())
               .orderStatus(order.getStatus())

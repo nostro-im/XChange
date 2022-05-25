@@ -11,6 +11,7 @@ import java.util.Set;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order;
+import org.knowm.xchange.dto.trade.LimitOrder.Builder;
 import org.knowm.xchange.instrument.Instrument;
 
 /**
@@ -153,6 +154,7 @@ public class MarketOrder extends Order {
           .originalAmount(order.getOriginalAmount())
           .cumulativeAmount(order.getCumulativeAmount())
           .timestamp(order.getTimestamp())
+          .completedTimestamp(order.getCompletedTimestamp())
           .id(order.getId())
           .flags(order.getOrderFlags())
           .averagePrice(order.getAveragePrice())
@@ -234,6 +236,12 @@ public class MarketOrder extends Order {
       return (Builder) super.timestamp(timestamp);
     }
 
+    @Override
+    public Builder completedTimestamp(Date timestamp) {
+
+    	return (Builder) super.completedTimestamp(timestamp);
+    }
+    
     @Override
     public Builder flags(Set<IOrderFlags> flags) {
 
