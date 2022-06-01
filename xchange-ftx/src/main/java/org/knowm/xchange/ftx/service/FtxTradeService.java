@@ -139,8 +139,6 @@ public class FtxTradeService extends FtxTradeServiceRaw implements TradeService 
     }
   }
   
-  
-
   @Override
   public List<Order> getOrderHistory(OrderHistoryParams params) throws IOException {
     Assert.isTrue(params instanceof InstrumentParam,"You need to provide instrument to get order history");
