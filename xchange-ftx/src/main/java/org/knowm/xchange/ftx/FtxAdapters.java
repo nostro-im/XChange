@@ -312,6 +312,14 @@ public class FtxAdapters {
         .id(ftxOrderDto.getId())
         .build();
   }
+  
+  public static List<Order> adaptOrderHistoryRespose(FtxResponse<List<FtxOrderDto>> ftxOpenOrdersResponse) {
+    return ftxOpenOrdersResponse
+            .getResult()
+            .stream()
+            .map(FtxAdapters::adaptOrder)
+            .collect(Collectors.toList());
+  }
 
   public static OpenOrders adaptOpenOrders(FtxResponse<List<FtxOrderDto>> ftxOpenOrdersResponse) {
     List<LimitOrder> limitOrders = new ArrayList<>();
@@ -525,6 +533,10 @@ public class FtxAdapters {
 
   public static Fee getTradingFee(FtxAccountDto accountDto) {
     return new Fee(accountDto.getMakerFee(), accountDto.getTakerFee());
+  }
+  
+  public static int adaptDate(Date date) {
+    return (int) (date.getTime()/1000);
   }
 }
 
