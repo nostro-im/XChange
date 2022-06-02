@@ -78,7 +78,7 @@ public class FtxTradeService extends FtxTradeServiceRaw implements TradeService 
 
   @Override
   public TradeHistoryParams createTradeHistoryParams() {
-    return new DefaultTradeHistoryParamInstrument();
+    return new FtxTradeHistoryParams();
   }
 
   @Override
