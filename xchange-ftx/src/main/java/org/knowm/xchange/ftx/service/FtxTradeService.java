@@ -147,11 +147,10 @@ public class FtxTradeService extends FtxTradeServiceRaw implements TradeService 
       throw new ExchangeException("You need to provide instrument to get order history");
     }
 
-    Assert.isTrue(params instanceof OrderHistoryParamsTimeSpan,"You need to provide start and end times to get order history");
-    Date startTime = ((OrderHistoryParamsTimeSpan) params).getStartTime();
-    Date endTime = ((OrderHistoryParamsTimeSpan) params).getEndTime();
-    if (startTime == null || endTime == null) {
-      throw new ExchangeException("You need to provide start and end times to get order history");
+    Date startTime = null, endTime = null;
+    if (params instanceof OrderHistoryParamsTimeSpan) {
+      startTime = ((OrderHistoryParamsTimeSpan) params).getStartTime();
+      endTime = ((OrderHistoryParamsTimeSpan) params).getEndTime();
     }
 
     FtxResponse<List<FtxOrderDto>> ftxOrderHistoryResponse = getFtxOrderHistory(exchange.getExchangeSpecification().getUserName(),

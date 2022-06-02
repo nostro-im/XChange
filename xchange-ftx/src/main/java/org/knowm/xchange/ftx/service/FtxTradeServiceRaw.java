@@ -188,11 +188,10 @@ public class FtxTradeServiceRaw extends FtxBaseService {
           "TradeHistoryParams must implement TradeHistoryParamCurrencyPair or TradeHistoryParamInstrument interface.");
     }
 
-    Assert.isTrue(params instanceof TradeHistoryParamsTimeSpan,"You need to provide start and end times to get trade history");
-    Date startTime = ((TradeHistoryParamsTimeSpan) params).getStartTime();
-    Date endTime = ((TradeHistoryParamsTimeSpan) params).getEndTime();
-    if (startTime == null || endTime == null) {
-      throw new ExchangeException("You need to provide start and end times to get trade history");
+    Date startTime = null, endTime = null;
+    if (params instanceof TradeHistoryParamsTimeSpan) {
+      startTime = ((TradeHistoryParamsTimeSpan) params).getStartTime();
+      endTime = ((TradeHistoryParamsTimeSpan) params).getEndTime();
     }
 
     String orderId = null;

@@ -535,8 +535,11 @@ public class FtxAdapters {
     return new Fee(accountDto.getMakerFee(), accountDto.getTakerFee());
   }
   
-  public static int adaptDate(Date date) {
-    return (int) (date.getTime()/1000);
+  public static Integer adaptDate(Date date) {
+  	if (date == null) {
+  		return null;
+    }
+    return Math.toIntExact(date.getTime()/1000);
   }
 }
 
