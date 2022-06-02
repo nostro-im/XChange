@@ -1,5 +1,6 @@
 package org.knowm.xchange.client;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
+@Ignore
 public class PlaceOrderLimiterTest {
 
     private PlaceOrderLimiter executor = new PlaceOrderLimiter(2, 100, 10_000L);
