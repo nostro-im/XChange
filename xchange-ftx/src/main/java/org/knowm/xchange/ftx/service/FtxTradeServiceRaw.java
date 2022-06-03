@@ -7,6 +7,7 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.dto.trade.UserTrades;
+import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.ftx.FtxAdapters;
 import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.ftx.FtxException;
@@ -17,10 +18,12 @@ import org.knowm.xchange.ftx.dto.trade.*;
 import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
+import org.knowm.xchange.utils.Assert;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 public class FtxTradeServiceRaw extends FtxBaseService {
@@ -185,12 +188,23 @@ public class FtxTradeServiceRaw extends FtxBaseService {
           "TradeHistoryParams must implement TradeHistoryParamCurrencyPair or TradeHistoryParamInstrument interface.");
     }
 
+    Date startTime = null, endTime = null;
+    if (params instanceof TradeHistoryParamsTimeSpan) {
+      startTime = ((TradeHistoryParamsTimeSpan) params).getStartTime();
+      endTime = ((TradeHistoryParamsTimeSpan) params).getEndTime();
+    }
+
     String orderId = null;
     if (params instanceof TradeHistoryParamOrder) {
       orderId =((TradeHistoryParamOrder) params).getOrderId();
     }
 
-    return FtxAdapters.adaptUserTradesFromTrades(getFtxTradeHistory(subaccount, FtxAdapters.adaptInstrumentToFtxMarket(instrument), null, null, orderId).getResult());
+    return FtxAdapters.adaptUserTradesFromTrades(
+            getFtxTradeHistory(subaccount,
+                    FtxAdapters.adaptInstrumentToFtxMarket(instrument), 
+                    FtxAdapters.adaptDate(startTime),
+                    FtxAdapters.adaptDate(endTime),
+                    orderId).getResult());
   }
 
   public FtxResponse<List<FtxOrderDto>> getFtxOrderHistory(String subaccount, String market, Integer startTime, Integer endTime)
