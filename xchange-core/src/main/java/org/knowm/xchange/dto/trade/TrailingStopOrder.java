@@ -337,6 +337,7 @@ public class TrailingStopOrder extends Order implements Comparable<TrailingStopO
               feeCurrency);
       order.setOrderFlags(flags);
       order.setLeverage(leverage);
+      order.setCompletedTimestamp(completedTimestamp);
       return order;
     }
   }

@@ -386,6 +386,7 @@ public class LimitOrder extends Order implements Comparable<LimitOrder> {
               feeCurrency);
       order.setOrderFlags(flags);
       order.setLeverage(leverage);
+      order.setCompletedTimestamp(completedTimestamp);
       return order;
     }
   }

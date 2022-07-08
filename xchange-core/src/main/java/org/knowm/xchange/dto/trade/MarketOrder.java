@@ -271,6 +271,7 @@ public class MarketOrder extends Order {
               userReference, feeCurrency);
       order.setOrderFlags(flags);
       order.setLeverage(leverage);
+      order.setCompletedTimestamp(completedTimestamp);
       return order;
     }
   }
