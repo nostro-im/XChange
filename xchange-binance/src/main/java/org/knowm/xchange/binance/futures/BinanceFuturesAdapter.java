@@ -3,6 +3,7 @@ package org.knowm.xchange.binance.futures;
 import org.knowm.xchange.binance.BinanceAdapters;
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAccountInformation;
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesAsset;
+import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesIncomeHistoryRecord;
 import org.knowm.xchange.binance.futures.dto.account.BinanceFuturesPosition;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrder;
 import org.knowm.xchange.binance.futures.dto.trade.BinanceFuturesOrderType;
@@ -262,4 +263,18 @@ public class BinanceFuturesAdapter {
         return value.divide(total, leveragePrecision, RoundingMode.HALF_EVEN).abs();
     }
 
+    public static FundingRecord adaptFundingRecord(BinanceFuturesIncomeHistoryRecord incomeHistory) {
+        if (incomeHistory.incomeType != BinanceFuturesIncomeHistoryRecord.Type.FUNDING_FEE) {
+            return null;
+        }
+        
+        return new FundingRecord.Builder()
+                .setType(incomeHistory.income.signum() > -1 ? FundingRecord.Type.FUNDING_FEE_PROFIT : FundingRecord.Type.FUNDING_FEE_LOSS)
+                .setDate(new Date(incomeHistory.time))
+                .setCurrency(Currency.getInstance(incomeHistory.asset))
+                .setAmount(incomeHistory.income.abs())
+                .setInstrument(adaptInstrument(incomeHistory.symbol))
+                .setInternalId(String.valueOf(incomeHistory.tranId))
+                .build();
+    }
 }

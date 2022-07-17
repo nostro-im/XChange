@@ -16,11 +16,14 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.Derivative;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.dto.account.Fee;
+import org.knowm.xchange.dto.account.FundingRecord;
 import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.account.params.AccountLeverageParams;
 import org.knowm.xchange.service.account.params.AccountLeverageParamsCurrencyPair;
 import org.knowm.xchange.service.account.params.AccountMarginParams;
 import org.knowm.xchange.service.account.params.AccountPositionMarginParams;
+import org.knowm.xchange.service.trade.params.TradeHistoryParams;
+import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
 
 import java.io.IOException;
 import java.util.*;
@@ -183,6 +186,30 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
         } catch (BinanceException e) {
             throw BinanceErrorAdapter.adapt(e);
         }
+    }
+
+    @Override
+    public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
+        Long startTime = null;
+        Long endTime = null;
+        if (params instanceof TradeHistoryParamsTimeSpan) {
+            TradeHistoryParamsTimeSpan tp = (TradeHistoryParamsTimeSpan) params;
+            if (tp.getStartTime() != null) {
+                startTime = tp.getStartTime().getTime();
+            }
+            if (tp.getEndTime() != null) {
+                endTime = tp.getEndTime().getTime();
+            }
+        }
+
+        // Currently only funding payments are supported
+        List<BinanceFuturesIncomeHistoryRecord> incomeHistory = getIncomeHistory(null, BinanceFuturesIncomeHistoryRecord.Type.FUNDING_FEE, startTime, endTime, null);
+        
+        return incomeHistory.stream()
+                .map(BinanceFuturesAdapter::adaptFundingRecord)
+                .filter(Objects::nonNull)
+                .sorted(Comparator.comparing(FundingRecord::getDate))
+                .collect(Collectors.toList());
     }
 
     public List<BinanceFuturesIncomeHistoryRecord> getIncomeHistory(CurrencyPair currencyPair, BinanceFuturesIncomeHistoryRecord.Type incomeType, Long startTime, Long endTime, Integer limit) throws IOException {
