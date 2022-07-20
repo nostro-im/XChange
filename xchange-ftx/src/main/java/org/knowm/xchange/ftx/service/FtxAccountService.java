@@ -8,17 +8,21 @@ import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.derivative.OptionsContract;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.dto.account.Fee;
+import org.knowm.xchange.dto.account.FundingRecord;
 import org.knowm.xchange.ftx.FtxAdapters;
 import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.ftx.dto.FtxResponse;
 import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
+import org.knowm.xchange.ftx.dto.account.FtxFundingPaymentsDto;
 import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.account.AccountService;
 import org.knowm.xchange.service.account.params.AccountLeverageParams;
+import org.knowm.xchange.service.trade.params.TradeHistoryParamInstrument;
+import org.knowm.xchange.service.trade.params.TradeHistoryParams;
+import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -94,5 +98,32 @@ public class FtxAccountService extends FtxAccountServiceRaw implements AccountSe
 
   Fee getDynamicTradingFee(FtxAccountDto accountDto) {
     return FtxAdapters.getTradingFee(accountDto);
+  }
+
+  @Override
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
+    String future = null;
+    if (params instanceof TradeHistoryParamInstrument) {
+      Instrument instrument = ((TradeHistoryParamInstrument) params).getInstrument();
+      if (instrument != null) {
+        future = FtxAdapters.adaptInstrumentToFtxMarket(instrument);
+      }
+    }
+    
+    Integer startTime = null;
+    Integer endTime = null;
+    if (params instanceof TradeHistoryParamsTimeSpan) {
+      TradeHistoryParamsTimeSpan tp = (TradeHistoryParamsTimeSpan) params;
+      startTime = FtxAdapters.adaptDate(tp.getStartTime());
+      endTime = FtxAdapters.adaptDate(tp.getEndTime());
+    }
+
+    // Currently only funding payments are supported
+    FtxResponse<List<FtxFundingPaymentsDto>> payments = getFtxFundingPayments(exchange.getExchangeSpecification().getUserName(), startTime, endTime, future);
+
+    return payments.getResult().stream()
+            .map(FtxAdapters::adaptFundingRecord)
+            .sorted(Comparator.comparing(FundingRecord::getDate))
+            .collect(Collectors.toList());
   }
 }

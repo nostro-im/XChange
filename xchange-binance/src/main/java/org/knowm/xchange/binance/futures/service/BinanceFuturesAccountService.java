@@ -22,8 +22,7 @@ import org.knowm.xchange.service.account.params.AccountLeverageParams;
 import org.knowm.xchange.service.account.params.AccountLeverageParamsCurrencyPair;
 import org.knowm.xchange.service.account.params.AccountMarginParams;
 import org.knowm.xchange.service.account.params.AccountPositionMarginParams;
-import org.knowm.xchange.service.trade.params.TradeHistoryParams;
-import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
+import org.knowm.xchange.service.trade.params.*;
 
 import java.io.IOException;
 import java.util.*;
@@ -94,15 +93,7 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
     }
 
     private BinanceUserCommissionRate getTradingCommission(Instrument instrument) throws IOException {
-        CurrencyPair pair;
-        if (instrument instanceof Derivative) {
-            pair = ((Derivative) instrument).getCurrencyPair();
-        } else if (instrument instanceof CurrencyPair) {
-            pair = (CurrencyPair) instrument;
-        } else {
-            throw new IllegalStateException("Can't resolve currency pair from instrument: " + instrument);
-        }
-
+        CurrencyPair pair = getPair(instrument);
         try {
             return decorateApiCall(
                     () -> binanceFutures.userCommissionRate(BinanceAdapters.toSymbol(pair), getRecvWindow(), getTimestampFactory(), apiKey, signatureCreator))
@@ -190,6 +181,14 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
 
     @Override
     public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
+        CurrencyPair pair = null;
+        if (params instanceof TradeHistoryParamInstrument) {
+            Instrument instrument = ((TradeHistoryParamInstrument) params).getInstrument();
+            if (instrument != null) {
+                pair = getPair(instrument);
+            }
+        }
+        
         Long startTime = null;
         Long endTime = null;
         if (params instanceof TradeHistoryParamsTimeSpan) {
@@ -203,7 +202,7 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
         }
 
         // Currently only funding payments are supported
-        List<BinanceFuturesIncomeHistoryRecord> incomeHistory = getIncomeHistory(null, BinanceFuturesIncomeHistoryRecord.Type.FUNDING_FEE, startTime, endTime, null);
+        List<BinanceFuturesIncomeHistoryRecord> incomeHistory = getIncomeHistory(pair, BinanceFuturesIncomeHistoryRecord.Type.FUNDING_FEE, startTime, endTime, null);
         
         return incomeHistory.stream()
                 .map(BinanceFuturesAdapter::adaptFundingRecord)
@@ -264,6 +263,16 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
                     .call();
         } catch (BinanceException e) {
             throw BinanceErrorAdapter.adapt(e);
+        }
+    }
+    
+    private static CurrencyPair getPair(Instrument instrument) {
+        if (instrument instanceof Derivative) {
+            return ((Derivative) instrument).getCurrencyPair();
+        } else if (instrument instanceof CurrencyPair) {
+            return (CurrencyPair) instrument;
+        } else {
+            throw new IllegalStateException("Can't resolve currency pair from instrument: " + instrument);
         }
     }
 }

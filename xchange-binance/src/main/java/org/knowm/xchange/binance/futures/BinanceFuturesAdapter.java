@@ -270,6 +270,7 @@ public class BinanceFuturesAdapter {
         
         return new FundingRecord.Builder()
                 .setType(incomeHistory.income.signum() > -1 ? FundingRecord.Type.FUNDING_FEE_PROFIT : FundingRecord.Type.FUNDING_FEE_LOSS)
+                .setStatus(FundingRecord.Status.COMPLETE)
                 .setDate(new Date(incomeHistory.time))
                 .setCurrency(Currency.getInstance(incomeHistory.asset))
                 .setAmount(incomeHistory.income.abs())
