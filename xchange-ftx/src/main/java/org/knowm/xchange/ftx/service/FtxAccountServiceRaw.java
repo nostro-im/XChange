@@ -136,7 +136,7 @@ public class FtxAccountServiceRaw extends FtxBaseService {
   }
 
   public FtxResponse<List<FtxFundingPaymentsDto>> getFtxFundingPayments(
-      String subaccount, Long startTime, Long endTime, String future)
+      String subaccount, Integer startTime, Integer endTime, String future)
       throws FtxException, IOException {
     try {
       return ftx.getFundingPayments(

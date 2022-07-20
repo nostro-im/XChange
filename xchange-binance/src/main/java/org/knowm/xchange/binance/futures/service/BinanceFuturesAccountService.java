@@ -16,11 +16,13 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.Derivative;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.dto.account.Fee;
+import org.knowm.xchange.dto.account.FundingRecord;
 import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.account.params.AccountLeverageParams;
 import org.knowm.xchange.service.account.params.AccountLeverageParamsCurrencyPair;
 import org.knowm.xchange.service.account.params.AccountMarginParams;
 import org.knowm.xchange.service.account.params.AccountPositionMarginParams;
+import org.knowm.xchange.service.trade.params.*;
 
 import java.io.IOException;
 import java.util.*;
@@ -91,15 +93,7 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
     }
 
     private BinanceUserCommissionRate getTradingCommission(Instrument instrument) throws IOException {
-        CurrencyPair pair;
-        if (instrument instanceof Derivative) {
-            pair = ((Derivative) instrument).getCurrencyPair();
-        } else if (instrument instanceof CurrencyPair) {
-            pair = (CurrencyPair) instrument;
-        } else {
-            throw new IllegalStateException("Can't resolve currency pair from instrument: " + instrument);
-        }
-
+        CurrencyPair pair = getPair(instrument);
         try {
             return decorateApiCall(
                     () -> binanceFutures.userCommissionRate(BinanceAdapters.toSymbol(pair), getRecvWindow(), getTimestampFactory(), apiKey, signatureCreator))
@@ -185,6 +179,38 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
         }
     }
 
+    @Override
+    public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
+        CurrencyPair pair = null;
+        if (params instanceof TradeHistoryParamInstrument) {
+            Instrument instrument = ((TradeHistoryParamInstrument) params).getInstrument();
+            if (instrument != null) {
+                pair = getPair(instrument);
+            }
+        }
+        
+        Long startTime = null;
+        Long endTime = null;
+        if (params instanceof TradeHistoryParamsTimeSpan) {
+            TradeHistoryParamsTimeSpan tp = (TradeHistoryParamsTimeSpan) params;
+            if (tp.getStartTime() != null) {
+                startTime = tp.getStartTime().getTime();
+            }
+            if (tp.getEndTime() != null) {
+                endTime = tp.getEndTime().getTime();
+            }
+        }
+
+        // Currently only funding payments are supported
+        List<BinanceFuturesIncomeHistoryRecord> incomeHistory = getIncomeHistory(pair, BinanceFuturesIncomeHistoryRecord.Type.FUNDING_FEE, startTime, endTime, null);
+        
+        return incomeHistory.stream()
+                .map(BinanceFuturesAdapter::adaptFundingRecord)
+                .filter(Objects::nonNull)
+                .sorted(Comparator.comparing(FundingRecord::getDate))
+                .collect(Collectors.toList());
+    }
+
     public List<BinanceFuturesIncomeHistoryRecord> getIncomeHistory(CurrencyPair currencyPair, BinanceFuturesIncomeHistoryRecord.Type incomeType, Long startTime, Long endTime, Integer limit) throws IOException {
         try {
             return decorateApiCall(
@@ -237,6 +263,16 @@ public class BinanceFuturesAccountService extends BinanceAccountService {
                     .call();
         } catch (BinanceException e) {
             throw BinanceErrorAdapter.adapt(e);
+        }
+    }
+    
+    private static CurrencyPair getPair(Instrument instrument) {
+        if (instrument instanceof Derivative) {
+            return ((Derivative) instrument).getCurrencyPair();
+        } else if (instrument instanceof CurrencyPair) {
+            return (CurrencyPair) instrument;
+        } else {
+            throw new IllegalStateException("Can't resolve currency pair from instrument: " + instrument);
         }
     }
 }

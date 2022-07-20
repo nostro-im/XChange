@@ -13,6 +13,7 @@ import org.knowm.xchange.dto.meta.*;
 import org.knowm.xchange.dto.trade.*;
 import org.knowm.xchange.ftx.dto.FtxResponse;
 import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
+import org.knowm.xchange.ftx.dto.account.FtxFundingPaymentsDto;
 import org.knowm.xchange.ftx.dto.account.FtxPositionDto;
 import org.knowm.xchange.ftx.dto.account.FtxWalletBalanceDto;
 import org.knowm.xchange.ftx.dto.marketdata.*;
@@ -540,6 +541,21 @@ public class FtxAdapters {
   		return null;
     }
     return Math.toIntExact(date.getTime()/1000);
+  }
+
+  public static FundingRecord adaptFundingRecord(FtxFundingPaymentsDto dto) {
+    FuturesContract futuresContract = (FuturesContract) adaptFtxMarketToInstrument(dto.getFuture());
+    Currency currency = futuresContract.getCurrencyPair().counter;
+    FundingRecord.Type type = dto.getPayment().signum() < 0 ? FundingRecord.Type.FUNDING_FEE_PROFIT : FundingRecord.Type.FUNDING_FEE_LOSS;
+    return new FundingRecord.Builder()
+            .setInternalId(dto.getId())
+            .setDate(dto.getTime())
+            .setType(type)
+            .setStatus(FundingRecord.Status.COMPLETE)
+            .setCurrency(currency)
+            .setAmount(dto.getPayment().abs())
+            .setInstrument(futuresContract)
+            .build();
   }
 }
 
