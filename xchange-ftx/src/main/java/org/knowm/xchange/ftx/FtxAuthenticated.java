@@ -168,6 +168,15 @@ public interface FtxAuthenticated extends Ftx {
       @QueryParam("market") String market)
       throws IOException, FtxException;
 
+  @GET
+  @Path("/orders")
+  FtxResponse<List<FtxOrderDto>> openOrdersWithoutMarket(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount)
+      throws IOException, FtxException;
+
   @DELETE
   @Path("/orders/{orderId}")
   FtxResponse<String> cancelOrder(
@@ -311,5 +320,79 @@ public interface FtxAuthenticated extends Ftx {
       @HeaderParam("FTX-TS") Long nonce,
       @HeaderParam("FTX-SIGN") ParamsDigest signature,
       @HeaderParam("FTX-SUBACCOUNT") String subaccount)
+      throws IOException, FtxException;
+
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Path("/conditional_orders")
+  FtxResponse<FtxConditionalOrderDto> placeConditionalOrder(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount,
+      FtxConditionalOrderRequestPayload payload)
+      throws IOException, FtxException;
+
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Path("/conditional_orders/{order_id}/modify")
+  FtxResponse<FtxConditionalOrderDto> modifyConditionalOrder(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount,
+      @PathParam("order_id") String orderId,
+      FtxModifyConditionalOrderRequestPayload payload)
+      throws IOException, FtxException;
+
+  @DELETE
+  @Path("/conditional_orders/{orderId}")
+  FtxResponse<String> cancelConditionalOrder(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount,
+      @PathParam("orderId") String orderId)
+      throws IOException, FtxException;
+
+  @GET
+  @Path("/conditional_orders/history")
+  FtxResponse<List<FtxConditionalOrderDto>> conditionalOrderHistory(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount,
+      @QueryParam("market") String market,
+      @QueryParam("start_time") Integer startTime,
+      @QueryParam("end_time") Integer endTime)
+      throws IOException, FtxException;
+
+  @GET
+  @Path("/conditional_orders")
+  FtxResponse<List<FtxConditionalOrderDto>> openConditionalOrders(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount,
+      @QueryParam("market") String market)
+      throws IOException, FtxException;
+
+  @GET
+  @Path("/conditional_orders")
+  FtxResponse<List<FtxConditionalOrderDto>> openConditionalOrdersWithoutMMarket(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount)
+      throws IOException, FtxException;
+  
+  @GET
+  @Path("/conditional_orders/{id}/triggers")
+  FtxResponse<List<FtxTriggerDto>> getTriggers(
+      @HeaderParam("FTX-KEY") String apiKey,
+      @HeaderParam("FTX-TS") Long nonce,
+      @HeaderParam("FTX-SIGN") ParamsDigest signature,
+      @HeaderParam("FTX-SUBACCOUNT") String subaccount,
+      @PathParam("id") String id)
       throws IOException, FtxException;
 }

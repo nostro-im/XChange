@@ -4,21 +4,18 @@ import org.knowm.xchange.Exchange;
 import org.knowm.xchange.client.PlaceOrderLimiter;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.account.OpenPositions;
-import org.knowm.xchange.dto.trade.LimitOrder;
-import org.knowm.xchange.dto.trade.MarketOrder;
-import org.knowm.xchange.dto.trade.OpenOrders;
-import org.knowm.xchange.dto.trade.UserTrades;
+import org.knowm.xchange.dto.trade.*;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.ftx.FtxAdapters;
 import org.knowm.xchange.ftx.FtxAuthenticated;
 import org.knowm.xchange.ftx.dto.FtxResponse;
 import org.knowm.xchange.ftx.dto.account.FtxAccountDto;
+import org.knowm.xchange.ftx.dto.trade.FtxConditionalOrderDto;
 import org.knowm.xchange.ftx.dto.trade.FtxOrderDto;
 import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.service.trade.params.CancelOrderParams;
 import org.knowm.xchange.service.trade.params.DefaultOrderHistoryParamsInstrumentSpan;
-import org.knowm.xchange.service.trade.params.DefaultTradeHistoryParamInstrument;
 import org.knowm.xchange.service.trade.params.InstrumentParam;
 import org.knowm.xchange.service.trade.params.OrderHistoryParams;
 import org.knowm.xchange.service.trade.params.OrderHistoryParamsTimeSpan;
@@ -33,6 +30,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FtxTradeService extends FtxTradeServiceRaw implements TradeService {
   private static final Logger LOG = LoggerFactory.getLogger(FtxTradeService.class);
@@ -69,6 +67,11 @@ public class FtxTradeService extends FtxTradeServiceRaw implements TradeService 
         () ->
             placeLimitOrderForSubaccount(
                 exchange.getExchangeSpecification().getUserName(), limitOrder));
+  }
+
+  @Override
+  public String placeStopOrder(StopOrder stopOrder) throws IOException {
+    return placeStopOrderForSubAccount(exchange.getExchangeSpecification().getUserName(), stopOrder);
   }
 
   @Override
@@ -146,20 +149,44 @@ public class FtxTradeService extends FtxTradeServiceRaw implements TradeService 
     if (instrument == null) {
       throw new ExchangeException("You need to provide instrument to get order history");
     }
+    String market = FtxAdapters.adaptInstrumentToFtxMarket(instrument);
 
-    Date startTime = null, endTime = null;
+    Integer startTime = null, endTime = null;
     if (params instanceof OrderHistoryParamsTimeSpan) {
-      startTime = ((OrderHistoryParamsTimeSpan) params).getStartTime();
-      endTime = ((OrderHistoryParamsTimeSpan) params).getEndTime();
+      startTime = FtxAdapters.adaptDate(((OrderHistoryParamsTimeSpan) params).getStartTime());
+      endTime = FtxAdapters.adaptDate(((OrderHistoryParamsTimeSpan) params).getEndTime());
     }
 
-    FtxResponse<List<FtxOrderDto>> ftxOrderHistoryResponse = getFtxOrderHistory(exchange.getExchangeSpecification().getUserName(),
-            FtxAdapters.adaptInstrumentToFtxMarket(instrument),
-            FtxAdapters.adaptDate(startTime),
-            FtxAdapters.adaptDate(endTime)
-    );
+    String subaccount = exchange.getExchangeSpecification().getUserName();
+    FtxResponse<List<FtxOrderDto>> orderResponse = getFtxOrderHistory(subaccount, market, startTime, endTime);
+    FtxResponse<List<FtxConditionalOrderDto>> conditionalResponse = getFtxConditionalOrderHistory(subaccount, market, startTime, endTime);
 
-    return FtxAdapters.adaptOrderHistoryRespose(ftxOrderHistoryResponse);
+    List<FtxOrderDto> orders = orderResponse.getResult();
+    List<FtxConditionalOrderDto> conditionalOrders = conditionalResponse.getResult();
+
+    if (!orders.isEmpty() && !conditionalOrders.isEmpty()) { // both order types have elements
+      if (orderResponse.isHasMoreData() || conditionalResponse.isHasMoreData()) { // at least one has paging active
+        
+        // history is in desc order 
+        Date d1 = orders.get(orders.size() - 1).getCreatedAt(); // last order created date
+        Date d2 = conditionalOrders.get(conditionalOrders.size() - 1).getCreatedAt(); // last conditional order created date
+        
+        if (d2.before(d1) && orderResponse.isHasMoreData()) {
+          // cut conditional history until d1
+          conditionalOrders = conditionalOrders.stream()
+                  .filter(o -> !d1.before(o.getCreatedAt()))
+                  .collect(Collectors.toList());
+          
+        } else if (d1.before(d2) && conditionalResponse.isHasMoreData()) {
+          // cut order history until d2
+          orders = orders.stream()
+                  .filter(o -> !d2.before(o.getCreatedAt()))
+                  .collect(Collectors.toList());
+        }
+      }
+    }
+    
+    return FtxAdapters.adaptOrderHistory(orders, conditionalOrders);
   }
   
   @Override

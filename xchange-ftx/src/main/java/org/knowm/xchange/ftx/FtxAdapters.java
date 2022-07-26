@@ -20,6 +20,7 @@ import org.knowm.xchange.ftx.dto.marketdata.*;
 import org.knowm.xchange.ftx.dto.trade.*;
 import org.knowm.xchange.instrument.Instrument;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.*;
@@ -27,6 +28,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FtxAdapters {
   private static final String IMPLIED_COUNTER = "USD";
@@ -309,20 +311,51 @@ public class FtxAdapters {
                         (ftxOrderDto.isPostOnly() ? FtxOrderFlags.POST_ONLY : null),
                         (ftxOrderDto.isReduceOnly() ? FtxOrderFlags.REDUCE_ONLY : null)))))
         .cumulativeAmount(ftxOrderDto.getFilledSize())
-        .orderStatus(ftxOrderDto.getStatus())
+        .orderStatus(adaptFtxOrderStatusToOrderStatus(ftxOrderDto.getStatus()))
         .id(ftxOrderDto.getId())
         .build();
   }
+
+  public static Order adaptOrder(FtxConditionalOrderDto ftxOrderDto) {
+    Order.OrderType type = adaptFtxOrderSideToOrderType(ftxOrderDto.getSide());
+    Instrument instrument = adaptFtxMarketToInstrument(ftxOrderDto.getMarket());
+
+    Order.Builder builder;
+    if (FtxConditionalOrderType.trailing_stop.equals(ftxOrderDto.getType())) {
+      builder = new TrailingStopOrder.Builder(type, instrument);
+    } else {
+      builder = new StopOrder.Builder(type, instrument)
+              .limitPrice(ftxOrderDto.getOrderPrice())
+              .stopPrice(ftxOrderDto.getTriggerPrice())
+              .intention(adaptStopOrderIntention(ftxOrderDto.getType()));
+    }
+    return builder
+            .originalAmount(ftxOrderDto.getSize())
+            .averagePrice(ftxOrderDto.getAvgFillPrice())
+            .timestamp(ftxOrderDto.getCreatedAt())
+            .flags(
+                    Collections.unmodifiableSet(
+                            new HashSet<>(
+                                    Arrays.asList(
+                                            (ftxOrderDto.isRetryUntilFilled()
+                                                    ? FtxOrderFlags.RETRY_UNTIL_FILLED
+                                                    : null),
+                                            (ftxOrderDto.isReduceOnly() ? FtxOrderFlags.REDUCE_ONLY : null)))))
+            .cumulativeAmount(ftxOrderDto.getFilledSize())
+            .orderStatus(adaptFtxOrderStatusToOrderStatus(ftxOrderDto.getStatus()))
+            .id(ftxOrderDto.getId())
+            .build();
+  }
   
-  public static List<Order> adaptOrderHistoryRespose(FtxResponse<List<FtxOrderDto>> ftxOpenOrdersResponse) {
-    return ftxOpenOrdersResponse
-            .getResult()
-            .stream()
-            .map(FtxAdapters::adaptOrder)
+  public static List<Order> adaptOrderHistory(List<FtxOrderDto> orders, List<FtxConditionalOrderDto> conditionalOrders) {
+    return Stream.concat(
+            orders.stream().map(FtxAdapters::adaptOrder),
+            conditionalOrders.stream().map(FtxAdapters::adaptOrder))
+            .sorted(Comparator.comparing(Order::getTimestamp).reversed())
             .collect(Collectors.toList());
   }
 
-  public static OpenOrders adaptOpenOrders(FtxResponse<List<FtxOrderDto>> ftxOpenOrdersResponse) {
+  public static OpenOrders adaptOpenOrders(FtxResponse<List<FtxOrderDto>> ftxOpenOrdersResponse, FtxResponse<List<FtxConditionalOrderDto>> ftxConditionalOrdersResponse) {
     List<LimitOrder> limitOrders = new ArrayList<>();
     List<Order> otherOrders = new ArrayList<>();
     ftxOpenOrdersResponse
@@ -335,6 +368,10 @@ public class FtxAdapters {
             otherOrders.add(order);
           }
         });
+    ftxConditionalOrdersResponse
+            .getResult()
+            .forEach(ftxOrderDto ->
+                    otherOrders.add(adaptOrder(ftxOrderDto)));
 
     return new OpenOrders(limitOrders, otherOrders);
   }
@@ -358,6 +395,23 @@ public class FtxAdapters {
   public static Order.OrderType adaptFtxOrderSideToOrderType(FtxOrderSide ftxOrderSide) {
 
     return ftxOrderSide == FtxOrderSide.buy ? Order.OrderType.BID : Order.OrderType.ASK;
+  }
+
+  public static Order.OrderStatus adaptFtxOrderStatusToOrderStatus(FtxOrderStatus ftxOrderStatus) {
+
+    switch (ftxOrderStatus) {
+      case NEW:
+      case TRIGGERED:
+        return Order.OrderStatus.NEW;
+      case CLOSED:
+        return Order.OrderStatus.CLOSED;
+      case CANCELLED:
+        return Order.OrderStatus.CANCELED;
+      case OPEN:
+        return Order.OrderStatus.OPEN;
+      default:
+        return Order.OrderStatus.UNKNOWN;
+    }
   }
 
   public static String adaptInstrumentToFtxMarket(Instrument instrument) {
@@ -556,6 +610,56 @@ public class FtxAdapters {
             .setAmount(dto.getPayment().abs())
             .setInstrument(futuresContract)
             .build();
+  }
+
+  public static FtxConditionalOrderRequestPayload adaptStopOrderToFtxOrderPayload(
+          StopOrder stopOrder) throws IOException {
+    return adaptConditionalOrderToFtxOrderPayload(
+            adaptTriggerOrderIntention((stopOrder.getIntention() == null) ? StopOrder.Intention.STOP_LOSS : stopOrder.getIntention()),
+            stopOrder,
+            stopOrder.getLimitPrice(),
+            stopOrder.getStopPrice(),
+            null);
+  }
+
+  public static FtxConditionalOrderType adaptTriggerOrderIntention(StopOrder.Intention stopOrderIntention) {
+    switch (stopOrderIntention){
+      case STOP_LOSS: return FtxConditionalOrderType.stop;
+      case TAKE_PROFIT: return FtxConditionalOrderType.take_profit;
+      default: throw new IllegalArgumentException("StopOrder Intention is not supported.");
+    }
+  }
+
+  public static StopOrder.Intention adaptStopOrderIntention(FtxConditionalOrderType conditionalOrderType) {
+    switch (conditionalOrderType){
+      case stop: return StopOrder.Intention.STOP_LOSS;
+      case take_profit: return StopOrder.Intention.TAKE_PROFIT;
+      default: throw new IllegalArgumentException("FtxConditionalOrderType is not supported.");
+    }
+  }
+
+  public static FtxModifyConditionalOrderRequestPayload
+  adaptModifyConditionalOrderToFtxOrderPayload(StopOrder stopOrder) {
+    return new FtxModifyConditionalOrderRequestPayload(
+            stopOrder.getLimitPrice(), stopOrder.getStopPrice(), null, stopOrder.getOriginalAmount());
+  }
+
+  private static FtxConditionalOrderRequestPayload adaptConditionalOrderToFtxOrderPayload(
+          FtxConditionalOrderType type,
+          Order order,
+          BigDecimal price,
+          BigDecimal triggerPrice,
+          BigDecimal trailValue) {
+    return new FtxConditionalOrderRequestPayload(
+            adaptInstrumentToFtxMarket(order.getInstrument()),
+            adaptOrderTypeToFtxOrderSide(order.getType()),
+            order.getOriginalAmount(),
+            type,
+            order.hasFlag(FtxOrderFlags.REDUCE_ONLY),
+            order.hasFlag(FtxOrderFlags.RETRY_UNTIL_FILLED),
+            price,
+            triggerPrice,
+            trailValue);
   }
 }
 
