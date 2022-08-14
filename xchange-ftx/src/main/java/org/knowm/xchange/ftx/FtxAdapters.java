@@ -401,9 +401,9 @@ public class FtxAdapters {
 
     switch (ftxOrderStatus) {
       case NEW:
-      case TRIGGERED:
         return Order.OrderStatus.NEW;
       case CLOSED:
+      case TRIGGERED:
         return Order.OrderStatus.CLOSED;
       case CANCELLED:
         return Order.OrderStatus.CANCELED;
