@@ -79,7 +79,7 @@ public class FtxAdapterTest {
     assertThat(FtxAdapters.adaptFtxOrderStatusToOrderStatus(FtxOrderStatus.CLOSED))
         .isEqualTo(OrderStatus.CLOSED);
     assertThat(FtxAdapters.adaptFtxOrderStatusToOrderStatus(FtxOrderStatus.TRIGGERED))
-        .isEqualTo(OrderStatus.NEW);
+        .isEqualTo(OrderStatus.CLOSED);
     assertThat(FtxAdapters.adaptFtxOrderStatusToOrderStatus(FtxOrderStatus.OPEN))
         .isEqualTo(OrderStatus.OPEN);
   }
