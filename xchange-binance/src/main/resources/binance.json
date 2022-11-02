@@ -1936,8 +1936,8 @@
 			"min_amount": 0.00001,
 			"max_amount": 9000,
 			"price_scale": 2,
-			"maker_fee": 0.001,
-			"taker_fee": 0.001
+			"maker_fee": 0.000,
+			"taker_fee": 0.0004
 		},
 		"BTCDOWN/USDT": {
 			"min_amount": 0.01,
@@ -3658,8 +3658,8 @@
 			"min_amount": 0.0001,
 			"max_amount": 9000,
 			"price_scale": 2,
-			"maker_fee": 0.001,
-			"taker_fee": 0.001
+			"maker_fee": 0.000,
+			"taker_fee": 0.0004
 		},
 		"ETHDOWN/USDT": {
 			"min_amount": 0.01,
