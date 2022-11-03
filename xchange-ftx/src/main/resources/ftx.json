@@ -3,3338 +3,3338 @@
 		"1INCH/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AAPL/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AAVE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AAVE/USDT": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ABNB/USD": {
 			"min_amount": 0.025,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ACB/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ADABEAR/USD": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ADABULL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ADAHALF/USD": {
 			"min_amount": 0.000001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ADAHEDGE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AGLD/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AKRO/USD": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AKRO/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALCX/USD": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALEPH/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALGO/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALGO/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALGOBEAR/USD": {
 			"min_amount": 1000000000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALGOBULL/USD": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALGOHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALGOHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALICE/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALPHA/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALTBEAR/USD": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALTBULL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALTHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALTHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AMC/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AMD/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AMPL/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AMPL/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AMZN/USD": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ANC/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"APE/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"APHA/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ARKK/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ASD/USD": {
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ASDBEAR/USD": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ASDBEAR/USDT": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ASDBULL/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ASDBULL/USDT": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ASDHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ASDHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATLAS/USD": {
 			"min_amount": 10.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATOM/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATOM/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATOMBEAR/USD": {
 			"min_amount": 100000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATOMBULL/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATOMHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATOMHEDGE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AUDIO/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AUDIO/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AURY/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AVAX/BTC": {
 			"min_amount": 0.1,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AVAX/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AVAX/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AXS/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BABA/USD": {
 			"min_amount": 0.005,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BADGER/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAL/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAL/USDT": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BALBEAR/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BALBEAR/USDT": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BALBULL/USD": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BALBULL/USDT": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BALHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BALHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAND/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAO/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAR/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAT/JPY": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BB/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCH/BTC": {
 			"min_amount": 0.001,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCH/JPY": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCH/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCH/USDT": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCHBEAR/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCHBEAR/USDT": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCHBULL/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCHBULL/USDT": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCHHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCHHEDGE/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BEAR/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BEAR/USDT": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BEARSHIT/USD": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BICO/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BILI/USD": {
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BIT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BITO/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BITW/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BLT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNB/BTC": {
 			"min_amount": 0.01,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNB/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNB/USDT": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNBBEAR/USD": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNBBEAR/USDT": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNBBULL/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNBBULL/USDT": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNBHALF/USD": {
 			"min_amount": 0.000001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNBHEDGE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNT/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNTX/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BOBA/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BRZ/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BRZ/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BSVBEAR/USD": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BSVBEAR/USDT": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BSVBULL/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BSVBULL/USDT": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BSVHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BSVHEDGE/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTC/BRZ": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTC/EUR": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTC/JPY": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTC/TRYB": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTC/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTC/USDT": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTT/USD": {
 			"min_amount": 1000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BULL/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BULL/USDT": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BULLSHIT/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BVOL/BTC": {
 			"min_amount": 0.0001,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BVOL/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BVOL/USDT": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BYND/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"C98/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CAD/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CEL/BTC": {
 			"min_amount": 0.1,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CEL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CGC/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CHR/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CHZ/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CHZ/USDT": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CITY/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CLV/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COIN/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMP/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMP/USDT": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMPBEAR/USD": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMPBEAR/USDT": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMPBULL/USD": {
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMPBULL/USDT": {
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMPHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMPHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CONV/USD": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COPE/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CQT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CREAM/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CREAM/USDT": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CRO/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CRON/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CRV/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CTX/USD": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CTX/USDT": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CUSDT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CUSDT/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CUSDTBEAR/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CUSDTBEAR/USDT": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CUSDTBULL/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CUSDTBULL/USDT": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CUSDTHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CUSDTHEDGE/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CVC/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CVX/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DAI/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DAI/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DAWN/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DEFIBEAR/USD": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DEFIBEAR/USDT": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DEFIBULL/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DEFIBULL/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DEFIHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DEFIHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DENT/USD": {
 			"min_amount": 100.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DFL/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DKNG/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DMG/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DMG/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DODO/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOGE/BTC": {
 			"min_amount": 1.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOGE/USD": {
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOGE/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOGEBEAR2021/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOGEBULL/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOGEHALF/USD": {
 			"min_amount": 0.000001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOGEHEDGE/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOT/BTC": {
 			"min_amount": 0.1,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOT/JPY": {
 			"min_amount": 0.1,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOT/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOT/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DRGNBEAR/USD": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DRGNBULL/USD": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DRGNHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DRGNHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DYDX/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EDEN/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EMB/USD": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ENJ/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ENS/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EOSBEAR/USD": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EOSBEAR/USDT": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EOSBULL/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EOSBULL/USDT": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EOSHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EOSHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETCBEAR/USD": {
 			"min_amount": 1000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETCBULL/USD": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETCHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETCHEDGE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETH/BRZ": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETH/BTC": {
 			"min_amount": 0.001,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETH/EUR": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETH/JPY": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETH/USD": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETH/USDT": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETHBEAR/USD": {
 			"min_amount": 1000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETHBEAR/USDT": {
 			"min_amount": 1000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETHBULL/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETHBULL/USDT": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETHE/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETHHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETHHEDGE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EUR/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EURT/EUR": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EURT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EURT/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EXCHBEAR/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EXCHBULL/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EXCHHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EXCHHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FB/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FIDA/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FIDA/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FRONT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FRONT/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FTM/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FTT/BTC": {
 			"min_amount": 0.1,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FTT/JPY": {
 			"min_amount": 0.1,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FTT/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FTT/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FXS/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GAL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GALA/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GALFAN/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GARI/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GBP/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GBTC/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GDX/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GDXJ/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GENE/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GLD/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GLXY/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GME/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GMT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GODS/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GOG/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GOOGL/USD": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GRT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GRTBEAR/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GRTBULL/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GST/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GST/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GT/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HALFSHIT/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HEDGESHIT/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HGET/USD": {
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HGET/USDT": {
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HMT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HNT/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HNT/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HOLY/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HOOD/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HT/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HTBEAR/USD": {
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HTBULL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HTHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HTHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HUM/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HXRO/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HXRO/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"IBVOL/BTC": {
 			"min_amount": 0.0001,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"IBVOL/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"IBVOL/USDT": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"IMX/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"INDI/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"INTER/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"JET/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"JOE/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"JST/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KBTT/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KIN/USD": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KNC/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KNC/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KNCBEAR/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KNCBEAR/USDT": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KNCBULL/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KNCBULL/USDT": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KNCHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KNCHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KSHIB/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KSOS/USD": {
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LEO/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LEOBEAR/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LEOBULL/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LEOHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LEOHEDGE/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINA/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINK/BTC": {
 			"min_amount": 0.1,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINK/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINK/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINKBEAR/USD": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINKBEAR/USDT": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINKBULL/USD": {
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINKBULL/USDT": {
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINKHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINKHEDGE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LOOKS/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LRC/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTC/BTC": {
 			"min_amount": 0.01,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTC/JPY": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTC/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTC/USDT": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTCBEAR/USD": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTCBEAR/USDT": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTCBULL/USD": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTCBULL/USDT": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTCHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTCHEDGE/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LUA/USD": {
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LUA/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LUNA/USD": {
 			"min_amount": 0.01,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LUNA/USDT": {
 			"min_amount": 0.01,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MANA/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MAPS/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MAPS/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MATH/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MATH/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MATIC/BTC": {
 			"min_amount": 10.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MATIC/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MATICBEAR2021/USD": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MATICBULL/USD": {
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MATICHALF/USD": {
 			"min_amount": 0.000001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MATICHEDGE/USD": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MBS/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MCB/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MEDIA/USD": {
 			"min_amount": 0.01,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MER/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MIDBEAR/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MIDBULL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MIDHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MIDHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MKR/USD": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MKR/USDT": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MKRBEAR/USD": {
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MKRBULL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MNGO/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MOB/USD": {
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MOB/USDT": {
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MRNA/USD": {
 			"min_amount": 0.005,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MSOL/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MSTR/USD": {
 			"min_amount": 0.005,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MTA/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MTA/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MTL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NEAR/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NEAR/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NEXO/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NFLX/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NIO/USD": {
 			"min_amount": 0.005,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NOK/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NVDA/USD": {
 			"min_amount": 0.0025,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OKB/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OKBBEAR/USD": {
 			"min_amount": 1000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OKBBULL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OKBHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OKBHEDGE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OMG/USD": {
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ORBS/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OXY/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OXY/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PAXG/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PAXG/USDT": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PAXGBEAR/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PAXGBULL/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PAXGHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PAXGHEDGE/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PENN/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PEOPLE/USD": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PERP/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PFE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"POLIS/USD": {
 			"min_amount": 0.1,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PORT/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PRISM/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PRIVBEAR/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PRIVBULL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PRIVHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PRIVHEDGE/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PROM/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PSG/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PSY/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PTU/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PUNDIX/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PYPL/USD": {
 			"min_amount": 0.005,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"QI/USD": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RAMP/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RAY/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"REAL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"REEF/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"REN/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RNDR/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ROOK/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ROOK/USDT": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RSR/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RUNE/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RUNE/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SAND/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SECO/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SHIB/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SKL/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SLND/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SLP/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SLRS/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SLV/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SNX/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SNY/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SOL/BTC": {
 			"min_amount": 0.01,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SOL/JPY": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SOL/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SOL/USDT": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SOS/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SPA/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SPELL/USD": {
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SPY/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SQ/USD": {
 			"min_amount": 0.005,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SRM/USD": {
 			"min_amount": 1.0,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SRM/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STARS/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STEP/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STETH/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STG/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STMX/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STORJ/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STSOL/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SUN/USD": {
 			"min_amount": 0.001,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SUSHI/BTC": {
 			"min_amount": 0.5,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SUSHI/USD": {
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SUSHI/USDT": {
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SUSHIBEAR/USD": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SUSHIBULL/USD": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXP/BTC": {
 			"min_amount": 0.1,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXP/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXP/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXPBEAR/USD": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXPBULL/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXPHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXPHALF/USDT": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXPHEDGE/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"THETABEAR/USD": {
 			"min_amount": 10000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"THETABULL/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"THETAHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"THETAHEDGE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TLM/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TLRY/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TOMO/USD": {
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TOMO/USDT": {
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TOMOBEAR2021/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TOMOBULL/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TOMOHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TOMOHEDGE/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TONCOIN/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRU/USD": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRU/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRX/BTC": {
 			"min_amount": 1.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRX/USD": {
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRX/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRXBEAR/USD": {
 			"min_amount": 1000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRXBULL/USD": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRXHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRXHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRYB/USD": {
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRYBBEAR/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRYBBULL/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRYBHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRYBHEDGE/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TSLA/BTC": {
 			"min_amount": 0.01,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TSLA/DOGE": {
 			"min_amount": 0.01,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TSLA/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TSM/USD": {
 			"min_amount": 0.005,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TULIP/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TWTR/USD": {
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UBER/USD": {
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UBXT/USD": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UBXT/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UMEE/USD": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UNI/BTC": {
 			"min_amount": 0.05,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UNI/USD": {
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UNI/USDT": {
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UNISWAPBEAR/USD": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UNISWAPBULL/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"USDT/USD": {
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"USDTBEAR/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"USDTBULL/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"USDTHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"USDTHEDGE/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"USO/USD": {
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UST/USD": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UST/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"VETBEAR/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"VETBEAR/USDT": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"VETBULL/USD": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"VETBULL/USDT": {
 			"min_amount": 100.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"VETHEDGE/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"VGX/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WAVES/USD": {
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WBTC/BTC": {
 			"min_amount": 0.0001,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WBTC/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WFLOW/USD": {
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WNDR/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WRX/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WRX/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XAUT/USD": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XAUT/USDT": {
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XAUTBEAR/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XAUTBULL/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XAUTHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XAUTHEDGE/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XLMBEAR/USD": {
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XLMBULL/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRP/BTC": {
 			"min_amount": 1.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRP/JPY": {
 			"min_amount": 1.0,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRP/USD": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRP/USDT": {
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRPBEAR/USD": {
 			"min_amount": 1000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRPBEAR/USDT": {
 			"min_amount": 1000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRPBULL/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRPBULL/USDT": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRPHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRPHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XTZBEAR/USD": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XTZBEAR/USDT": {
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XTZBULL/USD": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XTZBULL/USDT": {
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XTZHALF/USD": {
 			"min_amount": 0.00001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XTZHEDGE/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"YFI/BTC": {
 			"min_amount": 0.001,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"YFI/USD": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"YFI/USDT": {
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"YFII/USD": {
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"YGG/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ZECBEAR/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ZECBULL/USD": {
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ZM/USD": {
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ZRX/USD": {
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		}
 	},
 	"currencies": {
@@ -5041,2256 +5041,2256 @@
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"1INCH/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AAPL/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AAVE/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AAVE/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ABNB/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.025,
 			"min_amount": 0.025,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ACB/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ADA/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ADA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AGLD/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALCX/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALGO/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALGO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALICE/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALPHA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALT/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ALT/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AMC/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AMD/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AMPL/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AMZN/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ANC/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"APE/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AR/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ARKK/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ASD/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATLAS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATOM/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ATOM/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AUDIO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AVAX/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AVAX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"AXS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BABA/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.005,
 			"min_amount": 0.005,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BADGER/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAL/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAL/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAND/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1000.0,
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BAT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BB/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCH/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BCH/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BILI/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.05,
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BIT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BITO/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BITW/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNB/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNB/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BNTX/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BOBA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BRZ/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BSV/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BSV/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTC/USD/220624": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0001,
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTC/USD/220930": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0001,
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTC/USD/perpetual": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0001,
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BTT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1000000.0,
 			"min_amount": 1000000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"BYND/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"C98/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CAKE/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CEL/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CEL/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CELO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CGC/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CHR/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CHZ/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CHZ/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CLV/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMP/USD/220624": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0001,
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"COMP/USD/perpetual": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0001,
 			"min_amount": 0.0001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CONV/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CREAM/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CRO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CRON/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CRV/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CUSDT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CVC/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"CVX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DASH/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DAWN/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DEFI/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DEFI/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DENT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 100.0,
 			"min_amount": 100.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DKNG/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DODO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOGE/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOGE/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOT/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DOT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DRGN/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DRGN/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"DYDX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EDEN/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EDEN/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EGLD/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ENJ/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ENS/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EOS/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EOS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETC/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETH/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETH/USD/220930": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETH/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ETHE/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EXCH/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"EXCH/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FB/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FIDA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FIL/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FIL/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FLM/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FLOW/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FTM/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FTT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"FXS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GAL/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GALA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GBTC/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GDX/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GDXJ/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GLD/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GLMR/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GME/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GMT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GOOGL/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GRT/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GRT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"GST/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HBAR/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HNT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HOLY/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HOT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 100.0,
 			"min_amount": 100.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HT/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"HUM/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ICP/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ICX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"IMX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"IOST/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"IOTA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"JASMY/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 100.0,
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KAVA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KBTT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1000.0,
 			"min_amount": 1000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KIN/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10000.0,
 			"min_amount": 10000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KNC/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KSHIB/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KSM/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"KSOS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 100.0,
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LEO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINK/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LINK/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LOOKS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LRC/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTC/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"LTC/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MANA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MAPS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MATIC/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MCB/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MEDIA/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MER/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MID/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MID/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MINA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MKR/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MNGO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MOB/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MRNA/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MSTR/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.005,
 			"min_amount": 0.005,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MTA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MTL/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MVDA10/USD/perpetual": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0001,
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"MVDA25/USD/perpetual": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0001,
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NEAR/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NEO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NFLX/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NIO/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.05,
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NOK/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"NVDA/USD/220624": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0025,
 			"min_amount": 0.0025,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OKB/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OKB/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OMG/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OMG/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ONE/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ONT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ORBS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"OXY/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PAXG/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PENN/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PEOPLE/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PERP/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PFE/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"POLIS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PRIV/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PRIV/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PROM/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PUNDIX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"PYPL/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.005,
 			"min_amount": 0.005,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"QTUM/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RAMP/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RAY/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"REEF/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"REEF/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"REN/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RNDR/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RON/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ROOK/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ROSE/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RSR/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"RUNE/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SAND/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SC/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 100.0,
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SCRT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SECO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SHIB/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 100000.0,
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SHIT/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SHIT/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SKL/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SLP/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SLV/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SNX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SOL/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SOL/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SOS/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 100000.0,
 			"min_amount": 100000.0,
 			"price_scale": 8,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SPELL/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 100.0,
 			"min_amount": 100.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SPY/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SQ/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.005,
 			"min_amount": 0.005,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SRM/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SRN/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STEP/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STMX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STORJ/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"STX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SUSHI/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.5,
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SUSHI/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.5,
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXP/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"SXP/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"THETA/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"THETA/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TLM/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TLRY/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TOMO/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TONCOIN/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRU/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRX/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 7,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TRYB/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TSLA/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TSM/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.005,
 			"min_amount": 0.005,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TULIP/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"TWTR/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.05,
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UBER/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.05,
 			"min_amount": 0.05,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UNI/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UNI/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.1,
 			"min_amount": 0.1,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UNISWAP/USD/220624": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0001,
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UNISWAP/USD/perpetual": {
 			"amount_scale": 4,
 			"amount_step_size": 0.0001,
 			"min_amount": 0.0001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"USDT/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"USDT/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"USO/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 3,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"UST/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"VET/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WAVES/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 0.5,
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WAVES/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 0.5,
 			"min_amount": 0.5,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"WSB/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XAUT/USD/220624": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XAUT/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XEM/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XLM/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XMR/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.01,
 			"min_amount": 0.01,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRP/USD/220624": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XRP/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 6,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XTZ/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"XTZ/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 4,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"YFI/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"YFI/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 1,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"YFII/USD/perpetual": {
 			"amount_scale": 3,
 			"amount_step_size": 0.001,
 			"min_amount": 0.001,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ZEC/USD/perpetual": {
 			"amount_scale": 2,
 			"amount_step_size": 0.05,
 			"min_amount": 0.05,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ZIL/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 10.0,
 			"min_amount": 10.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ZM/USD/220624": {
 			"amount_scale": 3,
 			"amount_step_size": 0.005,
 			"min_amount": 0.005,
 			"price_scale": 2,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		},
 		"ZRX/USD/perpetual": {
 			"amount_scale": 1,
 			"amount_step_size": 1.0,
 			"min_amount": 1.0,
 			"price_scale": 5,
-			"maker_fee": 0.0002,
-			"taker_fee": 0.0007
+			"maker_fee": 0.0000,
+			"taker_fee": 0.0004
 		}
 	},
 	"public_rate_limits": [
