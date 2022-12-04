@@ -69,6 +69,22 @@ public interface TradeService extends BaseService {
     throw new NotYetImplementedForExchangeException("getOpenOrders");
   }
 
+  /**
+   * Returns required cancel order parameter as classes
+   *
+   * <p>Different trading services requires different parameters for order cancellation. To provide
+   * generic operation of the trade service interface. This method returns {@link Class} of the
+   * parameter objects as an array. This class information can be utilized by the caller of {@link
+   * #cancelOrder(CancelOrderParams)} to create instances of the required parameters such as {@link
+   * CancelOrderByIdParams}, {@link CancelOrderByInstrument} etc...
+   *
+   * @return Class types for the required parameter classes. Default implementation returns an array
+   *     with a single {@link CancelOrderByIdParams} element
+   */
+  default Class[] getRequiredCancelOrderParamClasses() {
+    return new Class[] {CancelOrderByIdParams.class};
+  }
+
   /** Get all openPositions of the exchange */
   default OpenPositions getOpenPositions() throws IOException {
     throw new NotYetImplementedForExchangeException();
@@ -332,6 +348,32 @@ public interface TradeService extends BaseService {
       res[i] = new DefaultQueryOrderParam(orderId);
     }
     return res;
+  }
+
+  static String[] toOrderIds(OrderQueryParams... orderQueryParams) {
+    String[] orderIds = new String[orderQueryParams.length];
+    int index = 0;
+    for (OrderQueryParams orderQueryParam : orderQueryParams) {
+      orderIds[index++] = orderQueryParam.getOrderId();
+    }
+    return orderIds;
+  }
+
+  /**
+   * Returns required get order parameter as classes
+   *
+   * <p>Different trading services requires different parameters for order querying. To provide
+   * generic operation of the trade service interface, This method returns {@link Class} of the
+   * parameter objects as an array. This class information can be utilized by the caller of {@link
+   * #getOrder(OrderQueryParams...)} to create instances of the required parameter such as {@link
+   * org.knowm.xchange.service.trade.params.orders.OrderQueryParamCurrencyPair}, {@link
+   * org.knowm.xchange.service.trade.params.orders.OrderQueryParamInstrument} etc...
+   *
+   * @return Class type for the required parameter class. Default implementation returns an instance
+   *     of {@link OrderQueryParams} element
+   */
+  default Class getRequiredOrderQueryParamClass() {
+    return OrderQueryParams.class;
   }
 
   /**
