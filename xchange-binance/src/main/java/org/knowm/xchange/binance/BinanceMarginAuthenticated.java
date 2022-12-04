@@ -17,8 +17,6 @@ import java.util.Map;
 @Produces(MediaType.APPLICATION_JSON)
 public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
 
-  @GET
-  @Path("sapi/v1/margin/account")
   /**
    * Get current account information.
    *
@@ -28,6 +26,8 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
    * @throws IOException
    * @throws BinanceException
    */
+  @GET
+  @Path("sapi/v1/margin/account")
   BinanceMarginAccountInformation marginAccount(
           @QueryParam("recvWindow") Long recvWindow,
           @QueryParam("timestamp") SynchronizedValueFactory<Long> timestamp,
@@ -35,9 +35,6 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
           @QueryParam(SIGNATURE) ParamsDigest signature)
           throws IOException, BinanceException;
 
-  @Override
-  @POST
-  @Path("sapi/v1/margin/order")
   /**
    * Send in a new order
    *
@@ -57,6 +54,9 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
    * @throws IOException
    * @throws BinanceException
    */
+  @Override
+  @POST
+  @Path("sapi/v1/margin/order")
   BinanceNewOrder newOrder(
           @FormParam("symbol") String symbol,
           @FormParam("side") OrderSide side,
@@ -67,15 +67,13 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
           @FormParam("newClientOrderId") String newClientOrderId,
           @FormParam("stopPrice") BigDecimal stopPrice,
           @FormParam("icebergQty") BigDecimal icebergQty,
+          @FormParam("newOrderRespType") BinanceNewOrder.NewOrderResponseType newOrderRespType,
           @FormParam("recvWindow") Long recvWindow,
           @FormParam("timestamp") SynchronizedValueFactory<Long> timestamp,
           @HeaderParam(X_MBX_APIKEY) String apiKey,
           @QueryParam(SIGNATURE) ParamsDigest signature)
           throws IOException, BinanceException;
 
-  @Override
-  @GET
-  @Path("sapi/v1/margin/order")
   /**
    * Check an order's status.<br>
    * Either orderId or origClientOrderId must be sent.
@@ -91,6 +89,9 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
    * @throws IOException
    * @throws BinanceException
    */
+  @Override
+  @GET
+  @Path("sapi/v1/margin/order")
   BinanceOrder orderStatus(
           @QueryParam("symbol") String symbol,
           @QueryParam("orderId") Long orderId,
@@ -101,9 +102,6 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
           @QueryParam(SIGNATURE) ParamsDigest signature)
           throws IOException, BinanceException;
 
-  @Override
-  @DELETE
-  @Path("sapi/v1/margin/order")
   /**
    * Cancel an active order.
    *
@@ -120,6 +118,9 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
    * @throws IOException
    * @throws BinanceException
    */
+  @Override
+  @DELETE
+  @Path("sapi/v1/margin/order")
   BinanceCancelledOrder cancelOrder(
           @QueryParam("symbol") String symbol,
           @QueryParam("orderId") Long orderId,
@@ -131,9 +132,6 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
           @QueryParam(SIGNATURE) ParamsDigest signature)
           throws IOException, BinanceException;
 
-  @Override
-  @DELETE
-  @Path("sapi/v1/margin/openOrders")
   /**
    * Cancels all active orders on a symbol. This includes OCO orders.
    *
@@ -144,6 +142,9 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
    * @throws IOException
    * @throws BinanceException
    */
+  @Override
+  @DELETE
+  @Path("sapi/v1/margin/openOrders")
   List<BinanceCancelledOrder> cancelAllOpenOrders(
           @QueryParam("symbol") String symbol,
           @QueryParam("recvWindow") Long recvWindow,
@@ -152,10 +153,6 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
           @QueryParam(SIGNATURE) ParamsDigest signature)
           throws IOException, BinanceException;
 
-
-  @Override
-  @GET
-  @Path("sapi/v1/margin/openOrders")
   /**
    * Get all open orders on a symbol.
    *
@@ -166,6 +163,9 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
    * @throws IOException
    * @throws BinanceException
    */
+  @Override
+  @GET
+  @Path("sapi/v1/margin/openOrders")
   List<BinanceOrder> openOrders(
           @QueryParam("symbol") String symbol,
           @QueryParam("recvWindow") Long recvWindow,
@@ -174,9 +174,6 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
           @QueryParam(SIGNATURE) ParamsDigest signature)
           throws IOException, BinanceException;
 
-  @Override
-  @GET
-  @Path("sapi/v1/margin/allOrders")
   /**
    * Get all account orders; active, canceled, or filled. <br>
    * If orderId is set, it will get orders >= that orderId. Otherwise most recent orders are
@@ -193,6 +190,9 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
    * @throws IOException
    * @throws BinanceException
    */
+  @Override
+  @GET
+  @Path("sapi/v1/margin/allOrders")
   List<BinanceOrder> allOrders(
           @QueryParam("symbol") String symbol,
           @QueryParam("orderId") Long orderId,
@@ -203,9 +203,6 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
           @QueryParam(SIGNATURE) ParamsDigest signature)
           throws IOException, BinanceException;
 
-  @Override
-  @GET
-  @Path("sapi/v1/margin/myTrades")
   /**
    * Get trades for a specific account and symbol.
    *
@@ -222,12 +219,16 @@ public interface BinanceMarginAuthenticated extends BinanceAuthenticated {
    * @throws IOException
    * @throws BinanceException
    */
+  @Override
+  @GET
+  @Path("sapi/v1/margin/myTrades")
   List<BinanceTrade> myTrades(
           @QueryParam("symbol") String symbol,
-          @QueryParam("limit") Integer limit,
+          @QueryParam("orderId") Long orderId,
           @QueryParam("startTime") Long startTime,
           @QueryParam("endTime") Long endTime,
           @QueryParam("fromId") Long fromId,
+          @QueryParam("limit") Integer limit,
           @QueryParam("recvWindow") Long recvWindow,
           @QueryParam("timestamp") SynchronizedValueFactory<Long> timestamp,
           @HeaderParam(X_MBX_APIKEY) String apiKey,

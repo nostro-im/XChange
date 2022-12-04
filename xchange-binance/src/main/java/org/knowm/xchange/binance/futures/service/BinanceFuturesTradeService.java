@@ -266,15 +266,25 @@ public class BinanceFuturesTradeService extends BinanceTradeService {
 
     @Override
     protected String placeOrder(
-            OrderType type, Order order, BigDecimal limitPrice, BigDecimal stopPrice, TimeInForce tif)
+            OrderType type,
+            Order order,
+            BigDecimal limitPrice,
+            BigDecimal stopPrice,
+            TimeInForce tif)
             throws IOException {
         BinanceFuturesOrderType futuresOrderType = BinanceFuturesAdapter.adaptOrderType(type);
         return placeOrder(futuresOrderType, order, limitPrice, stopPrice, null, null, null, tif);
     }
     
     private String placeOrder(
-            BinanceFuturesOrderType futuresOrderType, Order order, BigDecimal limitPrice, BigDecimal stopPrice,
-            BigDecimal activationPrice, BigDecimal callbackRate, WorkingType workingType, TimeInForce tif)
+            BinanceFuturesOrderType futuresOrderType,
+            Order order,
+            BigDecimal limitPrice,
+            BigDecimal stopPrice,
+            BigDecimal activationPrice,
+            BigDecimal callbackRate,
+            WorkingType workingType,
+            TimeInForce tif)
             throws IOException {
         try {
             return placeOrderLimiter.executePlace(() -> {

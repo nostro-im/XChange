@@ -7,8 +7,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Value;
 import org.knowm.xchange.binance.BinanceAdapters;
 import org.knowm.xchange.binance.BinanceAuthenticated;
@@ -135,14 +133,15 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
   public String placeStopOrder(StopOrder order) throws IOException {
     // Time-in-force should not be provided for market orders but is required for
     // limit orders, order we only default it for limit orders. If the caller
-    // specifies one for a market order, we don't remove it, since Binance might allow
-    // it at some point.
+    // specifies one for a market order, we don't remove it, since Binance might
+    // allow it at some point.
     TimeInForce tif =
         timeInForceFromOrder(order).orElse(order.getLimitPrice() != null ? TimeInForce.GTC : null);
 
     OrderType orderType = BinanceAdapters.adaptOrderType(order);
 
-    return placeOrder(orderType, order, order.getLimitPrice(), order.getStopPrice(), tif);
+    return placeOrder(
+        orderType, order, order.getLimitPrice(), order.getStopPrice(), tif);
   }
 
   protected Optional<TimeInForce> timeInForceFromOrder(Order order) {
@@ -153,12 +152,13 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
   }
 
   protected String placeOrder(
-      OrderType type, Order order, BigDecimal limitPrice, BigDecimal stopPrice, TimeInForce tif)
+      OrderType type,
+      Order order,
+      BigDecimal limitPrice,
+      BigDecimal stopPrice,
+      TimeInForce tif)
       throws IOException {
     try {
-      Long recvWindow =
-          (Long)
-              exchange.getExchangeSpecification().getExchangeSpecificParametersItem("recvWindow");
       return placeOrderLimiter.executePlace(() -> {
         BinanceNewOrder newOrder =
                 newOrder(
@@ -170,6 +170,7 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
                         limitPrice,
                         getClientOrderId(order),
                         stopPrice,
+                        null,
                         null);
         return Long.toString(newOrder.orderId);
       });
@@ -179,12 +180,13 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
   }
 
   public void placeTestOrder(
-      OrderType type, Order order, BigDecimal limitPrice, BigDecimal stopPrice) throws IOException {
+      OrderType type,
+      Order order,
+      BigDecimal limitPrice,
+      BigDecimal stopPrice)
+      throws IOException {
     try {
       TimeInForce tif = timeInForceFromOrder(order).orElse(null);
-      Long recvWindow =
-          (Long)
-              exchange.getExchangeSpecification().getExchangeSpecificParametersItem("recvWindow");
       testNewOrder(
           order.getCurrencyPair(),
           BinanceAdapters.convert(order.getType()),
@@ -247,6 +249,11 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
   }
 
   @Override
+  public Class[] getRequiredCancelOrderParamClasses() {
+    return new Class[] {CancelOrderByIdParams.class, CancelOrderByCurrencyPair.class};
+  }
+
+  @Override
   public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
     try {
       Assert.isTrue(
@@ -258,22 +265,7 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
         throw new ExchangeException(
             "You need to provide the currency pair to get the user trades.");
       }
-
-      Integer limit = null;
-      if (params instanceof TradeHistoryParamLimit) {
-        TradeHistoryParamLimit limitParams = (TradeHistoryParamLimit) params;
-        limit = limitParams.getLimit();
-      }
-      Long fromId = null;
-      if (params instanceof TradeHistoryParamsIdSpan) {
-        TradeHistoryParamsIdSpan idParams = (TradeHistoryParamsIdSpan) params;
-
-        try {
-          fromId = BinanceAdapters.id(idParams.getStartId());
-        } catch (Throwable ignored) {
-        }
-      }
-
+      Long orderId = null;
       Long startTime = null;
       Long endTime = null;
       if (params instanceof TradeHistoryParamsTimeSpan) {
@@ -284,10 +276,27 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
           endTime = ((TradeHistoryParamsTimeSpan) params).getEndTime().getTime();
         }
       }
-      if ((fromId != null) && (startTime != null || endTime != null))
+      Long fromId = null;
+      if (params instanceof TradeHistoryParamsIdSpan) {
+        TradeHistoryParamsIdSpan idParams = (TradeHistoryParamsIdSpan) params;
+        try {
+          fromId = BinanceAdapters.id(idParams.getStartId());
+        } catch (Throwable ignored) {
+        }
+      }
+      if ((fromId != null) && (startTime != null || endTime != null)) {
         throw new ExchangeException(
             "You should either specify the id from which you get the user trades from or start and end times. If you specify both, Binance will only honour the fromId parameter.");
-      List<BinanceTrade> binanceTrades = super.myTrades(pair, limit, startTime, endTime, fromId);
+      }
+
+      Integer limit = null;
+      if (params instanceof TradeHistoryParamLimit) {
+        TradeHistoryParamLimit limitParams = (TradeHistoryParamLimit) params;
+        limit = limitParams.getLimit();
+      }
+
+      List<BinanceTrade> binanceTrades =
+          super.myTrades(pair, orderId, startTime, endTime, fromId, limit);
       List<UserTrade> trades =
           binanceTrades.stream()
               .map(
@@ -327,6 +336,11 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
   public Collection<Order> getOrder(String... orderIds) {
 
     throw new NotAvailableFromExchangeException();
+  }
+
+  @Override
+  public Class getRequiredOrderQueryParamClass() {
+    return OrderQueryParamCurrencyPair.class;
   }
 
   @Override
@@ -371,7 +385,6 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
     }
   }
 
-  @Deprecated
   public interface BinanceOrderFlags extends IOrderFlags {
 
     static BinanceOrderFlags withClientId(String clientId) {
@@ -382,16 +395,9 @@ public class BinanceTradeService extends BinanceTradeServiceRaw implements Trade
     String getClientId();
   }
 
-  @Deprecated  @Value
+  @Value
   static final class ClientIdFlag implements BinanceOrderFlags {
-    private final String clientId;
-    
-    public ClientIdFlag(@JsonProperty("clientId") String clientId) {
-      this.clientId = clientId;
-    }
 
-    public String getClientId() {
-      return clientId;
-    }
+    private final String clientId;
   }
 }
