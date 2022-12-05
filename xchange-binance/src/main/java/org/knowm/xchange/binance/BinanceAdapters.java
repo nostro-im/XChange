@@ -291,20 +291,30 @@ public class BinanceAdapters {
     if (klines.size() != 0) {
       List<CandleStick> candleSticks = new ArrayList<>();
       for (BinanceKline chartData : klines) {
-        candleSticks.add(
-            new CandleStick.Builder()
-                .timestamp(new Date(chartData.getCloseTime()))
-                .open(chartData.getOpenPrice())
-                .high(chartData.getHighPrice())
-                .low(chartData.getLowPrice())
-                .close(chartData.getClosePrice())
-                .volume(chartData.getVolume())
-                .quotaVolume(chartData.getQuoteAssetVolume())
-                .build());
+        candleSticks.add(adaptCandleStick(chartData));
       }
       candleStickData = new CandleStickData(currencyPair, candleSticks);
     }
 
     return candleStickData;
+  }
+  
+  /**
+   * @param kline
+   * @param currencyPair
+   * @return
+   */
+  public static CandleStick adaptCandleStick(BinanceKline kline) {
+    return new CandleStick.Builder()
+    	.instrument(kline.getCurrencyPair())
+    	.interval(kline.getInterval().getMillis() / 1000)
+        .timestamp(new Date(kline.getCloseTime()))
+        .open(kline.getOpenPrice())
+        .high(kline.getHighPrice())
+        .low(kline.getLowPrice())
+        .close(kline.getClosePrice())
+        .volume(kline.getVolume())
+        .quoteVolume(kline.getQuoteAssetVolume())
+        .build();
   }
 }

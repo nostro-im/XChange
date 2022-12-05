@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class CandleStickData implements Serializable {
-
-    private final Instrument instrument;
+	private static final long serialVersionUID = 4503957311342371202L;
+	private final Instrument instrument;
     private final List<CandleStick> candleSticks;
 
     public CandleStickData(Instrument instrument, List<CandleStick> candleSticks) {

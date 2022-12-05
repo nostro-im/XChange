@@ -14,6 +14,8 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.FuturesContract;
 import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.account.*;
+import org.knowm.xchange.dto.marketdata.CandleStick;
+import org.knowm.xchange.dto.marketdata.CandleStickData;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
@@ -183,41 +185,41 @@ public class BinanceFuturesAdapter {
     }
 
     public static Ticker replaceInstrument(Ticker ticker, FuturesContract futuresContract) {
-    return new Ticker.Builder()
-        .instrument(futuresContract)
-        .open(ticker.getOpen())
-        .last(ticker.getLast())
-        .bid(ticker.getBid())
-        .ask(ticker.getAsk())
-        .high(ticker.getHigh())
-        .low(ticker.getLow())
-        .vwap(ticker.getVwap())
-        .volume(ticker.getVolume())
-        .quoteVolume(ticker.getQuoteVolume())
-        .timestamp(ticker.getTimestamp())
-        .bidSize(ticker.getBidSize())
-        .askSize(ticker.getAskSize())
-        .percentageChange(ticker.getPercentageChange())
-        .build();
-  }
+        return new Ticker.Builder()
+	        .instrument(futuresContract)
+	        .open(ticker.getOpen())
+	        .last(ticker.getLast())
+	        .bid(ticker.getBid())
+	        .ask(ticker.getAsk())
+	        .high(ticker.getHigh())
+	        .low(ticker.getLow())
+	        .vwap(ticker.getVwap())
+	        .volume(ticker.getVolume())
+	        .quoteVolume(ticker.getQuoteVolume())
+	        .timestamp(ticker.getTimestamp())
+	        .bidSize(ticker.getBidSize())
+	        .askSize(ticker.getAskSize())
+	        .percentageChange(ticker.getPercentageChange())
+	        .build();
+    }
 
     public static OrderBook replaceInstrument(OrderBook orderBook, FuturesContract futuresContract) {
-    return new OrderBook(
-        orderBook.getTimeStamp(),
-        orderBook.getAsks().stream()
-            .map(order -> LimitOrder.Builder.from(order).instrument(futuresContract).build()),
-        orderBook.getBids().stream()
-            .map(order -> LimitOrder.Builder.from(order).instrument(futuresContract).build()),
-        false);
-  }
+        return new OrderBook(
+	        orderBook.getTimeStamp(),
+	        orderBook.getAsks().stream()
+	            .map(order -> LimitOrder.Builder.from(order).instrument(futuresContract).build()),
+	        orderBook.getBids().stream()
+	            .map(order -> LimitOrder.Builder.from(order).instrument(futuresContract).build()),
+	        false);
+    }
 
     public static Trades replaceInstrument(Trades trades, FuturesContract futuresContract) {
-    return new Trades(
-        trades.getTrades().stream()
-            .map(t -> Trade.Builder.from(t).instrument(futuresContract).build())
-            .collect(Collectors.toList()),
-        trades.getTradeSortType());
-  }
+        return new Trades(
+	        trades.getTrades().stream()
+	            .map(t -> Trade.Builder.from(t).instrument(futuresContract).build())
+	            .collect(Collectors.toList()),
+	        trades.getTradeSortType());
+    }
 
     public static MarketOrder replaceInstrument(MarketOrder market, CurrencyPair pair) {
         return MarketOrder.Builder.from(market).instrument(pair).build();
@@ -233,6 +235,24 @@ public class BinanceFuturesAdapter {
 
     public static TrailingStopOrder replaceInstrument(TrailingStopOrder trailingStop, CurrencyPair pair) {
         return TrailingStopOrder.Builder.from(trailingStop).instrument(pair).build();
+    }
+
+    public static CandleStickData replaceInstrument(CandleStickData candles, FuturesContract futuresContract) {
+    	return new CandleStickData(
+        	futuresContract,
+        	candles
+        		.getCandleSticks()
+        		.stream()
+        		.map(candle -> replaceInstrument(candle, futuresContract))
+        		.collect(Collectors.toList())
+        );
+    }
+    
+    public static CandleStick replaceInstrument(CandleStick candle, FuturesContract futuresContract) {
+    	return CandleStick.Builder
+        	.from(candle)
+        	.instrument(futuresContract)
+        	.build();
     }
 
     // available balance!

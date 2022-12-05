@@ -6,19 +6,22 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.knowm.xchange.instrument.Instrument;
+
 /**
  * Data object representing a CandleStick
  */
 @JsonDeserialize(builder = CandleStick.Builder.class)
 public class CandleStick {
 
+	private final Instrument instrument;
+	private final Long interval; // in seconds
     private final BigDecimal open;
-    private final BigDecimal last;
     private final BigDecimal high;
     private final BigDecimal low;
     private final BigDecimal close;
     private final BigDecimal volume;
-    private final BigDecimal quotaVolume;
+    private final BigDecimal quoteVolume;
     private final BigDecimal vwap; // these 5 fields can be null if not provided by the exchange
     private final BigDecimal bid;
     private final BigDecimal bidSize;
@@ -26,18 +29,30 @@ public class CandleStick {
     private final BigDecimal askSize;
     private final Date timestamp;
 
-    public CandleStick(Date timestamp, BigDecimal open, BigDecimal last, BigDecimal high,
-                       BigDecimal low, BigDecimal close, BigDecimal volume,
-                       BigDecimal quotaVolume, BigDecimal vwap, BigDecimal bid,
-                       BigDecimal bidSize, BigDecimal ask, BigDecimal askSize) {
+    public CandleStick(
+    		Instrument instrument,
+    		Long intervalSeconds,
+    		Date timestamp,
+    		BigDecimal open,
+    		BigDecimal high,
+    		BigDecimal low,
+    		BigDecimal close,
+    		BigDecimal volume,
+    		BigDecimal quoteVolume,
+    		BigDecimal vwap,
+    		BigDecimal bid,
+            BigDecimal bidSize,
+            BigDecimal ask,
+            BigDecimal askSize) {
+    	this.instrument = instrument;
+    	this.interval = intervalSeconds;
         this.timestamp = timestamp;
         this.open = open;
-        this.last = last;
         this.high = high;
         this.low = low;
         this.close = close;
         this.volume = volume;
-        this.quotaVolume = quotaVolume;
+        this.quoteVolume = quoteVolume;
         this.vwap = vwap;
         this.bid = bid;
         this.bidSize = bidSize;
@@ -45,16 +60,20 @@ public class CandleStick {
         this.askSize = askSize;
     }
 
+    public Instrument getInstrument() {
+    	return instrument;
+    }
+    
+    public Long getInterval() {
+        return interval;
+    }
+    
     public Date getTimestamp() {
         return timestamp;
     }
 
     public BigDecimal getOpen() {
         return open;
-    }
-
-    public BigDecimal getLast() {
-        return last;
     }
 
     public BigDecimal getHigh() {
@@ -73,8 +92,8 @@ public class CandleStick {
         return volume;
     }
 
-    public BigDecimal getQuotaVolume() {
-        return quotaVolume;
+    public BigDecimal getQuoteVolume() {
+        return quoteVolume;
     }
 
     public BigDecimal getVwap() {
@@ -99,14 +118,15 @@ public class CandleStick {
 
     @JsonPOJOBuilder(withPrefix = "")
     public static class Builder {
+    	private Instrument instrument;
+    	private Long interval;
         private Date timestamp;
         private BigDecimal open;
-        private BigDecimal last;
         private BigDecimal high;
         private BigDecimal low;
         private BigDecimal close;
         private BigDecimal volume;
-        private BigDecimal quotaVolume;
+        private BigDecimal quoteVolume;
         private BigDecimal vwap;
         private BigDecimal bid;
         private BigDecimal bidSize;
@@ -116,19 +136,30 @@ public class CandleStick {
 
         public static Builder from(CandleStick candleStick) {
             return new Builder()
+                    .instrument(candleStick.getInstrument())
+                    .interval(candleStick.getInterval())
                     .timestamp(candleStick.getTimestamp())
                     .open(candleStick.getOpen())
-                    .last(candleStick.getLast())
                     .high(candleStick.getHigh())
                     .low(candleStick.getLow())
                     .close(candleStick.getClose())
                     .volume(candleStick.getVolume())
-                    .quotaVolume(candleStick.getQuotaVolume())
+                    .quoteVolume(candleStick.getQuoteVolume())
                     .vwap(candleStick.getVwap())
                     .bid(candleStick.getBid())
                     .bidSize(candleStick.getBidSize())
                     .ask(candleStick.getAsk())
                     .askSize(candleStick.getAskSize());
+        }
+        
+        public Builder instrument(Instrument instrument) {
+            this.instrument = instrument;
+            return this;
+        }
+
+        public Builder interval(Long intervalSeconds) {
+            this.interval = intervalSeconds;
+            return this;
         }
 
         public Builder timestamp(Date timestamp) {
@@ -138,11 +169,6 @@ public class CandleStick {
 
         public Builder open(BigDecimal open) {
             this.open = open;
-            return this;
-        }
-
-        public Builder last(BigDecimal last) {
-            this.last = last;
             return this;
         }
 
@@ -166,8 +192,8 @@ public class CandleStick {
             return this;
         }
 
-        public Builder quotaVolume(BigDecimal quotaVolume) {
-            this.quotaVolume = quotaVolume;
+        public Builder quoteVolume(BigDecimal quoteVolume) {
+            this.quoteVolume = quoteVolume;
             return this;
         }
 
@@ -197,8 +223,21 @@ public class CandleStick {
         }
 
         public CandleStick build() {
-            return new CandleStick(timestamp, open, last, high, low, close, volume, quotaVolume,
-                    vwap, bid, bidSize, ask, askSize);
+            return new CandleStick(
+            	instrument,
+            	interval,
+            	timestamp,
+            	open,
+            	high,
+            	low,
+            	close,
+            	volume,
+            	quoteVolume,
+            	vwap,
+            	bid,
+            	bidSize,
+            	ask,
+            	askSize);
         }
     }
 }

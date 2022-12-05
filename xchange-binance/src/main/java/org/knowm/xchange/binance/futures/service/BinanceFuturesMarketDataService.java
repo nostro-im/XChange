@@ -10,12 +10,14 @@ import org.knowm.xchange.binance.service.BinanceMarketDataService;
 import org.knowm.xchange.client.ResilienceRegistries;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.FuturesContract;
+import org.knowm.xchange.dto.marketdata.CandleStickData;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.instrument.Instrument;
 import org.knowm.xchange.service.marketdata.params.Params;
+import org.knowm.xchange.service.trade.params.CandleStickDataParams;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,9 +26,13 @@ import java.util.stream.Collectors;
 import static org.knowm.xchange.binance.BinanceResilience.REQUEST_WEIGHT_RATE_LIMITER;
 
 public class BinanceFuturesMarketDataService extends BinanceMarketDataService {
-    public BinanceFuturesMarketDataService(BinanceExchange exchange, BinanceAuthenticated binance, ResilienceRegistries resilienceRegistries) {
-        super(exchange, binance, resilienceRegistries);
-    }
+	
+  public BinanceFuturesMarketDataService(
+		  BinanceExchange exchange,
+		  BinanceAuthenticated binance,
+		  ResilienceRegistries resilienceRegistries) {
+      super(exchange, binance, resilienceRegistries);
+  }
 
   @Override
   public Ticker getTicker(CurrencyPair currencyPair, Object... args) {
@@ -83,21 +89,40 @@ public class BinanceFuturesMarketDataService extends BinanceMarketDataService {
     throw new NotAvailableFromExchangeException("getTrades");
   }
 
-    public List<BinanceTicker24h> ticker24h() throws IOException {
-        return decorateApiCall(() -> binance.ticker24h())
-                .withRetry(retry("ticker24h"))
-                .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER), 40)
-                .call();
-    }
+  public List<BinanceTicker24h> ticker24h() throws IOException {
+    return decorateApiCall(() -> binance.ticker24h())
+        .withRetry(retry("ticker24h"))
+        .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER), 40)
+        .call();
+  }
 
-    protected int aggTradesPermits(Integer limit) {
-        return 20;
-    }
+  @Override
+  public CandleStickData getCandleStickData(CurrencyPair currencyPair, CandleStickDataParams params)
+      throws IOException {
+  
+    throw new NotAvailableFromExchangeException("getCandleStickData");
+  }
+  
+  @Override
+  public CandleStickData getCandleStickData(Instrument instrument, CandleStickDataParams params)
+      throws IOException {
+	  
+	if (instrument instanceof FuturesContract) {
+	    FuturesContract futuresContract = (FuturesContract) instrument;
+	  return BinanceFuturesAdapter.replaceInstrument(
+	  super.getCandleStickData(futuresContract.getCurrencyPair(), params), futuresContract);
+	}
+	throw new NotAvailableFromExchangeException("getCandleStickData");
+  }
+  
+  protected int aggTradesPermits(Integer limit) {
+    return 20;
+  }
 
-    public BinanceFuturesExchangeInfo getFuturesExchangeInfo() throws IOException {
-        return decorateApiCall(((BinanceFuturesAuthenticated)binance)::futuresExchangeInfo)
-                .withRetry(retry("futuresExchangeInfo"))
-                .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER))
-                .call();
-    }
+  public BinanceFuturesExchangeInfo getFuturesExchangeInfo() throws IOException {
+    return decorateApiCall(((BinanceFuturesAuthenticated)binance)::futuresExchangeInfo)
+        .withRetry(retry("futuresExchangeInfo"))
+        .withRateLimiter(rateLimiter(REQUEST_WEIGHT_RATE_LIMITER))
+        .call();
+  }
 }
