@@ -15,12 +15,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.knowm.xchange.ExchangeSharedParameters;
 import org.knowm.xchange.ExchangeSpecification;
-import org.knowm.xchange.binance.BinanceAuthenticated;
 import org.knowm.xchange.binance.BinanceExchange;
 import org.knowm.xchange.binance.service.BinanceMarketDataService;
-import org.knowm.xchange.client.ExchangeRestProxyBuilder;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -211,7 +210,8 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
     return Stream.of(
             buildSubscriptionStrings(subscription.getTicker(), BinanceSubscriptionType.TICKER.getType()),
             buildSubscriptionStrings(subscription.getOrderBook(),  BinanceSubscriptionType.DEPTH.getType()),
-            buildSubscriptionStrings(subscription.getTrades(), BinanceSubscriptionType.TRADE.getType()))
+            buildSubscriptionStrings(subscription.getTrades(), BinanceSubscriptionType.TRADE.getType()),
+            buildKlinesSubscriptionStrings(subscription.getCandleSticks()))
         .filter(s -> !s.isEmpty())
         .collect(Collectors.joining("/"));
   }
@@ -234,6 +234,13 @@ public class BinanceStreamingExchange extends BinanceExchange implements Streami
         .map(pair -> String.join("", pair.toString().split("/")).toLowerCase());
   }
 
+  private String buildKlinesSubscriptionStrings(List<Pair<CurrencyPair, Integer>> klines) {
+	return klines.stream()
+	    .map(kline -> String.join("", kline.getKey().toString().split("/")).toLowerCase() 
+	    		+ "@" + BinanceSubscriptionType.klineOf(kline.getValue()).getType())
+	    .collect(Collectors.joining("/"));
+  }
+  
   @Override
   public void useCompressedMessages(boolean compressedMessages) {
     streamingService.useCompressedMessages(compressedMessages);

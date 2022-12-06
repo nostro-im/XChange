@@ -15,11 +15,19 @@ public final class BinanceKline {
   private final BigDecimal close;
   private final BigDecimal volume;
   private final long closeTime;
+  private final Long lastUpdated;
+  private final boolean isClosed;
   private final BigDecimal quoteAssetVolume;
   private final long numberOfTrades;
   private final BigDecimal takerBuyBaseAssetVolume;
   private final BigDecimal takerBuyQuoteAssetVolume;
-
+  
+  /**
+   * C'tor for REST API
+   * @param pair
+   * @param interval
+   * @param obj
+   */
   public BinanceKline(CurrencyPair pair, KlineInterval interval, Object[] obj) {
     this.pair = pair;
     this.interval = interval;
@@ -30,11 +38,65 @@ public final class BinanceKline {
     this.close = new BigDecimal(obj[4].toString());
     this.volume = new BigDecimal(obj[5].toString());
     this.closeTime = Long.valueOf(obj[6].toString());
+    this.lastUpdated = this.closeTime;
+    this.isClosed = true;
     this.quoteAssetVolume = new BigDecimal(obj[7].toString());
     this.numberOfTrades = Long.valueOf(obj[8].toString());
     this.takerBuyBaseAssetVolume = new BigDecimal(obj[9].toString());
     this.takerBuyQuoteAssetVolume = new BigDecimal(obj[10].toString());
   }
+  
+  /**
+   * C'tor for WebSocket (i.e., supports continuous candlesticks)
+   * @param pair
+   * @param interval
+   * @param openTime
+   * @param open
+   * @param high
+   * @param low
+   * @param close
+   * @param volume
+   * @param closeTime
+   * @param lastUpdated
+   * @param isClosed
+   * @param quoteVolume
+   * @param numTrades
+   * @param takerVolume
+   * @param takerQuoteVolume
+   */
+  public BinanceKline(
+      CurrencyPair pair,
+      KlineInterval interval,
+      long openTime,
+      BigDecimal open,
+      BigDecimal high,
+      BigDecimal low,
+      BigDecimal close,
+      BigDecimal volume,
+      long closeTime,
+      Long lastUpdated,
+      boolean isClosed,
+      BigDecimal quoteVolume,
+      long numTrades,
+      BigDecimal takerVolume,
+      BigDecimal takerQuoteVolume) {
+    this.pair = pair;
+    this.interval = interval;
+    this.openTime = openTime;
+    this.open = open;
+    this.high = high;
+    this.low = low;
+    this.close = close;
+    this.volume = volume;
+    this.closeTime = closeTime;
+    this.lastUpdated = lastUpdated;
+    this.isClosed = isClosed;
+    this.quoteAssetVolume = quoteVolume;
+    this.numberOfTrades = numTrades;
+    this.takerBuyBaseAssetVolume = takerVolume;
+    this.takerBuyQuoteAssetVolume = takerQuoteVolume;
+  }
+  
 
   public CurrencyPair getCurrencyPair() {
     return pair;
@@ -76,6 +138,14 @@ public final class BinanceKline {
     return closeTime;
   }
 
+  public Long getLastUpdated() {
+    return lastUpdated;
+  }
+  
+  public boolean isClosed() {
+    return isClosed;
+  }
+  
   public BigDecimal getQuoteAssetVolume() {
     return quoteAssetVolume;
   }

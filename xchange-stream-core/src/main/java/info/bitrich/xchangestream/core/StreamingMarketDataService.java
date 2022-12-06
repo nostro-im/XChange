@@ -1,12 +1,18 @@
 package info.bitrich.xchangestream.core;
 
 import io.reactivex.rxjava3.core.Flowable;
+
+import java.io.IOException;
+
 import org.knowm.xchange.currency.CurrencyPair;
+import org.knowm.xchange.dto.marketdata.CandleStick;
+import org.knowm.xchange.dto.marketdata.CandleStickData;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
 import org.knowm.xchange.exceptions.NotYetImplementedForExchangeException;
 import org.knowm.xchange.instrument.Instrument;
+import org.knowm.xchange.service.trade.params.CandleStickDataParams;
 
 public interface StreamingMarketDataService {
   /**
@@ -73,5 +79,16 @@ public interface StreamingMarketDataService {
       return getTrades((CurrencyPair) instrument, args);
     }
     throw new NotYetImplementedForExchangeException("getTrades");
+  }
+  
+  default Flowable<CandleStick> getCandleSticks(CurrencyPair currencyPair, Object... args) throws IOException {
+    throw new NotYetImplementedForExchangeException("getCandleSticks");
+  }
+  
+  default Flowable<CandleStick> getCandleSticks(Instrument instrument, Object... args) throws IOException {
+	if (instrument instanceof CurrencyPair) {
+	  return getCandleSticks((CurrencyPair) instrument, args);
+	}
+    throw new NotYetImplementedForExchangeException("getCandleSticks");
   }
 }

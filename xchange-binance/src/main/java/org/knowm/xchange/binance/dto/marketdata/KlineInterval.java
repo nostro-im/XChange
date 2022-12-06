@@ -53,4 +53,13 @@ public enum KlineInterval {
     }
     return result;
   }
+  
+  public static KlineInterval getFromCode(String code) {
+	  for (KlineInterval v: KlineInterval.values()) {
+		  if (v.code.equals(code)) {
+			  return v;
+		  }
+	  }
+	  return null;
+  }
 }

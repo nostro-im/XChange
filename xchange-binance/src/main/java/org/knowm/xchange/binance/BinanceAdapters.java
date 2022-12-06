@@ -306,9 +306,11 @@ public class BinanceAdapters {
    */
   public static CandleStick adaptCandleStick(BinanceKline kline) {
     return new CandleStick.Builder()
-    	.instrument(kline.getCurrencyPair())
-    	.interval(kline.getInterval().getMillis() / 1000)
+        .instrument(kline.getCurrencyPair())
+        .interval(kline.getInterval().getMillis() / 1000)
         .timestamp(new Date(kline.getCloseTime()))
+        .lastUpdated(new Date(kline.getLastUpdated()))
+        .isClosed(kline.isClosed())
         .open(kline.getOpenPrice())
         .high(kline.getHighPrice())
         .low(kline.getLowPrice())

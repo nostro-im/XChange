@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import org.apache.commons.lang3.tuple.Pair;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 
@@ -16,6 +18,7 @@ public class ProductSubscription {
   private final List<CurrencyPair> orderBook;
   private final List<CurrencyPair> trades;
   private final List<CurrencyPair> ticker;
+  private final List<Pair<CurrencyPair, Integer>> candleSticks; // currencyPair-interval pairs
   private final List<CurrencyPair> userTrades;
   private final List<CurrencyPair> orders;
   private final List<Currency> balances;
@@ -24,6 +27,7 @@ public class ProductSubscription {
     this.orderBook = asList(builder.orderBook);
     this.trades = asList(builder.trades);
     this.ticker = asList(builder.ticker);
+    this.candleSticks = asList(builder.candleSticks);
     this.orders = asList(builder.orders);
     this.userTrades = asList(builder.userTrades);
     this.balances = asList(builder.balances);
@@ -47,6 +51,10 @@ public class ProductSubscription {
     return ticker;
   }
 
+  public List<Pair<CurrencyPair, Integer>> getCandleSticks() {
+    return candleSticks;
+  }
+  
   public List<CurrencyPair> getOrders() {
     return orders;
   }
@@ -68,7 +76,7 @@ public class ProductSubscription {
   }
 
   public boolean hasUnauthenticated() {
-    return !ticker.isEmpty() || !trades.isEmpty() || !orderBook.isEmpty();
+    return !ticker.isEmpty() || !trades.isEmpty() || !orderBook.isEmpty() || !candleSticks.isEmpty();
   }
 
   public static ProductSubscriptionBuilder create() {
@@ -79,6 +87,7 @@ public class ProductSubscription {
     private final Set<CurrencyPair> orderBook;
     private final Set<CurrencyPair> trades;
     private final Set<CurrencyPair> ticker;
+    private final Set<Pair<CurrencyPair, Integer>> candleSticks;
     private final Set<CurrencyPair> userTrades;
     private final Set<CurrencyPair> orders;
     private final Set<Currency> balances;
@@ -87,6 +96,7 @@ public class ProductSubscription {
       orderBook = new HashSet<>();
       trades = new HashSet<>();
       ticker = new HashSet<>();
+      candleSticks = new HashSet<>();
       orders = new HashSet<>();
       userTrades = new HashSet<>();
       balances = new HashSet<>();
@@ -107,6 +117,11 @@ public class ProductSubscription {
       return this;
     }
 
+    public ProductSubscriptionBuilder addCandleSticks(CurrencyPair pair, int interval) {
+      candleSticks.add(Pair.of(pair, interval));
+      return this;
+    }
+    
     public ProductSubscriptionBuilder addOrders(CurrencyPair pair) {
       orders.add(pair);
       return this;

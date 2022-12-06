@@ -13,14 +13,18 @@ import info.bitrich.xchangestream.service.netty.StreamingObjectMapperHelper;
 import io.reactivex.rxjava3.core.BackpressureStrategy;
 import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.functions.Consumer;
+
+import org.apache.commons.lang3.tuple.Pair;
 import org.knowm.xchange.binance.BinanceAdapters;
 import org.knowm.xchange.binance.BinanceErrorAdapter;
 import org.knowm.xchange.binance.dto.BinanceException;
+import org.knowm.xchange.binance.dto.marketdata.BinanceKline;
 import org.knowm.xchange.binance.dto.marketdata.BinanceOrderbook;
 import org.knowm.xchange.binance.dto.marketdata.BinanceTicker24h;
 import org.knowm.xchange.binance.service.BinanceMarketDataService;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
+import org.knowm.xchange.dto.marketdata.CandleStick;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.OrderBookUpdate;
 import org.knowm.xchange.dto.marketdata.Ticker;
@@ -49,6 +53,7 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
   private static final JavaType TICKER_TYPE = getTickerType();
   private static final JavaType TRADE_TYPE = getTradeType();
   protected static final JavaType DEPTH_TYPE = getDepthType();
+  protected static final JavaType CANDLESTICK_TYPE = getCandleStickType();
 
   protected final BinanceStreamingService service;
   private final String orderBookUpdateFrequencyParameter;
@@ -59,6 +64,7 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
   private final Map<CurrencyPair, Flowable<OrderBookUpdate>> orderBookUpdatesSubscriptions;
   protected final Map<CurrencyPair, Flowable<DepthBinanceWebSocketTransaction>>
       orderBookRawUpdatesSubscriptions;
+  private final Map<Pair<CurrencyPair, Integer>, Flowable<BinanceKline>> candleSticksSubscriptions;
 
   private final ObjectMapper mapper = StreamingObjectMapperHelper.getObjectMapper();
   protected final BinanceMarketDataService marketDataService;
@@ -79,6 +85,7 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
     this.tickerSubscriptions = new ConcurrentHashMap<>();
     this.orderbookSubscriptions = new ConcurrentHashMap<>();
     this.tradeSubscriptions = new ConcurrentHashMap<>();
+    this.candleSticksSubscriptions = new ConcurrentHashMap<>();
     this.orderBookUpdatesSubscriptions = new ConcurrentHashMap<>();
     this.orderBookRawUpdatesSubscriptions = new ConcurrentHashMap<>();
   }
@@ -108,6 +115,15 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
       throw new UpFrontSubscriptionRequiredException();
     }
     return tradeSubscriptions.computeIfAbsent(currencyPair, s -> triggerFlowableBody(rawTradeStream(currencyPair)).publish(1).refCount());
+  }
+  
+  public Flowable<BinanceKline> getRawCandleSticks(CurrencyPair currencyPair, int interval) {
+    if (!service.isLiveSubscriptionEnabled() && !service.getProductSubscription().getCandleSticks().contains(Pair.of(currencyPair, interval))) {
+      throw new UpFrontSubscriptionRequiredException();
+    }
+    return candleSticksSubscriptions.computeIfAbsent(
+    		Pair.of(currencyPair, interval),
+    		s -> triggerFlowableBody(rawCandleSticksStream(currencyPair, interval)).publish(1).refCount());
   }
 
   /**
@@ -150,6 +166,17 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
                     .id(String.valueOf(rawTrade.getTradeId()))
                     .build());
   }
+  
+  @Override
+  public Flowable<CandleStick> getCandleSticks(CurrencyPair currencyPair, Object... args) {
+    if (args == null || args.length != 1 || args[0] == null || args[0] instanceof Integer == false) {
+      throw new ExchangeException("Should provide interval argument, representing the interval in seconds!");
+    }
+    
+    int interval = (Integer) args[0];
+    return getRawCandleSticks(currencyPair, interval)
+        .map(kline -> BinanceAdapters.adaptCandleStick(kline));
+  }
 
   private Flowable<OrderBookUpdate> createOrderBookUpdatesFlowable(CurrencyPair currencyPair) {
     return orderBookRawUpdatesSubscriptions
@@ -172,7 +199,7 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
   }
 
   /**
-   * Registers subsriptions with the streaming service for the given products.
+   * Registers subscriptions with the streaming service for the given products.
    *
    * <p>As we receive messages as soon as the connection is open, we need to register subscribers to
    * handle these before the first messages arrive.
@@ -196,7 +223,6 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
     final String channelId = String.join("", currencyPair.toString().split("/")).toLowerCase()
         + "@" + subscriptionType.getType();
     this.service.unsubscribeChannel(channelId);
-
     switch (subscriptionType) {
       case DEPTH:
         orderbookSubscriptions.remove(currencyPair);
@@ -209,8 +235,53 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
       case TICKER:
         tickerSubscriptions.remove(currencyPair);
         break;
+      case KLINE_1s:
+    	candleSticksSubscriptions.remove(Pair.of(currencyPair, 1));
+    	break;
+      case KLINE_1m:
+      	candleSticksSubscriptions.remove(Pair.of(currencyPair, 60));
+      	break;
+      case KLINE_3m:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 3*60));
+        break;
+      case KLINE_5m:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 5*60));
+        break;
+      case KLINE_15m:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 15*60));
+        break;
+      case KLINE_30m:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 30*60));
+        break;
+      case KLINE_1h:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 60*60));
+        break;
+      case KLINE_2h:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 2*60*60));
+        break;
+      case KLINE_4h:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 4*60*60));
+        break;
+      case KLINE_8h:
+      	candleSticksSubscriptions.remove(Pair.of(currencyPair, 8*60*60));
+      	break;
+      case KLINE_12h:
+      	candleSticksSubscriptions.remove(Pair.of(currencyPair, 12*60*60));
+      	break;
+      case KLINE_1d:
+      	candleSticksSubscriptions.remove(Pair.of(currencyPair, 24*60*60));
+      	break;
+      case KLINE_3d:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 3*24*60*60));
+        break;
+      case KLINE_1w:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 7*24*60*60));
+        break;
+      case KLINE_1M:
+        candleSticksSubscriptions.remove(Pair.of(currencyPair, 30*24*60*60));
+        break;
       default:
-        throw new RuntimeException("Subscription type not supported to unsubscribe from stream");
+        throw new RuntimeException("Subscription type not supported to unsubscribe from stream: " + subscriptionType);
     }
   }
 
@@ -387,6 +458,16 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
         .filter(transaction -> transaction.getData().getCurrencyPair().equals(currencyPair))
         .map(transaction -> transaction.getData().getRawTrade());
   }
+  
+  private Flowable<BinanceKline> rawCandleSticksStream(CurrencyPair currencyPair, int interval) {
+    return service
+        .subscribeChannel(channelFromCurrency(currencyPair, BinanceSubscriptionType.klineOf(interval).getType()))
+        .map(it -> this.<CandleStickBinanceWebSocketTransaction>readTransaction(it, CANDLESTICK_TYPE, "candleStick"))
+        .filter(transaction -> 
+        		transaction.getData().getCurrencyPair().equals(currencyPair) &&
+        		transaction.getData().getKline().getInterval().getMillis() == 1000 * interval)
+        .map(transaction -> transaction.getData().getKline());
+  }
 
   /**
    * Force Flowable to execute its body, this way we get `BinanceStreamingService` to register the
@@ -466,5 +547,12 @@ public class BinanceStreamingMarketDataService implements StreamingMarketDataSer
         .getTypeFactory()
         .constructType(
             new TypeReference<BinanceWebsocketTransaction<DepthBinanceWebSocketTransaction>>() {});
+  }
+  
+  private static JavaType getCandleStickType() {
+    return getObjectMapper()
+        .getTypeFactory()
+        .constructType(
+            new TypeReference<BinanceWebsocketTransaction<CandleStickBinanceWebSocketTransaction>>() {});
   }
 }

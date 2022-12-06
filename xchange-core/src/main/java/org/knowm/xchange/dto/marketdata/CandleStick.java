@@ -16,6 +16,9 @@ public class CandleStick {
 
 	private final Instrument instrument;
 	private final Long interval; // in seconds
+	private final Date timestamp;
+	private final Date lastUpdated; // in case of continuous updates
+	private final Boolean isClosed;
     private final BigDecimal open;
     private final BigDecimal high;
     private final BigDecimal low;
@@ -27,12 +30,13 @@ public class CandleStick {
     private final BigDecimal bidSize;
     private final BigDecimal ask;
     private final BigDecimal askSize;
-    private final Date timestamp;
 
     public CandleStick(
     		Instrument instrument,
     		Long intervalSeconds,
     		Date timestamp,
+    		Date lastUpdated,
+    		Boolean isClosed,
     		BigDecimal open,
     		BigDecimal high,
     		BigDecimal low,
@@ -47,6 +51,8 @@ public class CandleStick {
     	this.instrument = instrument;
     	this.interval = intervalSeconds;
         this.timestamp = timestamp;
+        this.lastUpdated = lastUpdated;
+        this.isClosed = isClosed;
         this.open = open;
         this.high = high;
         this.low = low;
@@ -71,7 +77,15 @@ public class CandleStick {
     public Date getTimestamp() {
         return timestamp;
     }
-
+    
+    public Date getLastUpdated() {
+        return lastUpdated;
+    }
+    
+    public Boolean isClosed() {
+        return isClosed;
+    }
+    
     public BigDecimal getOpen() {
         return open;
     }
@@ -115,12 +129,37 @@ public class CandleStick {
     public BigDecimal getAskSize() {
         return askSize;
     }
-
+    
+    @Override
+    public String toString() {
+      return "CandleStick [instrument: "
+          + instrument
+          + ", interval: "
+          + interval
+          + ", timestamp: "
+          + timestamp
+          + ", open: "
+          + open
+          + ", high: "
+          + high
+          + ", low: "
+          + low
+          + ", close: "
+          + close
+          + ", volume: "
+          + volume
+          + ", isClosed: "
+          + isClosed
+          + "]";
+    }
+    
     @JsonPOJOBuilder(withPrefix = "")
     public static class Builder {
     	private Instrument instrument;
     	private Long interval;
         private Date timestamp;
+        private Date lastUpdated;
+    	private Boolean isClosed;
         private BigDecimal open;
         private BigDecimal high;
         private BigDecimal low;
@@ -139,6 +178,8 @@ public class CandleStick {
                     .instrument(candleStick.getInstrument())
                     .interval(candleStick.getInterval())
                     .timestamp(candleStick.getTimestamp())
+                    .lastUpdated(candleStick.getLastUpdated())
+                    .isClosed(candleStick.isClosed())
                     .open(candleStick.getOpen())
                     .high(candleStick.getHigh())
                     .low(candleStick.getLow())
@@ -166,7 +207,17 @@ public class CandleStick {
             this.timestamp = timestamp;
             return this;
         }
-
+        
+        public Builder lastUpdated(Date lastUpdated) {
+            this.lastUpdated = lastUpdated;
+            return this;
+        }
+        
+        public Builder isClosed(Boolean isClosed) {
+            this.isClosed = isClosed;
+            return this;
+        }
+        
         public Builder open(BigDecimal open) {
             this.open = open;
             return this;
@@ -227,6 +278,8 @@ public class CandleStick {
             	instrument,
             	interval,
             	timestamp,
+            	lastUpdated,
+            	isClosed,
             	open,
             	high,
             	low,
