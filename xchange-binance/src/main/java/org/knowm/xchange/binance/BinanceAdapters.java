@@ -308,7 +308,7 @@ public class BinanceAdapters {
     return new CandleStick.Builder()
         .instrument(kline.getCurrencyPair())
         .interval(kline.getInterval().getMillis() / 1000)
-        .timestamp(new Date(kline.getCloseTime()))
+        .timestamp(new Date(kline.getOpenTime()))
         .lastUpdated(new Date(kline.getLastUpdated()))
         .isClosed(kline.isClosed())
         .open(kline.getOpenPrice())
