@@ -107,12 +107,12 @@ public class BinanceFuturesMarketDataService extends BinanceMarketDataService {
   public CandleStickData getCandleStickData(Instrument instrument, CandleStickDataParams params)
       throws IOException {
 	  
-	if (instrument instanceof FuturesContract) {
-	    FuturesContract futuresContract = (FuturesContract) instrument;
+    if (instrument instanceof FuturesContract) {
+      FuturesContract futuresContract = (FuturesContract) instrument;
 	  return BinanceFuturesAdapter.replaceInstrument(
-	  super.getCandleStickData(futuresContract.getCurrencyPair(), params), futuresContract);
-	}
-	throw new NotAvailableFromExchangeException("getCandleStickData");
+	      super.getCandleStickData(futuresContract.getCurrencyPair(), params), futuresContract);
+    }
+    throw new NotAvailableFromExchangeException("getCandleStickData");
   }
   
   protected int aggTradesPermits(Integer limit) {
