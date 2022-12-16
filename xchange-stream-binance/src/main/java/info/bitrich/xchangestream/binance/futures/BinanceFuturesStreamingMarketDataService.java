@@ -1,10 +1,9 @@
 package info.bitrich.xchangestream.binance.futures;
 
-import com.google.common.util.concurrent.RateLimiter;
-import info.bitrich.xchangestream.binance.BinanceStreamingMarketDataService;
-import info.bitrich.xchangestream.binance.BinanceStreamingService;
-import info.bitrich.xchangestream.binance.dto.DepthBinanceWebSocketTransaction;
-import io.reactivex.rxjava3.core.Flowable;
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicLong;
+
+import org.knowm.xchange.binance.BinanceAdapters;
 import org.knowm.xchange.binance.BinanceErrorAdapter;
 import org.knowm.xchange.binance.dto.BinanceException;
 import org.knowm.xchange.binance.dto.marketdata.BinanceOrderbook;
@@ -12,17 +11,24 @@ import org.knowm.xchange.binance.futures.BinanceFuturesAdapter;
 import org.knowm.xchange.binance.service.BinanceMarketDataService;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.derivative.FuturesContract;
+import org.knowm.xchange.dto.marketdata.CandleStick;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trade;
+import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
+import org.knowm.xchange.exceptions.NotYetImplementedForExchangeException;
 import org.knowm.xchange.exceptions.RateLimitExceededException;
 import org.knowm.xchange.instrument.Instrument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicLong;
+import com.google.common.util.concurrent.RateLimiter;
+
+import info.bitrich.xchangestream.binance.BinanceStreamingMarketDataService;
+import info.bitrich.xchangestream.binance.BinanceStreamingService;
+import info.bitrich.xchangestream.binance.dto.DepthBinanceWebSocketTransaction;
+import io.reactivex.rxjava3.core.Flowable;
 
 public class BinanceFuturesStreamingMarketDataService extends BinanceStreamingMarketDataService {
     private static final Logger LOG =
@@ -76,6 +82,26 @@ public class BinanceFuturesStreamingMarketDataService extends BinanceStreamingMa
         throw new NotAvailableFromExchangeException("getTrades");
     }
 
+    public Flowable<CandleStick> getCandleSticks(CurrencyPair currencyPair, Object... args) {
+    	throw new NotYetImplementedForExchangeException("getCandleSticks");
+    }
+      
+    public Flowable<CandleStick> getCandleSticks(Instrument instrument, Object... args) {
+    	if (args == null || args.length != 1 || args[0] == null || args[0] instanceof Integer == false) {
+	      throw new ExchangeException("Should provide interval argument, representing the interval in seconds!");
+	    }
+    	int interval = (Integer) args[0];
+    	    
+    	if (instrument instanceof FuturesContract) {
+            FuturesContract futuresContract = (FuturesContract) instrument;
+            return getRawCandleSticks(futuresContract.getCurrencyPair(), interval)
+        	        .map(kline -> BinanceAdapters.adaptCandleStick(kline))
+        	        .map(candle ->  BinanceFuturesAdapter.replaceInstrument(candle, futuresContract));
+    	}
+    	
+        throw new NotAvailableFromExchangeException("getCandleSticks");
+	}
+    
     protected Flowable<OrderBook> createOrderBookFlowable(CurrencyPair currencyPair) {
         // 1. Open a stream to ${STREAMING_URI}/ws/bnbbtc@depth
         // 2. Buffer the events you receive from the stream.
